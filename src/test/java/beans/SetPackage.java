@@ -1,10 +1,11 @@
 package beans;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SetPackage extends MenuItem{
 
-    private ArrayList<Food> foodList;
+    private List<Food> foodList;
 
 
     public SetPackage(String name, String description, double price, ArrayList<Food> foodList) {
@@ -13,11 +14,11 @@ public class SetPackage extends MenuItem{
     }
     
 
-    public ArrayList<Food> getFoodList() {
+    public List<Food> getFoodList() {
         return this.foodList;
     }
 
-    public void setFoodList(ArrayList<Food> foodList) {
+    public void setFoodList(List<Food> foodList) {
         this.foodList = foodList;
     }
 

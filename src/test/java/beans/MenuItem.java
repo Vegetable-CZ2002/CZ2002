@@ -1,6 +1,6 @@
 package beans;
 
-public class MenuItem {
+public abstract class MenuItem {
     
     enum Type{
         APETITE, MAIN_COURSE, DESERT, DRINK, PACKAGE
