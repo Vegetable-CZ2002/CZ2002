@@ -4,6 +4,7 @@ import beans.Order;
 import beans.Restaurant;
 
 import java.util.ArrayList;
+
 public class OrderManager {
     static ArrayList<Order> orders= Restaurant.orders;
     static ArrayList<Order> invoices= Restaurant.invoices;

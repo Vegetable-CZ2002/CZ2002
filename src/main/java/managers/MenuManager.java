@@ -1,19 +1,20 @@
 package managers;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.Reader;
-import java.util.Arrays;
-import java.nio.file.Path;
-import java.util.List;
-import com.google.gson.GsonBuilder;
+import adapters.MenuItemAdapter;
+import beans.MenuItem;
 import com.google.gson.Gson;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.charset.StandardCharsets;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 
-import beans.MenuItem;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.List;
 
 public class MenuManager{
 
