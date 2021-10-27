@@ -28,7 +28,7 @@ public class MenuManager{
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.create();
 
-        Path path = new File("cz2002/src/main/java/cz2002/data/menu.json").toPath();
+        Path path = new File("src/main/resources/data/menu.json").toPath();
         
         try (Reader reader = Files.newBufferedReader(path,
         StandardCharsets.UTF_8)) {
@@ -44,7 +44,7 @@ public class MenuManager{
         Gson gson = new Gson();
         menu.add(m);
         try {
-            FileWriter writer = new FileWriter("cz2002/src/main/java/cz2002/data/menu.json");
+            FileWriter writer = new FileWriter("src/main/resources/data/menu.json");
             writer.write(gson.toJson(menu));
             writer.close();
         } catch (JsonIOException e) {
