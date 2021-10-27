@@ -2,11 +2,211 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
+      "id": 1,
+      "name": "CHICKEN QUESADILLAS",
+      "type": "MAIN_COURSE",
+      "description": "Tortillas filled with grilled cajun chicken, smoked bell peppers and melted monterey jack cheese. Served with guacamole and sour cream.",
+      "price": 10.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
       "id": 2,
+      "name": "CHEESE NACHOS",
+      "type": "APPETIZER",
+      "description": "Guacamole, sour cream, salsa.",
+      "price": 10.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 3,
+      "name": "BUFFALO WINGS",
+      "type": "APPETIZER",
+      "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+      "price": 10.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 4,
+      "name": "ANGUS GRAIN FED STRIPLOIN",
+      "type": "MEAT",
+      "description": "150 days grain fed striploin with red wine sauce, served with sauteed vegetables and mashed potato.",
+      "price": 22.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 5,
+      "name": "GRILLED SALMON",
+      "type": "MEAT",
+      "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+      "price": 24.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 6,
       "name": "Chicken",
       "type": "MAIN_COURSE",
       "description": "Recommended",
       "price": 20.0
     }
+  },
+  {
+  "MenuItem": "beans.Food",
+  "INSTANCE": {
+    "id": 7,
+    "name": "HAWAIIAN PIZZA",
+    "type": "PIZZA",
+    "description": "Homemade thin crust pizza dough, a perfect combination of sweet and savory flavours loaded on top of a crispy crust!",
+    "price": 12.0
+    }
+  },
+    {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 8,
+      "name": "PEPPERONI PIZZA",
+      "type": "PIZZA",
+      "description": "Homemade thin crust pizza dough topped with tomato sauce, mozzarella cheese and pepperoni",
+      "price": 16.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 9,
+      "name": "MARGHERITA PIZZ",
+      "type": "MAIN_COURSE",
+      "description": "Homemade thin crust pizza dough topped with buffalo mozzarella, tomatoes and garnished with garden-fresh basil.",
+      "price": 12.0
+    }
+  },  {
+  "MenuItem": "beans.Food",
+  "INSTANCE": {
+    "id": 10,
+    "name": "SMOKED DUCK CARBONARA",
+    "type": "PASTA",
+    "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
+    "price": 14.0
+    }
+  },
+  {
+  "MenuItem": "beans.Food",
+  "INSTANCE": {
+    "id":11,
+    "name": "PRAWN & ASPARAGUS",
+    "type": "PASTA",
+    "description": "Prawn, cherry tomato, garlic and asparagus with linguine.",
+    "price": 14.0
+    }
+  },
+  {
+  "MenuItem": "beans.Food",
+  "INSTANCE": {
+    "id": 12,
+    "name": "CRAB MEAT & ASPARAGUS PASTA",
+    "type": "PASTA",
+    "description": "Dungeness crab meat, spear asparagus, garlic, white wine and cherry tomato with linguine.",
+    "price": 20.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 13,
+      "name": "BEEF BOLOGNESE",
+      "type": "PASTA",
+      "description": "Minced beef, tomato sauce and shaved parmesan with linguine.",
+      "price": 12.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 14,
+      "name": "MOLTEN LAVA LUXURIOUS TORTE",
+      "type": "DESSERT",
+      "description": "Our in-house popular dessert that combines the elements of a chocolate cake baked to perfection, served with summer berries compote & vanilla ice cream.",
+      "price": 6.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 15,
+      "name": "APPLE CRUMBLE",
+      "type": "DESSERT",
+      "description": "Chopped apples baked with crumb topping, served with vanilla ice cream.",
+      "price": 6.0
+    }
+  },
+  {
+  "MenuItem": "beans.Food",
+  "INSTANCE": {
+    "id": 16,
+    "name": "WARM PECAN PIE",
+    "type": "DESSERT",
+    "description": "Flaky crust filled with sweet buttery caramel filling and pecans. Served with cinnamon caramel sauce and chocolate ice cream.",
+    "price": 6.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 17,
+      "name": "MEXICAN BROWNIE",
+      "type": "DESSERT",
+      "description": "Perfectly baked chocolatey and fudgy goodness served with vanilla ice cream and almonds.",
+      "price": 4.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 18,
+      "name": "MANGO ICED TEA",
+      "type": "DRINK",
+      "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
+      "price": 4.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 19,
+      "name": "PASSION FRUIT LEMONADE",
+      "type": "DRINK",
+      "description": "Fresh lemon juice shaken with passion fruit puree, sugar syrup and water.",
+      "price": 4.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 20,
+      "name": "STRAWBERRY SMOOTHIE",
+      "type": "DRINK",
+      "description": "Strawberry puree with milk and simple syrup.",
+      "price": 6.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 21,
+      "name": "HAZELNUT FRAPPE",
+      "type": "DRINK",
+      "description": "Hazelnut syrup, milk and coffee blended with ice cubes, served frozen.",
+      "price": 6.0
+    }
   }
+
 ]

@@ -14,7 +14,7 @@ public class Restaurant {
 
     public static void main(String[] args) throws IOException {
 
-        MenuItem salmon = new Food(2, "Chicken", MenuItem.Type.MAIN_COURSE, "Recommended", 20.0);
+        MenuItem salmon = new Food(2, "Chicken", MenuItem.Type.MEAT, "Recommended", 20.0);
 
         try {
             MenuManager.addMenuItem(salmon);

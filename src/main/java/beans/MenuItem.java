@@ -5,7 +5,7 @@ import java.util.Objects;
 public abstract class MenuItem {
 
     public enum Type{
-        APPETIZER, MAIN_COURSE, DESERT, DRINK, PACKAGE
+        APPETIZER, MEAT, PASTA, PIZZA, DESSERT, DRINK, PACKAGE
     }
     private long id;
     private String name;
