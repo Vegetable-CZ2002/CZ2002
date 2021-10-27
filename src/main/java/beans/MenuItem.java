@@ -1,17 +1,20 @@
 package beans;
 
-public abstract class MenuItem {
-    
-    enum Type{
-        APETITE, MAIN_COURSE, DESERT, DRINK, PACKAGE
-    }
+import java.util.Objects;
 
+public abstract class MenuItem {
+
+    enum Type{
+        APPETIZER, MAIN_COURSE, DESERT, DRINK, PACKAGE
+    }
+    private long id;
     private String name;
     private Type type;
     private String description;
     private double price;
 
-    public MenuItem(String name, Type type, String description, double price) {
+    public MenuItem(long id, String name, Type type, String description, double price) {
+        this.id= id;
         this.name = name;
         this.type = type;
         this.description = description;
@@ -51,6 +54,26 @@ public abstract class MenuItem {
         this.price = price;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MenuItem)) return false;
+        MenuItem menuItem = (MenuItem) o;
+        return id == menuItem.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
 
 

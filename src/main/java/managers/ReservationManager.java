@@ -9,17 +9,32 @@ import java.util.ArrayList;
 
 
 public class ReservationManager {
-    static ArrayList<Reservation> reservations= Restaurant.reservations;
+    final static ArrayList<Reservation> reservations= Restaurant.reservations;
+    final static ArrayList<Table> tables= Restaurant.tables;
 
     public static void addReservation(Reservation reservation){
-        reservations.add(reservation);
+        boolean emptyTableExist= false;
+        for(Table t: tables){
+            if(t.isOccupied()== false && t.getTableReservation()== null && t.getNumOfSeats()>= reservation.getPax()){
+                reservations.add(reservation);
+                t.setOccupied(true);
+                reservation.setTable(t);
+                t.setTableReservation(reservation);
+                emptyTableExist= true;
+                break;
+            }
+        }
+        if(!emptyTableExist){
+            System.out.println("No Empty Table Available for Reservation!");
+        }
     }
 
     public static void removeReservation(Reservation reservation){
         boolean removeSuccessful= false;
         for(Reservation r: reservations){
-            if(reservation.getName().equals(r.getName())){
+            if(reservation.equals(reservation)){
                 reservations.remove(r);
+                reservation.getTable().setTableReservation(null);
                 removeSuccessful= true;
                 break;
             }
@@ -29,10 +44,10 @@ public class ReservationManager {
         }
     }
 
-    public static boolean checkReservation(Reservation reservation){
+    public static boolean checkReservationIfExist(Reservation reservation){
         boolean isReserved= false;
         for(Reservation r: reservations){
-            if(reservation.getName().equals(r.getName())){
+            if(reservation.equals(r)){
                 isReserved= true;
                 break;
             }
@@ -45,29 +60,22 @@ public class ReservationManager {
 
     public static void checkReservationExpiry(Reservation r){
         if(LocalTime.now().isAfter(r.getTime().	plusMinutes(20))) {
-            removeReservation(r);	//Free up table for walk-in customers
+            removeReservation(r);
+            r.getTable().setOccupied(false);
+            System.out.println("Remove reservation!");
 	    }
     }
 
 
-
-    public static void reservationArrival(int number){
-        ArrayList<Table> tables= Restaurant.tables;
-        for(Table t: tables){
-            if(t.tableReservation!= null){
-                if(t.tableReservation.getId()== number) {
-                    // 
-					System.out.println("Customer Successfully Seated!");
-					return;
-				}
-            }
-        }
+    public static void reservationCheckIn(Reservation r){
+        removeReservation(r);
+        r.getTable().setOccupied(true);
     }
 
-    public static void clearExpiredReservations(ArrayList<Table> t) {
-		for(int i=0;i<t.size();i++) {
-			if(t.get(i).tableReservation != null) {
-				checkReservationExpiry(t.get(i).tableReservation);
+    public static void clearExpiredReservations() {
+		for(Table t: tables) {
+			if(t.getTableReservation() != null) {
+				checkReservationExpiry(t.getTableReservation());
 			}
 		}
 		System.out.println("Expired reservations purged!");

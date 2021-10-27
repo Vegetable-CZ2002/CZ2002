@@ -1,17 +1,27 @@
 package beans;
 
 
+import java.util.Objects;
 
 public class Table {
-    public int numOfSeats;
-	public int tableId;
-	public boolean isOccupied;
-	public Reservation tableReservation;
-	
-	public Table(int numOfSeats, int tableId) { //
+    private int numOfSeats;
+	private boolean isOccupied;
+    private long id;
+	private Reservation tableReservation;
+
+    public boolean isOccupied() {
+        return isOccupied;
+    }
+
+    public void setOccupied(boolean occupied) {
+        isOccupied = occupied;
+    }
+
+    public Table(long id, int numOfSeats) { //
 		this.numOfSeats = numOfSeats;
 		this.isOccupied = false;
-		this.tableId = tableId;
+		this.id= id;
+        this.tableReservation= null;
 	}
 
 
@@ -23,21 +33,6 @@ public class Table {
         this.numOfSeats = numOfSeats;
     }
 
-    public int getTableId() {
-        return this.tableId;
-    }
-
-    public void setTableId(int tableId) {
-        this.tableId = tableId;
-    }
-
-    public boolean isIsOccupied() {
-        return this.isOccupied;
-    }
-
-    public boolean getIsOccupied() {
-        return this.isOccupied;
-    }
 
     public void setIsOccupied(boolean isOccupied) {
         this.isOccupied = isOccupied;
@@ -49,5 +44,36 @@ public class Table {
 
     public void setTableReservation(Reservation tableReservation) {
         this.tableReservation = tableReservation;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Table)) return false;
+        Table table = (Table) o;
+        return id == table.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Table{" +
+                "numOfSeats=" + numOfSeats +
+                ", isOccupied=" + isOccupied +
+                ", id=" + id +
+                ", tableReservation=" + tableReservation +
+                '}';
     }
 }

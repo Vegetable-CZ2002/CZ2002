@@ -1,25 +1,50 @@
 package beans;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class Order{
 	private ArrayList<MenuItem> menuItems;
 	private Staff staffAssigned;
 	private Table table;
-	private Date timestamp;
+	private LocalTime time;
+    private LocalDate date;
 	private String name;
 	private boolean invoiced;
+    private long id;
 
 
-    public Order(Staff staffAssigned, Table table, Date timestamp, String name, boolean invoiced) {
-        this.staffAssigned = staffAssigned;
-        this.table = table;
-        this.timestamp = timestamp;
-        this.name = name;
-        this.invoiced = invoiced;
-        this.menuItems= new ArrayList<>();
+    public ArrayList<MenuItem> getMenuItems() {
+        return menuItems;
     }
+
+    public void setMenuItems(ArrayList<MenuItem> menuItems) {
+        this.menuItems = menuItems;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public Order(long id, Staff staffAssigned, Table table, LocalDate date, LocalTime time, String name) {
+        this.staffAssigned = staffAssigned;
+        this.table = null;
+        this.date= date;
+        this.time= time;
+        this.name = name;
+        this.id= id;
+        this.table= table;
+        this.menuItems= new ArrayList<>();
+        this.invoiced= false;
+    }
+
 
 
     public Staff getStaffAssigned() {
@@ -38,13 +63,6 @@ public class Order{
         this.table = table;
     }
 
-    public Date getTimestamp() {
-        return this.timestamp;
-    }
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
 
     public String getName() {
         return this.name;
@@ -54,13 +72,6 @@ public class Order{
         this.name = name;
     }
 
-    public boolean isInvoiced() {
-        return this.invoiced;
-    }
-
-    public boolean getInvoiced() {
-        return this.invoiced;
-    }
 
     public void setInvoiced(boolean invoiced) {
         this.invoiced = invoiced;
@@ -81,7 +92,7 @@ public class Order{
     public void removeItem(MenuItem item){
         boolean removeSuccessful= false;
         for(MenuItem m: menuItems){
-            if(m.getName().equals(item.getName())){
+            if(m.equals(item)){
                 menuItems.remove(m);
                 removeSuccessful= true;
                 break;
@@ -92,7 +103,51 @@ public class Order{
         }
     }
 
-    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Order)) return false;
+        Order order = (Order) o;
+        return id == order.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
 
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "menuItems=" + menuItems +
+                ", staffAssigned=" + staffAssigned +
+                ", table=" + table +
+                ", time=" + time +
+                ", date=" + date +
+                ", name='" + name + '\'' +
+                ", invoiced=" + invoiced +
+                ", id=" + id +
+                '}';
+    }
+
+    public boolean isInvoiced() {
+        return invoiced;
+    }
 }
