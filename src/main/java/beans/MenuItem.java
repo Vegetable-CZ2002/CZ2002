@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public abstract class MenuItem {
 
-    enum Type{
+    public enum Type{
         APPETIZER, MAIN_COURSE, DESERT, DRINK, PACKAGE
     }
     private long id;

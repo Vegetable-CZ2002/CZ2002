@@ -2,51 +2,47 @@ package managers;
 
 import adapters.MenuItemAdapter;
 import beans.MenuItem;
-import beans.Order;
-import beans.Restaurant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class MenuManager{
-
-    static ArrayList<MenuItem> menu= Restaurant.menuItems;
-
     public static List<MenuItem> readMenuItem() throws IOException{
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.create();
-
-        Path path = new File("src/main/resources/data/menu.json").toPath();
-        
-        try (Reader reader = Files.newBufferedReader(path,
-        StandardCharsets.UTF_8)) {
-
-            MenuItem[] foodArray = gson.fromJson(reader, MenuItem[].class);
-            ArrayList<MenuItem> menuItems= (ArrayList<MenuItem>) Arrays.asList(foodArray);
+        Path file = Path.of("src/main/resources/data/menu.json");
+        String jsonString = Files.readString(file);
+        MenuItem[] foodArray = gson.fromJson(jsonString, MenuItem[].class);
+        if(foodArray == null){
+            return new ArrayList<MenuItem>();
+        }
+        else{
+            List<MenuItem> menuItems= Arrays.asList(foodArray);
             return menuItems;
         }
     }
 
 
-    public void addMenuItem(MenuItem m) throws IOException{
-        Gson gson = new Gson();
-        menu.add(m);
+    public static void addMenuItem(MenuItem m) throws IOException{
+        GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
+        Gson gson = builder.setPrettyPrinting().create();
         try {
-            FileWriter writer = new FileWriter("src/main/resources/data/menu.json");
-            writer.write(gson.toJson(menu));
-            writer.close();
+            List<MenuItem> menuItemList = new ArrayList<>(readMenuItem());
+            menuItemList.add(m);
+            MenuItem[] menuItems = new MenuItem[menuItemList.size()];
+            menuItemList.toArray(menuItems);
+            Path file = Path.of("src/main/resources/data/menu.json");
+            Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.WRITE);
         } catch (JsonIOException e) {
             e.printStackTrace();
         } catch (IOException e) {

@@ -8,5 +8,15 @@
       "description": "Recommended",
       "price": 20.0
     }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 2,
+      "name": "Chicken",
+      "type": "MAIN_COURSE",
+      "description": "Recommended",
+      "price": 20.0
+    }
   }
 ]

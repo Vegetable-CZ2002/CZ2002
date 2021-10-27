@@ -9,7 +9,7 @@ public class SetPackage extends MenuItem{
     private List<Food> foodList;
 
 
-    public SetPackage(long id, String name, String description, double price, ArrayList<Food> foodList) {
+    public SetPackage(long id, String name, String description, double price, List<Food> foodList) {
         super(id, name, Type.PACKAGE, description, price);
         this.foodList = foodList;
     }
