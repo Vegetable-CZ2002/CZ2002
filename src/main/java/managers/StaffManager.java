@@ -1,7 +1,5 @@
 package managers;
 
-
-import beans.Restaurant;
 import beans.Staff;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -17,7 +15,7 @@ import java.util.List;
 
 public class StaffManager {
 
-    static List<Staff> staffs= Restaurant.staffs;
+    public static List<Staff> staffs;
 
     // TODO: 2021/10/28 readStaffs
     public static List<Staff> readStaff() throws IOException{

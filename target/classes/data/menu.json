@@ -205,5 +205,15 @@
       "description": "Hazelnut syrup, milk and coffee blended with ice cubes, served frozen.",
       "price": 6.0
     }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 22,
+      "name": "kfc",
+      "type": "MEAT",
+      "description": "wwwwwwwwwww",
+      "price": 20.0
+    }
   }
 ]
