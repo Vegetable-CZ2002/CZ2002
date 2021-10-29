@@ -205,5 +205,45 @@
       "description": "Hazelnut syrup, milk and coffee blended with ice cubes, served frozen.",
       "price": 6.0
     }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 22,
+      "name": "ghdsf ",
+      "type": "DESSERT",
+      "description": "fhgd jkfg",
+      "price": 5743.0
+    }
+  },
+  {
+    "MenuItem": "beans.SetPackage",
+    "INSTANCE": {
+      "foodList": [
+        {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        },
+        {
+          "id": 6,
+          "name": "Chicken",
+          "description": "Recommended",
+          "price": 20.0
+        }
+      ],
+      "id_": 23,
+      "name_": "52",
+      "type_": "PACKAGE",
+      "description_": "4fdj rgf",
+      "price_": 12.0,
+      "id": 23,
+      "name": "52",
+      "type": "PACKAGE",
+      "description": "4fdj rgf",
+      "price": 12.0
+    }
   }
 ]
