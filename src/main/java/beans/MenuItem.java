@@ -1,5 +1,8 @@
 package beans;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class MenuItem {
@@ -73,6 +76,21 @@ public abstract class MenuItem {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "MenuItem{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
+    }
+
+    public List<String> toStringList(){
+        return Arrays.asList(String.valueOf(id), name, String.valueOf(type), description, String.valueOf(price));
     }
 }
 

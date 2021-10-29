@@ -6,11 +6,12 @@ import beans.Table;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ReservationManager {
-    final static ArrayList<Reservation> reservations= Restaurant.reservations;
-    final static ArrayList<Table> tables= Restaurant.tables;
+    final static List<Reservation> reservations= Restaurant.reservations;
+    final static List<Table> tables= Restaurant.tables;
 
     public static void addReservation(Reservation reservation){
         boolean emptyTableExist= false;

@@ -19,7 +19,7 @@ import java.util.List;
 
 public class StaffManager {
 
-    static ArrayList<Staff> staffs= Restaurant.staffs;
+    static List<Staff> staffs= Restaurant.staffs;
 
     // TODO: 2021/10/28 readStaffs
 

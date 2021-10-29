@@ -5,9 +5,10 @@ import beans.Restaurant;
 import beans.Table;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TableManager {
-    static ArrayList<Table> tables= Restaurant.tables;
+    static List<Table> tables= Restaurant.tables;
 
     // TODO: 2021/10/28 readTables
 

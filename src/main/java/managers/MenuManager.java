@@ -2,6 +2,7 @@ package managers;
 
 import adapters.MenuItemAdapter;
 import beans.MenuItem;
+import beans.Restaurant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -56,5 +57,17 @@ public class MenuManager{
     // TODO: 2021/10/28 update menuItem:
     //input: MenuItem m whose id is already in the menu.
     //could delete old one in menu, then add the new one into the menu.
+
+    public static void printMenu() throws IOException {
+        List<MenuItem> menuItems = MenuManager.readMenuItem();
+        for(MenuItem item: menuItems){
+            System.out.printf(item.toString()+"\n");
+        }
+    }
+
+    public static int menuSize() throws IOException {
+        List<MenuItem> menuItems = MenuManager.readMenuItem();
+        return menuItems.size();
+    }
 
 }
