@@ -1,6 +1,7 @@
 package beans;
 
 import managers.MenuManager;
+import managers.TableManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,15 +42,12 @@ public class Restaurant
 		invoices= new ArrayList<>();
 	}
 
-	private static void initTable() {
-		tables= new ArrayList<>();
+	private static void initTable() throws IOException {
+		tables= TableManager.readTable();
 	}
 
 	private static void initMenu() throws IOException {
 		menuItems= MenuManager.readMenuItem();
-//		for(MenuItem item: menuItems){
-//			System.out.printf(item.toString()+"\n");
-//		}
 	}
 
 

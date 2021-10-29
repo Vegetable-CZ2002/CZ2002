@@ -89,9 +89,6 @@ public abstract class MenuItem {
                 '}';
     }
 
-    public List<String> toStringList(){
-        return Arrays.asList(String.valueOf(id), name, String.valueOf(type), description, String.valueOf(price));
-    }
 }
 
 

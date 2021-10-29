@@ -8,7 +8,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// TODO: 2021/10/29 conseider logic for this again 
 public class ReservationManager {
     final static List<Reservation> reservations= Restaurant.reservations;
     final static List<Table> tables= Restaurant.tables;
@@ -16,11 +16,10 @@ public class ReservationManager {
     public static void addReservation(Reservation reservation){
         boolean emptyTableExist= false;
         for(Table t: tables){
-            if(t.isOccupied()== false && t.getTableReservation()== null && t.getNumOfSeats()>= reservation.getPax()){
+            if(t.isOccupied()== false && t.getNumOfSeats()>= reservation.getPax()){
                 reservations.add(reservation);
                 t.setOccupied(true);
                 reservation.setTable(t);
-                t.setTableReservation(reservation);
                 emptyTableExist= true;
                 break;
             }
@@ -35,7 +34,6 @@ public class ReservationManager {
         for(Reservation r: reservations){
             if(reservation.equals(reservation)){
                 reservations.remove(r);
-                reservation.getTable().setTableReservation(null);
                 removeSuccessful= true;
                 break;
             }
@@ -73,14 +71,14 @@ public class ReservationManager {
         r.getTable().setOccupied(true);
     }
 
-    public static void clearExpiredReservations() {
-		for(Table t: tables) {
-			if(t.getTableReservation() != null) {
-				checkReservationExpiry(t.getTableReservation());
-			}
-		}
-		System.out.println("Expired reservations purged!");
-	}
+//    public static void clearExpiredReservations() {
+//		for(Table t: tables) {
+//			if(t.isOccupied()== true) {
+//				checkReservationExpiry(t.getTableReservation());
+//			}
+//		}
+//		System.out.println("Expired reservations purged!");
+//	}
 
 
 }

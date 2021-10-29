@@ -78,5 +78,25 @@
     "numOfSeats": 6,
     "isOccupied": false,
     "id": 16
+  },
+  {
+    "numOfSeats": 6,
+    "isOccupied": false,
+    "id": 17
+  },
+  {
+    "numOfSeats": 6,
+    "isOccupied": false,
+    "id": 18
+  },
+  {
+    "numOfSeats": 10,
+    "isOccupied": false,
+    "id": 19
+  },
+  {
+    "numOfSeats": 10,
+    "isOccupied": false,
+    "id": 20
   }
 ]
