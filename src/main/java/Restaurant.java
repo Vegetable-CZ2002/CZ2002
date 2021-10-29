@@ -14,10 +14,14 @@ public class Restaurant {
 
     public static void main(String[] args) throws IOException {
 
-        MenuItem salmon = new Food(2, "Chicken", MenuItem.Type.MEAT, "Recommended", 20.0);
+        Food food = new Food(2, "Chicken", MenuItem.Type.MEAT, "Recommended", 20.0);
+        List<Food> foodList= new ArrayList<>();
+        foodList.add(food);
+        foodList.add(food);
+        MenuItem menuItem= new SetPackage(30, "aaa", "nonono", 30.0, foodList);
 
         try {
-            MenuManager.addMenuItem(salmon);
+            MenuManager.addMenuItem(menuItem);
         } catch (IOException e) {
             e.printStackTrace();
         }
