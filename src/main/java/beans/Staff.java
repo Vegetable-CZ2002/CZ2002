@@ -9,8 +9,8 @@ public class Staff {
     private jobTitle job;
     private gender gender;
 
-    enum jobTitle {SENIOR_MANAGER, RESTAURANT_MANAGER, WAITRESS, WAITER;}
-    enum gender {MALE, FEMALE;}
+    public enum jobTitle {GENERAL_MANAGER, ASSISTANT_MANAGER, SERVER, CASHIER;}
+    public enum gender {MALE, FEMALE;}
 
 
     @Override
