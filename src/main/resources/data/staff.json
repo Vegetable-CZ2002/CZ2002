@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Albus Dumbledore",
+    "id": 1,
+    "job": "GENERAL_MANAGER",
+    "gender": "MALE"
+  },
+  {
+    "name": "Minerva McGonagall",
+    "id": 2,
+    "job": "ASSISTANT_MANAGER",
+    "gender": "FEMALE"
+  },
+  {
+    "name": "Severus Snape",
+    "id": 3,
+    "job": "ASSISTANT_MANAGER",
+    "gender": "MALE"
+  },
+  {
+    "name": "Harry Potter",
+    "id": 4,
+    "job": "SERVER",
+    "gender": "MALE"
+  },
+  {
+    "name": "Ron Weasley",
+    "id": 5,
+    "job": "SERVER",
+    "gender": "MALE"
+  },
+  {
+    "name": "Hermione Granger",
+    "id": 6,
+    "job": "SERVER",
+    "gender": "FEMALE"
+  },
+  {
+    "name": "Draco Malfoy",
+    "id": 7,
+    "job": "CASHIER",
+    "gender": "MALE"
+  }
+]

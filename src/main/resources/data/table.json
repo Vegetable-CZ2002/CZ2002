@@ -1,0 +1,102 @@
+[
+  {
+    "numOfSeats": 2,
+    "isOccupied": false,
+    "id": 1
+  },
+  {
+    "numOfSeats": 2,
+    "isOccupied": false,
+    "id": 2
+  },
+  {
+    "numOfSeats": 2,
+    "isOccupied": false,
+    "id": 3
+  },
+  {
+    "numOfSeats": 2,
+    "isOccupied": false,
+    "id": 4
+  },
+  {
+    "numOfSeats": 4,
+    "isOccupied": false,
+    "id": 5
+  },
+  {
+    "numOfSeats": 4,
+    "isOccupied": false,
+    "id": 6
+  },
+  {
+    "numOfSeats": 4,
+    "isOccupied": false,
+    "id": 7
+  },
+  {
+    "numOfSeats": 4,
+    "isOccupied": false,
+    "id": 8
+  },
+  {
+    "numOfSeats": 4,
+    "isOccupied": false,
+    "id": 9
+  },
+  {
+    "numOfSeats": 4,
+    "isOccupied": false,
+    "id": 10
+  },
+  {
+    "numOfSeats": 4,
+    "isOccupied": false,
+    "id": 11
+  },
+  {
+    "numOfSeats": 4,
+    "isOccupied": false,
+    "id": 12
+  },
+  {
+    "numOfSeats": 4,
+    "isOccupied": false,
+    "id": 13
+  },
+  {
+    "numOfSeats": 4,
+    "isOccupied": false,
+    "id": 14
+  },
+  {
+    "numOfSeats": 6,
+    "isOccupied": false,
+    "id": 15
+  },
+  {
+    "numOfSeats": 6,
+    "isOccupied": false,
+    "id": 16
+  },
+  {
+    "numOfSeats": 6,
+    "isOccupied": false,
+    "id": 17
+  },
+  {
+    "numOfSeats": 6,
+    "isOccupied": false,
+    "id": 18
+  },
+  {
+    "numOfSeats": 10,
+    "isOccupied": false,
+    "id": 19
+  },
+  {
+    "numOfSeats": 10,
+    "isOccupied": false,
+    "id": 20
+  }
+]

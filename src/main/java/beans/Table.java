@@ -7,7 +7,6 @@ public class Table {
     private int numOfSeats;
 	private boolean isOccupied;
     private long id;
-	private Reservation tableReservation;
 
     public boolean isOccupied() {
         return isOccupied;
@@ -21,7 +20,6 @@ public class Table {
 		this.numOfSeats = numOfSeats;
 		this.isOccupied = false;
 		this.id= id;
-        this.tableReservation= null;
 	}
 
 
@@ -37,15 +35,6 @@ public class Table {
     public void setIsOccupied(boolean isOccupied) {
         this.isOccupied = isOccupied;
     }
-
-    public Reservation getTableReservation() {
-        return this.tableReservation;
-    }
-
-    public void setTableReservation(Reservation tableReservation) {
-        this.tableReservation = tableReservation;
-    }
-
     public long getId() {
         return id;
     }
@@ -73,7 +62,6 @@ public class Table {
                 "numOfSeats=" + numOfSeats +
                 ", isOccupied=" + isOccupied +
                 ", id=" + id +
-                ", tableReservation=" + tableReservation +
                 '}';
     }
 }
