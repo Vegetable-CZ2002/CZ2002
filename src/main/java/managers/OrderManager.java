@@ -5,10 +5,11 @@ import beans.Restaurant;
 import beans.Table;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderManager {
-    static ArrayList<Order> orders= Restaurant.orders;
-    static ArrayList<Order> invoices= Restaurant.invoices;
+    static List<Order> orders= Restaurant.orders;
+    static List<Order> invoices= Restaurant.invoices;
     
     public static void addOrder(Order order){
         orders.add(order);

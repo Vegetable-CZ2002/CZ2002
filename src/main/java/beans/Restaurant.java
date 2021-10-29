@@ -4,16 +4,17 @@ import managers.MenuManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Restaurant
 {
-    public static ArrayList<Table> tables;
-    public static ArrayList<Staff> staffs;
-	public static ArrayList<MenuItem> menuItems;
-    public static ArrayList<Order> orders;
-    public static ArrayList<Order> invoices;
-	public static ArrayList<Reservation> reservations;
+    public static List<Table> tables;
+    public static List<Staff> staffs;
+	public static List<MenuItem> menuItems;
+    public static List<Order> orders;
+    public static List<Order> invoices;
+	public static List<Reservation> reservations;
 
 	public Restaurant() throws IOException {
 		initMenu();
@@ -29,7 +30,6 @@ public class Restaurant
 	}
 
 	private static void initStaff() {
-
 		staffs= new ArrayList<>();
 	}
 
@@ -46,8 +46,12 @@ public class Restaurant
 	}
 
 	private static void initMenu() throws IOException {
-		menuItems= (ArrayList<MenuItem>) MenuManager.readMenuItem();
+		menuItems= MenuManager.readMenuItem();
+//		for(MenuItem item: menuItems){
+//			System.out.printf(item.toString()+"\n");
+//		}
 	}
+
 
 
 
