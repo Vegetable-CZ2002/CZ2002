@@ -2,7 +2,6 @@ package managers;
 
 import adapters.MenuItemAdapter;
 import beans.MenuItem;
-import beans.Restaurant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -16,6 +15,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MenuManager{
+
+    public static List<MenuItem> menuItemList;
+
     public static List<MenuItem> readMenuItem() throws IOException{
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
@@ -24,12 +26,12 @@ public class MenuManager{
         String jsonString = Files.readString(file);
         MenuItem[] foodArray = gson.fromJson(jsonString, MenuItem[].class);
         if(foodArray == null){
-            return new ArrayList<MenuItem>();
+            menuItemList = new ArrayList<MenuItem>();
         }
         else{
-            List<MenuItem> menuItems= Arrays.asList(foodArray);
-            return menuItems;
+            menuItemList = new ArrayList<MenuItem>(Arrays.asList(foodArray));
         }
+        return menuItemList;
     }
 
 
@@ -38,7 +40,6 @@ public class MenuManager{
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         try {
-            List<MenuItem> menuItemList = new ArrayList<>(readMenuItem());
             menuItemList.add(m);
             MenuItem[] menuItems = new MenuItem[menuItemList.size()];
             menuItemList.toArray(menuItems);
@@ -56,17 +57,17 @@ public class MenuManager{
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         try {
-            List<MenuItem> menuItemList = new ArrayList<>(readMenuItem());
             for(int i = 0; i < menuItemList.size(); i++){
                 if(menuItemList.get(i).getId() == id){
                     menuItemList.remove(i);
+                    MenuItem[] menuItems = new MenuItem[menuItemList.size()];
+                    menuItemList.toArray(menuItems);
+                    Path file = Path.of("src/main/resources/data/menu.json");
+                    Files.delete(file);
+                    Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.CREATE_NEW);
                     break;
                 }
             }
-            MenuItem[] menuItems = new MenuItem[menuItemList.size()];
-            menuItemList.toArray(menuItems);
-            Path file = Path.of("src/main/resources/data/menu.json");
-            Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.WRITE);
         } catch (JsonIOException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -79,18 +80,17 @@ public class MenuManager{
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         try {
-            List<MenuItem> menuItemList = new ArrayList<>(readMenuItem());
             for(int i = 0; i < menuItemList.size(); i++){
                 if(menuItemList.get(i).getId() == m.getId()){
-                    menuItemList.remove(i);
+                    menuItemList.add(m);
+                    MenuItem[] menuItems = new MenuItem[menuItemList.size()];
+                    menuItemList.toArray(menuItems);
+                    Path file = Path.of("src/main/resources/data/menu.json");
+                    Files.delete(file);
+                    Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.CREATE_NEW);
                     break;
                 }
             }
-            menuItemList.add(m);
-            MenuItem[] menuItems = new MenuItem[menuItemList.size()];
-            menuItemList.toArray(menuItems);
-            Path file = Path.of("src/main/resources/data/menu.json");
-            Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.WRITE);
         } catch (JsonIOException e) {
             e.printStackTrace();
         } catch (IOException e) {

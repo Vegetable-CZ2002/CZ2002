@@ -1,7 +1,6 @@
 package managers;
 
 import beans.Reservation;
-import beans.Restaurant;
 import beans.Table;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TableManager {
-    static List<Table> tables= Restaurant.tables;
+    public static List<Table> tables;
 
     // TODO: 2021/10/28 readTables
     public static List<Table> readTable() throws IOException {
