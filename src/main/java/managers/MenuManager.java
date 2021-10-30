@@ -82,6 +82,7 @@ public class MenuManager{
         try {
             for(int i = 0; i < menuItemList.size(); i++){
                 if(menuItemList.get(i).getId() == m.getId()){
+                    menuItemList.remove(i);
                     menuItemList.add(m);
                     MenuItem[] menuItems = new MenuItem[menuItemList.size()];
                     menuItemList.toArray(menuItems);

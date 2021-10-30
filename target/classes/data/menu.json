@@ -219,11 +219,11 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 22,
-      "name": "r",
-      "type": "PASTA",
-      "description": "f",
-      "price": 3.0
+      "id": 23,
+      "name": "kfc",
+      "type": "MEAT",
+      "description": "67890",
+      "price": 20.0
     }
   }
 ]
