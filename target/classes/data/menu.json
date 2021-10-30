@@ -207,13 +207,73 @@
     }
   },
   {
+    "MenuItem": "beans.SetPackage",
+    "INSTANCE": {
+      "foodList": [
+        {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        },
+        {
+          "id": 6,
+          "name": "Chicken",
+          "description": "Recommended",
+          "price": 20.0
+        }
+      ],
+      "id_": 23,
+      "name_": "52",
+      "type_": "PACKAGE",
+      "description_": "4fdj rgf",
+      "price_": 12.0,
+      "id": 23,
+      "name": "52",
+      "type": "PACKAGE",
+      "description": "4fdj rgf",
+      "price": 12.0
+    }
+  },
+  {
     "MenuItem": "beans.Food",
     "INSTANCE": {
       "id": 22,
-      "name": "kfc",
-      "type": "MEAT",
-      "description": "wwwwwwwwwww",
-      "price": 20.0
+      "name": "hgjds gh",
+      "type": "PASTA",
+      "description": "sdghlk aglh",
+      "price": 432.0
+    }
+  },
+  {
+    "MenuItem": "beans.SetPackage",
+    "INSTANCE": {
+      "foodList": [
+        {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        },
+        {
+          "id": 6,
+          "name": "Chicken",
+          "description": "Recommended",
+          "price": 20.0
+        }
+      ],
+      "id_": 23,
+      "name_": "kfg 54",
+      "type_": "PACKAGE",
+      "description_": "dsf gfs",
+      "price_": 23.0,
+      "id": 23,
+      "name": "kfg 54",
+      "type": "PACKAGE",
+      "description": "dsf gfs",
+      "price": 23.0
     }
   }
 ]
