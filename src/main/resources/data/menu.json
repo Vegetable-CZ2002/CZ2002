@@ -11,6 +11,16 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
+      "id": 2,
+      "name": "BUFFALO WINGS",
+      "type": "APPETIZER",
+      "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+      "price": 10.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
       "id": 3,
       "name": "BUFFALO WINGS",
       "type": "APPETIZER",
@@ -200,10 +210,82 @@
     "MenuItem": "beans.Food",
     "INSTANCE": {
       "id": 22,
-      "name": "hgjds gh",
+      "name": "rej ",
+      "type": "MEAT",
+      "description": "fe",
+      "price": 23.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 22,
+      "name": "r",
       "type": "PASTA",
-      "description": "sdghlk aglh",
-      "price": 432.0
+      "description": "f",
+      "price": 3.0
+    }
+  },
+  {
+    "MenuItem": "beans.SetPackage",
+    "INSTANCE": {
+      "foodList": [
+        {
+          "id": 4,
+          "name": "ANGUS GRAIN FED STRIPLOIN",
+          "type": "MEAT",
+          "description": "150 days grain fed striploin with red wine sauce, served with sauteed vegetables and mashed potato.",
+          "price": 22.0
+        },
+        {
+          "id": 10,
+          "name": "SMOKED DUCK CARBONARA",
+          "type": "PASTA",
+          "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
+          "price": 14.0
+        }
+      ],
+      "id_": 23,
+      "name_": "sf",
+      "type_": "PACKAGE",
+      "description_": "fdsa",
+      "price_": 4.0,
+      "id": 23,
+      "name": "sf",
+      "type": "PACKAGE",
+      "description": "fdsa",
+      "price": 4.0
+    }
+  },
+  {
+    "MenuItem": "beans.SetPackage",
+    "INSTANCE": {
+      "foodList": [
+        {
+          "id": 5,
+          "name": "GRILLED SALMON",
+          "type": "MEAT",
+          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+          "price": 24.0
+        },
+        {
+          "id": 10,
+          "name": "SMOKED DUCK CARBONARA",
+          "type": "PASTA",
+          "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
+          "price": 14.0
+        }
+      ],
+      "id_": 23,
+      "name_": "rt",
+      "type_": "PACKAGE",
+      "description_": "t",
+      "price_": 43.0,
+      "id": 23,
+      "name": "rt",
+      "type": "PACKAGE",
+      "description": "t",
+      "price": 43.0
     }
   }
 ]

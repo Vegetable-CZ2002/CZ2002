@@ -59,7 +59,15 @@ public class MenuUI {
                 break;
         }
         System.out.println(type);
-        MenuItem menuItem= new Food(MenuManager.menuSize()+1, name, type, description, price);
+        List<MenuItem> menuItems= MenuManager.readMenuItem();
+        int i= 1;
+        for(MenuItem menuItem: menuItems){
+            if(menuItem.getId()!= i){
+                break;
+            }
+            i++;
+        }
+        MenuItem menuItem= new Food(i, name, type, description, price);
         try {
             MenuManager.addMenuItem(menuItem);
         } catch (IOException e) {
@@ -93,7 +101,14 @@ public class MenuUI {
         in.nextLine();
         String description= in.nextLine();
         System.out.println(description);
-        MenuItem menuItem= new SetPackage(MenuManager.menuSize()+1, name, description, price, foodList);
+        int i= 1;
+        for(MenuItem menuItem: menuItems){
+            if(menuItem.getId()!= i){
+                break;
+            }
+            i++;
+        }
+        MenuItem menuItem= new SetPackage(i, name, description, price, foodList);
         try {
             MenuManager.addMenuItem(menuItem);
         } catch (IOException e) {
@@ -194,7 +209,7 @@ public class MenuUI {
         System.out.println(description);
         MenuItem menuItem= new SetPackage(id, name, description, price, foodList);
         try {
-            MenuManager.addMenuItem(menuItem);
+            MenuManager.updateMenuItem(menuItem);
         } catch (IOException e) {
             e.printStackTrace();
         }
