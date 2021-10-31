@@ -9,6 +9,10 @@ public class Staff {
     private jobTitle job;
     private gender gender;
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public enum jobTitle {GENERAL_MANAGER, ASSISTANT_MANAGER, SERVER, CASHIER;}
     public enum gender {MALE, FEMALE;}
 

@@ -17,7 +17,14 @@ import java.util.List;
 public class TableManager {
     public static List<Table> tables;
 
-    // TODO: 2021/10/28 readTables
+    static {
+        try {
+            tables = readTable();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static List<Table> readTable() throws IOException {
         Gson gson = new Gson();
         Path file = Path.of("src/main/resources/data/table.json");
@@ -48,12 +55,25 @@ public class TableManager {
         }
     }
 
-    public Table checkTableAvailability(Reservation r){
+    public static Table occupyTableForOrder(int pax){
         for(Table t: tables){
-            if(t.isOccupied() == false  && t.getNumOfSeats() >= r.getPax()){
+            if(t.isOccupied()== false && t.getNumOfSeats()>= pax){
+                t.setOccupied(true);
                 return t;
             }
         }
+        System.out.println("No available table");
+        return null;
+    }
+
+    public static Table occupyTableForReserve(int pax){
+        for(Table t: tables){
+            if(t.isOccupied()== false&& t.getNumOfSeats()>= pax){
+                t.setOccupied(true);
+                return t;
+            }
+        }
+        System.out.println("No available table");
         return null;
     }
 }

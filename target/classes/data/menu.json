@@ -4,6 +4,7 @@
     "INSTANCE": {
       "id": 1,
       "name": "CHICKEN QUESADILLAS",
+      "type": "APPETIZER",
       "description": "Tortillas filled with grilled cajun chicken, smoked bell peppers and melted monterey jack cheese. Served with guacamole and sour cream.",
       "price": 10.0
     }
@@ -12,9 +13,9 @@
     "MenuItem": "beans.Food",
     "INSTANCE": {
       "id": 2,
-      "name": "BUFFALO WINGS",
+      "name": "CHEESE NACHOS",
       "type": "APPETIZER",
-      "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+      "description": "Guacamole, sour cream, salsa.",
       "price": 10.0
     }
   },
@@ -81,7 +82,8 @@
     "MenuItem": "beans.Food",
     "INSTANCE": {
       "id": 9,
-      "name": "MARGHERITA PIZZ",
+      "name": "MARGHERITA PIZZA",
+      "type": "PIZZA",
       "description": "Homemade thin crust pizza dough topped with buffalo mozzarella, tomatoes and garnished with garden-fresh basil.",
       "price": 12.0
     }
@@ -207,23 +209,96 @@
     }
   },
   {
-    "MenuItem": "beans.Food",
+    "MenuItem": "beans.SetPackage",
     "INSTANCE": {
+      "foodList": [
+        {
+          "id": 5,
+          "name": "GRILLED SALMON",
+          "type": "MEAT",
+          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+          "price": 24.0
+        },
+        {
+          "id": 17,
+          "name": "MEXICAN BROWNIE",
+          "type": "DESSERT",
+          "description": "Perfectly baked chocolatey and fudgy goodness served with vanilla ice cream and almonds.",
+          "price": 4.0
+        }
+      ],
+      "id_": 22,
+      "name_": "SALMON  \u0026 BROWNIE SET",
+      "type_": "PACKAGE",
+      "description_": "Sepecial deal for salmon lovers.",
+      "price_": 20.0,
       "id": 22,
-      "name": "rej ",
-      "type": "MEAT",
-      "description": "fe",
-      "price": 23.0
+      "name": "SALMON   BROWNIE SET",
+      "type": "PACKAGE",
+      "description": "Sepecial deal for salmon lovers.",
+      "price": 25.0
     }
   },
   {
-    "MenuItem": "beans.Food",
+    "MenuItem": "beans.SetPackage",
     "INSTANCE": {
+      "foodList": [
+        {
+          "id": 8,
+          "name": "PEPPERONI PIZZA",
+          "type": "PIZZA",
+          "description": "Homemade thin crust pizza dough topped with tomato sauce, mozzarella cheese and pepperoni",
+          "price": 16.0
+        },
+        {
+          "id": 18,
+          "name": "MANGO ICED TEA",
+          "type": "DRINK",
+          "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
+          "price": 4.0
+        }
+      ],
+      "id_": 23,
+      "name_": "PEPPERONI \u0026 MANGO TEA SET",
+      "type_": "PACKAGE",
+      "description_": "Specail deal for perppeoni pizza lovers.",
+      "price_": 18.0,
       "id": 23,
-      "name": "kfc",
-      "type": "MEAT",
-      "description": "67890",
-      "price": 20.0
+      "name": "PEPPERONI \u0026 MANGO TEA SET",
+      "type": "PACKAGE",
+      "description": "Specail deal for perppeoni pizza lovers.",
+      "price": 18.0
+    }
+  },
+  {
+    "MenuItem": "beans.SetPackage",
+    "INSTANCE": {
+      "foodList": [
+        {
+          "id": 11,
+          "name": "PRAWN \u0026 ASPARAGUS",
+          "type": "PASTA",
+          "description": "Prawn, cherry tomato, garlic and asparagus with linguine.",
+          "price": 14.0
+        },
+        {
+          "id": 14,
+          "name": "MOLTEN LAVA LUXURIOUS TORTE",
+          "type": "DESSERT",
+          "description": "Our in-house popular dessert that combines the elements of a chocolate cake baked to perfection, served with summer berries compote \u0026 vanilla ice cream.",
+          "price": 6.0
+        }
+      ],
+      "id_": 24,
+      "name_": "PRAWN \u0026 TORTE SET",
+      "type_": "PACKAGE",
+      "description_": "Special deal for prawn pasta lovers.",
+      "price_": 17.0,
+      "id": 24,
+      "name": "PRAWN \u0026 TORTE SET",
+      "type": "PACKAGE",
+      "description": "Special deal for prawn pasta lovers.",
+      "price": 17.0
     }
   }
 ]

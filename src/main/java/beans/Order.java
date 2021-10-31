@@ -4,18 +4,19 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class Order{
+    private int pax;
 	private ArrayList<MenuItem> menuItems;
 	private Staff staffAssigned;
 	private Table table;
 	private LocalTime time;
     private LocalDate date;
-	private String name;
 	private boolean invoiced;
     private long id;
-
+    private double sum= 0;
 
     public ArrayList<MenuItem> getMenuItems() {
         return menuItems;
@@ -33,18 +34,25 @@ public class Order{
         this.date = date;
     }
 
-    public Order(long id, Staff staffAssigned, Table table, LocalDate date, LocalTime time, String name) {
+    public double getSum() {
+        return sum;
+    }
+
+    public void setSum(double sum) {
+        this.sum = sum;
+    }
+
+    public Order(long id, Staff staffAssigned, Table table, LocalDate date, LocalTime time, int pax) {
+        this.pax= pax;
         this.staffAssigned = staffAssigned;
-        this.table = null;
         this.date= date;
         this.time= time;
-        this.name = name;
         this.id= id;
         this.table= table;
         this.menuItems= new ArrayList<>();
         this.invoiced= false;
+        this.sum= 0;
     }
-
 
 
     public Staff getStaffAssigned() {
@@ -64,21 +72,25 @@ public class Order{
     }
 
 
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
     public void setInvoiced(boolean invoiced) {
         this.invoiced = invoiced;
     }
 
-    public void addItem(MenuItem mItem){
-        menuItems.add(mItem);
+    public void addItem(int id){
+        boolean addSuccessful= false;
+        List<MenuItem> menuItemList= Restaurant.menuItems;
+        for(MenuItem m: menuItemList){
+            if(m.getId()== id){
+                menuItems.add(m);
+                sum= getSum()+ m.getPrice();
+                addSuccessful= true;
+                System.out.println("Add item success");
+                break;
+            }
+        }
+        if(!addSuccessful){
+            System.out.println("Add item failure");
+        }
     }
 
     public void addAllItem(ArrayList<MenuItem> mItems){
@@ -89,12 +101,14 @@ public class Order{
         menuItems.clear();
     }
 
-    public void removeItem(MenuItem item){
+    public void removeItem(int id){
         boolean removeSuccessful= false;
         for(MenuItem m: menuItems){
-            if(m.equals(item)){
+            if(m.getId()== id){
                 menuItems.remove(m);
+                sum= getSum()- m.getPrice();
                 removeSuccessful= true;
+                System.out.println("Remove item success");
                 break;
             }
         }
@@ -136,12 +150,13 @@ public class Order{
     @Override
     public String toString() {
         return "Order{" +
-                "menuItems=" + menuItems +
-                ", staffAssigned=" + staffAssigned +
-                ", table=" + table +
-                ", time=" + time +
-                ", date=" + date +
-                ", name='" + name + '\'' +
+                "pax=" + pax +
+                ", price sum=" + sum +
+                ", menuItems=" + menuItems.toString() +
+                ", staffAssigned=" + staffAssigned.getName() +
+                ", table=" + table.getId() +
+                ", time=" + time.toString() +
+                ", date=" + date.toString() +
                 ", invoiced=" + invoiced +
                 ", id=" + id +
                 '}';
@@ -149,5 +164,19 @@ public class Order{
 
     public boolean isInvoiced() {
         return invoiced;
+    }
+
+    public void printMenuItemInOrder(){
+        for(MenuItem menuItem: menuItems){
+            System.out.println(menuItem.toString());
+        }
+    }
+
+    public int getPax() {
+        return pax;
+    }
+
+    public void setPax(int pax) {
+        this.pax = pax;
     }
 }

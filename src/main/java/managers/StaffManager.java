@@ -17,7 +17,6 @@ public class StaffManager {
 
     public static List<Staff> staffs;
 
-    // TODO: 2021/10/28 readStaffs
     public static List<Staff> readStaff() throws IOException{
         Gson gson = new Gson();
         Path file = Path.of("src/main/resources/data/staff.json");
