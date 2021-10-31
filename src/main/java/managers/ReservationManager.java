@@ -41,12 +41,13 @@ public class ReservationManager {
         // TODO: 2021/10/31 write reservation to json file
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
+        reservations= readReservation();
         try {
             reservations.add(reservation);
-            Reservation[] staffArray = new Reservation[reservations.size()];
-            reservations.toArray(staffArray);
-            Path file = Path.of("src/main/resources/data/reservation.jsonn");
-            Files.writeString(file, gson.toJson(staffArray), StandardOpenOption.WRITE);
+            Reservation[] reservationArray = new Reservation[reservations.size()];
+            reservations.toArray(reservationArray);
+            Path file = Path.of("src/main/resources/data/reservation.json");
+            Files.writeString(file, gson.toJson(reservationArray), StandardOpenOption.WRITE);
         } catch (JsonIOException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -57,7 +58,6 @@ public class ReservationManager {
 
 
     public static void removeReservation(int id) throws IOException {
-
         boolean removeReservation= false;
         for(Reservation reservation: reservations){
             {
@@ -77,6 +77,7 @@ public class ReservationManager {
     }
 
     public static void deleteReservation(Reservation reservation) throws IOException {
+        reservations= readReservation();
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(Reservation.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();

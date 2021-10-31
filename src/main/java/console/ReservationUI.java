@@ -75,6 +75,7 @@ public class ReservationUI {
         ReservationManager.clearExpiredReservations();
         System.out.println("Please enter the following details for reservation ");
         System.out.println("Please enter the reservation date in the format of YYYY-MM-DD:(eg. 2021-11-12)");
+        in.nextLine();
         String date = in.nextLine();
         LocalDate localDate= LocalDate.parse(date);
         System.out.println(date.toString());
@@ -107,6 +108,7 @@ public class ReservationUI {
                     if(t.isOccupied()== false&& t.getNumOfSeats()>= pax){
                         System.out.println("Reservation booking success");
                         System.out.println("Table "+ t.getId()+ " is reserved");
+                        System.out.println("Your reservation id is: "+ (max+1));
                         t.setOccupied(true);
                         isBookingSuccess= true;
                         Reservation reservation= new Reservation(max+1, date, time, pax, name, contact, (int) t.getId());
@@ -128,8 +130,9 @@ public class ReservationUI {
                     if(t.getNumOfSeats()>= pax){
                         System.out.println("Reservation booking success");
                         System.out.println("Table "+ t.getId()+ " is reserved");
+                        System.out.println("Your reservation id is: "+ (max+1));
                         isBookingSuccess= true;
-                        Reservation reservation= new Reservation(max+1, date, time, pax, name, contact, (int) t.getId());
+                        Reservation reservation= new Reservation(max+1, time+":00",date,  pax, name, contact, (int) t.getId());
                         ReservationManager.addReservation(reservation);
                         Restaurant.reservations.add(reservation);
                         break;
@@ -139,7 +142,6 @@ public class ReservationUI {
             if(!isBookingSuccess){
                 System.out.println("No available table for Reservation today");
             }
-            System.out.println("Your reservation id is: "+ (max+1));
         }
 
 
@@ -158,7 +160,7 @@ public class ReservationUI {
         ReservationManager.removeReservation(id);
     }
 
-    public static void viewReservation(){
+    public static void viewReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
         if(Restaurant.reservations.size()== 0){
             System.out.println("No reservation yet");

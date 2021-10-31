@@ -15,8 +15,7 @@ import java.util.stream.Stream;
 
 public class MainUI {
     public static File text = new File("src/main/resources/testdata/a.txt");
-    public static Scanner in = null;
-
+    public static Scanner in = new Scanner(System.in);
 //    static {
 //        try {
 //            in = new Scanner(text);
@@ -42,7 +41,6 @@ public class MainUI {
             System.out.println("[10] Print sale revenue report by period");
             TableManager.setTableReserved();
             ReservationManager.clearExpiredReservations();
-            //Scanner in = new Scanner(System.in);
             num= in.nextInt();
             switch (num){
                 case 1 :
