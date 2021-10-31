@@ -63,8 +63,6 @@ public class MainUI {
                 default :
             }
         } while(num!= 0);
-
-
     }
 
 }

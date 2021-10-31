@@ -1,6 +1,7 @@
 package managers;
 
 import beans.Reservation;
+import beans.Restaurant;
 import beans.Table;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -62,18 +64,32 @@ public class TableManager {
                 return t;
             }
         }
-        System.out.println("No available table");
+        System.out.println("No available table for seating");
         return null;
     }
 
-    public static Table occupyTableForReserve(int pax){
-        for(Table t: tables){
-            if(t.isOccupied()== false&& t.getNumOfSeats()>= pax){
-                t.setOccupied(true);
-                return t;
+    public static Table occupyTableForReserve(Reservation reservation){
+        if(reservation.getDate()!= LocalDate.now()){
+            for(Table t: tables){
+                if(t.getNumOfSeats()>= reservation.getPax()){
+                    t.setOccupied(true);
+                    Restaurant.reservations.add(reservation);
+                    reservation.setTable(t);
+                    return t;
+                }
             }
         }
-        System.out.println("No available table");
+        else{
+            for(Table t: tables){
+                if(t.isOccupied()== false&& t.getNumOfSeats()>= reservation.getPax()){
+                    t.setOccupied(true);
+                    Restaurant.reservations.add(reservation);
+                    reservation.setTable(t);
+                    return t;
+                }
+            }
+        }
+        System.out.println("No available table for Reservation");
         return null;
     }
 }
