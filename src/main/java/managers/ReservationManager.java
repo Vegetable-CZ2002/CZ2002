@@ -1,8 +1,8 @@
 package managers;
 
 import adapters.MenuItemAdapter;
-import beans.MenuItem;
 import beans.Reservation;
+import beans.Table;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -59,7 +59,7 @@ public class ReservationManager {
 
     public static void removeReservation(int id) throws IOException {
         boolean removeReservation= false;
-        for(Reservation reservation: reservations){
+        for(Reservation reservation: readReservation()){
             {
                 if(reservation.getId()== id){
                     removeReservation= true;
@@ -79,12 +79,12 @@ public class ReservationManager {
     public static void deleteReservation(Reservation reservation) throws IOException {
         reservations= readReservation();
         GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(Reservation.class, new MenuItemAdapter());
+        //builder.registerTypeAdapter(Reservation.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         reservations.remove(reservation);
         Reservation[] reservations1= new Reservation[reservations.size()];
         reservations.toArray(reservations1);
-        Path file = Path.of("src/main/resources/data/menu.json");
+        Path file = Path.of("src/main/resources/data/reservation.json");
         Files.delete(file);
         Files.writeString(file, gson.toJson(reservations1), StandardOpenOption.CREATE_NEW);
     }
@@ -96,8 +96,8 @@ public class ReservationManager {
         builder.registerTypeAdapter(Reservation.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         boolean removeReservation= false;
-        Iterator<Reservation> reservationIterator= reservations.iterator();
-        for(Reservation reservation: reservations){
+        Iterator<Reservation> reservationIterator= readReservation().iterator();
+        for(Reservation reservation: readReservation()){
             {
                 if(reservation.getId()== id){
                     if(reservation.getLocalDate().isAfter(LocalDate.now())){
@@ -122,7 +122,7 @@ public class ReservationManager {
     }
 
     public static void clearExpiredReservations() throws IOException {
-        Iterator<Reservation> reservationIterator= reservations.iterator();
+        Iterator<Reservation> reservationIterator= readReservation().iterator();
         while(reservationIterator.hasNext()){
             Reservation r= reservationIterator.next();
             {

@@ -1,0 +1,55 @@
+[
+  {
+    "pax": 5,
+    "menuItems": [
+      {
+        "id": 13,
+        "name": "BEEF BOLOGNESE",
+        "type": "PASTA",
+        "description": "Minced beef, tomato sauce and shaved parmesan with linguine.",
+        "price": 12.0
+      },
+      {
+        "id": 3,
+        "name": "BUFFALO WINGS",
+        "type": "APPETIZER",
+        "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+        "price": 10.0
+      },
+      {
+        "id": 2,
+        "name": "CHEESE NACHOS",
+        "type": "APPETIZER",
+        "description": "Guacamole, sour cream, salsa.",
+        "price": 10.0
+      }
+    ],
+    "staffAssigned": {
+      "name": "Severus Snape",
+      "id": 3,
+      "job": "ASSISTANT_MANAGER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": false,
+      "id": 15
+    },
+    "localTime": {
+      "hour": 0,
+      "minute": 34,
+      "second": 49,
+      "nano": 955690000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 1
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 32.0,
+    "time": "00:34:49.955690",
+    "date": "2021-11-01"
+  }
+]

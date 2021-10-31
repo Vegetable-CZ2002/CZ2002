@@ -111,8 +111,9 @@ public class ReservationUI {
                         System.out.println("Your reservation id is: "+ (max+1));
                         t.setOccupied(true);
                         isBookingSuccess= true;
-                        Reservation reservation= new Reservation(max+1, date, time, pax, name, contact, (int) t.getId());
+                        Reservation reservation= new Reservation(max+1, localDate, localTime, pax, name, contact, t);
                         ReservationManager.addReservation(reservation);
+                        reservation.setTable(t);
                         Restaurant.reservations.add(reservation);
                         break;
                     }
@@ -132,8 +133,9 @@ public class ReservationUI {
                         System.out.println("Table "+ t.getId()+ " is reserved");
                         System.out.println("Your reservation id is: "+ (max+1));
                         isBookingSuccess= true;
-                        Reservation reservation= new Reservation(max+1, time+":00",date,  pax, name, contact, (int) t.getId());
+                        Reservation reservation= new Reservation(max+1, localDate,localTime,  pax, name, contact, t);
                         ReservationManager.addReservation(reservation);
+                        reservation.setTable(t);
                         Restaurant.reservations.add(reservation);
                         break;
                     }
@@ -162,7 +164,7 @@ public class ReservationUI {
 
     public static void viewReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
-        if(Restaurant.reservations.size()== 0){
+        if(ReservationManager.readReservation().size()== 0){
             System.out.println("No reservation yet");
         }
         else{

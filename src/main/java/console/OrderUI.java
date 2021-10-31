@@ -162,12 +162,12 @@ public class OrderUI {
         }
         else{
             System.out.println("Please seat at Table "+ table.getId()+ "\n");
-            System.out.println("Please choose a job title for the staffs that serve you");
+            System.out.println("Please choose a job title for the staffs that serve you\n");
             System.out.println("[1]GENERAL_MANAGER, [2]ASSISTANT_MANAGER, [3]SERVER, [4]CASHIER");
             int id= in.nextInt();
             Staff staff= selectStaff(id);
-            System.out.printf("Staff "+ staff.getName()+ " is serving you\n");
-            System.out.println("Add order success");
+            System.out.printf("Staff "+ staff.getName()+ " is serving you\n\n");
+            System.out.println("Add order success\n");
             long max= 0;
             if(Restaurant.orders.size()!= 0){
                 for(Order order: Restaurant.orders){

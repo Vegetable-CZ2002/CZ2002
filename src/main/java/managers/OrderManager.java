@@ -43,7 +43,6 @@ public class OrderManager {
                 orderInvoiced= true;
                 order.setInvoiced(true);
                 order.getTable().setOccupied(false);
-                Restaurant.invoices.add(order);
                 Restaurant.orders.remove(order);
                 // TODO: 2021/10/31 add invoice to json
                 addInvoice(order);
@@ -75,7 +74,9 @@ public class OrderManager {
     }
 
     public static List<Order> readInvoice() throws IOException {
-        Gson gson = new Gson();
+        GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
+        Gson gson = builder.setPrettyPrinting().create();
         Path file = Path.of("src/main/resources/data/invoice.json");
         String jsonString = Files.readString(file);
         Order[] orderArray = gson.fromJson(jsonString, Order[].class);
@@ -90,6 +91,7 @@ public class OrderManager {
 
     public static void addInvoice(Order i) throws IOException{
         GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         try {
             invoices.add(i);

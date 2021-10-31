@@ -9,15 +9,12 @@ import java.util.Objects;
 
 public class Reservation{
     private LocalDate localDate;
-	private LocalTime localTime;
-	private int pax;
-	private String name;
-	private String contact;
+    private LocalTime localTime;
+    private int pax;
+    private String name;
+    private String contact;
     private long id;
-    private int tableId;
     private Table table;
-    private String time;
-    private String date;
 
     public void setId(long id) {
         this.id = id;
@@ -31,36 +28,18 @@ public class Reservation{
         this.table = table;
     }
 
-    public int getTableId() {
-        return tableId;
-    }
 
-    public void setTableId(int tableId) {
-        this.tableId = tableId;
-    }
-
-    public Reservation(long id, String time, String date, int pax, String name, String contact, int tableId) throws IOException {
-        this.tableId= tableId;
+    public Reservation(long id, LocalDate localDate, LocalTime localTime, int pax, String name, String contact, Table table) throws IOException {
         this.id= id;
-        this.date = date;
-        this.time = time;
         this.pax = pax;
         this.name = name;
         this.contact = contact;
-        this.table= null;
-        this.localDate= LocalDate.parse(date);
-        this.localTime= LocalTime.parse(time);
-
-        {
-            for(Table table: TableManager.readTable()){
-                if(this.getId()== tableId){
-                    this.table= table;
-                }
-            }
-        }
+        this.table= table;
+        this.localDate= localDate;
+        this.localTime= localTime;
     }
 
-    
+
     public long getId() {
         return id;
     }
@@ -105,12 +84,13 @@ public class Reservation{
     @Override
     public String toString() {
         return "Reservation{" +
-                "date=" + date +
-                ", time=" + time +
+                "localDate=" + localDate +
+                ", localTime=" + localTime +
                 ", pax=" + pax +
                 ", name='" + name + '\'' +
                 ", contact='" + contact + '\'' +
                 ", id=" + id +
+                ", table=" + table +
                 '}';
     }
 
