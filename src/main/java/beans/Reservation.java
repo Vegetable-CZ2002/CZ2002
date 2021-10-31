@@ -5,13 +5,15 @@ import java.time.LocalTime;
 import java.util.Objects;
 
 public class Reservation{
-    private LocalDate date;
-	private LocalTime time;	
+    private LocalDate localDate;
+	private LocalTime localTime;
 	private int pax;
 	private String name;
 	private String contact;
     private long id;
     private Table table;
+    private String time;
+    private String date;
 
     public void setId(long id) {
         this.id = id;
@@ -25,7 +27,7 @@ public class Reservation{
         this.table = table;
     }
 
-    public Reservation(long id, LocalDate date, LocalTime time, int pax, String name, String contact) {
+    public Reservation(long id, String time, String date,  int pax, String name, String contact) {
         this.id= id;
         this.date = date;
         this.time = time;
@@ -33,6 +35,8 @@ public class Reservation{
         this.name = name;
         this.contact = contact;
         this.table= null;
+        this.localDate= LocalDate.parse(date);
+        this.localTime= LocalTime.parse(time);
     }
 
     
@@ -41,21 +45,6 @@ public class Reservation{
     }
     
 
-    public LocalDate getDate() {
-        return this.date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public LocalTime getTime() {
-        return this.time;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
 
     public int getPax() {
         return this.pax;
@@ -104,5 +93,13 @@ public class Reservation{
                 ", contact='" + contact + '\'' +
                 ", id=" + id +
                 '}';
+    }
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
     }
 }

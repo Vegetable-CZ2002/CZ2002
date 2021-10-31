@@ -12,12 +12,13 @@ public class Order{
 	private ArrayList<MenuItem> menuItems;
 	private Staff staffAssigned;
 	private Table table;
-	private LocalTime time;
-    private LocalDate date;
+	private LocalTime localTime;
+    private LocalDate localDate;
 	private boolean invoiced;
     private long id;
     private double sum= 0;
-
+    private String time;
+    private String date;
     public ArrayList<MenuItem> getMenuItems() {
         return menuItems;
     }
@@ -26,13 +27,6 @@ public class Order{
         this.menuItems = menuItems;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
 
     public double getSum() {
         return sum;
@@ -42,7 +36,7 @@ public class Order{
         this.sum = sum;
     }
 
-    public Order(long id, Staff staffAssigned, Table table, LocalDate date, LocalTime time, int pax) {
+    public Order(long id, Staff staffAssigned, Table table, String date, String time, int pax) {
         this.pax= pax;
         this.staffAssigned = staffAssigned;
         this.date= date;
@@ -52,6 +46,8 @@ public class Order{
         this.menuItems= new ArrayList<>();
         this.invoiced= false;
         this.sum= 0;
+        this.localDate= LocalDate.parse(date);
+        this.localTime= LocalTime.parse(time);
     }
 
 
@@ -138,14 +134,6 @@ public class Order{
         this.id = id;
     }
 
-
-    public LocalTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
 
     @Override
     public String toString() {

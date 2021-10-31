@@ -2,6 +2,8 @@ package console;
 
 import managers.TableManager;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -10,6 +12,17 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class MainUI {
+    public static File text = new File("src/main/resources/testdata/a.txt");
+    public static Scanner in = null;
+
+    static {
+        try {
+            in = new Scanner(text);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         int num;
         do{
@@ -25,7 +38,7 @@ public class MainUI {
             System.out.println("[8] Check table availability");
             System.out.println("[9] Print order invoice");
             System.out.println("[10] Print sale revenue report by period");
-            Scanner in = new Scanner(System.in);
+            //Scanner in = new Scanner(System.in);
             num= in.nextInt();
             switch (num){
                 case 1 :

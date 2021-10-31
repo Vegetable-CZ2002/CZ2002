@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MenuUI {
-
+    //private static Scanner in = new Scanner(System.in);
+    private static Scanner in = MainUI.in;
     public static void printMenu() throws IOException {
         System.out.println("Here's all the menu items on the menu");
         MenuManager.printMenu();
@@ -21,7 +22,6 @@ public class MenuUI {
     public static void createAlaCarteItem() throws IOException {
         System.out.println("Please enter the following details for the new menu item\n");
         System.out.println("Please enter the name for the new menu item");
-        Scanner in = new Scanner(System.in);
         String name= in.nextLine();
         System.out.println(name);
         System.out.println("Please enter the price for the new menu item");
@@ -76,7 +76,6 @@ public class MenuUI {
     }
 
     public static void createSetPackage() throws IOException {
-        Scanner in = new Scanner(System.in);
         List<MenuItem> menuItems= MenuManager.readMenuItem();
         List<Food> foodList= new ArrayList<>();
         System.out.println("Please enter information for the new set package\n");
@@ -117,7 +116,6 @@ public class MenuUI {
     }
 
     public static void deleteMenuItem() throws IOException {
-        Scanner in = new Scanner(System.in);
         List<MenuItem> menuItems= MenuManager.readMenuItem();
         System.out.println("Please enter the id of the menu item to delete, enter 0 to quit");
         long itemId;
@@ -130,7 +128,6 @@ public class MenuUI {
 
     public static void updateAlaCarteItem() throws IOException{
         System.out.println("Please enter information for the updated menu item\n");
-        Scanner in = new Scanner(System.in);
         System.out.println("Plsase enter the id for the updated menu item");
         Long id= in.nextLong();
         in.nextLine();
@@ -180,7 +177,6 @@ public class MenuUI {
         }
     }
     public static void updateSetPackage() throws IOException {
-        Scanner in = new Scanner(System.in);
         List<MenuItem> menuItems= MenuManager.readMenuItem();
         List<Food> foodList= new ArrayList<>();
         System.out.println("Please enter information for the new set package\n");
@@ -226,7 +222,6 @@ public class MenuUI {
             System.out.println("[4] Delete menu item");
             System.out.println("[5] Update ala carte item");
             System.out.println("[6] Update set package");
-            Scanner in = new Scanner(System.in);
             num= in.nextInt();
             switch (num){
                 case 1 :
@@ -264,7 +259,6 @@ public class MenuUI {
             System.out.println("[4] Delete menu item");
             System.out.println("[5] Update ala carte item");
             System.out.println("[6] Update set package");
-            Scanner in = new Scanner(System.in);
             num= in.nextInt();
             switch (num){
                 case 1 :

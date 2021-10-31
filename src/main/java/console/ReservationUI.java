@@ -11,6 +11,8 @@ import java.time.LocalTime;
 import java.util.Scanner;
 
 public class ReservationUI {
+    //private static Scanner in= new Scanner(System.in);
+    private static Scanner in = MainUI.in;
     public static void mainUI() throws IOException {
         int num;
         do{
@@ -20,7 +22,6 @@ public class ReservationUI {
             System.out.println("[2] Check reservation booking");
             System.out.println("[3] Remove reservation booking");
             System.out.println("[4] View reservation booking");
-            Scanner in = new Scanner(System.in);
             num= in.nextInt();
             switch (num){
                 case 1 :
@@ -49,7 +50,6 @@ public class ReservationUI {
             System.out.println("[2] Check reservation booking");
             System.out.println("[3] Remove reservation booking");
             System.out.println("[4] View reservation booking");
-            Scanner in = new Scanner(System.in);
             num= in.nextInt();
             switch (num){
                 case 1 :
@@ -73,12 +73,13 @@ public class ReservationUI {
         ReservationManager.clearExpiredReservations();
         System.out.println("Please enter the following details for reservation ");
         System.out.println("Please enter the reservation date in the format of YYYY-MM-DD:(eg. 2021-11-12)");
-        Scanner in = new Scanner(System.in);
-        LocalDate date = LocalDate.parse(in.nextLine());
+        String date = in.nextLine();
+        LocalDate localDate= LocalDate.parse(date);
         System.out.println(date.toString());
         System.out.println("Please enter the reservation time in the format of HH:MM(eg. 18:00)");
-        LocalTime time= LocalTime.parse(in.nextLine()+":00");
-        if(date.isBefore(LocalDate.now()) || (date.isEqual(LocalDate.now())&& time.isBefore(LocalTime.now()))){
+        String time= in.nextLine();
+        LocalTime localTime= LocalTime.parse(time+":00");
+        if(localDate.isBefore(LocalDate.now()) || (localDate.isEqual(LocalDate.now())&& localTime.isBefore(LocalTime.now()))){
             System.out.println("Cannot make reservation on a time that has passed");
         }
         else{
@@ -109,14 +110,12 @@ public class ReservationUI {
     public static void checkReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
         System.out.println("Please enter the reservation id you received when booking");
-        Scanner in= new Scanner(System.in);
         int id= in.nextInt();
         ReservationManager.reservationCheckIn(id);
     }
     public static void removeReservation(){
         ReservationManager.clearExpiredReservations();
         System.out.println("Please enter the reservation id you received when booking");
-        Scanner in= new Scanner(System.in);
         int id= in.nextInt();
         ReservationManager.removeReservation(id);
     }

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class OrderUI {
-
+    private static Scanner in = MainUI.in;
     public static void mainUI() throws IOException{
         int num= 0;
         do{
@@ -28,7 +28,6 @@ public class OrderUI {
             System.out.println("[6] Print order invoice");
             System.out.println("[7] Invoice order");
             System.out.println("[8] Print sale revenue report by period");
-            Scanner in = new Scanner(System.in);
             num= in.nextInt();
             switch (num){
                 case 1 :
@@ -74,7 +73,6 @@ public class OrderUI {
             System.out.println("[5] Delete order item from order");
             System.out.println("[6] Print order invoice");
             System.out.println("[7] Invoice order");
-            Scanner in = new Scanner(System.in);
             num= in.nextInt();
             switch (num){
                 case 1 :
@@ -120,14 +118,12 @@ public class OrderUI {
 
     public static void invoiceOrder(){
         System.out.println("Please enter the id of the order that you want to invoice\n");
-        Scanner in= new Scanner(System.in);
         int id= in.nextInt();
         OrderManager.orderInvoiced(id);
     }
 
     public static void deleteItemFromOrder() throws IOException {
         System.out.println("Please enter the id of the order that you want to modify\n");
-        Scanner in= new Scanner(System.in);
         int id= in.nextInt();
         Order order= null;
         for(Order o: Restaurant.orders){
@@ -153,11 +149,12 @@ public class OrderUI {
     public static void createOrder() throws IOException {
         System.out.println("Please enter the following details for order");
         LocalDate localDate = LocalDate.now();
+        String date= localDate.toString();
         System.out.println("Current date:"+ localDate.toString());
         LocalTime localTime= LocalTime.now();
+        String time= localTime.toString();
         System.out.println("Current time:"+ localTime.toString());
         System.out.println("Enter the number of people to seat");
-        Scanner in= new Scanner(System.in);
         int pax= in.nextInt();
         Table table= selectTable(pax);
         if(table== null){
@@ -179,14 +176,13 @@ public class OrderUI {
                     }
                 }
             }
-            Order order= new Order(max+1, staff, table, localDate, localTime, pax);
+            Order order= new Order(max+1, staff, table, date, time, pax);
             OrderManager.addOrder(order);
         }
     }
 
     public static void addItemToOrder() throws IOException {
         System.out.println("Please enter the id of the order that you want to modify\n");
-        Scanner in= new Scanner(System.in);
         int id= in.nextInt();
         Order order= null;
         for(Order o: Restaurant.orders){
@@ -212,7 +208,6 @@ public class OrderUI {
 
     public static void deleteOrder(){
         System.out.println("Please enter the id of the order that you want to delete\n");
-        Scanner in= new Scanner(System.in);
         int id= in.nextInt();
         OrderManager.removeOrder(id);
     }
