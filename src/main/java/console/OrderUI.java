@@ -14,6 +14,54 @@ import java.util.List;
 import java.util.Scanner;
 
 public class OrderUI {
+
+    public static void mainUI() throws IOException{
+        int num= 0;
+        do{
+            System.out.println("Welcome to the order section! What action do you wish to take?");
+            System.out.println("[0] Return to main page");
+            System.out.println("[1] View order");
+            System.out.println("[2] Create order");
+            System.out.println("[3] Delete order");
+            System.out.println("[4] Add order item to order");
+            System.out.println("[5] Delete order item from order");
+            System.out.println("[6] Print order invoice");
+            System.out.println("[7] Invoice order");
+            System.out.println("[8] Print sale revenue report by period");
+            Scanner in = new Scanner(System.in);
+            num= in.nextInt();
+            switch (num){
+                case 1 :
+                    printOrder();
+                    break;
+                case 2 :
+                    createOrder();
+                    break;
+                case 4 :
+                    addItemToOrder();
+                    break;
+                case 5 :
+                    deleteItemFromOrder();
+                    break;
+                case 6 :
+                    printInvoice();
+                    break;
+                case 7:
+                    invoiceOrder();
+                    break;
+                case 3:
+                    deleteOrder();
+                    break;
+                case 8:
+                    printSale();
+                    break;
+                case 0 :
+                    break;
+                default : break;
+            }
+        } while(num!= 0);
+    }
+
     public static void main(String[] args) throws IOException {
         int num= 0;
         do{
@@ -49,6 +97,10 @@ public class OrderUI {
                     break;
                 case 3:
                     deleteOrder();
+                    break;
+                case 8:
+                    printSale();
+                    break;
                 case 0 :
                     break;
                 default : break;
@@ -157,6 +209,16 @@ public class OrderUI {
         Scanner in= new Scanner(System.in);
         int id= in.nextInt();
         OrderManager.removeOrder(id);
+    }
+
+    public static void printSale(){
+        int sum= 0;
+        if(Restaurant.invoices != null){
+            for(Order order: Restaurant.invoices){
+                sum+= order.getSum();
+            }
+        }
+        System.out.println("The sale for this current period is"+ sum);
     }
 
     public static Staff selectStaff(int type) throws IOException {

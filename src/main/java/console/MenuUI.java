@@ -253,4 +253,42 @@ public class MenuUI {
         } while(num!= 0);
     }
 
+    public static void mainUI() throws IOException {
+        int num= 0;
+        do{
+            System.out.println("Welcome to the menu section! What action do you wish to take?");
+            System.out.println("[0] Return to main page");
+            System.out.println("[1] View menu");
+            System.out.println("[2] Create ala carte item");
+            System.out.println("[3] Create set package");
+            System.out.println("[4] Delete menu item");
+            System.out.println("[5] Update ala carte item");
+            System.out.println("[6] Update set package");
+            Scanner in = new Scanner(System.in);
+            num= in.nextInt();
+            switch (num){
+                case 1 :
+                    printMenu();
+                    break;
+                case 2 :
+                    createAlaCarteItem();
+                    break;
+                case 3 :
+                    createSetPackage();
+                    break;
+                case 4 :
+                    deleteMenuItem();
+                    break;
+                case 5 :
+                    updateAlaCarteItem();
+                    break;
+                case 6:
+                    updateSetPackage();
+                case 0 :
+                    break;
+                default : break;
+            }
+        } while(num!= 0);
+    }
+
 }
