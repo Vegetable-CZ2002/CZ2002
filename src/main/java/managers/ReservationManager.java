@@ -68,7 +68,7 @@ public class ReservationManager {
         while(reservationIterator.hasNext()){
             Reservation r= reservationIterator.next();
             {
-                if(LocalDate.now().isAfter(r.getDate()) || (LocalDate.now().isEqual(r.getDate())&&LocalTime.now().isAfter(r.getTime().plusMinutes(30)))){
+                if(LocalDate.now().isAfter(r.getLocalDate()) || (LocalDate.now().isEqual(r.getLocalDate())&&LocalTime.now().isAfter(r.getLocalTime().plusMinutes(30)))){
                     reservationIterator.remove();
                     r.getTable().setOccupied(false);
                     System.out.println("Reservation "+ r.getId()+ " expires");

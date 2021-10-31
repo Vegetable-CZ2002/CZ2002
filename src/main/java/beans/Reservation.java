@@ -43,8 +43,6 @@ public class Reservation{
     public long getId() {
         return id;
     }
-    
-
 
     public int getPax() {
         return this.pax;
@@ -101,5 +99,13 @@ public class Reservation{
 
     public void setLocalDate(LocalDate localDate) {
         this.localDate = localDate;
+    }
+
+    public LocalTime getLocalTime() {
+        return localTime;
+    }
+
+    public void setLocalTime(LocalTime localTime) {
+        this.localTime = localTime;
     }
 }
