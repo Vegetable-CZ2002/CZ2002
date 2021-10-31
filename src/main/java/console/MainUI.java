@@ -1,5 +1,7 @@
 package console;
 
+import managers.TableManager;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -47,10 +49,15 @@ public class MainUI {
                     OrderUI.mainUI();
                     break;
                 case 6 :
+                    System.out.println("Please choose [1] in reservation section");
+                    ReservationUI.mainUI();
                     break;
                 case 7 :
+                    System.out.println("Please choose [2]/[3] in reservation section");
+                    ReservationUI.mainUI();
                     break;
                 case 8 :
+                    TableManager.checkTableAvailability();
                     break;
                 case 9 :
                     System.out.println("Please choose [6] in order section");

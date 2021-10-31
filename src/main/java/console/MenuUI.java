@@ -19,7 +19,7 @@ public class MenuUI {
     }
 
     public static void createAlaCarteItem() throws IOException {
-        System.out.println("Please enter information for the new menu item\n");
+        System.out.println("Please enter the following details for the new menu item\n");
         System.out.println("Please enter the name for the new menu item");
         Scanner in = new Scanner(System.in);
         String name= in.nextLine();

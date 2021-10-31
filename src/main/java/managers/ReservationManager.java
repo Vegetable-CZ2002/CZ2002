@@ -1,31 +1,38 @@
 package managers;
 
 import beans.Reservation;
-import beans.Restaurant;
 import beans.Table;
+import console.OrderUI;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
-// TODO: 2021/10/29 consider logic for this again
+import static beans.Restaurant.reservations;
+
 public class ReservationManager {
-    final static List<Reservation> reservations= Restaurant.reservations;
-    final static List<Table> tables= Restaurant.tables;
 
-    public static void addReservation(Reservation reservation){
-        TableManager.occupyTableForReserve(reservation);
+    public static Table addReservation(Reservation reservation){
+        Table t= TableManager.occupyTableForReserve(reservation);
+        // TODO: 2021/10/31 write reservation to json file
+        return t;
     }
 
 
     public static void removeReservation(int id){
         boolean removeReservation= false;
-        for(Reservation reservation: reservations){
-            if(reservation.getId()== id){
-                removeReservation= true;
-                System.out.println("Remove reservation booking success");
-                reservation.getTable().setOccupied(false);
-                reservations.remove(reservation);
+        Iterator<Reservation> reservationIterator= reservations.iterator();
+        while(reservationIterator.hasNext()){
+            Reservation reservation= reservationIterator.next();
+            {
+                if(reservation.getId()== id){
+                    removeReservation= true;
+                    System.out.println("Remove reservation booking success");
+                    reservation.getTable().setOccupied(false);
+                    reservationIterator.remove();
+                    break;
+                }
             }
         }
         if(!removeReservation){
@@ -35,14 +42,20 @@ public class ReservationManager {
 
 
 
-    public static void reservationCheckIn(int id){
+    public static void reservationCheckIn(int id) throws IOException {
         boolean removeReservation= false;
-        for(Reservation reservation: reservations){
-            if(reservation.getId()== id){
-                removeReservation= true;
-                System.out.println("Check reservation booking success");
-                reservation.getTable().setOccupied(false);
-                reservations.remove(reservation);
+        Iterator<Reservation> reservationIterator= reservations.iterator();
+        while(reservationIterator.hasNext()){
+            Reservation reservation= reservationIterator.next();
+            {
+                if(reservation.getId()== id){
+                    removeReservation= true;
+                    System.out.println("Check reservation booking success");
+                    reservation.getTable().setOccupied(false);
+                    reservationIterator.remove();
+                    OrderUI.createOrder();
+                    break;
+                }
             }
         }
         if(!removeReservation){
@@ -51,9 +64,15 @@ public class ReservationManager {
     }
 
     public static void clearExpiredReservations() {
-		for(Reservation r: reservations){
-            if(LocalTime.now().isAfter(r.getTime().	plusMinutes(30))){
-                removeReservation((int) r.getId());
+        Iterator<Reservation> reservationIterator= reservations.iterator();
+        while(reservationIterator.hasNext()){
+            Reservation r= reservationIterator.next();
+            {
+                if(LocalDate.now().isAfter(r.getDate()) || (LocalDate.now().isEqual(r.getDate())&&LocalTime.now().isAfter(r.getTime().plusMinutes(30)))){
+                    reservationIterator.remove();
+                    r.getTable().setOccupied(false);
+                    System.out.println("Reservation "+ r.getId()+ " expires");
+                }
             }
         }
 	}

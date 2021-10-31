@@ -38,6 +38,7 @@ public class OrderManager {
                 order.getTable().setOccupied(false);
                 Restaurant.invoices.add(order);
                 Restaurant.orders.remove(order);
+                // TODO: 2021/10/31 add invoice to json 
                 System.out.println("Order successfully invoiced");
                 break;
             }

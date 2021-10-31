@@ -69,27 +69,29 @@ public class TableManager {
     }
 
     public static Table occupyTableForReserve(Reservation reservation){
-        if(reservation.getDate()!= LocalDate.now()){
-            for(Table t: tables){
-                if(t.getNumOfSeats()>= reservation.getPax()){
-                    t.setOccupied(true);
-                    Restaurant.reservations.add(reservation);
-                    reservation.setTable(t);
-                    return t;
-                }
-            }
-        }
-        else{
-            for(Table t: tables){
-                if(t.isOccupied()== false&& t.getNumOfSeats()>= reservation.getPax()){
-                    t.setOccupied(true);
-                    Restaurant.reservations.add(reservation);
-                    reservation.setTable(t);
-                    return t;
-                }
+        for(Table t: tables){
+            if(t.isOccupied()== false&& t.getNumOfSeats()>= reservation.getPax()){
+                System.out.println("Reservation booking success");
+                t.setOccupied(true);
+                Restaurant.reservations.add(reservation);
+                reservation.setTable(t);
+                return t;
             }
         }
         System.out.println("No available table for Reservation");
         return null;
+    }
+
+    public static void checkTableAvailability(){
+        boolean hasAvailable= false;
+        for(Table t: tables){
+            if(t.isOccupied()== false){
+                hasAvailable= true;
+                System.out.println("Table "+ t.getId() + " is available");
+            }
+        }
+        if(!hasAvailable){
+            System.out.println("No available table");
+        }
     }
 }

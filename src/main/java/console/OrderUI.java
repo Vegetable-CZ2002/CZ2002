@@ -151,6 +151,7 @@ public class OrderUI {
     }
 
     public static void createOrder() throws IOException {
+        System.out.println("Please enter the following details for order");
         LocalDate localDate = LocalDate.now();
         System.out.println("Current date:"+ localDate.toString());
         LocalTime localTime= LocalTime.now();
@@ -159,23 +160,28 @@ public class OrderUI {
         Scanner in= new Scanner(System.in);
         int pax= in.nextInt();
         Table table= selectTable(pax);
-        System.out.println("Please seat at Table "+ table.getId()+ "\n");
-        System.out.println("Please choose a job title for the staffs that serve you");
-        System.out.println("[1]GENERAL_MANAGER, [2]ASSISTANT_MANAGER, [3]SERVER, [4]CASHIER");
-        int id= in.nextInt();
-        Staff staff= selectStaff(id);
-        System.out.printf("Staff "+ staff.getName()+ " is serving you\n");
-
-        long max= 0;
-        if(Restaurant.orders!= null){
-            for(Order order: Restaurant.orders){
-                if(order.getId()> max){
-                    max= order.getId();
+        if(table== null){
+            System.out.println("No table available");
+        }
+        else{
+            System.out.println("Please seat at Table "+ table.getId()+ "\n");
+            System.out.println("Please choose a job title for the staffs that serve you");
+            System.out.println("[1]GENERAL_MANAGER, [2]ASSISTANT_MANAGER, [3]SERVER, [4]CASHIER");
+            int id= in.nextInt();
+            Staff staff= selectStaff(id);
+            System.out.printf("Staff "+ staff.getName()+ " is serving you\n");
+            System.out.println("Add order success");
+            long max= 0;
+            if(Restaurant.orders.size()!= 0){
+                for(Order order: Restaurant.orders){
+                    if(order.getId()> max){
+                        max= order.getId();
+                    }
                 }
             }
+            Order order= new Order(max+1, staff, table, localDate, localTime, pax);
+            OrderManager.addOrder(order);
         }
-        Order order= new Order(max+1, staff, table, localDate, localTime, pax);
-        OrderManager.addOrder(order);
     }
 
     public static void addItemToOrder() throws IOException {
@@ -213,12 +219,12 @@ public class OrderUI {
 
     public static void printSale(){
         int sum= 0;
-        if(Restaurant.invoices != null){
+        if(Restaurant.invoices.size()!= 0){
             for(Order order: Restaurant.invoices){
                 sum+= order.getSum();
             }
         }
-        System.out.println("The sale for this current period is"+ sum);
+        System.out.println("The sale for this current period is "+ sum);
     }
 
     public static Staff selectStaff(int type) throws IOException {
