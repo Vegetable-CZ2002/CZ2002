@@ -68,19 +68,17 @@ public class TableManager {
         return null;
     }
 
-    public static Table occupyTableForReserve(Reservation reservation){
-        for(Table t: tables){
-            if(t.isOccupied()== false&& t.getNumOfSeats()>= reservation.getPax()){
-                System.out.println("Reservation booking success");
-                t.setOccupied(true);
-                Restaurant.reservations.add(reservation);
-                reservation.setTable(t);
-                return t;
+
+
+    public static void setTableReserved() throws IOException {
+        List<Reservation> reservations= ReservationManager.readReservation();
+        for(Reservation r: reservations){
+            if(r.getLocalDate().isEqual(LocalDate.now())){
+                r.getTable().setOccupied(true);
             }
         }
-        System.out.println("No available table for Reservation");
-        return null;
     }
+
 
     public static void checkTableAvailability(){
         boolean hasAvailable= false;

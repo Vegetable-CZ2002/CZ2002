@@ -1,9 +1,6 @@
 package beans;
 
-import managers.MenuManager;
-import managers.OrderManager;
-import managers.StaffManager;
-import managers.TableManager;
+import managers.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -13,40 +10,25 @@ import java.util.List;
 
 
 public class Restaurant
-{
+{	public static List<Order> orders= new ArrayList<>();
     public static List<Table> tables;
-
+	public static List<Staff> staffs;
+	public static List<MenuItem> menuItems;
+	public static List<Order> invoices;
+	public static List<Reservation> reservations;
 	static {
 		try {
 			tables = TableManager.readTable();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static List<Staff> staffs;
-
-	static {
-		try {
 			staffs = StaffManager.readStaff();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static List<MenuItem> menuItems;
-
-	static {
-		try {
 			menuItems = MenuManager.readMenuItem();
+			invoices = OrderManager.readInvoice();
+			reservations= ReservationManager.readReservation();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static List<Order> orders= new ArrayList<>();
-    public static List<Order> invoices= new ArrayList<>();
-	public static List<Reservation> reservations= new ArrayList<>();
+
 
 //	public Restaurant() throws IOException {
 //		initMenu();

@@ -4,10 +4,12 @@ import beans.Reservation;
 import beans.Restaurant;
 import beans.Table;
 import managers.ReservationManager;
+import managers.TableManager;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Scanner;
 
 public class ReservationUI {
@@ -69,7 +71,7 @@ public class ReservationUI {
         } while(num!= 0);
     }
 
-    public static void createReservation(){
+    public static void createReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
         System.out.println("Please enter the following details for reservation ");
         System.out.println("Please enter the reservation date in the format of YYYY-MM-DD:(eg. 2021-11-12)");
@@ -99,9 +101,44 @@ public class ReservationUI {
                     }
                 }
             }
-            Reservation reservation= new Reservation(max+1, date, time, pax, name, contact);
-            Table t= ReservationManager.addReservation(reservation);
-            System.out.println("Table "+ t.getId()+ " is reserved");
+            boolean isBookingSuccess= false;
+            if(localDate.isEqual(LocalDate.now())){
+                for(Table t: Restaurant.tables){
+                    if(t.isOccupied()== false&& t.getNumOfSeats()>= pax){
+                        System.out.println("Reservation booking success");
+                        System.out.println("Table "+ t.getId()+ " is reserved");
+                        t.setOccupied(true);
+                        isBookingSuccess= true;
+                        Reservation reservation= new Reservation(max+1, date, time, pax, name, contact, (int) t.getId());
+                        ReservationManager.addReservation(reservation);
+                        Restaurant.reservations.add(reservation);
+                        break;
+                    }
+                }
+            }
+            else{
+                List<Reservation> reservations=  ReservationManager.readReservation();
+                List<Table> tables= TableManager.readTable();
+                for(Reservation r: reservations){
+                    if(r.getLocalDate().isEqual(localDate)){
+                        tables.remove(r.getTable());
+                    }
+                }
+                for(Table t: tables){
+                    if(t.getNumOfSeats()>= pax){
+                        System.out.println("Reservation booking success");
+                        System.out.println("Table "+ t.getId()+ " is reserved");
+                        isBookingSuccess= true;
+                        Reservation reservation= new Reservation(max+1, date, time, pax, name, contact, (int) t.getId());
+                        ReservationManager.addReservation(reservation);
+                        Restaurant.reservations.add(reservation);
+                        break;
+                    }
+                }
+            }
+            if(!isBookingSuccess){
+                System.out.println("No available table for Reservation today");
+            }
             System.out.println("Your reservation id is: "+ (max+1));
         }
 
@@ -113,7 +150,8 @@ public class ReservationUI {
         int id= in.nextInt();
         ReservationManager.reservationCheckIn(id);
     }
-    public static void removeReservation(){
+
+    public static void removeReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
         System.out.println("Please enter the reservation id you received when booking");
         int id= in.nextInt();

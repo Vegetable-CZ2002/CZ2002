@@ -1,5 +1,8 @@
 package beans;
 
+import managers.TableManager;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
@@ -11,6 +14,7 @@ public class Reservation{
 	private String name;
 	private String contact;
     private long id;
+    private int tableId;
     private Table table;
     private String time;
     private String date;
@@ -27,7 +31,16 @@ public class Reservation{
         this.table = table;
     }
 
-    public Reservation(long id, String time, String date,  int pax, String name, String contact) {
+    public int getTableId() {
+        return tableId;
+    }
+
+    public void setTableId(int tableId) {
+        this.tableId = tableId;
+    }
+
+    public Reservation(long id, String time, String date, int pax, String name, String contact, int tableId) throws IOException {
+        this.tableId= tableId;
         this.id= id;
         this.date = date;
         this.time = time;
@@ -37,6 +50,14 @@ public class Reservation{
         this.table= null;
         this.localDate= LocalDate.parse(date);
         this.localTime= LocalTime.parse(time);
+
+        {
+            for(Table table: TableManager.readTable()){
+                if(this.getId()== tableId){
+                    this.table= table;
+                }
+            }
+        }
     }
 
     

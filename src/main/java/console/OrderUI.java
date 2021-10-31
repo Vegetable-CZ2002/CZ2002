@@ -111,12 +111,12 @@ public class OrderUI {
         OrderManager.printOrder();
     }
 
-    public static void printInvoice(){
+    public static void printInvoice() throws IOException {
         System.out.println("Here's all the invoices in history\n");
         OrderManager.printInvoice();
     }
 
-    public static void invoiceOrder(){
+    public static void invoiceOrder() throws IOException {
         System.out.println("Please enter the id of the order that you want to invoice\n");
         int id= in.nextInt();
         OrderManager.orderInvoiced(id);
