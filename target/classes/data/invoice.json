@@ -1,33 +1,32 @@
 [
   {
-    "pax": 5,
+    "pax": 6,
     "menuItems": [
       {
-        "id": 13,
-        "name": "BEEF BOLOGNESE",
-        "type": "PASTA",
-        "description": "Minced beef, tomato sauce and shaved parmesan with linguine.",
-        "price": 12.0
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 10,
+          "name": "SMOKED DUCK CARBONARA",
+          "type": "PASTA",
+          "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
+          "price": 14.0
+        }
       },
       {
-        "id": 3,
-        "name": "BUFFALO WINGS",
-        "type": "APPETIZER",
-        "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
-        "price": 10.0
-      },
-      {
-        "id": 2,
-        "name": "CHEESE NACHOS",
-        "type": "APPETIZER",
-        "description": "Guacamole, sour cream, salsa.",
-        "price": 10.0
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
       }
     ],
     "staffAssigned": {
-      "name": "Severus Snape",
-      "id": 3,
-      "job": "ASSISTANT_MANAGER",
+      "name": "Ron Weasley",
+      "id": 5,
+      "job": "SERVER",
       "gender": "MALE"
     },
     "table": {
@@ -36,20 +35,114 @@
       "id": 15
     },
     "localTime": {
-      "hour": 0,
-      "minute": 34,
-      "second": 49,
-      "nano": 955690000
+      "hour": 2,
+      "minute": 25,
+      "second": 30,
+      "nano": 679588200
     },
     "localDate": {
       "year": 2021,
       "month": 11,
-      "day": 1
+      "day": 2
     },
     "invoiced": true,
     "id": 1,
-    "sum": 32.0,
-    "time": "00:34:49.955690",
-    "date": "2021-11-01"
+    "sum": 24.0,
+    "time": "02:25:30.679588200",
+    "date": "2021-11-02"
+  },
+  {
+    "pax": 8,
+    "menuItems": [
+      {
+        "MenuItem": "beans.SetPackage",
+        "INSTANCE": {
+          "foodList": [
+            {
+              "id": 11,
+              "name": "PRAWN \u0026 ASPARAGUS",
+              "type": "PASTA",
+              "description": "Prawn, cherry tomato, garlic and asparagus with linguine.",
+              "price": 14.0
+            },
+            {
+              "id": 14,
+              "name": "MOLTEN LAVA LUXURIOUS TORTE",
+              "type": "DESSERT",
+              "description": "Our in-house popular dessert that combines the elements of a chocolate cake baked to perfection, served with summer berries compote \u0026 vanilla ice cream.",
+              "price": 6.0
+            }
+          ],
+          "id_": 24,
+          "name_": "PRAWN \u0026 TORTE SET",
+          "type_": "PACKAGE",
+          "description_": "Special deal for prawn pasta lovers.",
+          "price_": 17.0,
+          "id": 24,
+          "name": "PRAWN \u0026 TORTE SET",
+          "type": "PACKAGE",
+          "description": "Special deal for prawn pasta lovers.",
+          "price": 17.0
+        }
+      },
+      {
+        "MenuItem": "beans.SetPackage",
+        "INSTANCE": {
+          "foodList": [
+            {
+              "id": 8,
+              "name": "PEPPERONI PIZZA",
+              "type": "PIZZA",
+              "description": "Homemade thin crust pizza dough topped with tomato sauce, mozzarella cheese and pepperoni",
+              "price": 16.0
+            },
+            {
+              "id": 18,
+              "name": "MANGO ICED TEA",
+              "type": "DRINK",
+              "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
+              "price": 4.0
+            }
+          ],
+          "id_": 23,
+          "name_": "PEPPERONI \u0026 MANGO TEA SET",
+          "type_": "PACKAGE",
+          "description_": "Specail deal for perppeoni pizza lovers.",
+          "price_": 18.0,
+          "id": 23,
+          "name": "PEPPERONI \u0026 MANGO TEA SET",
+          "type": "PACKAGE",
+          "description": "Specail deal for perppeoni pizza lovers.",
+          "price": 18.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Harry Potter",
+      "id": 4,
+      "job": "SERVER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 10,
+      "isOccupied": false,
+      "id": 19
+    },
+    "localTime": {
+      "hour": 2,
+      "minute": 28,
+      "second": 40,
+      "nano": 530435100
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 2
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 35.0,
+    "time": "02:28:40.530435100",
+    "date": "2021-11-02"
   }
 ]

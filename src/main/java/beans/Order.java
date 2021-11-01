@@ -1,15 +1,13 @@
 package beans;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Order{
     private int pax;
-	private ArrayList<MenuItem> menuItems;
+	private MenuItem[] menuItems;
 	private Staff staffAssigned;
 	private Table table;
 	private LocalTime localTime;
@@ -17,13 +15,11 @@ public class Order{
 	private boolean invoiced;
     private long id;
     private double sum= 0;
-    private String time;
-    private String date;
-    public ArrayList<MenuItem> getMenuItems() {
+    public MenuItem[] getMenuItems() {
         return menuItems;
     }
 
-    public void setMenuItems(ArrayList<MenuItem> menuItems) {
+    public void setMenuItems(MenuItem[] menuItems) {
         this.menuItems = menuItems;
     }
 
@@ -36,18 +32,16 @@ public class Order{
         this.sum = sum;
     }
 
-    public Order(long id, Staff staffAssigned, Table table, String date, String time, int pax) {
+    public Order(long id, Staff staffAssigned, Table table, LocalDate localDate, LocalTime localTime, int pax) {
         this.pax= pax;
         this.staffAssigned = staffAssigned;
-        this.date= date;
-        this.time= time;
+        this.localTime= localTime;
+        this.localDate= localDate;
         this.id= id;
         this.table= table;
-        this.menuItems= new ArrayList<>();
+        this.menuItems= new MenuItem[0];
         this.invoiced= false;
         this.sum= 0;
-        this.localDate= LocalDate.parse(date);
-        this.localTime= LocalTime.parse(time);
     }
 
 
@@ -77,7 +71,8 @@ public class Order{
         List<MenuItem> menuItemList= Restaurant.menuItems;
         for(MenuItem m: menuItemList){
             if(m.getId()== id){
-                menuItems.add(m);
+                menuItems= Arrays.copyOf(menuItems, menuItems.length+1);
+                menuItems[menuItems.length-1]= m;
                 sum= getSum()+ m.getPrice();
                 addSuccessful= true;
                 System.out.println("Add item success");
@@ -89,19 +84,11 @@ public class Order{
         }
     }
 
-    public void addAllItem(ArrayList<MenuItem> mItems){
-        mItems.addAll(mItems);
-    }
-
-    public void removeAllItem(){
-        menuItems.clear();
-    }
-
     public void removeItem(int id){
         boolean removeSuccessful= false;
         for(MenuItem m: menuItems){
             if(m.getId()== id){
-                menuItems.remove(m);
+                menuItems= Arrays.copyOf(menuItems, menuItems.length-1);
                 sum= getSum()- m.getPrice();
                 removeSuccessful= true;
                 System.out.println("Remove item success");
@@ -140,11 +127,11 @@ public class Order{
         return "Order{" +
                 "pax=" + pax +
                 ", price sum=" + sum +
-                ", menuItems=" + menuItems.toString() +
+                ", menuItems=" + Arrays.asList(menuItems) +
                 ", staffAssigned=" + staffAssigned.getName() +
                 ", table=" + table.getId() +
-                ", time=" + time.toString() +
-                ", date=" + date.toString() +
+                ", time=" + localTime.toString() +
+                ", date=" + localDate.toString() +
                 ", invoiced=" + invoiced +
                 ", id=" + id +
                 '}';
@@ -155,9 +142,15 @@ public class Order{
     }
 
     public void printMenuItemInOrder(){
-        for(MenuItem menuItem: menuItems){
-            System.out.println(menuItem.toString());
+        if(menuItems.length== 0){
+            System.out.println("No item in this order yet");
         }
+        else{
+            for(MenuItem menuItem: menuItems){
+                System.out.println(menuItem.toString());
+            }
+        }
+
     }
 
     public int getPax() {

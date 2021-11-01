@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 12
+    },
+    "localTime": {
+      "hour": 17,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "pax": 5,
+    "name": "2",
+    "contact": "1",
+    "id": 1,
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": false,
+      "id": 15
+    }
+  }
+]

@@ -149,10 +149,8 @@ public class OrderUI {
     public static void createOrder() throws IOException {
         System.out.println("Please enter the following details for order");
         LocalDate localDate = LocalDate.now();
-        String date= localDate.toString();
         System.out.println("Current date:"+ localDate.toString());
         LocalTime localTime= LocalTime.now();
-        String time= localTime.toString();
         System.out.println("Current time:"+ localTime.toString());
         System.out.println("Enter the number of people to seat");
         int pax= in.nextInt();
@@ -176,7 +174,7 @@ public class OrderUI {
                     }
                 }
             }
-            Order order= new Order(max+1, staff, table, date, time, pax);
+            Order order= new Order(max+1, staff, table, localDate, localTime, pax);
             OrderManager.addOrder(order);
         }
     }
