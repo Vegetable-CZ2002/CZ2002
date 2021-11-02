@@ -22,9 +22,8 @@ public class OrderUI {
             System.out.println("[3] Delete order");
             System.out.println("[4] Add order item to order");
             System.out.println("[5] Delete order item from order");
-            System.out.println("[6] Print order invoice");
-            System.out.println("[7] Invoice order");
-            System.out.println("[8] Print sale revenue report by period");
+            System.out.println("[6] Invoice order");
+            System.out.println("[7] Print sale revenue report by period");
             num= in.nextInt();
             switch (num){
                 case 1 :
@@ -39,16 +38,13 @@ public class OrderUI {
                 case 5 :
                     deleteItemFromOrder();
                     break;
-                case 6 :
-                    printInvoice();
-                    break;
-                case 7:
+                case 6:
                     invoiceOrder();
                     break;
                 case 3:
                     deleteOrder();
                     break;
-                case 8:
+                case 7:
                     printSale();
                     break;
                 case 0 :
@@ -68,8 +64,8 @@ public class OrderUI {
             System.out.println("[3] Delete order");
             System.out.println("[4] Add order item to order");
             System.out.println("[5] Delete order item from order");
-            System.out.println("[6] Print order invoice");
-            System.out.println("[7] Invoice order");
+            System.out.println("[6] Invoice order");
+            System.out.println("[7] Print sale revenue report by period");
             num= in.nextInt();
             switch (num){
                 case 1 :
@@ -84,16 +80,13 @@ public class OrderUI {
                 case 5 :
                     deleteItemFromOrder();
                     break;
-                case 6 :
-                    printInvoice();
-                    break;
-                case 7:
+                case 6:
                     invoiceOrder();
                     break;
                 case 3:
                     deleteOrder();
                     break;
-                case 8:
+                case 7:
                     printSale();
                     break;
                 case 0 :
@@ -104,19 +97,40 @@ public class OrderUI {
     }
 
     public static void printOrder(){
-        System.out.println("Here's all the orders in history\n");
-        OrderManager.printOrder();
+        System.out.println("Do you want to view all the orders in history? Please enter [Y/n]");
+        in.nextLine();
+        String value= in.nextLine();
+        if(value.equals("Y")){
+            System.out.println("Here's all the orders in history\n");
+            OrderManager.printOrder();
+        }
+        else if(value.equals("n")){
+            System.out.println("Please enter the id of the order that you want to view\n");
+            int id= in.nextInt();
+            for(Order order: OrderManager.orders){
+                if(order.getId()== id){
+                    System.out.println(order);
+                }
+            }
+        }
+
     }
 
-    public static void printInvoice() throws IOException {
-        System.out.println("Here's all the invoices in history\n");
-        OrderManager.printInvoice();
-    }
 
     public static void invoiceOrder() throws IOException {
+        boolean isMember= false;
         System.out.println("Please enter the id of the order that you want to invoice\n");
         int id= in.nextInt();
-        OrderManager.orderInvoiced(id);
+        System.out.println("Are you a member of the restaurant? Please enter [Y/n]");
+        in.nextLine();
+        String value= in.nextLine();
+        if(value.equals("Y")){
+            isMember= true;
+        }
+        else if(value.equals("n")){
+            isMember= false;
+        }
+        OrderManager.orderInvoiced(id, isMember);
     }
 
     public static void deleteItemFromOrder() throws IOException {
@@ -232,7 +246,7 @@ public class OrderUI {
     }
 
     public static void printSale() throws IOException {
-        int sum= 0;
+        double sum= 0;
         if(OrderManager.readInvoice().size()!= 0){
             for(Order order: OrderManager.readInvoice()){
                 sum+= order.getSum();

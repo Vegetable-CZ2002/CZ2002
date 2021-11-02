@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,5 +43,20 @@ public class SetPackage extends MenuItem{
                 ", price=" + price_ +
                 ", foodList=" + foodList +
                 '}';
+    }
+
+    @Override
+    public Formatter formatter(){
+        StringBuilder stringBuilder= new StringBuilder();
+        stringBuilder.append("{");
+        for(Food food: foodList){
+            Formatter fmt = new Formatter();
+            fmt.format("%2s %15s", food.getId(), food.getName());
+            stringBuilder.append(fmt);
+            stringBuilder.append(";  ");
+        }
+        stringBuilder.append("}");
+        Formatter fmt2 = new Formatter();
+        return fmt2.format("%2s %28s %8s %10s  %40s  %15s", id_, name_, price_, type_, stringBuilder, description_);
     }
 }

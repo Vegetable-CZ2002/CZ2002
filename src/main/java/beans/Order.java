@@ -18,6 +18,7 @@ public class Order{
 	private boolean invoiced;
     private long id;
     private double sum= 0;
+    private double tax= 0;
     public MenuItem[] getMenuItems() {
         return menuItems;
     }
@@ -35,6 +36,22 @@ public class Order{
         this.sum = sum;
     }
 
+    public LocalTime getLocalTime() {
+        return localTime;
+    }
+
+    public void setLocalTime(LocalTime localTime) {
+        this.localTime = localTime;
+    }
+
+    public double getTax() {
+        return tax;
+    }
+
+    public void setTax(double tax) {
+        this.tax = tax;
+    }
+
     public Order(long id, Staff staffAssigned, Table table, LocalDate localDate, LocalTime localTime, int pax) {
         this.pax= pax;
         this.staffAssigned = staffAssigned;
@@ -45,6 +62,7 @@ public class Order{
         this.menuItems= new MenuItem[0];
         this.invoiced= false;
         this.sum= 0;
+        this.tax= 0;
     }
 
 
@@ -163,4 +181,9 @@ public class Order{
     public void setPax(int pax) {
         this.pax = pax;
     }
+
+    public void printInvoice(){
+        // TODO: 2021/11/2 print invoice in a table form
+    }
+
 }

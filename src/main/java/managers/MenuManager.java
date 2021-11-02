@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Formatter;
 import java.util.List;
 
 public class MenuManager{
@@ -101,8 +102,11 @@ public class MenuManager{
 
     public static void printMenu() throws IOException {
         List<MenuItem> menuItems = MenuManager.readMenuItem();
+        Formatter fmt = new Formatter();
+        fmt.format("%2s %28s %8s %10s   %15s", "id", "name", "price", "type", "description");
+        System.out.println(fmt);
         for(MenuItem item: menuItems){
-            System.out.printf(item.toString()+"\n");
+            System.out.println(item.formatter());
         }
     }
 

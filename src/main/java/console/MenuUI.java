@@ -7,6 +7,7 @@ import managers.MenuManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -144,8 +145,10 @@ public class MenuUI {
             System.out.println("This item is a set package. Please type [6] to update ala carte item");
             return;
         }
-        System.out.println("The old ala carte item is");
-        System.out.println(oldMenuItem.toString());
+        Formatter fmt = new Formatter();
+        fmt.format("%2s %28s %8s %10s   %15s", "id", "name", "price", "type", "description");
+        System.out.println(fmt);
+        System.out.println(oldMenuItem.formatter());
         System.out.println("Please enter the name for the updated menu item, enter 's' to use the old name");
         String name= in.nextLine();
         if(name.equals("s")){
@@ -223,7 +226,10 @@ public class MenuUI {
             return;
         }
         System.out.println("The old set package is");
-        System.out.println(oldMenuItem.toString());
+        Formatter fmt = new Formatter();
+        fmt.format("%2s %28s %8s %10s   %15s", "id", "name", "price", "type", "description");
+        System.out.println(fmt);
+        System.out.println(oldMenuItem.formatter());
         System.out.println("Please enter the id of the ala carte items in the updated set package, enter 0 to quit");
         int itemId;
         do{

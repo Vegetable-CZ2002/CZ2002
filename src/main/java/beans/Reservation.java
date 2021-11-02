@@ -5,6 +5,7 @@ import managers.TableManager;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Formatter;
 import java.util.Objects;
 
 public class Reservation{
@@ -92,6 +93,11 @@ public class Reservation{
                 ", id=" + id +
                 ", table=" + table +
                 '}';
+    }
+
+    public Formatter formatter(){
+        Formatter fmt = new Formatter();
+        return fmt.format("%2s  %10s  %5s  %8s  %3s %12s %15s", id, localDate, localTime, table.getId(), pax, name, contact);
     }
 
     public LocalDate getLocalDate() {

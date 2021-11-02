@@ -1,9 +1,6 @@
 package beans;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class MenuItem {
 
@@ -80,6 +77,7 @@ public abstract class MenuItem {
 
     @Override
     public String toString() {
+
         return "MenuItem{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
@@ -87,6 +85,11 @@ public abstract class MenuItem {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    public Formatter formatter(){
+        Formatter fmt = new Formatter();
+        return fmt.format("%2s %28s %8s %10s   %15s", id, name, price, type, description);
     }
 
 }

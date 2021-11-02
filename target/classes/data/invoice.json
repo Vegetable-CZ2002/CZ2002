@@ -1,17 +1,7 @@
 [
   {
-    "pax": 6,
+    "pax": 1,
     "menuItems": [
-      {
-        "MenuItem": "beans.Food",
-        "INSTANCE": {
-          "id": 10,
-          "name": "SMOKED DUCK CARBONARA",
-          "type": "PASTA",
-          "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
-          "price": 14.0
-        }
-      },
       {
         "MenuItem": "beans.Food",
         "INSTANCE": {
@@ -21,24 +11,34 @@
           "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
           "price": 10.0
         }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
       }
     ],
     "staffAssigned": {
-      "name": "Ron Weasley",
-      "id": 5,
-      "job": "SERVER",
+      "name": "Severus Snape",
+      "id": 3,
+      "job": "ASSISTANT_MANAGER",
       "gender": "MALE"
     },
     "table": {
-      "numOfSeats": 6,
+      "numOfSeats": 2,
       "isOccupied": false,
-      "id": 15
+      "id": 1
     },
     "localTime": {
-      "hour": 2,
-      "minute": 25,
-      "second": 30,
-      "nano": 679588200
+      "hour": 16,
+      "minute": 39,
+      "second": 12,
+      "nano": 871640800
     },
     "localDate": {
       "year": 2021,
@@ -47,40 +47,20 @@
     },
     "invoiced": true,
     "id": 1,
-    "sum": 24.0
+    "sum": 21.4,
+    "tax": 1.4000000000000001
   },
   {
-    "pax": 8,
+    "pax": 5,
     "menuItems": [
       {
-        "MenuItem": "beans.SetPackage",
+        "MenuItem": "beans.Food",
         "INSTANCE": {
-          "foodList": [
-            {
-              "id": 11,
-              "name": "PRAWN \u0026 ASPARAGUS",
-              "type": "PASTA",
-              "description": "Prawn, cherry tomato, garlic and asparagus with linguine.",
-              "price": 14.0
-            },
-            {
-              "id": 14,
-              "name": "MOLTEN LAVA LUXURIOUS TORTE",
-              "type": "DESSERT",
-              "description": "Our in-house popular dessert that combines the elements of a chocolate cake baked to perfection, served with summer berries compote \u0026 vanilla ice cream.",
-              "price": 6.0
-            }
-          ],
-          "id_": 24,
-          "name_": "PRAWN \u0026 TORTE SET",
-          "type_": "PACKAGE",
-          "description_": "Special deal for prawn pasta lovers.",
-          "price_": 17.0,
-          "id": 24,
-          "name": "PRAWN \u0026 TORTE SET",
-          "type": "PACKAGE",
-          "description": "Special deal for prawn pasta lovers.",
-          "price": 17.0
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
         }
       },
       {
@@ -113,142 +93,23 @@
           "description": "Specail deal for perppeoni pizza lovers.",
           "price": 18.0
         }
-      }
-    ],
-    "staffAssigned": {
-      "name": "Harry Potter",
-      "id": 4,
-      "job": "SERVER",
-      "gender": "MALE"
-    },
-    "table": {
-      "numOfSeats": 10,
-      "isOccupied": false,
-      "id": 19
-    },
-    "localTime": {
-      "hour": 2,
-      "minute": 28,
-      "second": 40,
-      "nano": 530435100
-    },
-    "localDate": {
-      "year": 2021,
-      "month": 11,
-      "day": 2
-    },
-    "invoiced": true,
-    "id": 1,
-    "sum": 35.0
-  },
-  {
-    "pax": 10,
-    "menuItems": [
-      {
-        "MenuItem": "beans.Food",
-        "INSTANCE": {
-          "id": 2,
-          "name": "CHEESE NACHOS",
-          "type": "APPETIZER",
-          "description": "Guacamole, sour cream, salsa.",
-          "price": 10.0
-        }
       },
       {
         "MenuItem": "beans.Food",
         "INSTANCE": {
-          "id": 10,
-          "name": "SMOKED DUCK CARBONARA",
+          "id": 12,
+          "name": "CRAB MEAT \u0026 ASPARAGUS PASTA",
           "type": "PASTA",
-          "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
-          "price": 14.0
-        }
-      },
-      {
-        "MenuItem": "beans.Food",
-        "INSTANCE": {
-          "id": 15,
-          "name": "APPLE CRUMBLE",
-          "type": "DESSERT",
-          "description": "Chopped apples baked with crumb topping, served with vanilla ice cream.",
-          "price": 6.0
-        }
-      }
-    ],
-    "staffAssigned": {
-      "name": "Albus Dumbledore",
-      "id": 1,
-      "job": "GENERAL_MANAGER",
-      "gender": "MALE"
-    },
-    "table": {
-      "numOfSeats": 10,
-      "isOccupied": false,
-      "id": 19
-    },
-    "localTime": {
-      "hour": 9,
-      "minute": 44,
-      "second": 54,
-      "nano": 816200100
-    },
-    "localDate": {
-      "year": 2021,
-      "month": 11,
-      "day": 2
-    },
-    "invoiced": true,
-    "id": 1,
-    "sum": 30.0
-  },
-  {
-    "pax": 5,
-    "menuItems": [
-      {
-        "MenuItem": "beans.Food",
-        "INSTANCE": {
-          "id": 4,
-          "name": "ANGUS GRAIN FED STRIPLOIN",
-          "type": "MEAT",
-          "description": "150 days grain fed striploin with red wine sauce, served with sauteed vegetables and mashed potato.",
-          "price": 22.0
-        }
-      },
-      {
-        "MenuItem": "beans.Food",
-        "INSTANCE": {
-          "id": 6,
-          "name": "Chicken",
-          "description": "Recommended",
+          "description": "Dungeness crab meat, spear asparagus, garlic, white wine and cherry tomato with linguine.",
           "price": 20.0
         }
-      },
-      {
-        "MenuItem": "beans.Food",
-        "INSTANCE": {
-          "id": 3,
-          "name": "BUFFALO WINGS",
-          "type": "APPETIZER",
-          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
-          "price": 10.0
-        }
-      },
-      {
-        "MenuItem": "beans.Food",
-        "INSTANCE": {
-          "id": 2,
-          "name": "CHEESE NACHOS",
-          "type": "APPETIZER",
-          "description": "Guacamole, sour cream, salsa.",
-          "price": 10.0
-        }
       }
     ],
     "staffAssigned": {
-      "name": "Draco Malfoy",
-      "id": 7,
-      "job": "CASHIER",
-      "gender": "MALE"
+      "name": "Minerva McGonagall",
+      "id": 2,
+      "job": "ASSISTANT_MANAGER",
+      "gender": "FEMALE"
     },
     "table": {
       "numOfSeats": 6,
@@ -256,10 +117,10 @@
       "id": 15
     },
     "localTime": {
-      "hour": 12,
-      "minute": 46,
-      "second": 4,
-      "nano": 190691000
+      "hour": 16,
+      "minute": 40,
+      "second": 33,
+      "nano": 517440200
     },
     "localDate": {
       "year": 2021,
@@ -268,10 +129,11 @@
     },
     "invoiced": true,
     "id": 1,
-    "sum": 62.0
+    "sum": 46.224000000000004,
+    "tax": 3.0240000000000005
   },
   {
-    "pax": 1,
+    "pax": 2,
     "menuItems": [
       {
         "MenuItem": "beans.Food",
@@ -285,10 +147,10 @@
       }
     ],
     "staffAssigned": {
-      "name": "Albus Dumbledore",
-      "id": 1,
-      "job": "GENERAL_MANAGER",
-      "gender": "MALE"
+      "name": "Hermione Granger",
+      "id": 6,
+      "job": "SERVER",
+      "gender": "FEMALE"
     },
     "table": {
       "numOfSeats": 2,
@@ -297,9 +159,9 @@
     },
     "localTime": {
       "hour": 16,
-      "minute": 18,
-      "second": 1,
-      "nano": 225709000
+      "minute": 45,
+      "second": 15,
+      "nano": 795765300
     },
     "localDate": {
       "year": 2021,
@@ -308,6 +170,7 @@
     },
     "invoiced": true,
     "id": 1,
-    "sum": 10.0
+    "sum": 9.63,
+    "tax": 0.6300000000000001
   }
 ]

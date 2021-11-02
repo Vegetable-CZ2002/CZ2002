@@ -8,6 +8,7 @@ import managers.TableManager;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -168,8 +169,11 @@ public class ReservationUI {
         }
         else{
             System.out.println("Here's all the reservations in history");
+            Formatter fmt = new Formatter();
+            fmt.format("%2s  %10s  %5s  %8s  %3s %12s %15s", "id", "Date", "Time", "tableId", "pax", "name", "contact");
+            System.out.println(fmt);
             for(Reservation reservation: ReservationManager.readReservation()){
-                System.out.println(reservation);
+                System.out.println(reservation.formatter());
             }
         }
 

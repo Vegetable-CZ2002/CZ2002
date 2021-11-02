@@ -302,16 +302,6 @@
     }
   },
   {
-    "MenuItem": "beans.Food",
-    "INSTANCE": {
-      "id": 25,
-      "name": "wuwu",
-      "type": "APPETIZER",
-      "description": "dakjgl",
-      "price": 9.0
-    }
-  },
-  {
     "MenuItem": "beans.SetPackage",
     "INSTANCE": {
       "foodList": [
@@ -357,6 +347,16 @@
     }
   },
   {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 25,
+      "name": "wuwu",
+      "type": "APPETIZER",
+      "description": "dakjgl",
+      "price": 9.0
+    }
+  },
+  {
     "MenuItem": "beans.SetPackage",
     "INSTANCE": {
       "foodList": [
@@ -366,29 +366,15 @@
           "type": "APPETIZER",
           "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
           "price": 10.0
-        },
-        {
-          "id": 5,
-          "name": "GRILLED SALMON",
-          "type": "MEAT",
-          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
-          "price": 24.0
-        },
-        {
-          "id": 9,
-          "name": "MARGHERITA PIZZA",
-          "type": "PIZZA",
-          "description": "Homemade thin crust pizza dough topped with buffalo mozzarella, tomatoes and garnished with garden-fresh basil.",
-          "price": 12.0
         }
       ],
       "id_": 26,
-      "name_": "fjgj",
+      "name_": "",
       "type_": "PACKAGE",
       "description_": "ddjh",
       "price_": 45.0,
       "id": 26,
-      "name": "fjgj",
+      "name": "",
       "type": "PACKAGE",
       "description": "ddjh",
       "price": 45.0

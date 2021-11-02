@@ -37,16 +37,22 @@ public class OrderManager {
         }
     }
 
-    public static void orderInvoiced(int id) throws IOException {
+    public static void orderInvoiced(int id, boolean isMember) throws IOException {
         boolean orderInvoiced= false;
         for(Order order: orders){
             if(order.getId()== id){
+                if(isMember){
+                    order.setSum(order.getSum()* 0.9);
+                }
                 orderInvoiced= true;
                 order.setInvoiced(true);
                 order.getTable().setOccupied(false);
+                order.setTax(order.getSum()* 0.07);
+                order.setSum(order.getSum()+ order.getTax());
                 orders.remove(order);
                 addInvoice(order);
                 System.out.println("Order successfully invoiced");
+                order.printInvoice();
                 break;
             }
         }
