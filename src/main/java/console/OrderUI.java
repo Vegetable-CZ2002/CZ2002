@@ -1,10 +1,7 @@
 package console;
 
 import beans.*;
-import managers.MenuManager;
-import managers.OrderManager;
-import managers.StaffManager;
-import managers.TableManager;
+import managers.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -126,7 +123,7 @@ public class OrderUI {
         System.out.println("Please enter the id of the order that you want to modify\n");
         int id= in.nextInt();
         Order order= null;
-        for(Order o: Restaurant.orders){
+        for(Order o: OrderManager.orders){
             if(o.getId()== id){
                 order= o;
             }
@@ -144,6 +141,30 @@ public class OrderUI {
                 order.removeItem(itemId);
             } while (itemId!= 0);
         }
+    }
+
+    public static void createOrderAfterReservation(Reservation reservation) throws IOException{
+        LocalDate localDate = LocalDate.now();
+        System.out.println("Current date:"+ localDate.toString());
+        LocalTime localTime= LocalTime.now();
+        System.out.println("Current time:"+ localTime.toString());
+        System.out.println("Please seat at Table "+ reservation.getTable().getId()+ "\n");
+        System.out.println("Please choose a job title for the staffs that serve you\n");
+        System.out.println("[1]GENERAL_MANAGER, [2]ASSISTANT_MANAGER, [3]SERVER, [4]CASHIER");
+        int id= in.nextInt();
+        Staff staff= selectStaff(id);
+        System.out.printf("Staff "+ staff.getName()+ " is serving you\n\n");
+        System.out.println("Add order success\n");
+        long max= 0;
+        if(OrderManager.orders.size()!= 0){
+            for(Order order: OrderManager.orders){
+                if(order.getId()> max){
+                    max= order.getId();
+                }
+            }
+        }
+        Order order= new Order(max+1, staff, reservation.getTable(), localDate, localTime, reservation.getPax());
+        OrderManager.addOrder(order);
     }
 
     public static void createOrder() throws IOException {
@@ -167,8 +188,8 @@ public class OrderUI {
             System.out.printf("Staff "+ staff.getName()+ " is serving you\n\n");
             System.out.println("Add order success\n");
             long max= 0;
-            if(Restaurant.orders.size()!= 0){
-                for(Order order: Restaurant.orders){
+            if(OrderManager.orders.size()!= 0){
+                for(Order order: OrderManager.orders){
                     if(order.getId()> max){
                         max= order.getId();
                     }
@@ -183,7 +204,7 @@ public class OrderUI {
         System.out.println("Please enter the id of the order that you want to modify\n");
         int id= in.nextInt();
         Order order= null;
-        for(Order o: Restaurant.orders){
+        for(Order o: OrderManager.orders){
             if(o.getId()== id){
                 order= o;
             }
@@ -210,10 +231,10 @@ public class OrderUI {
         OrderManager.removeOrder(id);
     }
 
-    public static void printSale(){
+    public static void printSale() throws IOException {
         int sum= 0;
-        if(Restaurant.invoices.size()!= 0){
-            for(Order order: Restaurant.invoices){
+        if(OrderManager.readInvoice().size()!= 0){
+            for(Order order: OrderManager.readInvoice()){
                 sum+= order.getSum();
             }
         }

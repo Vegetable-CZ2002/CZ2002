@@ -2,7 +2,6 @@ package console;
 
 import beans.Food;
 import beans.MenuItem;
-import beans.Restaurant;
 import beans.SetPackage;
 import managers.MenuManager;
 

@@ -1,7 +1,6 @@
 package console;
 
 import beans.Reservation;
-import beans.Restaurant;
 import beans.Table;
 import managers.ReservationManager;
 import managers.TableManager;
@@ -95,8 +94,8 @@ public class ReservationUI {
             System.out.println("Please enter the contact of the booker");
             String contact= in.nextLine();
             int max= 0;
-            if(Restaurant.reservations!= null){
-                for(Reservation reservation: Restaurant.reservations){
+            if(ReservationManager.readReservation()!= null){
+                for(Reservation reservation: ReservationManager.readReservation()){
                     if(reservation.getId()> max){
                         max= (int) reservation.getId();
                     }
@@ -104,7 +103,7 @@ public class ReservationUI {
             }
             boolean isBookingSuccess= false;
             if(localDate.isEqual(LocalDate.now())){
-                for(Table t: Restaurant.tables){
+                for(Table t: TableManager.readTable()){
                     if(t.isOccupied()== false&& t.getNumOfSeats()>= pax){
                         System.out.println("Reservation booking success");
                         System.out.println("Table "+ t.getId()+ " is reserved");
@@ -114,7 +113,7 @@ public class ReservationUI {
                         Reservation reservation= new Reservation(max+1, localDate, localTime, pax, name, contact, t);
                         ReservationManager.addReservation(reservation);
                         reservation.setTable(t);
-                        Restaurant.reservations.add(reservation);
+                        ReservationManager.readReservation().add(reservation);
                         break;
                     }
                 }
@@ -136,7 +135,7 @@ public class ReservationUI {
                         Reservation reservation= new Reservation(max+1, localDate,localTime,  pax, name, contact, t);
                         ReservationManager.addReservation(reservation);
                         reservation.setTable(t);
-                        Restaurant.reservations.add(reservation);
+                        ReservationManager.readReservation().add(reservation);
                         break;
                     }
                 }
@@ -169,7 +168,7 @@ public class ReservationUI {
         }
         else{
             System.out.println("Here's all the reservations in history");
-            for(Reservation reservation: Restaurant.reservations){
+            for(Reservation reservation: ReservationManager.readReservation()){
                 System.out.println(reservation);
             }
         }

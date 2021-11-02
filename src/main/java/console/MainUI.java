@@ -72,7 +72,7 @@ public class MainUI {
                     ReservationUI.mainUI();
                     break;
                 case 8 :
-                    TableManager.checkTableAvailability();
+                    TableUI.checkTableAvailability();
                     break;
                 case 9 :
                     System.out.println("Please choose [6] in order section");

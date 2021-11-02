@@ -17,17 +17,18 @@ import java.util.Scanner;
 
 public class OrderManager {
     public static List<Order> invoices;
+    public static List<Order> orders= new ArrayList<>();
     
     public static void addOrder(Order order){
-        Restaurant.orders.add(order);
+        orders.add(order);
     }
 
     public static void removeOrder(int id){
         boolean removeSuccessful= false;
-        for(Order o: Restaurant.orders){
+        for(Order o: orders){
             if(o.getId()== id){
                 removeSuccessful= true;
-                Restaurant.orders.remove(o);
+                orders.remove(o);
                 break;
             }
         }
@@ -38,13 +39,12 @@ public class OrderManager {
 
     public static void orderInvoiced(int id) throws IOException {
         boolean orderInvoiced= false;
-        for(Order order: Restaurant.orders){
+        for(Order order: orders){
             if(order.getId()== id){
                 orderInvoiced= true;
                 order.setInvoiced(true);
                 order.getTable().setOccupied(false);
-                Restaurant.orders.remove(order);
-                // TODO: 2021/10/31 add invoice to json
+                orders.remove(order);
                 addInvoice(order);
                 System.out.println("Order successfully invoiced");
                 break;
@@ -56,11 +56,11 @@ public class OrderManager {
     }
 
     public static void printOrder(){
-        if(Restaurant.orders.size()== 0){
+        if(orders.size()== 0){
             System.out.println("No order in history yet");
         }
         else{
-            for(Order item: Restaurant.orders){
+            for(Order item: orders){
                 System.out.printf(item.toString()+"\n");
             }
         }

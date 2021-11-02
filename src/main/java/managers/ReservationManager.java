@@ -2,10 +2,10 @@ package managers;
 
 import adapters.MenuItemAdapter;
 import beans.Reservation;
-import beans.Table;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
+import console.OrderUI;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,7 +21,6 @@ import java.util.List;
 public class ReservationManager {
     public static List<Reservation> reservations;
 
-    // TODO: 2021/10/31 readReservation
     public static List<Reservation> readReservation() throws IOException{
         Gson gson = new Gson();
         Path file = Path.of("src/main/resources/data/reservation.json");
@@ -38,7 +37,7 @@ public class ReservationManager {
 
 
     public static void addReservation(Reservation reservation) throws IOException {
-        // TODO: 2021/10/31 write reservation to json file
+
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
         reservations= readReservation();
@@ -65,7 +64,6 @@ public class ReservationManager {
                     removeReservation= true;
                     System.out.println("Remove reservation booking success");
                     reservation.getTable().setOccupied(false);
-                    // TODO: 2021/10/31 delete reservation
                     deleteReservation(reservation);
                     break;
                 }
@@ -77,9 +75,8 @@ public class ReservationManager {
     }
 
     public static void deleteReservation(Reservation reservation) throws IOException {
-        reservations= readReservation();
+        reservations= ReservationManager.readReservation();
         GsonBuilder builder = new GsonBuilder();
-        //builder.registerTypeAdapter(Reservation.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         reservations.remove(reservation);
         Reservation[] reservations1= new Reservation[reservations.size()];
@@ -94,25 +91,23 @@ public class ReservationManager {
     public static void reservationCheckIn(int id) throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(Reservation.class, new MenuItemAdapter());
-        Gson gson = builder.setPrettyPrinting().create();
         boolean removeReservation= false;
-        Iterator<Reservation> reservationIterator= readReservation().iterator();
         for(Reservation reservation: readReservation()){
             {
                 if(reservation.getId()== id){
                     if(reservation.getLocalDate().isAfter(LocalDate.now())){
                         System.out.println("Not the date for checking reservation yet");
                     }
+                    else if (reservation.getLocalTime().isAfter(LocalTime.of(12,00,00)) &&  LocalTime.now().isBefore(LocalTime.of(12,00,00))){
+                        System.out.println("Please come after 12 o'clock");
+                    }
                     else{
                         removeReservation= true;
                         System.out.println("Check reservation booking success");
-                        reservation.getTable().setOccupied(false);
                         deleteReservation(reservation);
-                        break;
-//                        OrderUI.createOrder();
+                        OrderUI.createOrderAfterReservation(reservation);
                     }
                     break;
-
                 }
             }
         }
@@ -129,13 +124,11 @@ public class ReservationManager {
                 if(LocalDate.now().isAfter(r.getLocalDate()) ){
                     reservationIterator.remove();
                     deleteReservation(r);
-
                     System.out.println("Reservation "+ r.getId()+ " expires");
                 }
                 if(LocalDate.now().isEqual(r.getLocalDate())&&LocalTime.now().isAfter(r.getLocalTime().plusMinutes(30))){
                     reservationIterator.remove();
                     r.getTable().setOccupied(false);
-                    // TODO: 2021/10/31 delete reservation
                     deleteReservation(r);
                     System.out.println("Reservation "+ r.getId()+ " expires");
                 }

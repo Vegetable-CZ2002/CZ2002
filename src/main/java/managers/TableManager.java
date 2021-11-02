@@ -1,7 +1,6 @@
 package managers;
 
 import beans.Reservation;
-import beans.Restaurant;
 import beans.Table;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -72,15 +72,25 @@ public class TableManager {
 
     public static void setTableReserved() throws IOException {
         List<Reservation> reservations= ReservationManager.readReservation();
-        for(Reservation r: reservations){
-            if(r.getLocalDate().isEqual(LocalDate.now())){
-                r.getTable().setOccupied(true);
+        if(LocalTime.now().isBefore(LocalTime.of(12,00,00))){
+            for(Reservation r: reservations){
+                if(r.getLocalDate().isEqual(LocalDate.now()) && r.getLocalTime().isBefore(LocalTime.of(12,00,00))){
+                    r.getTable().setOccupied(true);
+                }
+            }
+        }
+        else{
+            for(Reservation r: reservations){
+                if(r.getLocalDate().isEqual(LocalDate.now())){
+                    r.getTable().setOccupied(true);
+                }
             }
         }
     }
 
 
     public static void checkTableAvailability(){
+
         boolean hasAvailable= false;
         for(Table t: tables){
             if(t.isOccupied()== false){

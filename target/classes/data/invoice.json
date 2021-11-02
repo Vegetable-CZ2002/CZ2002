@@ -47,9 +47,7 @@
     },
     "invoiced": true,
     "id": 1,
-    "sum": 24.0,
-    "time": "02:25:30.679588200",
-    "date": "2021-11-02"
+    "sum": 24.0
   },
   {
     "pax": 8,
@@ -141,8 +139,66 @@
     },
     "invoiced": true,
     "id": 1,
-    "sum": 35.0,
-    "time": "02:28:40.530435100",
-    "date": "2021-11-02"
+    "sum": 35.0
+  },
+  {
+    "pax": 10,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 10,
+          "name": "SMOKED DUCK CARBONARA",
+          "type": "PASTA",
+          "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
+          "price": 14.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 15,
+          "name": "APPLE CRUMBLE",
+          "type": "DESSERT",
+          "description": "Chopped apples baked with crumb topping, served with vanilla ice cream.",
+          "price": 6.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Albus Dumbledore",
+      "id": 1,
+      "job": "GENERAL_MANAGER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 10,
+      "isOccupied": false,
+      "id": 19
+    },
+    "localTime": {
+      "hour": 9,
+      "minute": 44,
+      "second": 54,
+      "nano": 816200100
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 2
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 30.0
   }
 ]

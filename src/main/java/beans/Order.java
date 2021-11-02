@@ -1,5 +1,8 @@
 package beans;
 
+import managers.MenuManager;
+
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -66,9 +69,9 @@ public class Order{
         this.invoiced = invoiced;
     }
 
-    public void addItem(int id){
+    public void addItem(int id) throws IOException {
         boolean addSuccessful= false;
-        List<MenuItem> menuItemList= Restaurant.menuItems;
+        List<MenuItem> menuItemList= MenuManager.readMenuItem();
         for(MenuItem m: menuItemList){
             if(m.getId()== id){
                 menuItems= Arrays.copyOf(menuItems, menuItems.length+1);
