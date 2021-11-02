@@ -32,7 +32,7 @@ public class MenuUI {
         String description= in.nextLine();
         System.out.println(description);
         System.out.println("Please choose a type for the new menu item");
-        System.out.println("[1]APPETIZER, [2]MEAT, [3]PASTA, [4]PIZZA, [5]DESSERT, [6]DRINK");
+        System.out.println("[1]APPETIZER, [2]MEAT, [3]PASTA, [4]PIZZA, [5]DESSERT, [6]DRINK, [7]OTHER MAIN COURSE");
         Integer t= in.nextInt();
         MenuItem.Type type;
         switch (t){
@@ -53,6 +53,9 @@ public class MenuUI {
                 break;
             case 6:
                 type= MenuItem.Type.DRINK;
+                break;
+            case 7:
+                type= MenuItem.Type.OTHER_MAIN_COURSE;
                 break;
             default:
                 type= MenuItem.Type.APPETIZER;
@@ -127,25 +130,49 @@ public class MenuUI {
 
 
     public static void updateAlaCarteItem() throws IOException{
+        MenuItem oldMenuItem= null;
         System.out.println("Please enter information for the updated menu item\n");
         System.out.println("Please enter the id for the updated menu item");
         Long id= in.nextLong();
         in.nextLine();
-        System.out.println("Please enter the name for the updated menu item");
+        for(MenuItem menuItem: MenuManager.readMenuItem()){
+            if(menuItem.getId()== id){
+                oldMenuItem= menuItem;
+            }
+        }
+        if(oldMenuItem.getType()== MenuItem.Type.PACKAGE){
+            System.out.println("This item is a set package. Please type [6] to update ala carte item");
+            return;
+        }
+        System.out.println("The old ala carte item is");
+        System.out.println(oldMenuItem.toString());
+        System.out.println("Please enter the name for the updated menu item, enter 's' to use the old name");
         String name= in.nextLine();
+        if(name.equals("s")){
+            name= oldMenuItem.getName();
+        }
         System.out.println(name);
-        System.out.println("Please enter the price for the updated menu item");
+        System.out.println("Please enter the price for the updated menu item, enter 0 to use the old price");
         Double price= in.nextDouble();
+        if(price== 0){
+            price = oldMenuItem.getPrice();
+        }
         System.out.println(price);
-        System.out.println("Please enter the description for the updated menu item");
+        System.out.println("Please enter the description for the updated menu item, enter 's' to use the old description");
         in.nextLine();
         String description= in.nextLine();
+        if(description.equals("s")){
+            description= oldMenuItem.getDescription();
+        }
         System.out.println(description);
-        System.out.println("Please choose a type for the updated menu item");
-        System.out.println("[1]APPETIZER, [2]MEAT, [3]PASTA, [4]PIZZA, [5]DESSERT, [6]DRINK");
+        System.out.println("Please choose a type for the updated menu item, enter [0] to use the old type");
+        System.out.println("[1]APPETIZER, [2]MEAT, [3]PASTA, [4]PIZZA, [5]DESSERT, [6]DRINK, [7]OTHER MAIN COURSE");
         Integer t= in.nextInt();
         MenuItem.Type type;
         switch (t){
+            case 0:
+                type= oldMenuItem.getType();
+                break;
             case 1:
                 type= MenuItem.Type.APPETIZER;
                 break;
@@ -164,6 +191,9 @@ public class MenuUI {
             case 6:
                 type= MenuItem.Type.DRINK;
                 break;
+            case 7:
+                type= MenuItem.Type.OTHER_MAIN_COURSE;
+                break;
             default:
                 type= MenuItem.Type.APPETIZER;
                 break;
@@ -177,12 +207,24 @@ public class MenuUI {
         }
     }
     public static void updateSetPackage() throws IOException {
+        MenuItem oldMenuItem= null;
         List<MenuItem> menuItems= MenuManager.readMenuItem();
         List<Food> foodList= new ArrayList<>();
         System.out.println("Please enter information for the new set package\n");
         System.out.println("Please enter the id for the updated set package");
         Long id= in.nextLong();
-        System.out.println("Please enter the id of the ala carte items in the new set package, enter 0 to quit");
+        for(MenuItem menuItem: MenuManager.readMenuItem()){
+            if(menuItem.getId()== id){
+                oldMenuItem= menuItem;
+            }
+        }
+        if(oldMenuItem.getType()!= MenuItem.Type.PACKAGE){
+            System.out.println("This item is not a set package. Please type [5] to update ala carte item");
+            return;
+        }
+        System.out.println("The old set package is");
+        System.out.println(oldMenuItem.toString());
+        System.out.println("Please enter the id of the ala carte items in the updated set package, enter 0 to quit");
         int itemId;
         do{
             itemId= in.nextInt();
@@ -193,16 +235,25 @@ public class MenuUI {
                 }
             }
         } while (itemId!= 0);
-        System.out.println("Please enter the name for the new set package");
+        System.out.println("Please enter the name for the updated set package, enter 's' to use the old name");
         in.nextLine();
         String name= in.nextLine();
+        if(name.equals("s")){
+            name= oldMenuItem.getName();
+        }
         System.out.println(name);
-        System.out.println("Please enter the price for the new set package");
+        System.out.println("Please enter the price for the updated set package, enter 0 to use the old price");
         Double price= in.nextDouble();
+        if(price== 0){
+            price = oldMenuItem.getPrice();
+        }
         System.out.println(price);
-        System.out.println("Please enter the description for the new set package");
+        System.out.println("Please enter the description for the updated set package, enter 's' to use the old description");
         in.nextLine();
         String description= in.nextLine();
+        if(description.equals("s")){
+            description= oldMenuItem.getDescription();
+        }
         System.out.println(description);
         MenuItem menuItem= new SetPackage(id, name, description, price, foodList);
         try {

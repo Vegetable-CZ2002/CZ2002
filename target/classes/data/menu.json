@@ -300,5 +300,98 @@
       "description": "Special deal for prawn pasta lovers.",
       "price": 17.0
     }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 25,
+      "name": "wuwu",
+      "type": "APPETIZER",
+      "description": "dakjgl",
+      "price": 9.0
+    }
+  },
+  {
+    "MenuItem": "beans.SetPackage",
+    "INSTANCE": {
+      "foodList": [
+        {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        },
+        {
+          "id": 5,
+          "name": "GRILLED SALMON",
+          "type": "MEAT",
+          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+          "price": 24.0
+        },
+        {
+          "id": 8,
+          "name": "PEPPERONI PIZZA",
+          "type": "PIZZA",
+          "description": "Homemade thin crust pizza dough topped with tomato sauce, mozzarella cheese and pepperoni",
+          "price": 16.0
+        },
+        {
+          "id": 9,
+          "name": "MARGHERITA PIZZA",
+          "type": "PIZZA",
+          "description": "Homemade thin crust pizza dough topped with buffalo mozzarella, tomatoes and garnished with garden-fresh basil.",
+          "price": 12.0
+        }
+      ],
+      "id_": 27,
+      "name_": "dagj",
+      "type_": "PACKAGE",
+      "description_": "fgdsh",
+      "price_": 34.0,
+      "id": 27,
+      "name": "dagj",
+      "type": "PACKAGE",
+      "description": "fgdsh",
+      "price": 34.0
+    }
+  },
+  {
+    "MenuItem": "beans.SetPackage",
+    "INSTANCE": {
+      "foodList": [
+        {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        },
+        {
+          "id": 5,
+          "name": "GRILLED SALMON",
+          "type": "MEAT",
+          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+          "price": 24.0
+        },
+        {
+          "id": 9,
+          "name": "MARGHERITA PIZZA",
+          "type": "PIZZA",
+          "description": "Homemade thin crust pizza dough topped with buffalo mozzarella, tomatoes and garnished with garden-fresh basil.",
+          "price": 12.0
+        }
+      ],
+      "id_": 26,
+      "name_": "fjgj",
+      "type_": "PACKAGE",
+      "description_": "ddjh",
+      "price_": 45.0,
+      "id": 26,
+      "name": "fjgj",
+      "type": "PACKAGE",
+      "description": "ddjh",
+      "price": 45.0
+    }
   }
 ]

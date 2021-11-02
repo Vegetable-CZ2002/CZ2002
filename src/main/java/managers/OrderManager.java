@@ -90,6 +90,7 @@ public class OrderManager {
     }
 
     public static void addInvoice(Order i) throws IOException{
+        invoices= readInvoice();
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();

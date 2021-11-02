@@ -269,5 +269,45 @@
     "invoiced": true,
     "id": 1,
     "sum": 62.0
+  },
+  {
+    "pax": 1,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Albus Dumbledore",
+      "id": 1,
+      "job": "GENERAL_MANAGER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 2,
+      "isOccupied": false,
+      "id": 1
+    },
+    "localTime": {
+      "hour": 16,
+      "minute": 18,
+      "second": 1,
+      "nano": 225709000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 2
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 10.0
   }
 ]
