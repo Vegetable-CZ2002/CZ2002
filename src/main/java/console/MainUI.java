@@ -79,7 +79,7 @@ public class MainUI {
                     OrderUI.mainUI();
                     break;
                 case 10 :
-                    System.out.println("Please choose [8] in order section");
+                    System.out.println("Please choose [7] in order section");
                     OrderUI.mainUI();
                     break;
                 default :

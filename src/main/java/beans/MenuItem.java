@@ -7,13 +7,13 @@ public abstract class MenuItem {
     public enum Type{
         APPETIZER, MEAT, PASTA, PIZZA, DESSERT, DRINK, PACKAGE, OTHER_MAIN_COURSE
     }
-    private long id;
+    private int id;
     private String name;
     private Type type;
     private String description;
     private double price;
 
-    public MenuItem(long id, String name, Type type, String description, double price) {
+    public MenuItem(int id, String name, Type type, String description, double price) {
         this.id= id;
         this.name = name;
         this.type = type;
@@ -54,11 +54,11 @@ public abstract class MenuItem {
         this.price = price;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

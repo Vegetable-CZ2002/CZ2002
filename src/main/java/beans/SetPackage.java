@@ -8,13 +8,13 @@ import java.util.Objects;
 public class SetPackage extends MenuItem{
 
     private List<Food> foodList;
-    private long id_;
+    private int id_;
     private String name_;
     private Type type_;
     private String description_;
     private double price_;
 
-    public SetPackage(long id, String name, String description, double price, List<Food> foodList) {
+    public SetPackage(int id, String name, String description, double price, List<Food> foodList) {
         super(id, name, Type.PACKAGE, description, price);
         this.name_= name;
         this.id_= id;

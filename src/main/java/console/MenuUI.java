@@ -122,8 +122,8 @@ public class MenuUI {
     public static void deleteMenuItem() throws IOException {
         List<MenuItem> menuItems= MenuManager.readMenuItem();
         System.out.println("Please enter the id of the menu item to delete, enter 0 to quit");
-        long itemId;
-        itemId= in.nextLong();
+        int itemId;
+        itemId= in.nextInt();
         if(itemId!= 0){
             MenuManager.deleteMenuItem(itemId);
         }
@@ -134,7 +134,7 @@ public class MenuUI {
         MenuItem oldMenuItem= null;
         System.out.println("Please enter information for the updated menu item\n");
         System.out.println("Please enter the id for the updated menu item");
-        Long id= in.nextLong();
+        int id= in.nextInt();
         in.nextLine();
         for(MenuItem menuItem: MenuManager.readMenuItem()){
             if(menuItem.getId()== id){
@@ -215,7 +215,7 @@ public class MenuUI {
         List<Food> foodList= new ArrayList<>();
         System.out.println("Please enter information for the new set package\n");
         System.out.println("Please enter the id for the updated set package");
-        Long id= in.nextLong();
+        int id= in.nextInt();
         for(MenuItem menuItem: MenuManager.readMenuItem()){
             if(menuItem.getId()== id){
                 oldMenuItem= menuItem;

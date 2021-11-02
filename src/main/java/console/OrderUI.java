@@ -4,6 +4,7 @@ import beans.*;
 import managers.*;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -247,12 +248,22 @@ public class OrderUI {
 
     public static void printSale() throws IOException {
         double sum= 0;
+        double[] sale= new double[MenuManager.menuSize()];
         if(OrderManager.readInvoice().size()!= 0){
             for(Order order: OrderManager.readInvoice()){
+                MenuItem[] menuItems= order.getMenuItems();
+                for(int i= 0; i< menuItems.length; i++){
+                    sale[menuItems[i].getId()-1]+= 1;
+                }
                 sum+= order.getSum();
             }
         }
         System.out.println("The sale for this current period is "+ sum);
+        for(MenuItem menuItem: MenuManager.readMenuItem()){
+            if(sale[menuItem.getId()-1]!= 0){
+                System.out.println("The sale number for item id "+ menuItem.getId()+ " is "+ (int)sale[menuItem.getId()-1]);
+            }
+        }
     }
 
     public static Staff selectStaff(int type) throws IOException {
