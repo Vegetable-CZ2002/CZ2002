@@ -186,7 +186,6 @@ public class OrderUI {
             int id= in.nextInt();
             Staff staff= selectStaff(id);
             System.out.printf("Staff "+ staff.getName()+ " is serving you\n\n");
-            System.out.println("Add order success\n");
             long max= 0;
             if(OrderManager.orders.size()!= 0){
                 for(Order order: OrderManager.orders){
@@ -196,6 +195,7 @@ public class OrderUI {
                 }
             }
             Order order= new Order(max+1, staff, table, localDate, localTime, pax);
+            System.out.println("You order id is "+ (max+1) + ". Add order success\n");
             OrderManager.addOrder(order);
         }
     }

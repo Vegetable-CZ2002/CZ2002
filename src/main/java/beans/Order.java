@@ -82,7 +82,7 @@ public class Order{
                 break;
             }
         }
-        if(!addSuccessful){
+        if(!addSuccessful && id != 0){
             System.out.println("Add item failure");
         }
     }
@@ -98,7 +98,7 @@ public class Order{
                 break;
             }
         }
-        if(!removeSuccessful){
+        if(!removeSuccessful && id != 0){
             System.out.println("Remove item failure");
         }
     }

@@ -200,5 +200,74 @@
     "invoiced": true,
     "id": 1,
     "sum": 30.0
+  },
+  {
+    "pax": 5,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 4,
+          "name": "ANGUS GRAIN FED STRIPLOIN",
+          "type": "MEAT",
+          "description": "150 days grain fed striploin with red wine sauce, served with sauteed vegetables and mashed potato.",
+          "price": 22.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 6,
+          "name": "Chicken",
+          "description": "Recommended",
+          "price": 20.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Draco Malfoy",
+      "id": 7,
+      "job": "CASHIER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": false,
+      "id": 15
+    },
+    "localTime": {
+      "hour": 12,
+      "minute": 46,
+      "second": 4,
+      "nano": 190691000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 2
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 62.0
   }
 ]

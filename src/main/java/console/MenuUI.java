@@ -20,6 +20,7 @@ public class MenuUI {
 
     public static void createAlaCarteItem() throws IOException {
         System.out.println("Please enter the following details for the new menu item\n");
+        in.nextLine();
         System.out.println("Please enter the name for the new menu item");
         String name= in.nextLine();
         System.out.println(name);
@@ -127,7 +128,7 @@ public class MenuUI {
 
     public static void updateAlaCarteItem() throws IOException{
         System.out.println("Please enter information for the updated menu item\n");
-        System.out.println("Plsase enter the id for the updated menu item");
+        System.out.println("Please enter the id for the updated menu item");
         Long id= in.nextLong();
         in.nextLine();
         System.out.println("Please enter the name for the updated menu item");
@@ -179,7 +180,7 @@ public class MenuUI {
         List<MenuItem> menuItems= MenuManager.readMenuItem();
         List<Food> foodList= new ArrayList<>();
         System.out.println("Please enter information for the new set package\n");
-        System.out.println("Plsase enter the id for the updated set package");
+        System.out.println("Please enter the id for the updated set package");
         Long id= in.nextLong();
         System.out.println("Please enter the id of the ala carte items in the new set package, enter 0 to quit");
         int itemId;
@@ -188,6 +189,7 @@ public class MenuUI {
             for(MenuItem m: menuItems){
                 if(m.getId()== itemId){
                     foodList.add((Food) m);
+                    break;
                 }
             }
         } while (itemId!= 0);
