@@ -261,7 +261,7 @@ public class OrderUI {
         System.out.println("The sale for this current period is "+ sum);
         for(MenuItem menuItem: MenuManager.readMenuItem()){
             if(sale[menuItem.getId()-1]!= 0){
-                System.out.println("The sale number for item id "+ menuItem.getId()+ " is "+ (int)sale[menuItem.getId()-1]);
+                System.out.println("The individual sales item of id "+ menuItem.getId()+ " is "+ (int)sale[menuItem.getId()-1]);
             }
         }
     }
