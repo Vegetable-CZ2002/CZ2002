@@ -2,6 +2,11 @@ package beans;
 
 import java.util.*;
 
+/**
+ * Represents general menuitem
+ *
+ *  @author Zhou Yuxuan
+ */
 public abstract class MenuItem {
 
     public enum Type{

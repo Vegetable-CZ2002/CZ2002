@@ -16,6 +16,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The manager class that controls the Table class
+ *
+ *  @author Ruan Donglin
+ */
 public class TableManager {
     public static List<Table> tables;
 
@@ -27,6 +32,12 @@ public class TableManager {
         }
     }
 
+    /**
+     * Read all tables from the json file
+     *
+     * @return all the tables in the restaurant that is in the format of list of Table object
+     * @throws IOException
+     */
     public static List<Table> readTable() throws IOException {
         Gson gson = new Gson();
         Path file = Path.of("src/main/resources/data/table.json");
@@ -57,6 +68,12 @@ public class TableManager {
         }
     }
 
+    /**
+     * Check all available table to find one that allow the defined number of pax to seat
+     *
+     * @param pax the number of pax for the order
+     * @throws IOException
+     */
     public static Table occupyTableForOrder(int pax){
         for(Table t: tables){
             if(t.isOccupied()== false && t.getNumOfSeats()>= pax){
@@ -69,7 +86,11 @@ public class TableManager {
     }
 
 
-
+    /**
+     * Check all reservation to find the reservation that happens in the current session to set the table as occupied.
+     *
+     * @throws IOException
+     */
     public static void setTableReserved() throws IOException {
         List<Reservation> reservations= ReservationManager.readReservation();
         if(LocalTime.now().isBefore(LocalTime.of(12,00,00))){
@@ -88,18 +109,4 @@ public class TableManager {
         }
     }
 
-
-    public static void checkTableAvailability(){
-
-        boolean hasAvailable= false;
-        for(Table t: tables){
-            if(t.isOccupied()== false){
-                hasAvailable= true;
-                System.out.println("Table "+ t.getId() + " is available");
-            }
-        }
-        if(!hasAvailable){
-            System.out.println("No available table");
-        }
-    }
 }

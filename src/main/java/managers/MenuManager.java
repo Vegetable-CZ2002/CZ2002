@@ -15,6 +15,12 @@ import java.util.Arrays;
 import java.util.Formatter;
 import java.util.List;
 
+
+/**
+ * The manager class that controls the MenuItem class
+ *
+ *  @author Zhou Yuxuan
+ */
 public class MenuManager{
 
     public static List<MenuItem> menuItemList;

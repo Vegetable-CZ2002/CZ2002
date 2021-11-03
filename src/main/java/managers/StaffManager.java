@@ -13,10 +13,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The manager class that controls the Staff class
+ *
+ *  @author Ruan Donglin
+ */
 public class StaffManager {
 
     public static List<Staff> staffs;
 
+    /**
+     * Read all staff from the json file
+     *
+     * @return all the staff in the restaurant that is in the format of list of Staff object
+     * @throws IOException
+     */
     public static List<Staff> readStaff() throws IOException{
         Gson gson = new Gson();
         Path file = Path.of("src/main/resources/data/staff.json");
@@ -30,6 +41,7 @@ public class StaffManager {
         }
         return staffs;
     }
+
 
     public static void addStaff(Staff s) throws IOException{
         GsonBuilder builder = new GsonBuilder();

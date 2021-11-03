@@ -5,6 +5,11 @@ import java.util.Formatter;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Represents one of the types of menuitem, the set package item
+ *
+ *  @author Zhou Yuxuan
+ */
 public class SetPackage extends MenuItem{
 
     private List<Food> foodList;

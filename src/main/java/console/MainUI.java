@@ -13,6 +13,11 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+/**
+ * User interface class for the all instructions
+ *
+ *  @author Ruan Donglin
+ */
 public class MainUI {
     public static File text = new File("src/main/resources/testdata/a.txt");
     public static Scanner in = new Scanner(System.in);

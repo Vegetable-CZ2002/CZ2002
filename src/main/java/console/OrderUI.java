@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * User interface class for the instructions regarding order
+ *
+ *  @author Ruan Donglin
+ */
 public class OrderUI {
     private static Scanner in = MainUI.in;
     public static void mainUI() throws IOException{
@@ -97,6 +102,11 @@ public class OrderUI {
         } while(num!= 0);
     }
 
+    /**
+     * print all/ a specific order detail
+     *
+     * @throws IOException
+     */
     public static void printOrder() throws IOException {
         System.out.println("Do you want to view all the orders in history? Please enter [Y/n]");
         in.nextLine();
@@ -117,7 +127,11 @@ public class OrderUI {
 
     }
 
-
+    /**
+     * invoice an order
+     *
+     * @throws IOException
+     */
     public static void invoiceOrder() throws IOException {
         boolean isMember= false;
         System.out.println("Please enter the id of the order that you want to invoice\n");
@@ -134,6 +148,11 @@ public class OrderUI {
         OrderManager.orderInvoiced(id, isMember);
     }
 
+    /**
+     * delete a defined menuItem from the order
+     *
+     * @throws IOException
+     */
     public static void deleteItemFromOrder() throws IOException {
         System.out.println("Please enter the id of the order that you want to modify\n");
         int id= in.nextInt();
@@ -158,6 +177,12 @@ public class OrderUI {
         }
     }
 
+    /**
+     * Create an order after the customer checks in.
+     *
+     * @param reservation
+     * @throws IOException
+     */
     public static void createOrderAfterReservation(Reservation reservation) throws IOException{
         LocalDate localDate = LocalDate.now();
         System.out.println("Current date:"+ localDate.toString());
@@ -182,6 +207,11 @@ public class OrderUI {
         OrderManager.addOrder(order);
     }
 
+    /**
+     * Create a new order after the customer walks in
+     *
+     * @throws IOException
+     */
     public static void createOrder() throws IOException {
         System.out.println("Please enter the following details for order");
         LocalDate localDate = LocalDate.now();
@@ -215,6 +245,11 @@ public class OrderUI {
         }
     }
 
+    /**
+     * Add a defined item to the order
+     *
+     * @throws IOException
+     */
     public static void addItemToOrder() throws IOException {
         System.out.println("Please enter the id of the order that you want to modify\n");
         int id= in.nextInt();
@@ -246,6 +281,11 @@ public class OrderUI {
         OrderManager.removeOrder(id);
     }
 
+    /**
+     * print the sale in this period with details of total sale and each item sale
+     *
+     * @throws IOException
+     */
     public static void printSale() throws IOException {
         double sum= 0;
         double[] sale= new double[MenuManager.menuSize()];
@@ -266,6 +306,13 @@ public class OrderUI {
         }
     }
 
+    /**
+     * Select a random staff to serve an order
+     *
+     * @param type
+     * @return
+     * @throws IOException
+     */
     public static Staff selectStaff(int type) throws IOException {
         Staff.jobTitle jobTitle;
         switch (type) {
@@ -298,6 +345,12 @@ public class OrderUI {
         return staff;
     }
 
+    /**
+     * Select a qualified table for an order
+     *
+     * @param pax
+     * @return
+     */
     public static Table selectTable(int pax){
         Table table= TableManager.occupyTableForOrder(pax);
         return table;

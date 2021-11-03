@@ -3,6 +3,11 @@ package beans;
 
 import java.util.Objects;
 
+/**
+ * Represents the staff in the restaurant
+ *
+ *  @author Ruan Donglin
+ */
 public class Staff {
     private String name; 
     private long id;

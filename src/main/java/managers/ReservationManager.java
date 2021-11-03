@@ -18,9 +18,21 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+
+/**
+ * The manager class that controls the Reservation class
+ *
+ *  @author Ruan Donglin
+ */
 public class ReservationManager {
     public static List<Reservation> reservations;
 
+    /**
+     * Read all existing reservations from the json file.
+     *
+     * @return the list of existing reservations in a list of Reservation object
+     * @throws IOException
+     */
     public static List<Reservation> readReservation() throws IOException{
         Gson gson = new Gson();
         Path file = Path.of("src/main/resources/data/reservation.json");
@@ -35,7 +47,12 @@ public class ReservationManager {
         return reservations;
     }
 
-
+    /**
+     * Add a reservation to the reservation list, write it into the json file
+     *
+     * @param reservation the reservation that needs to be added
+     * @throws IOException
+     */
     public static void addReservation(Reservation reservation) throws IOException {
 
         GsonBuilder builder = new GsonBuilder();
@@ -55,7 +72,12 @@ public class ReservationManager {
     }
 
 
-
+    /**
+     * Remove the defined reservation from the reservation list, delete it from the json file
+     *
+     * @param id the id of the reservation that needs to be deleted
+     * @throws IOException
+     */
     public static void removeReservation(int id) throws IOException {
         boolean removeReservation= false;
         for(Reservation reservation: readReservation()){
@@ -74,6 +96,7 @@ public class ReservationManager {
         }
     }
 
+
     public static void deleteReservation(Reservation reservation) throws IOException {
         reservations= ReservationManager.readReservation();
         GsonBuilder builder = new GsonBuilder();
@@ -87,7 +110,12 @@ public class ReservationManager {
     }
 
 
-
+    /**
+     * Check in to a reservation if allowed
+     *
+     * @param id the id of the reservation that the customer wants to check in
+     * @throws IOException
+     */
     public static void reservationCheckIn(int id) throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(Reservation.class, new MenuItemAdapter());
@@ -116,6 +144,11 @@ public class ReservationManager {
         }
     }
 
+    /**
+     * clear all existing reservations that passed the booking time
+     *
+     * @throws IOException
+     */
     public static void clearExpiredReservations() throws IOException {
         Iterator<Reservation> reservationIterator= readReservation().iterator();
         while(reservationIterator.hasNext()){

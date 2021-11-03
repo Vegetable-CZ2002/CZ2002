@@ -3,6 +3,12 @@ package beans;
 
 import java.util.Objects;
 
+
+/**
+ * Represents the table in the restaurant
+ *
+ *  @author Ruan Donglin
+ */
 public class Table {
     private int numOfSeats;
 	private boolean isOccupied;

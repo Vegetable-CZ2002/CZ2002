@@ -11,6 +11,12 @@ import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * User interface class for the instructions regarding menu
+ *
+ *  @author Ruan Donglin
+ *  @author Zhou Yuxuan
+ */
 public class MenuUI {
     //private static Scanner in = new Scanner(System.in);
     private static Scanner in = MainUI.in;

@@ -8,6 +8,11 @@ import java.time.LocalTime;
 import java.util.Formatter;
 import java.util.Objects;
 
+/**
+ * Represents the reservation the customer books
+ *
+ *  @author Ruan Donglin
+ */
 public class Reservation{
     private LocalDate localDate;
     private LocalTime localTime;

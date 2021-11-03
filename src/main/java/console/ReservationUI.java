@@ -12,6 +12,11 @@ import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * User interface class for the instructions regarding reservation
+ *
+ *  @author Ruan Donglin
+ */
 public class ReservationUI {
     //private static Scanner in= new Scanner(System.in);
     private static Scanner in = MainUI.in;
@@ -71,6 +76,11 @@ public class ReservationUI {
         } while(num!= 0);
     }
 
+    /**
+     * create a reservation if allowed
+     *
+     * @throws IOException
+     */
     public static void createReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
         System.out.println("Please enter the following details for reservation ");
@@ -145,9 +155,13 @@ public class ReservationUI {
                 System.out.println("No available table for Reservation today");
             }
         }
-
-
     }
+
+    /**
+     * Check in to a reservation if allowed. If yes, go to order immediately
+     *
+     * @throws IOException
+     */
     public static void checkReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
         System.out.println("Please enter the reservation id you received when booking");
@@ -162,6 +176,11 @@ public class ReservationUI {
         ReservationManager.removeReservation(id);
     }
 
+    /**
+     * View all existing reservations
+     *
+     * @throws IOException
+     */
     public static void viewReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
         if(ReservationManager.readReservation().size()== 0){

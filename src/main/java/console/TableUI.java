@@ -11,9 +11,19 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * User interface class for the instructions regarding table
+ *
+ *  @author Ruan Donglin
+ */
 public class TableUI {
     private static Scanner in = MainUI.in;
 
+    /**
+     * Check the defined date and time's table availability
+     *
+     * @throws IOException
+     */
     public static void checkTableAvailability() throws IOException {
         System.out.println("Please enter the date to check availability in the format of YYYY-MM-DD:(eg. 2021-11-12)");
         in.nextLine();
@@ -44,11 +54,9 @@ public class TableUI {
                 }
             }
             else{
-                System.out.println("Plz");
                 List<Table> tableList2= TableManager.readTable();
                 for(Reservation r: ReservationManager.readReservation()){
                     if(r.getLocalDate().isEqual(localDate)){
-                        System.out.println("Plz2");
                         tableList2.remove(r.getTable());
                     }
                 }

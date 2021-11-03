@@ -9,6 +9,12 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+/**
+ * Represents the order that customer gives, will be created in two cases: when customer directly walks in
+ * or when customer check in to a reservation
+ *
+ *  @author Ruan Donglin
+ */
 public class Order{
     private int pax;
 	private MenuItem[] menuItems;
