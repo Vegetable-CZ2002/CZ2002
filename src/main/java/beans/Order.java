@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Order{
@@ -168,7 +169,7 @@ public class Order{
         }
         else{
             for(MenuItem menuItem: menuItems){
-                System.out.println(menuItem.toString());
+                System.out.println(menuItem.formatter());
             }
         }
 
@@ -183,7 +184,52 @@ public class Order{
     }
 
     public void printInvoice(){
-        // TODO: 2021/11/2 print invoice in a table form
+        printTitles();
+        printHeaders();
+        for(MenuItem menuItem: menuItems){
+            printRows(String.valueOf(menuItem.getId()), menuItem.getName(), menuItem.getPrice());
+        }
+        printResult();
+    }
+
+    public void printTitles(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        Formatter fmt = new Formatter();
+        Formatter fmt2 = new Formatter();
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_TIME;
+        System.out.printf("_______________________________________________");
+        System.out.printf("\n\t\t\tInvoice\n");
+        fmt.format("%8s %20s %5s %10s", "Server: ", staffAssigned.getName(), "Date: ",  localDate);
+        System.out.println(fmt);
+        fmt2.format("%8s %20s %5s %10s", "Table: ", table.getId(), "Time: ",  localTime.format(dtf));
+        System.out.print(fmt2);
+    }
+
+
+    public void printHeaders(){
+        System.out.printf("\n-----------------------------------------------");
+        System.out.printf("\n| ID  |\t\t\t\tDESC\t\t\t|\tAMT\t  |");
+        System.out.printf("\n-----------------------------------------------");
+    }
+
+
+    public static void printRows(String id, String desc, double fee) {
+        System.out.printf("\n| %3s | %-28.28s| %.2f   |", id, desc, fee);
+        System.out.printf("\n-----------------------------------------------");
+    }
+
+    public void printResult() {
+        System.out.printf("\n|\t\t\t   Sub Total\t\t\t     %.2f|",sum- tax);
+        System.out.printf("\n-----------------------------------------------");
+        System.out.printf("\n|\t\t\t   Tax(5%%)\t\t\t\t\t  %.2f|", tax);
+        System.out.printf("\n-----------------------------------------------");
+        System.out.printf("\n|\t\t\t   Total\t\t\t\t\t %.2f|", sum);
+        System.out.printf("\n-----------------------------------------------");
+        System.out.printf("\n\t\t\t\tTHANK YOU!");
+        System.out.printf("\n_______________________________________________");
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 
 }

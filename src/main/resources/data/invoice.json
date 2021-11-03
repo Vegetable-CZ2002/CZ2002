@@ -172,5 +172,270 @@
     "id": 1,
     "sum": 9.63,
     "tax": 0.6300000000000001
+  },
+  {
+    "pax": 4,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 10,
+          "name": "SMOKED DUCK CARBONARA",
+          "type": "PASTA",
+          "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
+          "price": 14.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Minerva McGonagall",
+      "id": 2,
+      "job": "ASSISTANT_MANAGER",
+      "gender": "FEMALE"
+    },
+    "table": {
+      "numOfSeats": 4,
+      "isOccupied": false,
+      "id": 5
+    },
+    "localTime": {
+      "hour": 10,
+      "minute": 20,
+      "second": 27,
+      "nano": 386773100
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 3
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 23.112000000000002,
+    "tax": 1.5120000000000002
+  },
+  {
+    "pax": 3,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 10,
+          "name": "SMOKED DUCK CARBONARA",
+          "type": "PASTA",
+          "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
+          "price": 14.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Severus Snape",
+      "id": 3,
+      "job": "ASSISTANT_MANAGER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 4,
+      "isOccupied": false,
+      "id": 5
+    },
+    "localTime": {
+      "hour": 10,
+      "minute": 21,
+      "second": 13,
+      "nano": 682796500
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 3
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 23.112000000000002,
+    "tax": 1.5120000000000002
+  },
+  {
+    "pax": 4,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 10,
+          "name": "SMOKED DUCK CARBONARA",
+          "type": "PASTA",
+          "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
+          "price": 14.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Albus Dumbledore",
+      "id": 1,
+      "job": "GENERAL_MANAGER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 4,
+      "isOccupied": false,
+      "id": 5
+    },
+    "localTime": {
+      "hour": 10,
+      "minute": 21,
+      "second": 55,
+      "nano": 796400700
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 3
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 25.68,
+    "tax": 1.6800000000000002
+  },
+  {
+    "pax": 1,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 10,
+          "name": "SMOKED DUCK CARBONARA",
+          "type": "PASTA",
+          "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
+          "price": 14.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Albus Dumbledore",
+      "id": 1,
+      "job": "GENERAL_MANAGER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 2,
+      "isOccupied": false,
+      "id": 1
+    },
+    "localTime": {
+      "hour": 10,
+      "minute": 24,
+      "second": 35,
+      "nano": 26120100
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 3
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 14.98,
+    "tax": 0.9800000000000001
+  },
+  {
+    "pax": 10,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 10,
+          "name": "SMOKED DUCK CARBONARA",
+          "type": "PASTA",
+          "description": "Smoked duck, boneless chicken, cream, egg yolk, onion and shaved parmesan with penne.",
+          "price": 14.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 5,
+          "name": "GRILLED SALMON",
+          "type": "MEAT",
+          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+          "price": 24.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Ron Weasley",
+      "id": 5,
+      "job": "SERVER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 10,
+      "isOccupied": false,
+      "id": 19
+    },
+    "localTime": {
+      "hour": 10,
+      "minute": 59,
+      "second": 7,
+      "nano": 996179400
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 3
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 55.854000000000006,
+    "tax": 3.6540000000000004
   }
 ]

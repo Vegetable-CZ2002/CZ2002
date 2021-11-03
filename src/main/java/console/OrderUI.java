@@ -97,7 +97,7 @@ public class OrderUI {
         } while(num!= 0);
     }
 
-    public static void printOrder(){
+    public static void printOrder() throws IOException {
         System.out.println("Do you want to view all the orders in history? Please enter [Y/n]");
         in.nextLine();
         String value= in.nextLine();
