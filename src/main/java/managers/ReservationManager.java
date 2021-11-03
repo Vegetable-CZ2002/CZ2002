@@ -39,7 +39,7 @@ public class ReservationManager {
         String jsonString = Files.readString(file);
         Reservation[] reservationArray = gson.fromJson(jsonString, Reservation[].class);
         if( reservationArray== null){
-            reservations = new ArrayList<Reservation>();
+            reservations = new ArrayList<>();
         }
         else{
             reservations = new ArrayList<>(Arrays.asList(reservationArray));
@@ -64,9 +64,7 @@ public class ReservationManager {
             reservations.toArray(reservationArray);
             Path file = Path.of("src/main/resources/data/reservation.json");
             Files.writeString(file, gson.toJson(reservationArray), StandardOpenOption.WRITE);
-        } catch (JsonIOException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JsonIOException | IOException e) {
             e.printStackTrace();
         }
     }

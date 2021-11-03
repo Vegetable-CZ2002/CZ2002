@@ -1,7 +1,8 @@
 package managers;
 
 import adapters.MenuItemAdapter;
-import beans.*;
+import beans.MenuItem;
+import beans.Order;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -13,7 +14,6 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * The manager class that controls the Order class
@@ -100,7 +100,7 @@ public class OrderManager {
         String jsonString = Files.readString(file);
         Order[] orderArray = gson.fromJson(jsonString, Order[].class);
         if(orderArray == null){
-            invoices = new ArrayList<Order>();
+            invoices = new ArrayList<>();
         }
         else{
             invoices = new ArrayList<>(Arrays.asList(orderArray));
@@ -125,9 +125,7 @@ public class OrderManager {
             invoices.toArray(staffArray);
             Path file = Path.of("src/main/resources/data/invoice.json");
             Files.writeString(file, gson.toJson(staffArray), StandardOpenOption.WRITE);
-        } catch (JsonIOException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JsonIOException | IOException e) {
             e.printStackTrace();
         }
     }

@@ -1,9 +1,7 @@
 package beans;
 
-import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Represents one of the types of menuitem, the set package item
@@ -13,11 +11,11 @@ import java.util.Objects;
 public class SetPackage extends MenuItem{
 
     private List<Food> foodList;
-    private int id_;
-    private String name_;
-    private Type type_;
-    private String description_;
-    private double price_;
+    private final int id_;
+    private final String name_;
+    private final Type type_;
+    private final String description_;
+    private final double price_;
 
     public SetPackage(int id, String name, String description, double price, List<Food> foodList) {
         super(id, name, Type.PACKAGE, description, price);

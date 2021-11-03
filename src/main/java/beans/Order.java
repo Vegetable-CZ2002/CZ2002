@@ -3,11 +3,13 @@ package beans;
 import managers.MenuManager;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Formatter;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Represents the order that customer gives, will be created in two cases: when customer directly walks in
@@ -21,11 +23,11 @@ public class Order{
 	private Staff staffAssigned;
 	private Table table;
 	private LocalTime localTime;
-    private LocalDate localDate;
+    private final LocalDate localDate;
 	private boolean invoiced;
     private long id;
-    private double sum= 0;
-    private double tax= 0;
+    private double sum;
+    private double tax;
     public MenuItem[] getMenuItems() {
         return menuItems;
     }
@@ -203,7 +205,7 @@ public class Order{
         Formatter fmt = new Formatter();
         Formatter fmt2 = new Formatter();
         DateTimeFormatter formatter = DateTimeFormatter.ISO_TIME;
-        System.out.printf("_______________________________________________");
+        System.out.print("_______________________________________________");
         System.out.printf("\n\t\t\tInvoice\n");
         fmt.format("%8s %20s %5s %10s", "Server: ", staffAssigned.getName(), "Date: ",  localDate);
         System.out.println(fmt);

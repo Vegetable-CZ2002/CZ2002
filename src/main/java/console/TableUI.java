@@ -17,7 +17,7 @@ import java.util.Scanner;
  *  @author Ruan Donglin
  */
 public class TableUI {
-    private static Scanner in = MainUI.in;
+    private static final Scanner in = MainUI.in;
 
     /**
      * Check the defined date and time's table availability
@@ -29,7 +29,7 @@ public class TableUI {
         in.nextLine();
         String date = in.nextLine();
         LocalDate localDate= LocalDate.parse(date);
-        System.out.println(date.toString());
+        System.out.println(date);
         System.out.println("Please enter the time the date to check availability in the format of HH:MM(eg. 18:00)");
         String time= in.nextLine();
         LocalTime localTime= LocalTime.parse(time+":00");

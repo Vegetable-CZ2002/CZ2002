@@ -34,7 +34,7 @@ public class StaffManager {
         String jsonString = Files.readString(file);
         Staff[] staffArray = gson.fromJson(jsonString, Staff[].class);
         if(staffArray == null){
-            staffs = new ArrayList<Staff>();
+            staffs = new ArrayList<>();
         }
         else{
             staffs = new ArrayList<>(Arrays.asList(staffArray));
@@ -52,9 +52,7 @@ public class StaffManager {
             staffs.toArray(staffArray);
             Path file = Path.of("src/main/resources/data/staff.json");
             Files.writeString(file, gson.toJson(staffArray), StandardOpenOption.WRITE);
-        } catch (JsonIOException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JsonIOException | IOException e) {
             e.printStackTrace();
         }
     }

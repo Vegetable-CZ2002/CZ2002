@@ -18,8 +18,8 @@ public class Staff {
         this.id = id;
     }
 
-    public enum jobTitle {GENERAL_MANAGER, ASSISTANT_MANAGER, SERVER, CASHIER;}
-    public enum gender {MALE, FEMALE;}
+    public enum jobTitle {GENERAL_MANAGER, ASSISTANT_MANAGER, SERVER, CASHIER}
+    public enum gender {MALE, FEMALE}
 
 
     @Override

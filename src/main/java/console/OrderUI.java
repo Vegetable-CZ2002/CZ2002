@@ -1,10 +1,12 @@
 package console;
 
 import beans.*;
-import managers.*;
+import managers.MenuManager;
+import managers.OrderManager;
+import managers.StaffManager;
+import managers.TableManager;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ import java.util.Scanner;
  *  @author Ruan Donglin
  */
 public class OrderUI {
-    private static Scanner in = MainUI.in;
+    private static final Scanner in = MainUI.in;
     public static void mainUI() throws IOException{
         int num= 0;
         do{
@@ -105,9 +107,8 @@ public class OrderUI {
     /**
      * print all/ a specific order detail
      *
-     * @throws IOException
      */
-    public static void printOrder() throws IOException {
+    public static void printOrder() {
         System.out.println("Do you want to view all the orders in history? Please enter [Y/n]");
         in.nextLine();
         String value= in.nextLine();

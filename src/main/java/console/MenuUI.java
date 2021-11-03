@@ -19,7 +19,7 @@ import java.util.Scanner;
  */
 public class MenuUI {
     //private static Scanner in = new Scanner(System.in);
-    private static Scanner in = MainUI.in;
+    private static final Scanner in = MainUI.in;
     public static void printMenu() throws IOException {
         System.out.println("Here's all the menu items on the menu");
         MenuManager.printMenu();

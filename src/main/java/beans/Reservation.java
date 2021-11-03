@@ -1,8 +1,5 @@
 package beans;
 
-import managers.TableManager;
-
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Formatter;
@@ -35,7 +32,7 @@ public class Reservation{
     }
 
 
-    public Reservation(long id, LocalDate localDate, LocalTime localTime, int pax, String name, String contact, Table table) throws IOException {
+    public Reservation(long id, LocalDate localDate, LocalTime localTime, int pax, String name, String contact, Table table) {
         this.id= id;
         this.pax = pax;
         this.name = name;

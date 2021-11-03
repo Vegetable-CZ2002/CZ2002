@@ -19,7 +19,7 @@ import java.util.Scanner;
  */
 public class ReservationUI {
     //private static Scanner in= new Scanner(System.in);
-    private static Scanner in = MainUI.in;
+    private static final Scanner in = MainUI.in;
     public static void mainUI() throws IOException {
         int num;
         do{
@@ -88,7 +88,7 @@ public class ReservationUI {
         in.nextLine();
         String date = in.nextLine();
         LocalDate localDate= LocalDate.parse(date);
-        System.out.println(date.toString());
+        System.out.println(date);
         System.out.println("Please enter the reservation time in the format of HH:MM(eg. 18:00)");
         String time= in.nextLine();
         LocalTime localTime= LocalTime.parse(time+":00");
@@ -96,7 +96,7 @@ public class ReservationUI {
             System.out.println("Cannot make reservation on a time that has passed");
         }
         else{
-            System.out.println(time.toString());
+            System.out.println(time);
             System.out.println("Please enter the number of pax");
             int pax= in.nextInt();
             System.out.println("Please enter the name of the booker");
@@ -115,7 +115,7 @@ public class ReservationUI {
             boolean isBookingSuccess= false;
             if(localDate.isEqual(LocalDate.now())){
                 for(Table t: TableManager.readTable()){
-                    if(t.isOccupied()== false&& t.getNumOfSeats()>= pax){
+                    if(!t.isOccupied() && t.getNumOfSeats()>= pax){
                         System.out.println("Reservation booking success");
                         System.out.println("Table "+ t.getId()+ " is reserved");
                         System.out.println("Your reservation id is: "+ (max+1));

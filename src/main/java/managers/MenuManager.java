@@ -33,10 +33,10 @@ public class MenuManager{
         String jsonString = Files.readString(file);
         MenuItem[] foodArray = gson.fromJson(jsonString, MenuItem[].class);
         if(foodArray == null){
-            menuItemList = new ArrayList<MenuItem>();
+            menuItemList = new ArrayList<>();
         }
         else{
-            menuItemList = new ArrayList<MenuItem>(Arrays.asList(foodArray));
+            menuItemList = new ArrayList<>(Arrays.asList(foodArray));
         }
         return menuItemList;
     }
@@ -52,14 +52,12 @@ public class MenuManager{
             menuItemList.toArray(menuItems);
             Path file = Path.of("src/main/resources/data/menu.json");
             Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.WRITE);
-        } catch (JsonIOException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JsonIOException | IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void deleteMenuItem(long id) throws IOException{
+    public static void deleteMenuItem(long id) {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
@@ -75,9 +73,7 @@ public class MenuManager{
                     break;
                 }
             }
-        } catch (JsonIOException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JsonIOException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -99,9 +95,7 @@ public class MenuManager{
                     break;
                 }
             }
-        } catch (JsonIOException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JsonIOException | IOException e) {
             e.printStackTrace();
         }
     }

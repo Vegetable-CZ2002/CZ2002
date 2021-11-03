@@ -44,15 +44,15 @@ public class TableManager {
         String jsonString = Files.readString(file);
         Table[] tableArray = gson.fromJson(jsonString, Table[].class);
         if(tableArray == null){
-            tables= new ArrayList<Table>();
+            tables= new ArrayList<>();
         }
         else{
-            tables= new ArrayList<Table>(Arrays.asList(tableArray));
+            tables= new ArrayList<>(Arrays.asList(tableArray));
         }
         return tables;
     }
 
-    public static void addTable(Table t) throws IOException{
+    public static void addTable(Table t) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
         try {
@@ -61,9 +61,7 @@ public class TableManager {
             tables.toArray(tableArray);
             Path file = Path.of("src/main/resources/data/table.json");
             Files.writeString(file, gson.toJson(tableArray), StandardOpenOption.WRITE);
-        } catch (JsonIOException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JsonIOException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -76,7 +74,7 @@ public class TableManager {
      */
     public static Table occupyTableForOrder(int pax){
         for(Table t: tables){
-            if(t.isOccupied()== false && t.getNumOfSeats()>= pax){
+            if(!t.isOccupied() && t.getNumOfSeats()>= pax){
                 t.setOccupied(true);
                 return t;
             }

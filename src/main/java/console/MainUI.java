@@ -1,17 +1,11 @@
 package console;
 
-import managers.MenuManager;
 import managers.ReservationManager;
 import managers.TableManager;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 /**
  * User interface class for the all instructions
