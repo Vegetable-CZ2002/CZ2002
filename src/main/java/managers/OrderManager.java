@@ -55,17 +55,18 @@ public class OrderManager {
         for(Order order: orders){
             if(order.getId()== id){
                 if(isMember){
-                    order.setSum(order.getSum()* 0.9);
+                    order.setDiscount(order.getSum()*0.05);
                 }
                 orderInvoiced= true;
                 order.setInvoiced(true);
                 order.getTable().setOccupied(false);
-                order.setTax(order.getSum()* 0.07);
-                order.setSum(order.getSum()+ order.getTax());
+                order.setServiceFee(order.getSum()*0.1);
+                order.setTax((order.getSum()-order.getDiscount()+order.getServiceFee())* 0.07);
                 orders.remove(order);
                 addInvoice(order);
                 System.out.println("Order successfully invoiced");
                 order.printInvoice();
+                order.setSum(order.getSum()+ order.getServiceFee() - order.getDiscount());
                 break;
             }
         }

@@ -42,5 +42,27 @@
       "isOccupied": false,
       "id": 15
     }
+  },
+  {
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 29
+    },
+    "localTime": {
+      "hour": 18,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "pax": 9,
+    "name": "wwu",
+    "contact": "786545678",
+    "id": 2,
+    "table": {
+      "numOfSeats": 10,
+      "isOccupied": false,
+      "id": 19
+    }
   }
 ]

@@ -30,7 +30,7 @@ public class TableUI {
         String date = in.nextLine();
         LocalDate localDate= LocalDate.parse(date);
         System.out.println(date);
-        System.out.println("Please enter the time the date to check availability in the format of HH:MM(eg. 18:00)");
+        System.out.println("Please enter the time to check availability in the format of HH:MM(eg. 18:00)");
         String time= in.nextLine();
         LocalTime localTime= LocalTime.parse(time+":00");
         if(localDate.isBefore(LocalDate.now()) || (localDate.isEqual(LocalDate.now())&& localTime.isBefore(LocalTime.now()))){

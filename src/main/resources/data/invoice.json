@@ -48,7 +48,9 @@
     "invoiced": true,
     "id": 1,
     "sum": 21.4,
-    "tax": 1.4000000000000001
+    "tax": 1.4000000000000001,
+    "serviceFee": 0.0,
+    "discount": 0.0
   },
   {
     "pax": 5,
@@ -130,7 +132,9 @@
     "invoiced": true,
     "id": 1,
     "sum": 46.224000000000004,
-    "tax": 3.0240000000000005
+    "tax": 3.0240000000000005,
+    "serviceFee": 0.0,
+    "discount": 0.0
   },
   {
     "pax": 2,
@@ -171,7 +175,9 @@
     "invoiced": true,
     "id": 1,
     "sum": 9.63,
-    "tax": 0.6300000000000001
+    "tax": 0.6300000000000001,
+    "serviceFee": 0.0,
+    "discount": 0.0
   },
   {
     "pax": 4,
@@ -222,7 +228,9 @@
     "invoiced": true,
     "id": 1,
     "sum": 23.112000000000002,
-    "tax": 1.5120000000000002
+    "tax": 1.5120000000000002,
+    "serviceFee": 0.0,
+    "discount": 0.0
   },
   {
     "pax": 3,
@@ -273,7 +281,9 @@
     "invoiced": true,
     "id": 1,
     "sum": 23.112000000000002,
-    "tax": 1.5120000000000002
+    "tax": 1.5120000000000002,
+    "serviceFee": 0.0,
+    "discount": 0.0
   },
   {
     "pax": 4,
@@ -324,7 +334,9 @@
     "invoiced": true,
     "id": 1,
     "sum": 25.68,
-    "tax": 1.6800000000000002
+    "tax": 1.6800000000000002,
+    "serviceFee": 0.0,
+    "discount": 0.0
   },
   {
     "pax": 1,
@@ -365,7 +377,9 @@
     "invoiced": true,
     "id": 1,
     "sum": 14.98,
-    "tax": 0.9800000000000001
+    "tax": 0.9800000000000001,
+    "serviceFee": 0.0,
+    "discount": 0.0
   },
   {
     "pax": 10,
@@ -436,6 +450,1191 @@
     "invoiced": true,
     "id": 1,
     "sum": 55.854000000000006,
-    "tax": 3.6540000000000004
+    "tax": 3.6540000000000004,
+    "serviceFee": 0.0,
+    "discount": 0.0
+  },
+  {
+    "pax": 5,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 4,
+          "name": "ANGUS GRAIN FED STRIPLOIN",
+          "type": "MEAT",
+          "description": "150 days grain fed striploin with red wine sauce, served with sauteed vegetables and mashed potato.",
+          "price": 22.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 5,
+          "name": "GRILLED SALMON",
+          "type": "MEAT",
+          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+          "price": 24.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 4,
+          "name": "ANGUS GRAIN FED STRIPLOIN",
+          "type": "MEAT",
+          "description": "150 days grain fed striploin with red wine sauce, served with sauteed vegetables and mashed potato.",
+          "price": 22.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Albus Dumbledore",
+      "id": 1,
+      "job": "GENERAL_MANAGER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": false,
+      "id": 15
+    },
+    "localTime": {
+      "hour": 15,
+      "minute": 54,
+      "second": 17,
+      "nano": 429543000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 5
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 75.114,
+    "tax": 4.914000000000001,
+    "serviceFee": 0.0,
+    "discount": 0.0
+  },
+  {
+    "pax": 7,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 6,
+          "name": "Chicken",
+          "description": "Recommended",
+          "price": 20.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 8,
+          "name": "PEPPERONI PIZZA",
+          "type": "PIZZA",
+          "description": "Homemade thin crust pizza dough topped with tomato sauce, mozzarella cheese and pepperoni",
+          "price": 16.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 4,
+          "name": "ANGUS GRAIN FED STRIPLOIN",
+          "type": "MEAT",
+          "description": "150 days grain fed striploin with red wine sauce, served with sauteed vegetables and mashed potato.",
+          "price": 22.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 9,
+          "name": "MARGHERITA PIZZA",
+          "type": "PIZZA",
+          "description": "Homemade thin crust pizza dough topped with buffalo mozzarella, tomatoes and garnished with garden-fresh basil.",
+          "price": 12.0
+        }
+      },
+      {
+        "MenuItem": "beans.SetPackage",
+        "INSTANCE": {
+          "foodList": [
+            {
+              "id": 8,
+              "name": "PEPPERONI PIZZA",
+              "type": "PIZZA",
+              "description": "Homemade thin crust pizza dough topped with tomato sauce, mozzarella cheese and pepperoni",
+              "price": 16.0
+            },
+            {
+              "id": 18,
+              "name": "MANGO ICED TEA",
+              "type": "DRINK",
+              "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
+              "price": 4.0
+            }
+          ],
+          "id_": 23,
+          "name_": "PEPPERONI \u0026 MANGO TEA SET",
+          "type_": "PACKAGE",
+          "description_": "Specail deal for perppeoni pizza lovers.",
+          "price_": 18.0,
+          "id": 23,
+          "name": "PEPPERONI \u0026 MANGO TEA SET",
+          "type": "PACKAGE",
+          "description": "Specail deal for perppeoni pizza lovers.",
+          "price": 18.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Draco Malfoy",
+      "id": 7,
+      "job": "CASHIER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 10,
+      "isOccupied": false,
+      "id": 19
+    },
+    "localTime": {
+      "hour": 12,
+      "minute": 12,
+      "second": 45,
+      "nano": 68931000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 84.744,
+    "tax": 5.5440000000000005,
+    "serviceFee": 0.0,
+    "discount": 0.0
+  },
+  {
+    "pax": 5,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 5,
+          "name": "GRILLED SALMON",
+          "type": "MEAT",
+          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+          "price": 24.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 6,
+          "name": "Chicken",
+          "description": "Recommended",
+          "price": 20.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 1,
+          "name": "CHICKEN QUESADILLAS",
+          "type": "APPETIZER",
+          "description": "Tortillas filled with grilled cajun chicken, smoked bell peppers and melted monterey jack cheese. Served with guacamole and sour cream.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.SetPackage",
+        "INSTANCE": {
+          "foodList": [
+            {
+              "id": 8,
+              "name": "PEPPERONI PIZZA",
+              "type": "PIZZA",
+              "description": "Homemade thin crust pizza dough topped with tomato sauce, mozzarella cheese and pepperoni",
+              "price": 16.0
+            },
+            {
+              "id": 18,
+              "name": "MANGO ICED TEA",
+              "type": "DRINK",
+              "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
+              "price": 4.0
+            }
+          ],
+          "id_": 23,
+          "name_": "PEPPERONI \u0026 MANGO TEA SET",
+          "type_": "PACKAGE",
+          "description_": "Specail deal for perppeoni pizza lovers.",
+          "price_": 18.0,
+          "id": 23,
+          "name": "PEPPERONI \u0026 MANGO TEA SET",
+          "type": "PACKAGE",
+          "description": "Specail deal for perppeoni pizza lovers.",
+          "price": 18.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 13,
+          "name": "BEEF BOLOGNESE",
+          "type": "PASTA",
+          "description": "Minced beef, tomato sauce and shaved parmesan with linguine.",
+          "price": 12.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Harry Potter",
+      "id": 4,
+      "job": "SERVER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": false,
+      "id": 15
+    },
+    "localTime": {
+      "hour": 15,
+      "minute": 23,
+      "second": 9,
+      "nano": 787970000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 104.0,
+    "tax": 7.644000000000001,
+    "serviceFee": 10.4,
+    "discount": 5.2
+  },
+  {
+    "pax": 5,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.SetPackage",
+        "INSTANCE": {
+          "foodList": [
+            {
+              "id": 8,
+              "name": "PEPPERONI PIZZA",
+              "type": "PIZZA",
+              "description": "Homemade thin crust pizza dough topped with tomato sauce, mozzarella cheese and pepperoni",
+              "price": 16.0
+            },
+            {
+              "id": 18,
+              "name": "MANGO ICED TEA",
+              "type": "DRINK",
+              "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
+              "price": 4.0
+            }
+          ],
+          "id_": 23,
+          "name_": "PEPPERONI \u0026 MANGO TEA SET",
+          "type_": "PACKAGE",
+          "description_": "Specail deal for perppeoni pizza lovers.",
+          "price_": 18.0,
+          "id": 23,
+          "name": "PEPPERONI \u0026 MANGO TEA SET",
+          "type": "PACKAGE",
+          "description": "Specail deal for perppeoni pizza lovers.",
+          "price": 18.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 4,
+          "name": "ANGUS GRAIN FED STRIPLOIN",
+          "type": "MEAT",
+          "description": "150 days grain fed striploin with red wine sauce, served with sauteed vegetables and mashed potato.",
+          "price": 22.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 1,
+          "name": "CHICKEN QUESADILLAS",
+          "type": "APPETIZER",
+          "description": "Tortillas filled with grilled cajun chicken, smoked bell peppers and melted monterey jack cheese. Served with guacamole and sour cream.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.SetPackage",
+        "INSTANCE": {
+          "foodList": [
+            {
+              "id": 11,
+              "name": "PRAWN \u0026 ASPARAGUS",
+              "type": "PASTA",
+              "description": "Prawn, cherry tomato, garlic and asparagus with linguine.",
+              "price": 14.0
+            },
+            {
+              "id": 14,
+              "name": "MOLTEN LAVA LUXURIOUS TORTE",
+              "type": "DESSERT",
+              "description": "Our in-house popular dessert that combines the elements of a chocolate cake baked to perfection, served with summer berries compote \u0026 vanilla ice cream.",
+              "price": 6.0
+            }
+          ],
+          "id_": 24,
+          "name_": "PRAWN \u0026 TORTE SET",
+          "type_": "PACKAGE",
+          "description_": "Special deal for prawn pasta lovers.",
+          "price_": 17.0,
+          "id": 24,
+          "name": "PRAWN \u0026 TORTE SET",
+          "type": "PACKAGE",
+          "description": "Special deal for prawn pasta lovers.",
+          "price": 17.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 13,
+          "name": "BEEF BOLOGNESE",
+          "type": "PASTA",
+          "description": "Minced beef, tomato sauce and shaved parmesan with linguine.",
+          "price": 12.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 14,
+          "name": "MOLTEN LAVA LUXURIOUS TORTE",
+          "type": "DESSERT",
+          "description": "Our in-house popular dessert that combines the elements of a chocolate cake baked to perfection, served with summer berries compote \u0026 vanilla ice cream.",
+          "price": 6.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Severus Snape",
+      "id": 3,
+      "job": "ASSISTANT_MANAGER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": false,
+      "id": 15
+    },
+    "localTime": {
+      "hour": 15,
+      "minute": 27,
+      "second": 39,
+      "nano": 14573000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 95.0,
+    "tax": 6.982500000000001,
+    "serviceFee": 9.5,
+    "discount": 4.75
+  },
+  {
+    "pax": 6,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 12,
+          "name": "CRAB MEAT \u0026 ASPARAGUS PASTA",
+          "type": "PASTA",
+          "description": "Dungeness crab meat, spear asparagus, garlic, white wine and cherry tomato with linguine.",
+          "price": 20.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 13,
+          "name": "BEEF BOLOGNESE",
+          "type": "PASTA",
+          "description": "Minced beef, tomato sauce and shaved parmesan with linguine.",
+          "price": 12.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 15,
+          "name": "APPLE CRUMBLE",
+          "type": "DESSERT",
+          "description": "Chopped apples baked with crumb topping, served with vanilla ice cream.",
+          "price": 6.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 4,
+          "name": "ANGUS GRAIN FED STRIPLOIN",
+          "type": "MEAT",
+          "description": "150 days grain fed striploin with red wine sauce, served with sauteed vegetables and mashed potato.",
+          "price": 22.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Harry Potter",
+      "id": 4,
+      "job": "SERVER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": false,
+      "id": 15
+    },
+    "localTime": {
+      "hour": 15,
+      "minute": 31,
+      "second": 21,
+      "nano": 749271000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 90.0,
+    "tax": 6.615,
+    "serviceFee": 9.0,
+    "discount": 4.5
+  },
+  {
+    "pax": 4,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 12,
+          "name": "CRAB MEAT \u0026 ASPARAGUS PASTA",
+          "type": "PASTA",
+          "description": "Dungeness crab meat, spear asparagus, garlic, white wine and cherry tomato with linguine.",
+          "price": 20.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 13,
+          "name": "BEEF BOLOGNESE",
+          "type": "PASTA",
+          "description": "Minced beef, tomato sauce and shaved parmesan with linguine.",
+          "price": 12.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 15,
+          "name": "APPLE CRUMBLE",
+          "type": "DESSERT",
+          "description": "Chopped apples baked with crumb topping, served with vanilla ice cream.",
+          "price": 6.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 5,
+          "name": "GRILLED SALMON",
+          "type": "MEAT",
+          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+          "price": 24.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 7,
+          "name": "HAWAIIAN PIZZA",
+          "type": "PIZZA",
+          "description": "Homemade thin crust pizza dough, a perfect combination of sweet and savory flavours loaded on top of a crispy crust!",
+          "price": 12.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Harry Potter",
+      "id": 4,
+      "job": "SERVER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 4,
+      "isOccupied": false,
+      "id": 5
+    },
+    "localTime": {
+      "hour": 15,
+      "minute": 34,
+      "second": 52,
+      "nano": 482955000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 84.0,
+    "tax": 6.174,
+    "serviceFee": 8.4,
+    "discount": 4.2
+  },
+  {
+    "pax": 4,
+    "menuItems": [],
+    "staffAssigned": {
+      "name": "Minerva McGonagall",
+      "id": 2,
+      "job": "ASSISTANT_MANAGER",
+      "gender": "FEMALE"
+    },
+    "table": {
+      "numOfSeats": 4,
+      "isOccupied": false,
+      "id": 5
+    },
+    "localTime": {
+      "hour": 15,
+      "minute": 38,
+      "second": 33,
+      "nano": 61271000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 0.0,
+    "tax": 0.0,
+    "serviceFee": 0.0,
+    "discount": 0.0
+  },
+  {
+    "pax": 5,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 12,
+          "name": "CRAB MEAT \u0026 ASPARAGUS PASTA",
+          "type": "PASTA",
+          "description": "Dungeness crab meat, spear asparagus, garlic, white wine and cherry tomato with linguine.",
+          "price": 20.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.SetPackage",
+        "INSTANCE": {
+          "foodList": [
+            {
+              "id": 8,
+              "name": "PEPPERONI PIZZA",
+              "type": "PIZZA",
+              "description": "Homemade thin crust pizza dough topped with tomato sauce, mozzarella cheese and pepperoni",
+              "price": 16.0
+            },
+            {
+              "id": 18,
+              "name": "MANGO ICED TEA",
+              "type": "DRINK",
+              "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
+              "price": 4.0
+            }
+          ],
+          "id_": 23,
+          "name_": "PEPPERONI \u0026 MANGO TEA SET",
+          "type_": "PACKAGE",
+          "description_": "Specail deal for perppeoni pizza lovers.",
+          "price_": 18.0,
+          "id": 23,
+          "name": "PEPPERONI \u0026 MANGO TEA SET",
+          "type": "PACKAGE",
+          "description": "Specail deal for perppeoni pizza lovers.",
+          "price": 18.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 13,
+          "name": "BEEF BOLOGNESE",
+          "type": "PASTA",
+          "description": "Minced beef, tomato sauce and shaved parmesan with linguine.",
+          "price": 12.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 9,
+          "name": "MARGHERITA PIZZA",
+          "type": "PIZZA",
+          "description": "Homemade thin crust pizza dough topped with buffalo mozzarella, tomatoes and garnished with garden-fresh basil.",
+          "price": 12.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Harry Potter",
+      "id": 4,
+      "job": "SERVER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": false,
+      "id": 15
+    },
+    "localTime": {
+      "hour": 15,
+      "minute": 39,
+      "second": 53,
+      "nano": 503623000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 72.0,
+    "tax": 5.292000000000001,
+    "serviceFee": 7.2,
+    "discount": 3.6
+  },
+  {
+    "pax": 2,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 13,
+          "name": "BEEF BOLOGNESE",
+          "type": "PASTA",
+          "description": "Minced beef, tomato sauce and shaved parmesan with linguine.",
+          "price": 12.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 5,
+          "name": "GRILLED SALMON",
+          "type": "MEAT",
+          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+          "price": 24.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Albus Dumbledore",
+      "id": 1,
+      "job": "GENERAL_MANAGER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 2,
+      "isOccupied": false,
+      "id": 1
+    },
+    "localTime": {
+      "hour": 15,
+      "minute": 43,
+      "second": 23,
+      "nano": 856988000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 56.0,
+    "tax": 4.1160000000000005,
+    "serviceFee": 5.6000000000000005,
+    "discount": 2.8000000000000003
+  },
+  {
+    "pax": 3,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 2,
+          "name": "CHEESE NACHOS",
+          "type": "APPETIZER",
+          "description": "Guacamole, sour cream, salsa.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 1,
+          "name": "CHICKEN QUESADILLAS",
+          "type": "APPETIZER",
+          "description": "Tortillas filled with grilled cajun chicken, smoked bell peppers and melted monterey jack cheese. Served with guacamole and sour cream.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 15,
+          "name": "APPLE CRUMBLE",
+          "type": "DESSERT",
+          "description": "Chopped apples baked with crumb topping, served with vanilla ice cream.",
+          "price": 6.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 6,
+          "name": "Chicken",
+          "description": "Recommended",
+          "price": 20.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Albus Dumbledore",
+      "id": 1,
+      "job": "GENERAL_MANAGER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 4,
+      "isOccupied": false,
+      "id": 5
+    },
+    "localTime": {
+      "hour": 15,
+      "minute": 44,
+      "second": 24,
+      "nano": 47724000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 2,
+    "sum": 56.0,
+    "tax": 4.312,
+    "serviceFee": 5.6000000000000005,
+    "discount": 0.0
+  },
+  {
+    "pax": 3,
+    "menuItems": [
+      {
+        "MenuItem": "beans.SetPackage",
+        "INSTANCE": {
+          "foodList": [
+            {
+              "id": 5,
+              "name": "GRILLED SALMON",
+              "type": "MEAT",
+              "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+              "price": 24.0
+            },
+            {
+              "id": 17,
+              "name": "MEXICAN BROWNIE",
+              "type": "DESSERT",
+              "description": "Perfectly baked chocolatey and fudgy goodness served with vanilla ice cream and almonds.",
+              "price": 4.0
+            }
+          ],
+          "id_": 22,
+          "name_": "SALMON  \u0026 BROWNIE SET",
+          "type_": "PACKAGE",
+          "description_": "Sepecial deal for salmon lovers.",
+          "price_": 20.0,
+          "id": 22,
+          "name": "SALMON   BROWNIE SET",
+          "type": "PACKAGE",
+          "description": "Sepecial deal for salmon lovers.",
+          "price": 25.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 14,
+          "name": "MOLTEN LAVA LUXURIOUS TORTE",
+          "type": "DESSERT",
+          "description": "Our in-house popular dessert that combines the elements of a chocolate cake baked to perfection, served with summer berries compote \u0026 vanilla ice cream.",
+          "price": 6.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 19,
+          "name": "PASSION FRUIT LEMONADE",
+          "type": "DRINK",
+          "description": "Fresh lemon juice shaken with passion fruit puree, sugar syrup and water.",
+          "price": 4.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Draco Malfoy",
+      "id": 7,
+      "job": "CASHIER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 4,
+      "isOccupied": false,
+      "id": 6
+    },
+    "localTime": {
+      "hour": 15,
+      "minute": 44,
+      "second": 30,
+      "nano": 390286000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 3,
+    "sum": 45.0,
+    "tax": 3.4650000000000003,
+    "serviceFee": 4.5,
+    "discount": 0.0
+  },
+  {
+    "pax": 1,
+    "menuItems": [
+      {
+        "MenuItem": "beans.SetPackage",
+        "INSTANCE": {
+          "foodList": [
+            {
+              "id": 8,
+              "name": "PEPPERONI PIZZA",
+              "type": "PIZZA",
+              "description": "Homemade thin crust pizza dough topped with tomato sauce, mozzarella cheese and pepperoni",
+              "price": 16.0
+            },
+            {
+              "id": 18,
+              "name": "MANGO ICED TEA",
+              "type": "DRINK",
+              "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
+              "price": 4.0
+            }
+          ],
+          "id_": 23,
+          "name_": "PEPPERONI \u0026 MANGO TEA SET",
+          "type_": "PACKAGE",
+          "description_": "Specail deal for perppeoni pizza lovers.",
+          "price_": 18.0,
+          "id": 23,
+          "name": "PEPPERONI \u0026 MANGO TEA SET",
+          "type": "PACKAGE",
+          "description": "Specail deal for perppeoni pizza lovers.",
+          "price": 18.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Albus Dumbledore",
+      "id": 1,
+      "job": "GENERAL_MANAGER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 2,
+      "isOccupied": false,
+      "id": 1
+    },
+    "localTime": {
+      "hour": 15,
+      "minute": 52,
+      "second": 9,
+      "nano": 247436000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 18.0,
+    "tax": 1.3860000000000001,
+    "serviceFee": 1.8,
+    "discount": 0.0
+  },
+  {
+    "pax": 4,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 13,
+          "name": "BEEF BOLOGNESE",
+          "type": "PASTA",
+          "description": "Minced beef, tomato sauce and shaved parmesan with linguine.",
+          "price": 12.0
+        }
+      },
+      {
+        "MenuItem": "beans.SetPackage",
+        "INSTANCE": {
+          "foodList": [
+            {
+              "id": 11,
+              "name": "PRAWN \u0026 ASPARAGUS",
+              "type": "PASTA",
+              "description": "Prawn, cherry tomato, garlic and asparagus with linguine.",
+              "price": 14.0
+            },
+            {
+              "id": 14,
+              "name": "MOLTEN LAVA LUXURIOUS TORTE",
+              "type": "DESSERT",
+              "description": "Our in-house popular dessert that combines the elements of a chocolate cake baked to perfection, served with summer berries compote \u0026 vanilla ice cream.",
+              "price": 6.0
+            }
+          ],
+          "id_": 24,
+          "name_": "PRAWN \u0026 TORTE SET",
+          "type_": "PACKAGE",
+          "description_": "Special deal for prawn pasta lovers.",
+          "price_": 17.0,
+          "id": 24,
+          "name": "PRAWN \u0026 TORTE SET",
+          "type": "PACKAGE",
+          "description": "Special deal for prawn pasta lovers.",
+          "price": 17.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 9,
+          "name": "MARGHERITA PIZZA",
+          "type": "PIZZA",
+          "description": "Homemade thin crust pizza dough topped with buffalo mozzarella, tomatoes and garnished with garden-fresh basil.",
+          "price": 12.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Ron Weasley",
+      "id": 5,
+      "job": "SERVER",
+      "gender": "MALE"
+    },
+    "table": {
+      "numOfSeats": 4,
+      "isOccupied": false,
+      "id": 5
+    },
+    "localTime": {
+      "hour": 16,
+      "minute": 24,
+      "second": 43,
+      "nano": 776907000
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 8
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 51.0,
+    "tax": 3.748500000000001,
+    "serviceFee": 5.1000000000000005,
+    "discount": 2.5500000000000003
   }
 ]

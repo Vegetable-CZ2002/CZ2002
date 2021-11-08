@@ -28,6 +28,8 @@ public class Order{
     private long id;
     private double sum;
     private double tax;
+    private double serviceFee;
+    private double discount = 0;
     public MenuItem[] getMenuItems() {
         return menuItems;
     }
@@ -53,6 +55,10 @@ public class Order{
         this.localTime = localTime;
     }
 
+    public LocalDate getLocalDate(){
+        return localDate;
+    }
+
     public double getTax() {
         return tax;
     }
@@ -61,6 +67,21 @@ public class Order{
         this.tax = tax;
     }
 
+    public double getServiceFee(){
+        return serviceFee;
+    }
+
+    public void setServiceFee(double serviceFee){
+        this.serviceFee = serviceFee;
+    }
+
+    public double getDiscount(){
+        return discount;
+    }
+
+    public void setDiscount(double discount){
+        this.discount = discount;
+    }
     public Order(long id, Staff staffAssigned, Table table, LocalDate localDate, LocalTime localTime, int pax) {
         this.pax= pax;
         this.staffAssigned = staffAssigned;
@@ -216,25 +237,27 @@ public class Order{
 
     public void printHeaders(){
         System.out.printf("\n-----------------------------------------------");
-        System.out.printf("\n| ID  |\t\t\t\tDESC\t\t\t|\tAMT\t  |");
+        System.out.printf("\n| ID  |\t\t\t\tDESC\t\t\t|\tAMT\t|");
         System.out.printf("\n-----------------------------------------------");
     }
 
 
     public static void printRows(String id, String desc, double fee) {
-        System.out.printf("\n| %3s | %-28.28s| %.2f   |", id, desc, fee);
+        System.out.printf("\n| %3s | %-28.28s| %.2f\t|", id, desc, fee);
         System.out.printf("\n-----------------------------------------------");
     }
 
     public void printResult() {
-        System.out.printf("\n|\t\t\t   Sub Total\t\t\t     %.2f|",sum- tax);
+        System.out.printf("\n|\t   Sub Total\t\t\t\t\t%.2f\t|",sum);
         System.out.printf("\n-----------------------------------------------");
-        System.out.printf("\n|\t\t\t   Tax(5%%)\t\t\t\t\t  %.2f|", tax);
+        System.out.printf("\n|\t   Membership Discount(5%%)\t\t-%.2f\t|",discount);
+        System.out.printf("\n|\t   Service Fee(10%%)\t\t\t\t%.2f\t|",serviceFee);
+        System.out.printf("\n|\t   Tax(7%%)\t\t\t\t\t\t%.2f\t|", tax);
         System.out.printf("\n-----------------------------------------------");
-        System.out.printf("\n|\t\t\t   Total\t\t\t\t\t %.2f|", sum);
+        System.out.printf("\n|\t   Total\t\t\t\t\t\t%.2f\t|", sum - discount + serviceFee + tax);
         System.out.printf("\n-----------------------------------------------");
         System.out.printf("\n\t\t\t\tTHANK YOU!");
-        System.out.printf("\n_______________________________________________");
+        System.out.printf("\n\n-----------------------------------------------");
         System.out.println();
         System.out.println();
         System.out.println();

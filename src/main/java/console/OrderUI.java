@@ -292,11 +292,13 @@ public class OrderUI {
         double[] sale= new double[MenuManager.menuSize()];
         if(OrderManager.readInvoice().size()!= 0){
             for(Order order: OrderManager.readInvoice()){
-                MenuItem[] menuItems= order.getMenuItems();
-                for(int i= 0; i< menuItems.length; i++){
-                    sale[menuItems[i].getId()-1]+= 1;
+                if (order.getLocalDate().isEqual(LocalDate.now())) {
+                    MenuItem[] menuItems = order.getMenuItems();
+                    for (int i = 0; i < menuItems.length; i++) {
+                        sale[menuItems[i].getId() - 1] += 1;
+                    }
+                    sum += order.getSum();
                 }
-                sum+= order.getSum();
             }
         }
         System.out.println("The sale for this current period is "+ sum);
