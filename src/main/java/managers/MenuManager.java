@@ -45,37 +45,41 @@ public class MenuManager{
         return menuItemList;
     }
 
-
     public void addMenuItem(MenuItem m) throws IOException{
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         try {
-            menuItemList.add(m);
+            for(int i = 0; i < menuItemList.size(); i++){
+                menuItemList.remove(m.getId() - 1);
+                menuItemList.add(m.getId() - 1, m);
+            }
             MenuItem[] menuItems = new MenuItem[menuItemList.size()];
             menuItemList.toArray(menuItems);
             Path file = Path.of("src/main/resources/data/menu.json");
-            Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.WRITE);
+            Files.delete(file);
+            Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.CREATE_NEW);
         } catch (JsonIOException | IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void deleteMenuItem(long id) {
+
+    public void deleteMenuItem(int id) {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         try {
-            for(int i = 0; i < menuItemList.size(); i++){
-                if(menuItemList.get(i).getId() == id){
-                    menuItemList.remove(i);
-                    MenuItem[] menuItems = new MenuItem[menuItemList.size()];
-                    menuItemList.toArray(menuItems);
-                    Path file = Path.of("src/main/resources/data/menu.json");
-                    Files.delete(file);
-                    Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.CREATE_NEW);
-                    break;
+            if(id - 1 < menuItemList.size()){
+                menuItemList.remove(id - 1);
+                for(int i = id - 1; i < menuItemList.size(); i++){
+                    menuItemList.get(i).setId(i + 1);
                 }
+                MenuItem[] menuItems = new MenuItem[menuItemList.size()];
+                menuItemList.toArray(menuItems);
+                Path file = Path.of("src/main/resources/data/menu.json");
+                Files.delete(file);
+                Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.CREATE_NEW);
             }
         } catch (JsonIOException | IOException e) {
             e.printStackTrace();
@@ -87,18 +91,13 @@ public class MenuManager{
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         try {
-            for(int i = 0; i < menuItemList.size(); i++){
-                if(menuItemList.get(i).getId() == m.getId()){
-                    menuItemList.remove(i);
-                    menuItemList.add(m);
-                    MenuItem[] menuItems = new MenuItem[menuItemList.size()];
-                    menuItemList.toArray(menuItems);
-                    Path file = Path.of("src/main/resources/data/menu.json");
-                    Files.delete(file);
-                    Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.CREATE_NEW);
-                    break;
-                }
-            }
+                menuItemList.remove(m.getId() - 1);
+                menuItemList.add(m.getId() - 1, m);
+                MenuItem[] menuItems = new MenuItem[menuItemList.size()];
+                menuItemList.toArray(menuItems);
+                Path file = Path.of("src/main/resources/data/menu.json");
+                Files.delete(file);
+                Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.CREATE_NEW);
         } catch (JsonIOException | IOException e) {
             e.printStackTrace();
         }
