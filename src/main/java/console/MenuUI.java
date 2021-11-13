@@ -86,7 +86,7 @@ public class MenuUI {
         }
         MenuItem menuItem= new Food(i, name, type, description, price);
         try {
-            menuManager.addMenuItem(menuItem);
+            menuManager.updateMenuItem(menuItem);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -124,9 +124,10 @@ public class MenuUI {
             }
             i++;
         }
+
         MenuItem menuItem= new SetPackage(i, name, description, price, foodList);
         try {
-            menuManager.addMenuItem(menuItem);
+            menuManager.updateMenuItem(menuItem);
         } catch (IOException e) {
             e.printStackTrace();
         }
