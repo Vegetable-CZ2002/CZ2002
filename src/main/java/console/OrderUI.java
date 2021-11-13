@@ -165,7 +165,7 @@ public class OrderUI {
         System.out.println("Current time:" + localTime);
         System.out.println("Please seat at Table " + reservation.getTable().getId() + "\n");
         System.out.println("Please choose a job title for the staffs that serve you\n");
-        System.out.println("[1]GENERAL_MANAGER, [2]ASSISTANT_MANAGER, [3]SERVER, [4]CASHIER");
+        System.out.println("[1]GENERAL_MANAGER, [2]ASSISTANT_MANAGER, [3]SERVER");
         int id = in.nextInt();
         Staff staff = selectStaff(id);
         System.out.print("Staff " + staff.getName() + " is serving you\n\n");
@@ -201,7 +201,7 @@ public class OrderUI {
         } else {
             System.out.println("Please seat at Table " + table.getId() + "\n");
             System.out.println("Please choose a job title for the staffs that serve you\n");
-            System.out.println("[1]GENERAL_MANAGER, [2]ASSISTANT_MANAGER, [3]SERVER, [4]CASHIER");
+            System.out.println("[1]GENERAL_MANAGER, [2]ASSISTANT_MANAGER, [3]SERVER");
             int id = in.nextInt();
             Staff staff = selectStaff(id);
             System.out.print("Staff " + staff.getName() + " is serving you\n\n");
