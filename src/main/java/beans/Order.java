@@ -23,7 +23,7 @@ public class Order {
     private Staff staffAssigned;
     private Table table;
     private LocalTime localTime;
-    private final LocalDate localDate;
+    private LocalDate localDate;
     private boolean invoiced;
     private int id;
     private double sum;
@@ -74,6 +74,10 @@ public class Order {
         return localDate;
     }
 
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
     public double getTax() {
         return tax;
     }
@@ -97,7 +101,6 @@ public class Order {
     public void setDiscount(double discount) {
         this.discount = discount;
     }
-
 
     public Staff getStaffAssigned() {
         return this.staffAssigned;

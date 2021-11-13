@@ -44,7 +44,6 @@ public class OrderUI {
             System.out.println("[4] Add order item to order");
             System.out.println("[5] Delete order item from order");
             System.out.println("[6] Invoice order");
-            System.out.println("[7] Print sale revenue report by period");
             num = in.nextInt();
             switch (num) {
                 case 1:
@@ -64,9 +63,6 @@ public class OrderUI {
                     break;
                 case 3:
                     deleteOrder();
-                    break;
-                case 7:
-                    printSale();
                     break;
                 case 0:
                     break;
@@ -104,6 +100,10 @@ public class OrderUI {
      * @throws IOException
      */
     public void invoiceOrder() throws IOException {
+        LocalDate localDate = LocalDate.now();
+        System.out.println("Current date:" + localDate);
+        LocalTime localTime = LocalTime.now();
+        System.out.println("Current time:" + localTime.toString());
         boolean isMember;
         System.out.println("Please enter the id of the order that you want to invoice\n");
         int id = in.nextInt();
@@ -248,33 +248,6 @@ public class OrderUI {
         System.out.println("Please enter the id of the order that you want to delete\n");
         int id = in.nextInt();
         orderManager.removeOrder(id);
-    }
-
-    /**
-     * print the sale in this period with details of total sale and each item sale
-     *
-     * @throws IOException
-     */
-    public void printSale() throws IOException {
-        double sum = 0;
-        double[] sale = new double[menuManager.menuSize()];
-        if (orderManager.getInvoices().size() != 0) {
-            for (Order order : orderManager.getInvoices()) {
-                if (order.getLocalDate().isEqual(LocalDate.now())) {
-                    MenuItem[] menuItems = order.getMenuItems();
-                    for (MenuItem menuItem : menuItems) {
-                        sale[menuItem.getId() - 1] += 1;
-                    }
-                    sum += order.getSum();
-                }
-            }
-        }
-        System.out.println("The sale for this current period is " + sum);
-        for (MenuItem menuItem : menuManager.getMenuItemList()) {
-            if (sale[menuItem.getId() - 1] != 0) {
-                System.out.println("The individual sales item of id " + menuItem.getId() + " is " + (int) sale[menuItem.getId() - 1]);
-            }
-        }
     }
 
     /**

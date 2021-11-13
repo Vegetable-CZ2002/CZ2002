@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -69,6 +71,9 @@ public class OrderManager {
                 if (isMember) {
                     order.setDiscount(order.getSum() * 0.05);
                 }
+                order.setLocalTime(LocalTime.now());
+                order.setLocalDate(LocalDate.now());
+
                 orderInvoiced = true;
                 order.setInvoiced(true);
                 order.getTable().setOccupied(false);
