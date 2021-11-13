@@ -86,5 +86,27 @@
       "isOccupied": false,
       "id": 5
     }
+  },
+  {
+    "localDate": {
+      "year": 2022,
+      "month": 2,
+      "day": 15
+    },
+    "localTime": {
+      "hour": 13,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "pax": 10,
+    "name": "max",
+    "contact": "98765432",
+    "id": 6,
+    "table": {
+      "numOfSeats": 10,
+      "isOccupied": false,
+      "id": 19
+    }
   }
 ]

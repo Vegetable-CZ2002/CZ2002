@@ -8,13 +8,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class MainUITest2 {
 
     @BeforeEach
     void setUp() {
-        File text = new File("src/main/resources/file/b.txt");
+        File text = new File("src/main/resources/file/setPackage.txt");
         Scanner in = null;
         try {
             in = new Scanner(text);

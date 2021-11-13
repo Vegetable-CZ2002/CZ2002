@@ -86,5 +86,49 @@
       "isOccupied": false,
       "id": 5
     }
+  },
+  {
+    "localDate": {
+      "year": 2022,
+      "month": 2,
+      "day": 15
+    },
+    "localTime": {
+      "hour": 13,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "pax": 10,
+    "name": "max",
+    "contact": "98765432",
+    "id": 6,
+    "table": {
+      "numOfSeats": 10,
+      "isOccupied": false,
+      "id": 19
+    }
+  },
+  {
+    "localDate": {
+      "year": 2022,
+      "month": 1,
+      "day": 1
+    },
+    "localTime": {
+      "hour": 16,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "pax": 6,
+    "name": "rdl",
+    "contact": "3456",
+    "id": 7,
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": false,
+      "id": 15
+    }
   }
 ]

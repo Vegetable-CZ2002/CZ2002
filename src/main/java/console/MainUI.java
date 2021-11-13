@@ -1,11 +1,8 @@
 package console;
 
-import beans.Order;
-import beans.Table;
 import managers.ReservationManager;
 import managers.TableManager;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -17,7 +14,6 @@ import java.util.Scanner;
 public class MainUI {
     private static TableManager tableManager;
     private static ReservationManager reservationManager;
-    public static File text = new File("src/main/resources/testdata/a.txt");
     public static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {

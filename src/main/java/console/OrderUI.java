@@ -238,6 +238,7 @@ public class OrderUI {
         } else {
             System.out.println("Here's all the menu item in this order");
             order.printMenuItemInOrder();
+            menuManager.printMenu();
             System.out.println("Please enter the id of the menu item that you want to add, enter 0 to quit\n");
             List<MenuItem> menuItems = menuManager.getMenuItemList();
             int itemId;

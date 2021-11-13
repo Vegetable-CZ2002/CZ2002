@@ -32,7 +32,7 @@ public class TableUI {
      *
      * @throws IOException
      */
-    public void checkTableAvailability() {
+    public void checkTableAvailability() throws IOException {
         System.out.println("Please enter the date to check availability in the format of YYYY-MM-DD:(eg. 2021-11-12)");
         in.nextLine();
         String date = in.nextLine();
@@ -44,10 +44,10 @@ public class TableUI {
         if (localDate.isBefore(LocalDate.now()) || (localDate.isEqual(LocalDate.now()) && localTime.isBefore(LocalTime.now()))) {
             System.out.println("Cannot check availability on a time that has passed");
         } else {
-            List<Table> tableList = tableManager.getTables();
-            if (localTime.isBefore(LocalTime.of(12, 0, 0))) {
+            List<Table> tableList = tableManager.readTable();
+            if (localTime.isBefore(LocalTime.of(15, 0, 0))) {
                 for (Reservation r : reservationManager.getReservations()) {
-                    if (r.getLocalDate().isEqual(localDate) && r.getLocalTime().isBefore(LocalTime.of(12, 0, 0))) {
+                    if (r.getLocalDate().isEqual(localDate) && r.getLocalTime().isBefore(LocalTime.of(15, 0, 0))) {
                         tableList.remove(r.getTable());
                     }
                 }

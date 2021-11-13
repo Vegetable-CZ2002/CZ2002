@@ -126,7 +126,6 @@ public class Order {
     public void addItem(int id) throws IOException {
         boolean addSuccessful = false;
         List<MenuItem> menuItemList = menuManager.getMenuItemList();
-        menuManager.printMenu();
         for (MenuItem m : menuItemList) {
             if (m.getId() == id) {
                 menuItems = Arrays.copyOf(menuItems, menuItems.length + 1);
