@@ -48,7 +48,11 @@ public class TableUI {
             if (localTime.isBefore(LocalTime.of(15, 0, 0))) {
                 for (Reservation r : reservationManager.getReservations()) {
                     if (r.getLocalDate().isEqual(localDate) && r.getLocalTime().isBefore(LocalTime.of(15, 0, 0))) {
-                        tableList.remove(r.getTable());
+                        for (Table table : tableList) {
+                            if (r.getTable().getId() == table.getId()) {
+                                tableList.remove(table);
+                            }
+                        }
                     }
                 }
                 if (tableList.size() == 0) {
@@ -59,10 +63,15 @@ public class TableUI {
                     }
                 }
             } else {
-                List<Table> tableList2 = tableManager.getTables();
+                List<Table> tableList2 = tableManager.readTable();
                 for (Reservation r : reservationManager.getReservations()) {
                     if (r.getLocalDate().isEqual(localDate)) {
-                        tableList2.remove(r.getTable());
+                        for (Table table : tableList2) {
+                            if (r.getTable().getId() == table.getId()) {
+                                tableList2.remove(table);
+                                break;
+                            }
+                        }
                     }
                 }
                 if (tableList2.size() == 0) {
