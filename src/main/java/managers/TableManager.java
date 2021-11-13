@@ -19,23 +19,23 @@ import java.util.List;
 /**
  * The manager class that controls the Table class
  *
- *  @author Ruan Donglin
+ * @author Ruan Donglin
  */
 public class TableManager {
-    public static List<Table> tables;
+    private ReservationManager reservationManager;
+    private static List<Table> tables;
 
-    static {
-        try {
-            tables = readTable();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public TableManager() throws IOException{
+        this.reservationManager = new ReservationManager();
+        this.tables = readTable();
     }
+
 
     /**
      * Read all tables from the json file
      *
      * @return all the tables in the restaurant that is in the format of list of Table object
+     *
      * @throws IOException
      */
     public static List<Table> readTable() throws IOException {
@@ -43,11 +43,10 @@ public class TableManager {
         Path file = Path.of("src/main/resources/data/table.json");
         String jsonString = Files.readString(file);
         Table[] tableArray = gson.fromJson(jsonString, Table[].class);
-        if(tableArray == null){
-            tables= new ArrayList<>();
-        }
-        else{
-            tables= new ArrayList<>(Arrays.asList(tableArray));
+        if (tableArray == null) {
+            tables = new ArrayList<>();
+        } else {
+            tables = new ArrayList<>(Arrays.asList(tableArray));
         }
         return tables;
     }
@@ -72,9 +71,9 @@ public class TableManager {
      * @param pax the number of pax for the order
      * @throws IOException
      */
-    public static Table occupyTableForOrder(int pax){
-        for(Table t: tables){
-            if(!t.isOccupied() && t.getNumOfSeats()>= pax){
+    public static Table occupyTableForOrder(int pax) {
+        for (Table t : tables) {
+            if (!t.isOccupied() && t.getNumOfSeats() >= pax) {
                 t.setOccupied(true);
                 return t;
             }
@@ -89,18 +88,17 @@ public class TableManager {
      *
      * @throws IOException
      */
-    public static void setTableReserved() throws IOException {
-        List<Reservation> reservations= ReservationManager.readReservation();
-        if(LocalTime.now().isBefore(LocalTime.of(12,00,00))){
-            for(Reservation r: reservations){
-                if(r.getLocalDate().isEqual(LocalDate.now()) && r.getLocalTime().isBefore(LocalTime.of(12,00,00))){
+    public void setTableReserved() throws IOException {
+        List<Reservation> reservations = reservationManager.readReservation();
+        if (LocalTime.now().isBefore(LocalTime.of(12, 00, 00))) {
+            for (Reservation r : reservations) {
+                if (r.getLocalDate().isEqual(LocalDate.now()) && r.getLocalTime().isBefore(LocalTime.of(12, 00, 00))) {
                     r.getTable().setOccupied(true);
                 }
             }
-        }
-        else{
-            for(Reservation r: reservations){
-                if(r.getLocalDate().isEqual(LocalDate.now())){
+        } else {
+            for (Reservation r : reservations) {
+                if (r.getLocalDate().isEqual(LocalDate.now())) {
                     r.getTable().setOccupied(true);
                 }
             }

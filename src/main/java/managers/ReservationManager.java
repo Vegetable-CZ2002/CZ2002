@@ -1,6 +1,7 @@
 package managers;
 
 import adapters.MenuItemAdapter;
+import beans.Order;
 import beans.Reservation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,7 +26,11 @@ import java.util.List;
  *  @author Ruan Donglin
  */
 public class ReservationManager {
-    public static List<Reservation> reservations;
+    private static List<Reservation> reservations;
+
+    public ReservationManager() throws IOException {
+        reservations= readReservation();
+    }
 
     /**
      * Read all existing reservations from the json file.
@@ -33,7 +38,7 @@ public class ReservationManager {
      * @return the list of existing reservations in a list of Reservation object
      * @throws IOException
      */
-    public static List<Reservation> readReservation() throws IOException{
+    public List<Reservation> readReservation() throws IOException{
         Gson gson = new Gson();
         Path file = Path.of("src/main/resources/data/reservation.json");
         String jsonString = Files.readString(file);
@@ -53,7 +58,7 @@ public class ReservationManager {
      * @param reservation the reservation that needs to be added
      * @throws IOException
      */
-    public static void addReservation(Reservation reservation) throws IOException {
+    public void addReservation(Reservation reservation) throws IOException {
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
@@ -76,7 +81,7 @@ public class ReservationManager {
      * @param id the id of the reservation that needs to be deleted
      * @throws IOException
      */
-    public static void removeReservation(int id) throws IOException {
+    public void removeReservation(int id) throws IOException {
         boolean removeReservation= false;
         for(Reservation reservation: readReservation()){
             {
@@ -95,8 +100,8 @@ public class ReservationManager {
     }
 
 
-    public static void deleteReservation(Reservation reservation) throws IOException {
-        reservations= ReservationManager.readReservation();
+    public void deleteReservation(Reservation reservation) throws IOException {
+        reservations= readReservation();
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
         reservations.remove(reservation);
@@ -114,7 +119,7 @@ public class ReservationManager {
      * @param id the id of the reservation that the customer wants to check in
      * @throws IOException
      */
-    public static void reservationCheckIn(int id) throws IOException {
+    public void reservationCheckIn(int id) throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(Reservation.class, new MenuItemAdapter());
         boolean removeReservation= false;
@@ -148,7 +153,7 @@ public class ReservationManager {
      *
      * @throws IOException
      */
-    public static void clearExpiredReservations() throws IOException {
+    public void clearExpiredReservations() throws IOException {
         Iterator<Reservation> reservationIterator= readReservation().iterator();
         while(reservationIterator.hasNext()){
             Reservation r= reservationIterator.next();

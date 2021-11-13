@@ -22,7 +22,7 @@ public class MenuUI {
 
     private MenuManager menuManager;
 
-    public MenuUI() {
+    public MenuUI() throws IOException {
         this.menuManager = new MenuManager();
     }
     //private static Scanner in = new Scanner(System.in);

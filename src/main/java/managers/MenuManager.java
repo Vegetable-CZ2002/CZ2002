@@ -25,6 +25,10 @@ public class MenuManager{
 
     public static List<MenuItem> menuItemList;
 
+    public MenuManager() throws IOException {
+        menuItemList= readMenuItem();
+    }
+
     public List<MenuItem> readMenuItem() throws IOException{
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());

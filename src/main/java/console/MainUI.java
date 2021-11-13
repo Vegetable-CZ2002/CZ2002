@@ -14,17 +14,14 @@ import java.util.Scanner;
  *  @author Ruan Donglin
  */
 public class MainUI {
+    private static TableManager tableManager;
+    private static ReservationManager reservationManager;
     public static File text = new File("src/main/resources/testdata/a.txt");
     public static Scanner in = new Scanner(System.in);
-//    static {
-//        try {
-//            in = new Scanner(text);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     public static void main(String[] args) throws IOException {
+        reservationManager = new ReservationManager();
+        tableManager = new TableManager();
         int num;
         do{
             System.out.println("Welcome to the restaurant! What action do you wish to do now? ");
@@ -39,8 +36,8 @@ public class MainUI {
             System.out.println("[8] Check table availability");
             System.out.println("[9] Print order invoice");
             System.out.println("[10] Print sale revenue report by period");
-            TableManager.setTableReserved();
-            ReservationManager.clearExpiredReservations();
+            tableManager.setTableReserved();
+            reservationManager.clearExpiredReservations();
             num= in.nextInt();
             switch (num){
                 case 1 :

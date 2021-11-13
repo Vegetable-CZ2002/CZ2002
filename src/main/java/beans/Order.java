@@ -84,7 +84,7 @@ public class Order{
     public void setDiscount(double discount){
         this.discount = discount;
     }
-    public Order(long id, Staff staffAssigned, Table table, LocalDate localDate, LocalTime localTime, int pax) {
+    public Order(long id, Staff staffAssigned, Table table, LocalDate localDate, LocalTime localTime, int pax) throws IOException {
         this.pax= pax;
         this.staffAssigned = staffAssigned;
         this.localTime= localTime;

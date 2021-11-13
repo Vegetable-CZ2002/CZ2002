@@ -22,7 +22,7 @@ public class OrderUI {
     private OrderManager orderManager;
     private MenuManager menuManager;
 
-    public OrderUI() {
+    public OrderUI() throws IOException {
         this.orderManager = new OrderManager();
         this.menuManager = new MenuManager();
     }
@@ -85,7 +85,7 @@ public class OrderUI {
         else if(value.equals("n")){
             System.out.println("Please enter the id of the order that you want to view\n");
             int id= in.nextInt();
-            for(Order order: OrderManager.orders){
+            for(Order order: orderManager.getOrders()){
                 if(order.getId()== id){
                     System.out.println(order);
                 }
@@ -124,7 +124,7 @@ public class OrderUI {
         System.out.println("Please enter the id of the order that you want to modify\n");
         int id= in.nextInt();
         Order order= null;
-        for(Order o: OrderManager.orders){
+        for(Order o: orderManager.getOrders()){
             if(o.getId()== id){
                 order= o;
             }
@@ -163,8 +163,8 @@ public class OrderUI {
         System.out.printf("Staff "+ staff.getName()+ " is serving you\n\n");
         System.out.println("Add order success\n");
         long max= 0;
-        if(OrderManager.orders.size()!= 0){
-            for(Order order: OrderManager.orders){
+        if(orderManager.getOrders().size()!= 0){
+            for(Order order: orderManager.getOrders()){
                 if(order.getId()> max){
                     max= order.getId();
                 }
@@ -199,8 +199,8 @@ public class OrderUI {
             Staff staff= selectStaff(id);
             System.out.printf("Staff "+ staff.getName()+ " is serving you\n\n");
             long max= 0;
-            if(OrderManager.orders.size()!= 0){
-                for(Order order: OrderManager.orders){
+            if(orderManager.getOrders().size()!= 0){
+                for(Order order: orderManager.getOrders()){
                     if(order.getId()> max){
                         max= order.getId();
                     }
@@ -221,7 +221,7 @@ public class OrderUI {
         System.out.println("Please enter the id of the order that you want to modify\n");
         int id= in.nextInt();
         Order order= null;
-        for(Order o: OrderManager.orders){
+        for(Order o: orderManager.getOrders()){
             if(o.getId()== id){
                 order= o;
             }

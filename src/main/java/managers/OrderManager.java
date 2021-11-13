@@ -21,9 +21,30 @@ import java.util.List;
  *  @author Ruan Donglin
  */
 public class OrderManager {
-    public static List<Order> invoices;
-    public static List<Order> orders= new ArrayList<>();
-    
+    private static List<Order> invoices;
+    private static List<Order> orders;
+
+    public OrderManager() throws IOException {
+        invoices= readInvoice();
+        orders= new ArrayList<>();
+    }
+
+    public static List<Order> getInvoices() {
+        return invoices;
+    }
+
+    public static void setInvoices(List<Order> invoices) {
+        OrderManager.invoices = invoices;
+    }
+
+    public static List<Order> getOrders() {
+        return orders;
+    }
+
+    public static void setOrders(List<Order> orders) {
+        OrderManager.orders = orders;
+    }
+
     public void addOrder(Order order){
         orders.add(order);
     }

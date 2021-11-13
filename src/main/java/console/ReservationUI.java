@@ -21,7 +21,7 @@ import java.util.Scanner;
 public class ReservationUI {
     private ReservationManager reservationManager;
 
-    public ReservationUI() {
+    public ReservationUI() throws IOException {
         this.reservationManager = new ReservationManager();
     }
 
@@ -62,7 +62,7 @@ public class ReservationUI {
      * @throws IOException
      */
     public void createReservation() throws IOException {
-        ReservationManager.clearExpiredReservations();
+        reservationManager.clearExpiredReservations();
         System.out.println("Please enter the following details for reservation ");
         System.out.println("Please enter the reservation date in the format of YYYY-MM-DD:(eg. 2021-11-12)");
         in.nextLine();
@@ -85,8 +85,8 @@ public class ReservationUI {
             System.out.println("Please enter the contact of the booker");
             String contact= in.nextLine();
             int max= 0;
-            if(ReservationManager.readReservation()!= null){
-                for(Reservation reservation: ReservationManager.readReservation()){
+            if(reservationManager.readReservation()!= null){
+                for(Reservation reservation: reservationManager.readReservation()){
                     if(reservation.getId()> max){
                         max= (int) reservation.getId();
                     }
@@ -102,15 +102,15 @@ public class ReservationUI {
                         t.setOccupied(true);
                         isBookingSuccess= true;
                         Reservation reservation= new Reservation(max+1, localDate, localTime, pax, name, contact, t);
-                        ReservationManager.addReservation(reservation);
+                        reservationManager.addReservation(reservation);
                         reservation.setTable(t);
-                        ReservationManager.readReservation().add(reservation);
+                        reservationManager.readReservation().add(reservation);
                         break;
                     }
                 }
             }
             else{
-                List<Reservation> reservations=  ReservationManager.readReservation();
+                List<Reservation> reservations=  reservationManager.readReservation();
                 List<Table> tables= TableManager.readTable();
                 for(Reservation r: reservations){
                     if(r.getLocalDate().isEqual(localDate)){
@@ -124,9 +124,9 @@ public class ReservationUI {
                         System.out.println("Your reservation id is: "+ (max+1));
                         isBookingSuccess= true;
                         Reservation reservation= new Reservation(max+1, localDate,localTime,  pax, name, contact, t);
-                        ReservationManager.addReservation(reservation);
+                        reservationManager.addReservation(reservation);
                         reservation.setTable(t);
-                        ReservationManager.readReservation().add(reservation);
+                        reservationManager.readReservation().add(reservation);
                         break;
                     }
                 }
@@ -143,17 +143,17 @@ public class ReservationUI {
      * @throws IOException
      */
     public void checkReservation() throws IOException {
-        ReservationManager.clearExpiredReservations();
+        reservationManager.clearExpiredReservations();
         System.out.println("Please enter the reservation id you received when booking");
         int id= in.nextInt();
-        ReservationManager.reservationCheckIn(id);
+        reservationManager.reservationCheckIn(id);
     }
 
     public void removeReservation() throws IOException {
-        ReservationManager.clearExpiredReservations();
+        reservationManager.clearExpiredReservations();
         System.out.println("Please enter the reservation id you received when booking");
         int id= in.nextInt();
-        ReservationManager.removeReservation(id);
+        reservationManager.removeReservation(id);
     }
 
     /**
@@ -162,8 +162,8 @@ public class ReservationUI {
      * @throws IOException
      */
     public void viewReservation() throws IOException {
-        ReservationManager.clearExpiredReservations();
-        if(ReservationManager.readReservation().size()== 0){
+        reservationManager.clearExpiredReservations();
+        if(reservationManager.readReservation().size()== 0){
             System.out.println("No reservation yet");
         }
         else{
@@ -171,7 +171,7 @@ public class ReservationUI {
             Formatter fmt = new Formatter();
             fmt.format("%2s  %10s  %5s  %8s  %3s %12s %15s", "id", "Date", "Time", "tableId", "pax", "name", "contact");
             System.out.println(fmt);
-            for(Reservation reservation: ReservationManager.readReservation()){
+            for(Reservation reservation: reservationManager.readReservation()){
                 System.out.println(reservation.formatter());
             }
         }

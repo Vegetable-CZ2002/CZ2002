@@ -18,7 +18,12 @@ import java.util.Scanner;
  */
 public class TableUI {
 
+    private ReservationManager reservationManager;
     private static final Scanner in = MainUI.in;
+
+    public TableUI() throws IOException {
+        this.reservationManager = new ReservationManager();
+    }
 
     /**
      * Check the defined date and time's table availability
@@ -40,7 +45,7 @@ public class TableUI {
         else {
             List<Table> tableList= TableManager.readTable();
             if(localTime.isBefore(LocalTime.of(12,00,00))){
-                for(Reservation r: ReservationManager.readReservation()){
+                for(Reservation r: reservationManager.readReservation()){
                     if(r.getLocalDate().isEqual(localDate) && r.getLocalTime().isBefore(LocalTime.of(12,00,00))){
                         tableList.remove(r.getTable());
                     }
@@ -56,7 +61,7 @@ public class TableUI {
             }
             else{
                 List<Table> tableList2= TableManager.readTable();
-                for(Reservation r: ReservationManager.readReservation()){
+                for(Reservation r: reservationManager.readReservation()){
                     if(r.getLocalDate().isEqual(localDate)){
                         tableList2.remove(r.getTable());
                     }

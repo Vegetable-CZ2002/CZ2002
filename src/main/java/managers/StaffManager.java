@@ -19,8 +19,11 @@ import java.util.List;
  *  @author Ruan Donglin
  */
 public class StaffManager {
-
     public static List<Staff> staffs;
+
+    public StaffManager() throws IOException {
+        staffs= readStaff();
+    }
 
     /**
      * Read all staff from the json file
