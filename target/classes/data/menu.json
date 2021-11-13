@@ -173,16 +173,6 @@
     "MenuItem": "beans.Food",
     "INSTANCE": {
       "id": 18,
-      "name": "MANGO ICED TEA",
-      "type": "DRINK",
-      "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
-      "price": 4.0
-    }
-  },
-  {
-    "MenuItem": "beans.Food",
-    "INSTANCE": {
-      "id": 19,
       "name": "PASSION FRUIT LEMONADE",
       "type": "DRINK",
       "description": "Fresh lemon juice shaken with passion fruit puree, sugar syrup and water.",
@@ -192,7 +182,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 20,
+      "id": 19,
       "name": "STRAWBERRY SMOOTHIE",
       "type": "DRINK",
       "description": "Strawberry puree with milk and simple syrup.",
@@ -202,11 +192,21 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 21,
+      "id": 20,
       "name": "HAZELNUT FRAPPE",
       "type": "DRINK",
       "description": "Hazelnut syrup, milk and coffee blended with ice cubes, served frozen.",
       "price": 6.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 21,
+      "name": "butterbeer",
+      "type": "DRINK",
+      "description": "a little bit like less-sickly butterscotch",
+      "price": 4.0
     }
   },
   {
@@ -285,6 +285,72 @@
       "type": "PACKAGE",
       "description": "Special deal for prawn pasta lovers.",
       "price": 17.0
+    }
+  },
+  {
+    "MenuItem": "beans.SetPackage",
+    "INSTANCE": {
+      "foodList": [
+        {
+          "id": 5,
+          "name": "GRILLED SALMON",
+          "type": "MEAT",
+          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+          "price": 24.0
+        },
+        {
+          "id": 18,
+          "name": "PASSION FRUIT LEMONADE",
+          "type": "DRINK",
+          "description": "Fresh lemon juice shaken with passion fruit puree, sugar syrup and water.",
+          "price": 4.0
+        },
+        {
+          "id": 15,
+          "name": "APPLE CRUMBLE",
+          "type": "DESSERT",
+          "description": "Chopped apples baked with crumb topping, served with vanilla ice cream.",
+          "price": 6.0
+        }
+      ],
+      "id": 25,
+      "name": "standard wizard meal",
+      "type": "PACKAGE",
+      "description": "feast",
+      "price": 22.0
+    }
+  },
+  {
+    "MenuItem": "beans.SetPackage",
+    "INSTANCE": {
+      "foodList": [
+        {
+          "id": 4,
+          "name": "ANGUS GRAIN FED STRIPLOIN",
+          "type": "MEAT",
+          "description": "150 days grain fed striploin with red wine sauce, served with sauteed vegetables and mashed potato.",
+          "price": 22.0
+        },
+        {
+          "id": 18,
+          "name": "PASSION FRUIT LEMONADE",
+          "type": "DRINK",
+          "description": "Fresh lemon juice shaken with passion fruit puree, sugar syrup and water.",
+          "price": 4.0
+        },
+        {
+          "id": 15,
+          "name": "APPLE CRUMBLE",
+          "type": "DESSERT",
+          "description": "Chopped apples baked with crumb topping, served with vanilla ice cream.",
+          "price": 6.0
+        }
+      ],
+      "id": 26,
+      "name": "wizard meal",
+      "type": "PACKAGE",
+      "description": "claissical wizard feast",
+      "price": 28.0
     }
   }
 ]

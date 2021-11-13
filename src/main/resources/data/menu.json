@@ -173,16 +173,6 @@
     "MenuItem": "beans.Food",
     "INSTANCE": {
       "id": 18,
-      "name": "MANGO ICED TEA",
-      "type": "DRINK",
-      "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
-      "price": 4.0
-    }
-  },
-  {
-    "MenuItem": "beans.Food",
-    "INSTANCE": {
-      "id": 19,
       "name": "PASSION FRUIT LEMONADE",
       "type": "DRINK",
       "description": "Fresh lemon juice shaken with passion fruit puree, sugar syrup and water.",
@@ -192,7 +182,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 20,
+      "id": 19,
       "name": "STRAWBERRY SMOOTHIE",
       "type": "DRINK",
       "description": "Strawberry puree with milk and simple syrup.",
@@ -202,11 +192,21 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 21,
+      "id": 20,
       "name": "HAZELNUT FRAPPE",
       "type": "DRINK",
       "description": "Hazelnut syrup, milk and coffee blended with ice cubes, served frozen.",
       "price": 6.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 21,
+      "name": "butterbeer",
+      "type": "DRINK",
+      "description": "a little bit like less-sickly butterscotch",
+      "price": 4.0
     }
   },
   {
