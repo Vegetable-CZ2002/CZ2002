@@ -50,9 +50,18 @@ public class MenuManager{
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         try {
-            for(int i = 0; i < menuItemList.size(); i++){
-                menuItemList.remove(m.getId() - 1);
-                menuItemList.add(m.getId() - 1, m);
+            int i = 0;
+            for(; i < menuItemList.size(); i++){
+                if(m.getType().ordinal() < menuItemList.get(i).getType().ordinal()){
+                    menuItemList.add(i, m);
+                    break;
+                }
+            }
+            if(i == menuItemList.size()){
+                menuItemList.add(m);
+            }
+            for(; i < menuItemList.size(); i++){
+                menuItemList.get(i).setId(i + 1);
             }
             MenuItem[] menuItems = new MenuItem[menuItemList.size()];
             menuItemList.toArray(menuItems);
@@ -87,28 +96,15 @@ public class MenuManager{
     }
 
     public void updateMenuItem(MenuItem m) throws IOException{
-        GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
-        Gson gson = builder.setPrettyPrinting().create();
-        try {
-                menuItemList.remove(m.getId() - 1);
-                menuItemList.add(m.getId() - 1, m);
-                MenuItem[] menuItems = new MenuItem[menuItemList.size()];
-                menuItemList.toArray(menuItems);
-                Path file = Path.of("src/main/resources/data/menu.json");
-                Files.delete(file);
-                Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.CREATE_NEW);
-        } catch (JsonIOException | IOException e) {
-            e.printStackTrace();
-        }
+        deleteMenuItem(m.getId());
+        addMenuItem(m);
     }
 
     public void printMenu() throws IOException {
-        List<MenuItem> menuItems = readMenuItem();
         Formatter fmt = new Formatter();
         fmt.format("%2s %28s %8s %10s   %15s", "id", "name", "price", "type", "description");
         System.out.println(fmt);
-        for(MenuItem item: menuItems){
+        for(MenuItem item: menuItemList){
             System.out.println(item.formatter());
         }
     }

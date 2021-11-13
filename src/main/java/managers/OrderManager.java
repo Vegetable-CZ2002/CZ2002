@@ -29,20 +29,8 @@ public class OrderManager {
         orders= new ArrayList<>();
     }
 
-    public static List<Order> getInvoices() {
-        return invoices;
-    }
-
-    public static void setInvoices(List<Order> invoices) {
-        OrderManager.invoices = invoices;
-    }
-
     public static List<Order> getOrders() {
         return orders;
-    }
-
-    public static void setOrders(List<Order> orders) {
-        OrderManager.orders = orders;
     }
 
     public void addOrder(Order order){
@@ -137,7 +125,6 @@ public class OrderManager {
      * @throws IOException
      */
     public void addInvoice(Order i) throws IOException{
-        invoices= readInvoice();
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();

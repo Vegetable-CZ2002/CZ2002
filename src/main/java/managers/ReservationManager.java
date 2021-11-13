@@ -62,7 +62,6 @@ public class ReservationManager {
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
-        reservations= readReservation();
         try {
             reservations.add(reservation);
             Reservation[] reservationArray = new Reservation[reservations.size()];
@@ -83,7 +82,7 @@ public class ReservationManager {
      */
     public void removeReservation(int id) throws IOException {
         boolean removeReservation= false;
-        for(Reservation reservation: readReservation()){
+        for(Reservation reservation: reservations){
             {
                 if(reservation.getId()== id){
                     removeReservation= true;
@@ -101,7 +100,6 @@ public class ReservationManager {
 
 
     public void deleteReservation(Reservation reservation) throws IOException {
-        reservations= readReservation();
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
         reservations.remove(reservation);
@@ -123,7 +121,7 @@ public class ReservationManager {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(Reservation.class, new MenuItemAdapter());
         boolean removeReservation= false;
-        for(Reservation reservation: readReservation()){
+        for(Reservation reservation: reservations){
             {
                 if(reservation.getId()== id){
                     if(reservation.getLocalDate().isAfter(LocalDate.now())){
@@ -154,7 +152,7 @@ public class ReservationManager {
      * @throws IOException
      */
     public void clearExpiredReservations() throws IOException {
-        Iterator<Reservation> reservationIterator= readReservation().iterator();
+        Iterator<Reservation> reservationIterator= reservations.iterator();
         while(reservationIterator.hasNext()){
             Reservation r= reservationIterator.next();
             {
