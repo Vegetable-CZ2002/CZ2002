@@ -24,11 +24,11 @@ public class OrderManager {
     public static List<Order> invoices;
     public static List<Order> orders= new ArrayList<>();
     
-    public static void addOrder(Order order){
+    public void addOrder(Order order){
         orders.add(order);
     }
 
-    public static void removeOrder(int id){
+    public void removeOrder(int id){
         boolean removeSuccessful= false;
         for(Order o: orders){
             if(o.getId()== id){
@@ -50,7 +50,7 @@ public class OrderManager {
      * @param isMember whether the customer of this order is a memeber or not
      * @throws IOException
      */
-    public static void orderInvoiced(int id, boolean isMember) throws IOException {
+    public void orderInvoiced(int id, boolean isMember) throws IOException {
         boolean orderInvoiced= false;
         for(Order order: orders){
             if(order.getId()== id){
@@ -75,7 +75,7 @@ public class OrderManager {
         }
     }
 
-    public static void printOrder(){
+    public void printOrder(){
         if(orders.size()== 0){
             System.out.println("No order in history yet");
         }
@@ -93,7 +93,7 @@ public class OrderManager {
      * @return the list of existing invoices in a list of Order object
      * @throws IOException
      */
-    public static List<Order> readInvoice() throws IOException {
+    public List<Order> readInvoice() throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
@@ -115,7 +115,7 @@ public class OrderManager {
      * @param i the invoice that needs to be added
      * @throws IOException
      */
-    public static void addInvoice(Order i) throws IOException{
+    public void addInvoice(Order i) throws IOException{
         invoices= readInvoice();
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());

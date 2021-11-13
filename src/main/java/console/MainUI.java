@@ -1,5 +1,6 @@
 package console;
 
+import beans.Order;
 import managers.ReservationManager;
 import managers.TableManager;
 
@@ -44,7 +45,8 @@ public class MainUI {
             switch (num){
                 case 1 :
                     System.out.println("Please choose [2]/[5]/[4] in menu section");
-                    MenuUI.mainUI();
+                    MenuUI menuUI = new MenuUI();
+                    menuUI.mainUI();
                     break;
                 case 2 :
                     System.out.println("Please choose [3]/[6]/[4] in menu section");
@@ -52,15 +54,18 @@ public class MainUI {
                     break;
                 case 3 :
                     System.out.println("Please choose [2] in order section");
-                    OrderUI.mainUI();
+                    OrderUI orderUI= new OrderUI();
+                    orderUI.mainUI();
                     break;
                 case 4 :
                     System.out.println("Please choose [1] in order section");
-                    OrderUI.mainUI();
+                    OrderUI orderUI2= new OrderUI();
+                    orderUI2.mainUI();
                     break;
                 case 5 :
                     System.out.println("Please choose [4]/[5] in order section");
-                    OrderUI.mainUI();
+                    OrderUI orderUI3= new OrderUI();
+                    orderUI3.mainUI();
                     break;
                 case 6 :
                     System.out.println("Please choose [1] in reservation section");
@@ -75,11 +80,13 @@ public class MainUI {
                     break;
                 case 9 :
                     System.out.println("Please choose [6] in order section");
-                    OrderUI.mainUI();
+                    OrderUI orderUI4= new OrderUI();
+                    orderUI4.mainUI();
                     break;
                 case 10 :
                     System.out.println("Please choose [7] in order section");
-                    OrderUI.mainUI();
+                    OrderUI orderUI5= new OrderUI();
+                    orderUI5.mainUI();
                     break;
                 default :
             }

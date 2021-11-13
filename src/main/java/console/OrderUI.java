@@ -19,50 +19,16 @@ import java.util.Scanner;
  *  @author Ruan Donglin
  */
 public class OrderUI {
-    private static final Scanner in = MainUI.in;
-    public static void mainUI() throws IOException{
-        int num= 0;
-        do{
-            System.out.println("Welcome to the order section! What action do you wish to take?");
-            System.out.println("[0] Return to main page");
-            System.out.println("[1] View order");
-            System.out.println("[2] Create order");
-            System.out.println("[3] Delete order");
-            System.out.println("[4] Add order item to order");
-            System.out.println("[5] Delete order item from order");
-            System.out.println("[6] Invoice order");
-            System.out.println("[7] Print sale revenue report by period");
-            num= in.nextInt();
-            switch (num){
-                case 1 :
-                    printOrder();
-                    break;
-                case 2 :
-                    createOrder();
-                    break;
-                case 4 :
-                    addItemToOrder();
-                    break;
-                case 5 :
-                    deleteItemFromOrder();
-                    break;
-                case 6:
-                    invoiceOrder();
-                    break;
-                case 3:
-                    deleteOrder();
-                    break;
-                case 7:
-                    printSale();
-                    break;
-                case 0 :
-                    break;
-                default : break;
-            }
-        } while(num!= 0);
+    private OrderManager orderManager;
+    private MenuManager menuManager;
+
+    public OrderUI() {
+        this.orderManager = new OrderManager();
+        this.menuManager = new MenuManager();
     }
 
-    public static void main(String[] args) throws IOException {
+    private static final Scanner in = MainUI.in;
+    public void mainUI() throws IOException{
         int num= 0;
         do{
             System.out.println("Welcome to the order section! What action do you wish to take?");
@@ -108,13 +74,13 @@ public class OrderUI {
      * print all/ a specific order detail
      *
      */
-    public static void printOrder() {
+    public void printOrder() {
         System.out.println("Do you want to view all the orders in history? Please enter [Y/n]");
         in.nextLine();
         String value= in.nextLine();
         if(value.equals("Y")){
             System.out.println("Here's all the orders in history\n");
-            OrderManager.printOrder();
+            orderManager.printOrder();
         }
         else if(value.equals("n")){
             System.out.println("Please enter the id of the order that you want to view\n");
@@ -133,7 +99,7 @@ public class OrderUI {
      *
      * @throws IOException
      */
-    public static void invoiceOrder() throws IOException {
+    public void invoiceOrder() throws IOException {
         boolean isMember= false;
         System.out.println("Please enter the id of the order that you want to invoice\n");
         int id= in.nextInt();
@@ -146,7 +112,7 @@ public class OrderUI {
         else if(value.equals("n")){
             isMember= false;
         }
-        OrderManager.orderInvoiced(id, isMember);
+        orderManager.orderInvoiced(id, isMember);
     }
 
     /**
@@ -169,7 +135,7 @@ public class OrderUI {
         else{
             order.printMenuItemInOrder();
             System.out.println("Please enter the id of the menu item that you want to delete enter 0 to quit\n");
-            List<MenuItem> menuItems= MenuManager.readMenuItem();
+            List<MenuItem> menuItems= menuManager.readMenuItem();
             int itemId;
             do{
                 itemId= in.nextInt();
@@ -184,7 +150,7 @@ public class OrderUI {
      * @param reservation
      * @throws IOException
      */
-    public static void createOrderAfterReservation(Reservation reservation) throws IOException{
+    public void createOrderAfterReservation(Reservation reservation) throws IOException{
         LocalDate localDate = LocalDate.now();
         System.out.println("Current date:"+ localDate.toString());
         LocalTime localTime= LocalTime.now();
@@ -205,7 +171,7 @@ public class OrderUI {
             }
         }
         Order order= new Order(max+1, staff, reservation.getTable(), localDate, localTime, reservation.getPax());
-        OrderManager.addOrder(order);
+        orderManager.addOrder(order);
     }
 
     /**
@@ -213,7 +179,7 @@ public class OrderUI {
      *
      * @throws IOException
      */
-    public static void createOrder() throws IOException {
+    public void createOrder() throws IOException {
         System.out.println("Please enter the following details for order");
         LocalDate localDate = LocalDate.now();
         System.out.println("Current date:"+ localDate.toString());
@@ -242,7 +208,7 @@ public class OrderUI {
             }
             Order order= new Order(max+1, staff, table, localDate, localTime, pax);
             System.out.println("You order id is "+ (max+1) + ". Add order success\n");
-            OrderManager.addOrder(order);
+            orderManager.addOrder(order);
         }
     }
 
@@ -251,7 +217,7 @@ public class OrderUI {
      *
      * @throws IOException
      */
-    public static void addItemToOrder() throws IOException {
+    public void addItemToOrder() throws IOException {
         System.out.println("Please enter the id of the order that you want to modify\n");
         int id= in.nextInt();
         Order order= null;
@@ -267,7 +233,7 @@ public class OrderUI {
             System.out.println("Here's all the menu item in this order");
             order.printMenuItemInOrder();
             System.out.println("Please enter the id of the menu item that you want to add, enter 0 to quit\n");
-            List<MenuItem> menuItems= MenuManager.readMenuItem();
+            List<MenuItem> menuItems= menuManager.readMenuItem();
             int itemId;
             do{
                 itemId= in.nextInt();
@@ -276,10 +242,10 @@ public class OrderUI {
         }
     }
 
-    public static void deleteOrder(){
+    public void deleteOrder(){
         System.out.println("Please enter the id of the order that you want to delete\n");
         int id= in.nextInt();
-        OrderManager.removeOrder(id);
+        orderManager.removeOrder(id);
     }
 
     /**
@@ -287,11 +253,11 @@ public class OrderUI {
      *
      * @throws IOException
      */
-    public static void printSale() throws IOException {
+    public void printSale() throws IOException {
         double sum= 0;
-        double[] sale= new double[MenuManager.menuSize()];
-        if(OrderManager.readInvoice().size()!= 0){
-            for(Order order: OrderManager.readInvoice()){
+        double[] sale= new double[menuManager.menuSize()];
+        if(orderManager.readInvoice().size()!= 0){
+            for(Order order: orderManager.readInvoice()){
                 if (order.getLocalDate().isEqual(LocalDate.now())) {
                     MenuItem[] menuItems = order.getMenuItems();
                     for (int i = 0; i < menuItems.length; i++) {
@@ -302,7 +268,7 @@ public class OrderUI {
             }
         }
         System.out.println("The sale for this current period is "+ sum);
-        for(MenuItem menuItem: MenuManager.readMenuItem()){
+        for(MenuItem menuItem: menuManager.readMenuItem()){
             if(sale[menuItem.getId()-1]!= 0){
                 System.out.println("The individual sales item of id "+ menuItem.getId()+ " is "+ (int)sale[menuItem.getId()-1]);
             }
@@ -316,7 +282,7 @@ public class OrderUI {
      * @return
      * @throws IOException
      */
-    public static Staff selectStaff(int type) throws IOException {
+    public Staff selectStaff(int type) throws IOException {
         Staff.jobTitle jobTitle;
         switch (type) {
             case 1:
@@ -354,7 +320,7 @@ public class OrderUI {
      * @param pax
      * @return
      */
-    public static Table selectTable(int pax){
+    public Table selectTable(int pax){
         Table table= TableManager.occupyTableForOrder(pax);
         return table;
     }

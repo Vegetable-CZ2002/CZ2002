@@ -4,6 +4,7 @@ import beans.Food;
 import beans.MenuItem;
 import beans.SetPackage;
 import managers.MenuManager;
+import managers.OrderManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,14 +19,19 @@ import java.util.Scanner;
  *  @author Zhou Yuxuan
  */
 public class MenuUI {
+    private MenuManager menuManager;
+
+    public MenuUI() {
+        this.menuManager = new MenuManager();
+    }
     //private static Scanner in = new Scanner(System.in);
     private static final Scanner in = MainUI.in;
-    public static void printMenu() throws IOException {
+    public void printMenu() throws IOException {
         System.out.println("Here's all the menu items on the menu");
-        MenuManager.printMenu();
+        menuManager.printMenu();
     }
 
-    public static void createAlaCarteItem() throws IOException {
+    public void createAlaCarteItem() throws IOException {
         System.out.println("Please enter the following details for the new menu item\n");
         in.nextLine();
         System.out.println("Please enter the name for the new menu item");
@@ -69,7 +75,7 @@ public class MenuUI {
                 break;
         }
         System.out.println(type);
-        List<MenuItem> menuItems= MenuManager.readMenuItem();
+        List<MenuItem> menuItems= menuManager.readMenuItem();
         int i= 1;
         for(MenuItem menuItem: menuItems){
             if(menuItem.getId()!= i){
@@ -79,13 +85,13 @@ public class MenuUI {
         }
         MenuItem menuItem= new Food(i, name, type, description, price);
         try {
-            MenuManager.addMenuItem(menuItem);
+            menuManager.addMenuItem(menuItem);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void createSetPackage() throws IOException {
+    public void createSetPackage() throws IOException {
         List<MenuItem> menuItems= MenuManager.readMenuItem();
         List<Food> foodList= new ArrayList<>();
         System.out.println("Please enter information for the new set package\n");
@@ -119,30 +125,30 @@ public class MenuUI {
         }
         MenuItem menuItem= new SetPackage(i, name, description, price, foodList);
         try {
-            MenuManager.addMenuItem(menuItem);
+            menuManager.addMenuItem(menuItem);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void deleteMenuItem() throws IOException {
+    public void deleteMenuItem() throws IOException {
         List<MenuItem> menuItems= MenuManager.readMenuItem();
         System.out.println("Please enter the id of the menu item to delete, enter 0 to quit");
         int itemId;
         itemId= in.nextInt();
         if(itemId!= 0){
-            MenuManager.deleteMenuItem(itemId);
+            menuManager.deleteMenuItem(itemId);
         }
     }
 
 
-    public static void updateAlaCarteItem() throws IOException{
+    public void updateAlaCarteItem() throws IOException{
         MenuItem oldMenuItem= null;
         System.out.println("Please enter information for the updated menu item\n");
         System.out.println("Please enter the id for the updated menu item");
         int id= in.nextInt();
         in.nextLine();
-        for(MenuItem menuItem: MenuManager.readMenuItem()){
+        for(MenuItem menuItem: menuManager.readMenuItem()){
             if(menuItem.getId()== id){
                 oldMenuItem= menuItem;
             }
@@ -210,19 +216,19 @@ public class MenuUI {
         System.out.println(type);
         MenuItem menuItem= new Food(id, name, type, description, price);
         try {
-            MenuManager.updateMenuItem(menuItem);
+            menuManager.updateMenuItem(menuItem);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public static void updateSetPackage() throws IOException {
+    public void updateSetPackage() throws IOException {
         MenuItem oldMenuItem= null;
-        List<MenuItem> menuItems= MenuManager.readMenuItem();
+        List<MenuItem> menuItems= menuManager.readMenuItem();
         List<Food> foodList= new ArrayList<>();
         System.out.println("Please enter information for the new set package\n");
         System.out.println("Please enter the id for the updated set package");
         int id= in.nextInt();
-        for(MenuItem menuItem: MenuManager.readMenuItem()){
+        for(MenuItem menuItem: menuManager.readMenuItem()){
             if(menuItem.getId()== id){
                 oldMenuItem= menuItem;
             }
@@ -269,50 +275,13 @@ public class MenuUI {
         System.out.println(description);
         MenuItem menuItem= new SetPackage(id, name, description, price, foodList);
         try {
-            MenuManager.updateMenuItem(menuItem);
+            menuManager.updateMenuItem(menuItem);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        int num= 0;
-        do{
-            System.out.println("Welcome to the menu section! What action do you wish to take?");
-            System.out.println("[0] Return to main page");
-            System.out.println("[1] View menu");
-            System.out.println("[2] Create ala carte item");
-            System.out.println("[3] Create set package");
-            System.out.println("[4] Delete menu item");
-            System.out.println("[5] Update ala carte item");
-            System.out.println("[6] Update set package");
-            num= in.nextInt();
-            switch (num){
-                case 1 :
-                    printMenu();
-                    break;
-                case 2 :
-                    createAlaCarteItem();
-                    break;
-                case 3 :
-                    createSetPackage();
-                    break;
-                case 4 :
-                    deleteMenuItem();
-                    break;
-                case 5 :
-                    updateAlaCarteItem();
-                    break;
-                case 6:
-                    updateSetPackage();
-                case 0 :
-                    break;
-                default : break;
-            }
-        } while(num!= 0);
-    }
-
-    public static void mainUI() throws IOException {
+    public void main(String[] args) throws IOException {
         int num= 0;
         do{
             System.out.println("Welcome to the menu section! What action do you wish to take?");

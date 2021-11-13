@@ -25,7 +25,7 @@ public class MenuManager{
 
     public static List<MenuItem> menuItemList;
 
-    public static List<MenuItem> readMenuItem() throws IOException{
+    public List<MenuItem> readMenuItem() throws IOException{
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.create();
@@ -42,7 +42,7 @@ public class MenuManager{
     }
 
 
-    public static void addMenuItem(MenuItem m) throws IOException{
+    public void addMenuItem(MenuItem m) throws IOException{
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
@@ -57,7 +57,7 @@ public class MenuManager{
         }
     }
 
-    public static void deleteMenuItem(long id) {
+    public void deleteMenuItem(long id) {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
@@ -78,7 +78,7 @@ public class MenuManager{
         }
     }
 
-    public static void updateMenuItem(MenuItem m) throws IOException{
+    public void updateMenuItem(MenuItem m) throws IOException{
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
@@ -100,7 +100,7 @@ public class MenuManager{
         }
     }
 
-    public static void printMenu() throws IOException {
+    public void printMenu() throws IOException {
         List<MenuItem> menuItems = MenuManager.readMenuItem();
         Formatter fmt = new Formatter();
         fmt.format("%2s %28s %8s %10s   %15s", "id", "name", "price", "type", "description");
@@ -110,7 +110,7 @@ public class MenuManager{
         }
     }
 
-    public static int menuSize() throws IOException {
+    public int menuSize() throws IOException {
         List<MenuItem> menuItems = MenuManager.readMenuItem();
         return menuItems.size();
     }
