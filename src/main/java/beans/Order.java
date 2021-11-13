@@ -18,6 +18,7 @@ import java.util.Objects;
  *  @author Ruan Donglin
  */
 public class Order{
+    private MenuManager menuManager;
     private int pax;
 	private MenuItem[] menuItems;
 	private Staff staffAssigned;
@@ -30,6 +31,7 @@ public class Order{
     private double tax;
     private double serviceFee;
     private double discount = 0;
+
     public MenuItem[] getMenuItems() {
         return menuItems;
     }
@@ -93,6 +95,7 @@ public class Order{
         this.invoiced= false;
         this.sum= 0;
         this.tax= 0;
+        this.menuManager = new MenuManager();
     }
 
 
@@ -119,7 +122,7 @@ public class Order{
 
     public void addItem(int id) throws IOException {
         boolean addSuccessful= false;
-        List<MenuItem> menuItemList= MenuManager.readMenuItem();
+        List<MenuItem> menuItemList= menuManager.readMenuItem();
         for(MenuItem m: menuItemList){
             if(m.getId()== id){
                 menuItems= Arrays.copyOf(menuItems, menuItems.length+1);

@@ -19,6 +19,7 @@ import java.util.Scanner;
  *  @author Zhou Yuxuan
  */
 public class MenuUI {
+
     private MenuManager menuManager;
 
     public MenuUI() {
@@ -92,7 +93,7 @@ public class MenuUI {
     }
 
     public void createSetPackage() throws IOException {
-        List<MenuItem> menuItems= MenuManager.readMenuItem();
+        List<MenuItem> menuItems= menuManager.readMenuItem();
         List<Food> foodList= new ArrayList<>();
         System.out.println("Please enter information for the new set package\n");
         System.out.println("Please enter the id of the ala carte items in the new set package, enter 0 to quit");
@@ -132,7 +133,7 @@ public class MenuUI {
     }
 
     public void deleteMenuItem() throws IOException {
-        List<MenuItem> menuItems= MenuManager.readMenuItem();
+        List<MenuItem> menuItems= menuManager.readMenuItem();
         System.out.println("Please enter the id of the menu item to delete, enter 0 to quit");
         int itemId;
         itemId= in.nextInt();
@@ -281,7 +282,7 @@ public class MenuUI {
         }
     }
 
-    public void main(String[] args) throws IOException {
+    public void mainUI() throws IOException {
         int num= 0;
         do{
             System.out.println("Welcome to the menu section! What action do you wish to take?");

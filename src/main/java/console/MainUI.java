@@ -50,7 +50,8 @@ public class MainUI {
                     break;
                 case 2 :
                     System.out.println("Please choose [3]/[6]/[4] in menu section");
-                    MenuUI.mainUI();
+                    MenuUI menuUI2 = new MenuUI();
+                    menuUI2.mainUI();
                     break;
                 case 3 :
                     System.out.println("Please choose [2] in order section");
@@ -69,14 +70,17 @@ public class MainUI {
                     break;
                 case 6 :
                     System.out.println("Please choose [1] in reservation section");
-                    ReservationUI.mainUI();
+                    ReservationUI reservationUI = new ReservationUI();
+                    reservationUI.mainUI();
                     break;
                 case 7 :
                     System.out.println("Please choose [2]/[3] in reservation section");
-                    ReservationUI.mainUI();
+                    ReservationUI reservationUI2 = new ReservationUI();
+                    reservationUI2.mainUI();
                     break;
                 case 8 :
-                    TableUI.checkTableAvailability();
+                    TableUI tableUI= new TableUI();
+                    tableUI.checkTableAvailability();
                     break;
                 case 9 :
                     System.out.println("Please choose [6] in order section");

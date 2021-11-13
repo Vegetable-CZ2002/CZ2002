@@ -101,7 +101,7 @@ public class MenuManager{
     }
 
     public void printMenu() throws IOException {
-        List<MenuItem> menuItems = MenuManager.readMenuItem();
+        List<MenuItem> menuItems = readMenuItem();
         Formatter fmt = new Formatter();
         fmt.format("%2s %28s %8s %10s   %15s", "id", "name", "price", "type", "description");
         System.out.println(fmt);
@@ -111,7 +111,7 @@ public class MenuManager{
     }
 
     public int menuSize() throws IOException {
-        List<MenuItem> menuItems = MenuManager.readMenuItem();
+        List<MenuItem> menuItems = readMenuItem();
         return menuItems.size();
     }
 

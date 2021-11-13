@@ -2,6 +2,7 @@ package console;
 
 import beans.Reservation;
 import beans.Table;
+import managers.MenuManager;
 import managers.ReservationManager;
 import managers.TableManager;
 
@@ -18,9 +19,15 @@ import java.util.Scanner;
  *  @author Ruan Donglin
  */
 public class ReservationUI {
+    private ReservationManager reservationManager;
+
+    public ReservationUI() {
+        this.reservationManager = new ReservationManager();
+    }
+
     //private static Scanner in= new Scanner(System.in);
     private static final Scanner in = MainUI.in;
-    public static void mainUI() throws IOException {
+    public void mainUI() throws IOException {
         int num;
         do{
             System.out.println("Welcome to the reservation section! What action do you wish to take?");
@@ -48,40 +55,13 @@ public class ReservationUI {
         } while(num!= 0);
     }
 
-    public static void main(String[] args) throws IOException {
-        int num;
-        do{
-            System.out.println("Welcome to the reservation section! What action do you wish to take?");
-            System.out.println("[0] Exit from reservation section");
-            System.out.println("[1] Create reservation booking");
-            System.out.println("[2] Check reservation booking");
-            System.out.println("[3] Remove reservation booking");
-            System.out.println("[4] View reservation booking");
-            num= in.nextInt();
-            switch (num){
-                case 1 :
-                    createReservation();
-                    break;
-                case 2 :
-                    checkReservation();
-                    break;
-                case 3 :
-                    removeReservation();
-                    break;
-                case 4 :
-                    viewReservation();
-                    break;
-                default :
-            }
-        } while(num!= 0);
-    }
 
     /**
      * create a reservation if allowed
      *
      * @throws IOException
      */
-    public static void createReservation() throws IOException {
+    public void createReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
         System.out.println("Please enter the following details for reservation ");
         System.out.println("Please enter the reservation date in the format of YYYY-MM-DD:(eg. 2021-11-12)");
@@ -162,14 +142,14 @@ public class ReservationUI {
      *
      * @throws IOException
      */
-    public static void checkReservation() throws IOException {
+    public void checkReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
         System.out.println("Please enter the reservation id you received when booking");
         int id= in.nextInt();
         ReservationManager.reservationCheckIn(id);
     }
 
-    public static void removeReservation() throws IOException {
+    public void removeReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
         System.out.println("Please enter the reservation id you received when booking");
         int id= in.nextInt();
@@ -181,7 +161,7 @@ public class ReservationUI {
      *
      * @throws IOException
      */
-    public static void viewReservation() throws IOException {
+    public void viewReservation() throws IOException {
         ReservationManager.clearExpiredReservations();
         if(ReservationManager.readReservation().size()== 0){
             System.out.println("No reservation yet");

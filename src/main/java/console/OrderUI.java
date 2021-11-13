@@ -120,7 +120,7 @@ public class OrderUI {
      *
      * @throws IOException
      */
-    public static void deleteItemFromOrder() throws IOException {
+    public void deleteItemFromOrder() throws IOException {
         System.out.println("Please enter the id of the order that you want to modify\n");
         int id= in.nextInt();
         Order order= null;

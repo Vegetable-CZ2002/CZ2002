@@ -17,6 +17,7 @@ import java.util.Scanner;
  *  @author Ruan Donglin
  */
 public class TableUI {
+
     private static final Scanner in = MainUI.in;
 
     /**
@@ -24,7 +25,7 @@ public class TableUI {
      *
      * @throws IOException
      */
-    public static void checkTableAvailability() throws IOException {
+    public void checkTableAvailability() throws IOException {
         System.out.println("Please enter the date to check availability in the format of YYYY-MM-DD:(eg. 2021-11-12)");
         in.nextLine();
         String date = in.nextLine();

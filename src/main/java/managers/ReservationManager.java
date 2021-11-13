@@ -131,7 +131,8 @@ public class ReservationManager {
                         removeReservation= true;
                         System.out.println("Check reservation booking success");
                         deleteReservation(reservation);
-                        OrderUI.createOrderAfterReservation(reservation);
+                        OrderUI orderUI= new OrderUI();
+                        orderUI.createOrderAfterReservation(reservation);
                     }
                     break;
                 }
