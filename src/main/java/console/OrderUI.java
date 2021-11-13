@@ -44,6 +44,7 @@ public class OrderUI {
             System.out.println("[4] Add order item to order");
             System.out.println("[5] Delete order item from order");
             System.out.println("[6] Invoice order");
+            System.out.println("[7] Check current table availability");
             num = in.nextInt();
             switch (num) {
                 case 1:
@@ -63,6 +64,9 @@ public class OrderUI {
                     break;
                 case 3:
                     deleteOrder();
+                    break;
+                case 7:
+                    checkCurrentAvailability();
                     break;
                 case 0:
                     break;
@@ -287,6 +291,14 @@ public class OrderUI {
         }
         int finalId = (int) (Math.random() * qualifyStaff.size());
         return qualifyStaff.get(finalId);
+    }
+
+    public void checkCurrentAvailability(){
+        for(Table table: tableManager.getTables()){
+            if(!table.isOccupied()){
+                System.out.println("Table " + table.getId() + " is available");
+            }
+        }
     }
 
     /**

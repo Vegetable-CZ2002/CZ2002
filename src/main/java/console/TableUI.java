@@ -26,6 +26,7 @@ public class TableUI {
         this.reservationManager = new ReservationManager();
     }
 
+
     /**
      * Check the defined date and time's table availability
      *
@@ -74,4 +75,6 @@ public class TableUI {
             }
         }
     }
+
+
 }

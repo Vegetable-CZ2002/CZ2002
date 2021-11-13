@@ -1,6 +1,7 @@
 package console;
 
 import beans.Order;
+import beans.Table;
 import managers.ReservationManager;
 import managers.TableManager;
 
@@ -30,6 +31,7 @@ public class MainUI {
             System.out.println("[2] Order UI");
             System.out.println("[3] Reservation UI");
             System.out.println("[4] Print sale revenue report");
+            System.out.println("[5] Check table availability");
             tableManager.setTableReserved();
             reservationManager.clearExpiredReservations();
             num = in.nextInt();
@@ -49,6 +51,10 @@ public class MainUI {
                 case 4:
                     SaleUI saleUI = new SaleUI();
                     saleUI.mainUI();
+                    break;
+                case 5:
+                    TableUI tableUI = new TableUI();
+                    tableUI.checkTableAvailability();
                     break;
                 default:
             }

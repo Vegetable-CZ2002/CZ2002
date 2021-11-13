@@ -227,7 +227,7 @@ public class Order {
 
     public void printHeaders() {
         System.out.print("\n-----------------------------------------------");
-        System.out.print("\n| ID  |\t\t\t\tDESC\t\t\t|\tAMT\t|");
+        System.out.print("\n| Id  |\t\t\t\tName\t\t\t|\ttotal\t|");
         System.out.print("\n-----------------------------------------------");
     }
 
