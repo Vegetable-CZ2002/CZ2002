@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class TableManager {
     private ReservationManager reservationManager;
-    private static List<Table> tables;
+    private List<Table> tables;
 
     public TableManager() throws IOException{
         this.reservationManager = new ReservationManager();
@@ -38,7 +38,7 @@ public class TableManager {
      *
      * @throws IOException
      */
-    public static List<Table> readTable() throws IOException {
+    public List<Table> readTable() throws IOException {
         Gson gson = new Gson();
         Path file = Path.of("src/main/resources/data/table.json");
         String jsonString = Files.readString(file);
@@ -51,7 +51,7 @@ public class TableManager {
         return tables;
     }
 
-    public static void addTable(Table t) {
+    public void addTable(Table t) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
         try {
@@ -71,7 +71,7 @@ public class TableManager {
      * @param pax the number of pax for the order
      * @throws IOException
      */
-    public static Table occupyTableForOrder(int pax) {
+    public Table occupyTableForOrder(int pax) {
         for (Table t : tables) {
             if (!t.isOccupied() && t.getNumOfSeats() >= pax) {
                 t.setOccupied(true);
@@ -89,7 +89,7 @@ public class TableManager {
      * @throws IOException
      */
     public void setTableReserved() throws IOException {
-        List<Reservation> reservations = reservationManager.readReservation();
+        List<Reservation> reservations = reservationManager.getReservations();
         if (LocalTime.now().isBefore(LocalTime.of(12, 00, 00))) {
             for (Reservation r : reservations) {
                 if (r.getLocalDate().isEqual(LocalDate.now()) && r.getLocalTime().isBefore(LocalTime.of(12, 00, 00))) {
@@ -105,4 +105,12 @@ public class TableManager {
         }
     }
 
+
+    public List<Table> getTables() {
+        return tables;
+    }
+
+    public void setTables(List<Table> tables) {
+        this.tables = tables;
+    }
 }

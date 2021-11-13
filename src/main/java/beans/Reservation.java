@@ -16,10 +16,20 @@ public class Reservation{
     private int pax;
     private String name;
     private String contact;
-    private long id;
+    private int id;
     private Table table;
 
-    public void setId(long id) {
+    public Reservation(int id, LocalDate localDate, LocalTime localTime, int pax, String name, String contact, Table table) {
+        this.id= id;
+        this.pax = pax;
+        this.name = name;
+        this.contact = contact;
+        this.table= table;
+        this.localDate= localDate;
+        this.localTime= localTime;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -29,17 +39,6 @@ public class Reservation{
 
     public void setTable(Table table) {
         this.table = table;
-    }
-
-
-    public Reservation(long id, LocalDate localDate, LocalTime localTime, int pax, String name, String contact, Table table) {
-        this.id= id;
-        this.pax = pax;
-        this.name = name;
-        this.contact = contact;
-        this.table= table;
-        this.localDate= localDate;
-        this.localTime= localTime;
     }
 
 
@@ -71,18 +70,6 @@ public class Reservation{
         this.contact = contact;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Reservation)) return false;
-        Reservation that = (Reservation) o;
-        return id == that.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 
     @Override
     public String toString() {

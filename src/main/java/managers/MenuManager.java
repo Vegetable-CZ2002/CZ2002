@@ -23,11 +23,13 @@ import java.util.List;
  */
 public class MenuManager{
 
-    public static List<MenuItem> menuItemList;
+    private List<MenuItem> menuItemList;
 
     public MenuManager() throws IOException {
         menuItemList= readMenuItem();
     }
+
+
 
     public List<MenuItem> readMenuItem() throws IOException{
         GsonBuilder builder = new GsonBuilder();
@@ -114,4 +116,11 @@ public class MenuManager{
         return menuItems.size();
     }
 
+    public List<MenuItem> getMenuItemList() {
+        return menuItemList;
+    }
+
+    public void setMenuItemList(List<MenuItem> menuItemList) {
+        this.menuItemList = menuItemList;
+    }
 }

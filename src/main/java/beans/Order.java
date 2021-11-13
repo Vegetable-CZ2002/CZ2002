@@ -9,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Formatter;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Represents the order that customer gives, will be created in two cases: when customer directly walks in
@@ -26,11 +25,25 @@ public class Order{
 	private LocalTime localTime;
     private final LocalDate localDate;
 	private boolean invoiced;
-    private long id;
+    private int id;
     private double sum;
     private double tax;
     private double serviceFee;
     private double discount = 0;
+
+    public Order(int id, Staff staffAssigned, Table table, LocalDate localDate, LocalTime localTime, int pax) throws IOException {
+        this.pax= pax;
+        this.staffAssigned = staffAssigned;
+        this.localTime= localTime;
+        this.localDate= localDate;
+        this.id= id;
+        this.table= table;
+        this.menuItems= new MenuItem[0];
+        this.invoiced= false;
+        this.sum= 0;
+        this.tax= 0;
+        this.menuManager = new MenuManager();
+    }
 
     public MenuItem[] getMenuItems() {
         return menuItems;
@@ -83,19 +96,6 @@ public class Order{
 
     public void setDiscount(double discount){
         this.discount = discount;
-    }
-    public Order(long id, Staff staffAssigned, Table table, LocalDate localDate, LocalTime localTime, int pax) throws IOException {
-        this.pax= pax;
-        this.staffAssigned = staffAssigned;
-        this.localTime= localTime;
-        this.localDate= localDate;
-        this.id= id;
-        this.table= table;
-        this.menuItems= new MenuItem[0];
-        this.invoiced= false;
-        this.sum= 0;
-        this.tax= 0;
-        this.menuManager = new MenuManager();
     }
 
 
@@ -154,24 +154,12 @@ public class Order{
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Order)) return false;
-        Order order = (Order) o;
-        return id == order.id;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -191,9 +179,6 @@ public class Order{
                 '}';
     }
 
-    public boolean isInvoiced() {
-        return invoiced;
-    }
 
     public void printMenuItemInOrder(){
         if(menuItems.length== 0){

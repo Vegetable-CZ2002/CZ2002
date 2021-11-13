@@ -54,7 +54,8 @@
     "INSTANCE": {
       "id": 6,
       "name": "Chicken",
-      "description": "Recommended",
+      "type": "MEAT",
+      "description": "What??",
       "price": 20.0
     }
   },
@@ -132,6 +133,16 @@
     "MenuItem": "beans.Food",
     "INSTANCE": {
       "id": 14,
+      "name": "KFC",
+      "type": "PIZZA",
+      "description": "rrr",
+      "price": 20.0
+    }
+  },
+  {
+    "MenuItem": "beans.Food",
+    "INSTANCE": {
+      "id": 15,
       "name": "MOLTEN LAVA LUXURIOUS TORTE",
       "type": "DESSERT",
       "description": "Our in-house popular dessert that combines the elements of a chocolate cake baked to perfection, served with summer berries compote \u0026 vanilla ice cream.",
@@ -141,7 +152,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 15,
+      "id": 16,
       "name": "APPLE CRUMBLE",
       "type": "DESSERT",
       "description": "Chopped apples baked with crumb topping, served with vanilla ice cream.",
@@ -151,7 +162,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 16,
+      "id": 17,
       "name": "WARM PECAN PIE",
       "type": "DESSERT",
       "description": "Flaky crust filled with sweet buttery caramel filling and pecans. Served with cinnamon caramel sauce and chocolate ice cream.",
@@ -161,7 +172,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 17,
+      "id": 18,
       "name": "MEXICAN BROWNIE",
       "type": "DESSERT",
       "description": "Perfectly baked chocolatey and fudgy goodness served with vanilla ice cream and almonds.",
@@ -171,7 +182,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 18,
+      "id": 19,
       "name": "MANGO ICED TEA",
       "type": "DRINK",
       "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
@@ -181,7 +192,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 19,
+      "id": 20,
       "name": "PASSION FRUIT LEMONADE",
       "type": "DRINK",
       "description": "Fresh lemon juice shaken with passion fruit puree, sugar syrup and water.",
@@ -191,7 +202,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 20,
+      "id": 21,
       "name": "STRAWBERRY SMOOTHIE",
       "type": "DRINK",
       "description": "Strawberry puree with milk and simple syrup.",
@@ -201,7 +212,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 21,
+      "id": 22,
       "name": "HAZELNUT FRAPPE",
       "type": "DRINK",
       "description": "Hazelnut syrup, milk and coffee blended with ice cubes, served frozen.",
@@ -232,7 +243,7 @@
       "type_": "PACKAGE",
       "description_": "Sepecial deal for salmon lovers.",
       "price_": 20.0,
-      "id": 22,
+      "id": 23,
       "name": "SALMON   BROWNIE SET",
       "type": "PACKAGE",
       "description": "Sepecial deal for salmon lovers.",
@@ -263,7 +274,7 @@
       "type_": "PACKAGE",
       "description_": "Specail deal for perppeoni pizza lovers.",
       "price_": 18.0,
-      "id": 23,
+      "id": 24,
       "name": "PEPPERONI \u0026 MANGO TEA SET",
       "type": "PACKAGE",
       "description": "Specail deal for perppeoni pizza lovers.",
@@ -294,90 +305,11 @@
       "type_": "PACKAGE",
       "description_": "Special deal for prawn pasta lovers.",
       "price_": 17.0,
-      "id": 24,
+      "id": 25,
       "name": "PRAWN \u0026 TORTE SET",
       "type": "PACKAGE",
       "description": "Special deal for prawn pasta lovers.",
       "price": 17.0
-    }
-  },
-  {
-    "MenuItem": "beans.SetPackage",
-    "INSTANCE": {
-      "foodList": [
-        {
-          "id": 3,
-          "name": "BUFFALO WINGS",
-          "type": "APPETIZER",
-          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
-          "price": 10.0
-        },
-        {
-          "id": 5,
-          "name": "GRILLED SALMON",
-          "type": "MEAT",
-          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
-          "price": 24.0
-        },
-        {
-          "id": 8,
-          "name": "PEPPERONI PIZZA",
-          "type": "PIZZA",
-          "description": "Homemade thin crust pizza dough topped with tomato sauce, mozzarella cheese and pepperoni",
-          "price": 16.0
-        },
-        {
-          "id": 9,
-          "name": "MARGHERITA PIZZA",
-          "type": "PIZZA",
-          "description": "Homemade thin crust pizza dough topped with buffalo mozzarella, tomatoes and garnished with garden-fresh basil.",
-          "price": 12.0
-        }
-      ],
-      "id_": 27,
-      "name_": "dagj",
-      "type_": "PACKAGE",
-      "description_": "fgdsh",
-      "price_": 34.0,
-      "id": 27,
-      "name": "dagj",
-      "type": "PACKAGE",
-      "description": "fgdsh",
-      "price": 34.0
-    }
-  },
-  {
-    "MenuItem": "beans.Food",
-    "INSTANCE": {
-      "id": 25,
-      "name": "wuwu",
-      "type": "APPETIZER",
-      "description": "dakjgl",
-      "price": 9.0
-    }
-  },
-  {
-    "MenuItem": "beans.SetPackage",
-    "INSTANCE": {
-      "foodList": [
-        {
-          "id": 3,
-          "name": "BUFFALO WINGS",
-          "type": "APPETIZER",
-          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
-          "price": 10.0
-        }
-      ],
-      "id_": 26,
-      "name_": "",
-      "type_": "PACKAGE",
-      "description_": "ddjh",
-      "price_": 45.0,
-      "id": 26,
-      "name": "",
-      "type": "PACKAGE",
-      "description": "ddjh",
-      "price": 45.0
     }
   }
 ]

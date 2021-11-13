@@ -26,10 +26,18 @@ import java.util.List;
  *  @author Ruan Donglin
  */
 public class ReservationManager {
-    private static List<Reservation> reservations;
+    private List<Reservation> reservations;
 
     public ReservationManager() throws IOException {
         reservations= readReservation();
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     /**

@@ -14,23 +14,8 @@ public class Staff {
     private jobTitle job;
     private gender gender;
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public enum jobTitle {GENERAL_MANAGER, ASSISTANT_MANAGER, SERVER, CASHIER}
     public enum gender {MALE, FEMALE}
-
-
-    @Override
-    public String toString() {
-        return "Staff{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", job=" + job +
-                ", gender=" + gender +
-                '}';
-    }
 
     public Staff(long id, String name, jobTitle job, gender gender) {
         this.name = name;
@@ -38,7 +23,6 @@ public class Staff {
         this.job = job;
         this.gender = gender;
     }
-
 
     public String getName() {
         return this.name;
@@ -73,15 +57,12 @@ public class Staff {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Staff)) return false;
-        Staff staff = (Staff) o;
-        return id == staff.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public String toString() {
+        return "Staff{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", job=" + job +
+                ", gender=" + gender +
+                '}';
     }
 }

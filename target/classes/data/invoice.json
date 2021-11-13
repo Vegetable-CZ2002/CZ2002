@@ -1774,5 +1774,69 @@
     "tax": 3.773,
     "serviceFee": 4.9,
     "discount": 0.0
+  },
+  {
+    "menuManager": {},
+    "pax": 5,
+    "menuItems": [
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 20,
+          "name": "PASSION FRUIT LEMONADE",
+          "type": "DRINK",
+          "description": "Fresh lemon juice shaken with passion fruit puree, sugar syrup and water.",
+          "price": 4.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 3,
+          "name": "BUFFALO WINGS",
+          "type": "APPETIZER",
+          "description": "Chicken wings marinated in bell pepper and cayenne pepper are deep fried and tosses with house special BBQ sauce.",
+          "price": 10.0
+        }
+      },
+      {
+        "MenuItem": "beans.Food",
+        "INSTANCE": {
+          "id": 7,
+          "name": "HAWAIIAN PIZZA",
+          "type": "PIZZA",
+          "description": "Homemade thin crust pizza dough, a perfect combination of sweet and savory flavours loaded on top of a crispy crust!",
+          "price": 12.0
+        }
+      }
+    ],
+    "staffAssigned": {
+      "name": "Minerva McGonagall",
+      "id": 2,
+      "job": "ASSISTANT_MANAGER",
+      "gender": "FEMALE"
+    },
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": false,
+      "id": 15
+    },
+    "localTime": {
+      "hour": 18,
+      "minute": 21,
+      "second": 56,
+      "nano": 250986700
+    },
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 13
+    },
+    "invoiced": true,
+    "id": 1,
+    "sum": 26.0,
+    "tax": 2.0020000000000002,
+    "serviceFee": 2.6,
+    "discount": 0.0
   }
 ]

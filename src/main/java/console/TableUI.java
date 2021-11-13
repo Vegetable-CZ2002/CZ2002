@@ -17,11 +17,12 @@ import java.util.Scanner;
  *  @author Ruan Donglin
  */
 public class TableUI {
-
+    private TableManager tableManager;
     private ReservationManager reservationManager;
     private static final Scanner in = MainUI.in;
 
     public TableUI() throws IOException {
+        this.tableManager = new TableManager();
         this.reservationManager = new ReservationManager();
     }
 
@@ -43,9 +44,9 @@ public class TableUI {
             System.out.println("Cannot check availability on a time that has passed");
         }
         else {
-            List<Table> tableList= TableManager.readTable();
+            List<Table> tableList= tableManager.getTables();
             if(localTime.isBefore(LocalTime.of(12,00,00))){
-                for(Reservation r: reservationManager.readReservation()){
+                for(Reservation r: reservationManager.getReservations()){
                     if(r.getLocalDate().isEqual(localDate) && r.getLocalTime().isBefore(LocalTime.of(12,00,00))){
                         tableList.remove(r.getTable());
                     }
@@ -60,8 +61,8 @@ public class TableUI {
                 }
             }
             else{
-                List<Table> tableList2= TableManager.readTable();
-                for(Reservation r: reservationManager.readReservation()){
+                List<Table> tableList2= tableManager.getTables();
+                for(Reservation r: reservationManager.getReservations()){
                     if(r.getLocalDate().isEqual(localDate)){
                         tableList2.remove(r.getTable());
                     }

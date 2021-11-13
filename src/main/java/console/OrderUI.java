@@ -19,10 +19,14 @@ import java.util.Scanner;
  *  @author Ruan Donglin
  */
 public class OrderUI {
+    private TableManager tableManager;
+    private StaffManager staffManager;
     private OrderManager orderManager;
     private MenuManager menuManager;
 
     public OrderUI() throws IOException {
+        this.tableManager= new TableManager();
+        this.staffManager= new StaffManager();
         this.orderManager = new OrderManager();
         this.menuManager = new MenuManager();
     }
@@ -135,7 +139,7 @@ public class OrderUI {
         else{
             order.printMenuItemInOrder();
             System.out.println("Please enter the id of the menu item that you want to delete enter 0 to quit\n");
-            List<MenuItem> menuItems= menuManager.readMenuItem();
+            List<MenuItem> menuItems= menuManager.getMenuItemList();
             int itemId;
             do{
                 itemId= in.nextInt();
@@ -162,7 +166,7 @@ public class OrderUI {
         Staff staff= selectStaff(id);
         System.out.printf("Staff "+ staff.getName()+ " is serving you\n\n");
         System.out.println("Add order success\n");
-        long max= 0;
+        int max= 0;
         if(orderManager.getOrders().size()!= 0){
             for(Order order: orderManager.getOrders()){
                 if(order.getId()> max){
@@ -198,7 +202,7 @@ public class OrderUI {
             int id= in.nextInt();
             Staff staff= selectStaff(id);
             System.out.printf("Staff "+ staff.getName()+ " is serving you\n\n");
-            long max= 0;
+            int max= 0;
             if(orderManager.getOrders().size()!= 0){
                 for(Order order: orderManager.getOrders()){
                     if(order.getId()> max){
@@ -233,7 +237,7 @@ public class OrderUI {
             System.out.println("Here's all the menu item in this order");
             order.printMenuItemInOrder();
             System.out.println("Please enter the id of the menu item that you want to add, enter 0 to quit\n");
-            List<MenuItem> menuItems= menuManager.readMenuItem();
+            List<MenuItem> menuItems= menuManager.getMenuItemList();
             int itemId;
             do{
                 itemId= in.nextInt();
@@ -256,8 +260,8 @@ public class OrderUI {
     public void printSale() throws IOException {
         double sum= 0;
         double[] sale= new double[menuManager.menuSize()];
-        if(orderManager.readInvoice().size()!= 0){
-            for(Order order: orderManager.readInvoice()){
+        if(orderManager.getInvoices().size()!= 0){
+            for(Order order: orderManager.getInvoices()){
                 if (order.getLocalDate().isEqual(LocalDate.now())) {
                     MenuItem[] menuItems = order.getMenuItems();
                     for (int i = 0; i < menuItems.length; i++) {
@@ -268,7 +272,7 @@ public class OrderUI {
             }
         }
         System.out.println("The sale for this current period is "+ sum);
-        for(MenuItem menuItem: menuManager.readMenuItem()){
+        for(MenuItem menuItem: menuManager.getMenuItemList()){
             if(sale[menuItem.getId()-1]!= 0){
                 System.out.println("The individual sales item of id "+ menuItem.getId()+ " is "+ (int)sale[menuItem.getId()-1]);
             }
@@ -302,7 +306,7 @@ public class OrderUI {
                 break;
         }
         System.out.println(jobTitle);
-        List<Staff> staffList = StaffManager.readStaff();
+        List<Staff> staffList = staffManager.getStaffs();
         List<Staff> qualifyStaff = new ArrayList<>();
         for (Staff staff : staffList) {
             if (staff.getJob() == jobTitle) {
@@ -321,7 +325,7 @@ public class OrderUI {
      * @return
      */
     public Table selectTable(int pax){
-        Table table= TableManager.occupyTableForOrder(pax);
+        Table table= tableManager.occupyTableForOrder(pax);
         return table;
     }
 }
