@@ -133,16 +133,6 @@
     "MenuItem": "beans.Food",
     "INSTANCE": {
       "id": 14,
-      "name": "KFC",
-      "type": "PIZZA",
-      "description": "rrr",
-      "price": 20.0
-    }
-  },
-  {
-    "MenuItem": "beans.Food",
-    "INSTANCE": {
-      "id": 15,
       "name": "MOLTEN LAVA LUXURIOUS TORTE",
       "type": "DESSERT",
       "description": "Our in-house popular dessert that combines the elements of a chocolate cake baked to perfection, served with summer berries compote \u0026 vanilla ice cream.",
@@ -152,7 +142,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 16,
+      "id": 15,
       "name": "APPLE CRUMBLE",
       "type": "DESSERT",
       "description": "Chopped apples baked with crumb topping, served with vanilla ice cream.",
@@ -162,7 +152,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 17,
+      "id": 16,
       "name": "WARM PECAN PIE",
       "type": "DESSERT",
       "description": "Flaky crust filled with sweet buttery caramel filling and pecans. Served with cinnamon caramel sauce and chocolate ice cream.",
@@ -172,7 +162,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 18,
+      "id": 17,
       "name": "MEXICAN BROWNIE",
       "type": "DESSERT",
       "description": "Perfectly baked chocolatey and fudgy goodness served with vanilla ice cream and almonds.",
@@ -182,7 +172,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 19,
+      "id": 18,
       "name": "MANGO ICED TEA",
       "type": "DRINK",
       "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
@@ -192,7 +182,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 20,
+      "id": 19,
       "name": "PASSION FRUIT LEMONADE",
       "type": "DRINK",
       "description": "Fresh lemon juice shaken with passion fruit puree, sugar syrup and water.",
@@ -202,7 +192,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 21,
+      "id": 20,
       "name": "STRAWBERRY SMOOTHIE",
       "type": "DRINK",
       "description": "Strawberry puree with milk and simple syrup.",
@@ -212,7 +202,7 @@
   {
     "MenuItem": "beans.Food",
     "INSTANCE": {
-      "id": 22,
+      "id": 21,
       "name": "HAZELNUT FRAPPE",
       "type": "DRINK",
       "description": "Hazelnut syrup, milk and coffee blended with ice cubes, served frozen.",
@@ -238,12 +228,7 @@
           "price": 4.0
         }
       ],
-      "id_": 22,
-      "name_": "SALMON  \u0026 BROWNIE SET",
-      "type_": "PACKAGE",
-      "description_": "Sepecial deal for salmon lovers.",
-      "price_": 20.0,
-      "id": 23,
+      "id": 22,
       "name": "SALMON   BROWNIE SET",
       "type": "PACKAGE",
       "description": "Sepecial deal for salmon lovers.",
@@ -269,12 +254,7 @@
           "price": 4.0
         }
       ],
-      "id_": 23,
-      "name_": "PEPPERONI \u0026 MANGO TEA SET",
-      "type_": "PACKAGE",
-      "description_": "Specail deal for perppeoni pizza lovers.",
-      "price_": 18.0,
-      "id": 24,
+      "id": 23,
       "name": "PEPPERONI \u0026 MANGO TEA SET",
       "type": "PACKAGE",
       "description": "Specail deal for perppeoni pizza lovers.",
@@ -300,12 +280,7 @@
           "price": 6.0
         }
       ],
-      "id_": 24,
-      "name_": "PRAWN \u0026 TORTE SET",
-      "type_": "PACKAGE",
-      "description_": "Special deal for prawn pasta lovers.",
-      "price_": 17.0,
-      "id": 25,
+      "id": 24,
       "name": "PRAWN \u0026 TORTE SET",
       "type": "PACKAGE",
       "description": "Special deal for prawn pasta lovers.",

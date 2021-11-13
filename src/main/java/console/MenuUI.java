@@ -93,9 +93,10 @@ public class MenuUI {
         }
     }
 
-    public void createSetPackage() {
+    public void createSetPackage() throws IOException {
         List<MenuItem> menuItems = menuManager.getMenuItemList();
         List<Food> foodList = new ArrayList<>();
+        printMenu();
         System.out.println("Please enter information for the new set package\n");
         System.out.println("Please enter the id of the ala carte items in the new set package, enter 0 to quit");
         int itemId;

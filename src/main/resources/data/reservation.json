@@ -1,0 +1,112 @@
+[
+  {
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 15
+    },
+    "localTime": {
+      "hour": 14,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "pax": 3,
+    "name": "Ruan Donglin",
+    "contact": "84073568",
+    "id": 1,
+    "table": {
+      "numOfSeats": 4,
+      "isOccupied": false,
+      "id": 5
+    }
+  },
+  {
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 14
+    },
+    "localTime": {
+      "hour": 11,
+      "minute": 35,
+      "second": 0,
+      "nano": 0
+    },
+    "pax": 6,
+    "name": "Mao Yiyun",
+    "contact": "88888888",
+    "id": 2,
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": false,
+      "id": 15
+    }
+  },
+  {
+    "localDate": {
+      "year": 2021,
+      "month": 12,
+      "day": 25
+    },
+    "localTime": {
+      "hour": 20,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "pax": 1,
+    "name": "Ringo",
+    "contact": "4",
+    "id": 3,
+    "table": {
+      "numOfSeats": 2,
+      "isOccupied": false,
+      "id": 1
+    }
+  },
+  {
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 13
+    },
+    "localTime": {
+      "hour": 20,
+      "minute": 35,
+      "second": 0,
+      "nano": 0
+    },
+    "pax": 7,
+    "name": "RDL",
+    "contact": "345",
+    "id": 4,
+    "table": {
+      "numOfSeats": 10,
+      "isOccupied": true,
+      "id": 19
+    }
+  },
+  {
+    "localDate": {
+      "year": 2021,
+      "month": 12,
+      "day": 10
+    },
+    "localTime": {
+      "hour": 14,
+      "minute": 55,
+      "second": 0,
+      "nano": 0
+    },
+    "pax": 4,
+    "name": "MYY",
+    "contact": "0000",
+    "id": 5,
+    "table": {
+      "numOfSeats": 4,
+      "isOccupied": false,
+      "id": 5
+    }
+  }
+]

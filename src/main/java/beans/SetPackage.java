@@ -11,19 +11,9 @@ import java.util.List;
 public class SetPackage extends MenuItem {
 
     private List<Food> foodList;
-    private final int id_;
-    private final String name_;
-    private final Type type_;
-    private final String description_;
-    private final double price_;
 
     public SetPackage(int id, String name, String description, double price, List<Food> foodList) {
         super(id, name, Type.PACKAGE, description, price);
-        this.name_ = name;
-        this.id_ = id;
-        this.description_ = description;
-        this.price_ = price;
-        this.type_ = Type.PACKAGE;
         this.foodList = foodList;
     }
 
@@ -39,11 +29,11 @@ public class SetPackage extends MenuItem {
     @Override
     public String toString() {
         return "SetPackage{" +
-                "id=" + id_ +
-                ", name='" + name_ + '\'' +
-                ", type=" + type_ +
-                ", description='" + description_ + '\'' +
-                ", price=" + price_ +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", description='" + description + '\'' +
+                ", price=" + price +
                 ", foodList=" + foodList +
                 '}';
     }
@@ -60,6 +50,6 @@ public class SetPackage extends MenuItem {
         }
         stringBuilder.append("}");
         Formatter fmt2 = new Formatter();
-        return fmt2.format("%2s %28s %8s %10s  %40s  %15s", id_, name_, price_, type_, stringBuilder, description_);
+        return fmt2.format("%2s %28s %8s %10s  %40s  %15s", id, name, price, type, stringBuilder, description);
     }
 }

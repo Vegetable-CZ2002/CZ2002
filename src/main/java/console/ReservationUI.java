@@ -126,7 +126,6 @@ public class ReservationUI {
                         Reservation reservation = new Reservation(max + 1, localDate, localTime, pax, name, contact, t);
                         reservationManager.addReservation(reservation);
                         reservation.setTable(t);
-                        reservationManager.getReservations().add(reservation);
                         break;
                     }
                 }

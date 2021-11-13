@@ -60,7 +60,7 @@ public class MenuManager {
             if (i == menuItemList.size()) {
                 menuItemList.add(m);
             }
-            for (; i < menuItemList.size(); i++) {
+            for (--i ; i < menuItemList.size(); i++) {
                 menuItemList.get(i).setId(i + 1);
             }
             MenuItem[] menuItems = new MenuItem[menuItemList.size()];

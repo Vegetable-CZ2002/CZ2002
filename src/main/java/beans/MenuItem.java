@@ -12,11 +12,11 @@ public abstract class MenuItem {
     public enum Type{
         APPETIZER, MEAT, PASTA, PIZZA, DESSERT, DRINK, PACKAGE, OTHER_MAIN_COURSE
     }
-    private int id;
-    private String name;
-    private Type type;
-    private String description;
-    private double price;
+    protected int id;
+    protected String name;
+    protected Type type;
+    protected String description;
+    protected double price;
 
     public MenuItem(int id, String name, Type type, String description, double price) {
         this.id= id;

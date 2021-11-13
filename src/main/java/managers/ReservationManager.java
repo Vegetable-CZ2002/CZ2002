@@ -133,8 +133,8 @@ public class ReservationManager {
                 if (reservation.getId() == id) {
                     if (reservation.getLocalDate().isAfter(LocalDate.now())) {
                         System.out.println("Not the date for checking reservation yet");
-                    } else if (reservation.getLocalTime().isAfter(LocalTime.of(12, 0, 0)) && LocalTime.now().isBefore(LocalTime.of(12, 0, 0))) {
-                        System.out.println("Please come after 12 o'clock");
+                    } else if (reservation.getLocalTime().isAfter(LocalTime.of(15, 0, 0)) && LocalTime.now().isBefore(LocalTime.of(15, 0, 0))) {
+                        System.out.println("Please come after 15 o'clock");
                     } else {
                         removeReservation = true;
                         System.out.println("Check reservation booking success");
