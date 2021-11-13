@@ -3,6 +3,8 @@ package console;
 import managers.ReservationManager;
 import managers.TableManager;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -12,9 +14,24 @@ import java.util.Scanner;
  * @author Ruan Donglin
  */
 public class MainUI {
+
     private static TableManager tableManager;
     private static ReservationManager reservationManager;
-    public static Scanner in = new Scanner(System.in);
+    //public static Scanner in = new Scanner(System.in);
+
+    public static Scanner in;
+    static File text = new File("src/main/resources/file/order.txt");
+
+    static {
+        try {
+            in = new Scanner(text);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public MainUI() throws FileNotFoundException {
+    }
 
     public static void main(String[] args) throws IOException {
         reservationManager = new ReservationManager();
