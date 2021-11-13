@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  * User interface class for the all instructions
  *
- *  @author Ruan Donglin
+ * @author Ruan Donglin
  */
 public class MainUI {
     private static TableManager tableManager;
@@ -23,7 +23,7 @@ public class MainUI {
         reservationManager = new ReservationManager();
         tableManager = new TableManager();
         int num;
-        do{
+        do {
             System.out.println("Welcome to the restaurant! What action do you wish to do now? ");
             System.out.println("[0] Exit from restaurant");
             System.out.println("[1] Create/Update/Remove menu item");
@@ -38,60 +38,60 @@ public class MainUI {
             System.out.println("[10] Print sale revenue report by period");
             tableManager.setTableReserved();
             reservationManager.clearExpiredReservations();
-            num= in.nextInt();
-            switch (num){
-                case 1 :
+            num = in.nextInt();
+            switch (num) {
+                case 1:
                     System.out.println("Please choose [2]/[5]/[4] in menu section");
                     MenuUI menuUI = new MenuUI();
                     menuUI.mainUI();
                     break;
-                case 2 :
+                case 2:
                     System.out.println("Please choose [3]/[6]/[4] in menu section");
                     MenuUI menuUI2 = new MenuUI();
                     menuUI2.mainUI();
                     break;
-                case 3 :
+                case 3:
                     System.out.println("Please choose [2] in order section");
-                    OrderUI orderUI= new OrderUI();
+                    OrderUI orderUI = new OrderUI();
                     orderUI.mainUI();
                     break;
-                case 4 :
+                case 4:
                     System.out.println("Please choose [1] in order section");
-                    OrderUI orderUI2= new OrderUI();
+                    OrderUI orderUI2 = new OrderUI();
                     orderUI2.mainUI();
                     break;
-                case 5 :
+                case 5:
                     System.out.println("Please choose [4]/[5] in order section");
-                    OrderUI orderUI3= new OrderUI();
+                    OrderUI orderUI3 = new OrderUI();
                     orderUI3.mainUI();
                     break;
-                case 6 :
+                case 6:
                     System.out.println("Please choose [1] in reservation section");
                     ReservationUI reservationUI = new ReservationUI();
                     reservationUI.mainUI();
                     break;
-                case 7 :
+                case 7:
                     System.out.println("Please choose [2]/[3] in reservation section");
                     ReservationUI reservationUI2 = new ReservationUI();
                     reservationUI2.mainUI();
                     break;
-                case 8 :
-                    TableUI tableUI= new TableUI();
+                case 8:
+                    TableUI tableUI = new TableUI();
                     tableUI.checkTableAvailability();
                     break;
-                case 9 :
+                case 9:
                     System.out.println("Please choose [6] in order section");
-                    OrderUI orderUI4= new OrderUI();
+                    OrderUI orderUI4 = new OrderUI();
                     orderUI4.mainUI();
                     break;
-                case 10 :
+                case 10:
                     System.out.println("Please choose [7] in order section");
-                    OrderUI orderUI5= new OrderUI();
+                    OrderUI orderUI5 = new OrderUI();
                     orderUI5.mainUI();
                     break;
-                default :
+                default:
             }
-        } while(num!= 0);
+        } while (num != 0);
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Represents the table in the restaurant
  *
- *  @author Ruan Donglin
+ * @author Ruan Donglin
  */
 public class Table {
     private int numOfSeats;
@@ -17,7 +17,7 @@ public class Table {
     public Table(long id, int numOfSeats) { //
         this.numOfSeats = numOfSeats;
         this.isOccupied = false;
-        this.id= id;
+        this.id = id;
     }
 
     public boolean isOccupied() {

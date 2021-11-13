@@ -18,15 +18,15 @@ import java.util.List;
 /**
  * The manager class that controls the Order class
  *
- *  @author Ruan Donglin
+ * @author Ruan Donglin
  */
 public class OrderManager {
     private List<Order> invoices;
-    private List<Order> orders;
+    private final List<Order> orders;
 
     public OrderManager() throws IOException {
-        invoices= readInvoice();
-        orders= new ArrayList<>();
+        invoices = readInvoice();
+        orders = new ArrayList<>();
     }
 
     public List<Order> getOrders() {
@@ -37,24 +37,20 @@ public class OrderManager {
         return invoices;
     }
 
-    public void setInvoices(List<Order> invoices) {
-        this.invoices = invoices;
-    }
-
-    public void addOrder(Order order){
+    public void addOrder(Order order) {
         orders.add(order);
     }
 
-    public void removeOrder(int id){
-        boolean removeSuccessful= false;
-        for(Order o: orders){
-            if(o.getId()== id){
-                removeSuccessful= true;
+    public void removeOrder(int id) {
+        boolean removeSuccessful = false;
+        for (Order o : orders) {
+            if (o.getId() == id) {
+                removeSuccessful = true;
                 orders.remove(o);
                 break;
             }
         }
-        if(!removeSuccessful){
+        if (!removeSuccessful) {
             System.out.println("Remove Order Failure");
         }
     }
@@ -62,43 +58,41 @@ public class OrderManager {
     /**
      * Invoice a order, that is to delete it from the order list, add it and write it to the invoice list.
      *
-     *
-     * @param id the id of the order that needs to be incoiced
+     * @param id       the id of the order that needs to be incoiced
      * @param isMember whether the customer of this order is a memeber or not
      * @throws IOException
      */
-    public void orderInvoiced(int id, boolean isMember) throws IOException {
-        boolean orderInvoiced= false;
-        for(Order order: orders){
-            if(order.getId()== id){
-                if(isMember){
-                    order.setDiscount(order.getSum()*0.05);
+    public void orderInvoiced(int id, boolean isMember) {
+        boolean orderInvoiced = false;
+        for (Order order : orders) {
+            if (order.getId() == id) {
+                if (isMember) {
+                    order.setDiscount(order.getSum() * 0.05);
                 }
-                orderInvoiced= true;
+                orderInvoiced = true;
                 order.setInvoiced(true);
                 order.getTable().setOccupied(false);
-                order.setServiceFee(order.getSum()*0.1);
-                order.setTax((order.getSum()-order.getDiscount()+order.getServiceFee())* 0.07);
+                order.setServiceFee(order.getSum() * 0.1);
+                order.setTax((order.getSum() - order.getDiscount() + order.getServiceFee()) * 0.07);
                 orders.remove(order);
                 addInvoice(order);
                 System.out.println("Order successfully invoiced");
                 order.printInvoice();
-                order.setSum(order.getSum()+ order.getServiceFee() - order.getDiscount());
+                order.setSum(order.getSum() + order.getServiceFee() - order.getDiscount());
                 break;
             }
         }
-        if(!orderInvoiced){
+        if (!orderInvoiced) {
             System.out.println("Invoice order failure");
         }
     }
 
-    public void printOrder(){
-        if(orders.size()== 0){
+    public void printOrder() {
+        if (orders.size() == 0) {
             System.out.println("No order in history yet");
-        }
-        else{
-            for(Order item: orders){
-                System.out.printf(item.toString()+"\n");
+        } else {
+            for (Order item : orders) {
+                System.out.print(item.toString() + "\n");
             }
         }
     }
@@ -108,6 +102,7 @@ public class OrderManager {
      * Read all existing invoices from the json file.
      *
      * @return the list of existing invoices in a list of Order object
+     *
      * @throws IOException
      */
     public List<Order> readInvoice() throws IOException {
@@ -117,10 +112,9 @@ public class OrderManager {
         Path file = Path.of("src/main/resources/data/invoice.json");
         String jsonString = Files.readString(file);
         Order[] orderArray = gson.fromJson(jsonString, Order[].class);
-        if(orderArray == null){
+        if (orderArray == null) {
             invoices = new ArrayList<>();
-        }
-        else{
+        } else {
             invoices = new ArrayList<>(Arrays.asList(orderArray));
         }
         return invoices;
@@ -130,9 +124,8 @@ public class OrderManager {
      * Add an invoice to the invoice list, write it into the json file
      *
      * @param i the invoice that needs to be added
-     * @throws IOException
      */
-    public void addInvoice(Order i) throws IOException{
+    public void addInvoice(Order i) {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();

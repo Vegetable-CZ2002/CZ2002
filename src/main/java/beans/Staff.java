@@ -6,15 +6,16 @@ import java.util.Objects;
 /**
  * Represents the staff in the restaurant
  *
- *  @author Ruan Donglin
+ * @author Ruan Donglin
  */
 public class Staff {
-    private String name; 
+    private String name;
     private long id;
     private jobTitle job;
     private gender gender;
 
     public enum jobTitle {GENERAL_MANAGER, ASSISTANT_MANAGER, SERVER, CASHIER}
+
     public enum gender {MALE, FEMALE}
 
     public Staff(long id, String name, jobTitle job, gender gender) {

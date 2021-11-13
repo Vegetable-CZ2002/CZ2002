@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * Represents one of the types of menuitem, the set package item
  *
- *  @author Zhou Yuxuan
+ * @author Zhou Yuxuan
  */
-public class SetPackage extends MenuItem{
+public class SetPackage extends MenuItem {
 
     private List<Food> foodList;
     private final int id_;
@@ -19,14 +19,14 @@ public class SetPackage extends MenuItem{
 
     public SetPackage(int id, String name, String description, double price, List<Food> foodList) {
         super(id, name, Type.PACKAGE, description, price);
-        this.name_= name;
-        this.id_= id;
-        this.description_= description;
-        this.price_= price;
-        this.type_= Type.PACKAGE;
+        this.name_ = name;
+        this.id_ = id;
+        this.description_ = description;
+        this.price_ = price;
+        this.type_ = Type.PACKAGE;
         this.foodList = foodList;
     }
-    
+
 
     public List<Food> getFoodList() {
         return this.foodList;
@@ -49,10 +49,10 @@ public class SetPackage extends MenuItem{
     }
 
     @Override
-    public Formatter formatter(){
-        StringBuilder stringBuilder= new StringBuilder();
+    public Formatter formatter() {
+        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
-        for(Food food: foodList){
+        for (Food food : foodList) {
             Formatter fmt = new Formatter();
             fmt.format("%2s %15s", food.getId(), food.getName());
             stringBuilder.append(fmt);

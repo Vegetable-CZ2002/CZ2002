@@ -16,37 +16,37 @@ import java.util.List;
 /**
  * The manager class that controls the Staff class
  *
- *  @author Ruan Donglin
+ * @author Ruan Donglin
  */
 public class StaffManager {
     private List<Staff> staffs;
 
     public StaffManager() throws IOException {
-        staffs= readStaff();
+        staffs = readStaff();
     }
 
     /**
      * Read all staff from the json file
      *
      * @return all the staff in the restaurant that is in the format of list of Staff object
+     *
      * @throws IOException
      */
-    public List<Staff> readStaff() throws IOException{
+    public List<Staff> readStaff() throws IOException {
         Gson gson = new Gson();
         Path file = Path.of("src/main/resources/data/staff.json");
         String jsonString = Files.readString(file);
         Staff[] staffArray = gson.fromJson(jsonString, Staff[].class);
-        if(staffArray == null){
+        if (staffArray == null) {
             staffs = new ArrayList<>();
-        }
-        else{
+        } else {
             staffs = new ArrayList<>(Arrays.asList(staffArray));
         }
         return staffs;
     }
 
 
-    public void addStaff(Staff s) throws IOException{
+    public void addStaff(Staff s) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
         try {
@@ -63,9 +63,5 @@ public class StaffManager {
 
     public List<Staff> getStaffs() {
         return staffs;
-    }
-
-    public void setStaffs(List<Staff> staffs){
-        this.staffs = staffs;
     }
 }

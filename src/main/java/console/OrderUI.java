@@ -16,25 +16,26 @@ import java.util.Scanner;
 /**
  * User interface class for the instructions regarding order
  *
- *  @author Ruan Donglin
+ * @author Ruan Donglin
  */
 public class OrderUI {
-    private TableManager tableManager;
-    private StaffManager staffManager;
-    private OrderManager orderManager;
-    private MenuManager menuManager;
+    private final TableManager tableManager;
+    private final StaffManager staffManager;
+    private final OrderManager orderManager;
+    private final MenuManager menuManager;
 
     public OrderUI() throws IOException {
-        this.tableManager= new TableManager();
-        this.staffManager= new StaffManager();
+        this.tableManager = new TableManager();
+        this.staffManager = new StaffManager();
         this.orderManager = new OrderManager();
         this.menuManager = new MenuManager();
     }
 
     private static final Scanner in = MainUI.in;
-    public void mainUI() throws IOException{
-        int num= 0;
-        do{
+
+    public void mainUI() throws IOException {
+        int num;
+        do {
             System.out.println("Welcome to the order section! What action do you wish to take?");
             System.out.println("[0] Return to main page");
             System.out.println("[1] View order");
@@ -44,18 +45,18 @@ public class OrderUI {
             System.out.println("[5] Delete order item from order");
             System.out.println("[6] Invoice order");
             System.out.println("[7] Print sale revenue report by period");
-            num= in.nextInt();
-            switch (num){
-                case 1 :
+            num = in.nextInt();
+            switch (num) {
+                case 1:
                     printOrder();
                     break;
-                case 2 :
+                case 2:
                     createOrder();
                     break;
-                case 4 :
+                case 4:
                     addItemToOrder();
                     break;
-                case 5 :
+                case 5:
                     deleteItemFromOrder();
                     break;
                 case 6:
@@ -67,30 +68,29 @@ public class OrderUI {
                 case 7:
                     printSale();
                     break;
-                case 0 :
+                case 0:
                     break;
-                default : break;
+                default:
+                    break;
             }
-        } while(num!= 0);
+        } while (num != 0);
     }
 
     /**
      * print all/ a specific order detail
-     *
      */
     public void printOrder() {
         System.out.println("Do you want to view all the orders in history? Please enter [Y/n]");
         in.nextLine();
-        String value= in.nextLine();
-        if(value.equals("Y")){
+        String value = in.nextLine();
+        if (value.equals("Y")) {
             System.out.println("Here's all the orders in history\n");
             orderManager.printOrder();
-        }
-        else if(value.equals("n")){
+        } else if (value.equals("n")) {
             System.out.println("Please enter the id of the order that you want to view\n");
-            int id= in.nextInt();
-            for(Order order: orderManager.getOrders()){
-                if(order.getId()== id){
+            int id = in.nextInt();
+            for (Order order : orderManager.getOrders()) {
+                if (order.getId() == id) {
                     System.out.println(order);
                 }
             }
@@ -104,19 +104,21 @@ public class OrderUI {
      * @throws IOException
      */
     public void invoiceOrder() throws IOException {
-        boolean isMember= false;
+        boolean isMember;
         System.out.println("Please enter the id of the order that you want to invoice\n");
-        int id= in.nextInt();
+        int id = in.nextInt();
         System.out.println("Are you a member of the restaurant? Please enter [Y/n]");
         in.nextLine();
-        String value= in.nextLine();
-        if(value.equals("Y")){
-            isMember= true;
+        String value = in.nextLine();
+        if (value.equals("Y")) {
+            isMember = true;
+            orderManager.orderInvoiced(id, isMember);
+        } else if (value.equals("n")) {
+            isMember = false;
+            orderManager.orderInvoiced(id, isMember);
+        } else {
+            System.out.println("Please enter Y/n, not other values");
         }
-        else if(value.equals("n")){
-            isMember= false;
-        }
-        orderManager.orderInvoiced(id, isMember);
     }
 
     /**
@@ -124,27 +126,25 @@ public class OrderUI {
      *
      * @throws IOException
      */
-    public void deleteItemFromOrder() throws IOException {
+    public void deleteItemFromOrder() {
         System.out.println("Please enter the id of the order that you want to modify\n");
-        int id= in.nextInt();
-        Order order= null;
-        for(Order o: orderManager.getOrders()){
-            if(o.getId()== id){
-                order= o;
+        int id = in.nextInt();
+        Order order = null;
+        for (Order o : orderManager.getOrders()) {
+            if (o.getId() == id) {
+                order = o;
             }
         }
-        if(order== null){
+        if (order == null) {
             System.out.println("Order not found");
-        }
-        else{
+        } else {
             order.printMenuItemInOrder();
             System.out.println("Please enter the id of the menu item that you want to delete enter 0 to quit\n");
-            List<MenuItem> menuItems= menuManager.getMenuItemList();
             int itemId;
-            do{
-                itemId= in.nextInt();
+            do {
+                itemId = in.nextInt();
                 order.removeItem(itemId);
-            } while (itemId!= 0);
+            } while (itemId != 0);
         }
     }
 
@@ -154,27 +154,27 @@ public class OrderUI {
      * @param reservation
      * @throws IOException
      */
-    public void createOrderAfterReservation(Reservation reservation) throws IOException{
+    public void createOrderAfterReservation(Reservation reservation) throws IOException {
         LocalDate localDate = LocalDate.now();
-        System.out.println("Current date:"+ localDate.toString());
-        LocalTime localTime= LocalTime.now();
-        System.out.println("Current time:"+ localTime.toString());
-        System.out.println("Please seat at Table "+ reservation.getTable().getId()+ "\n");
+        System.out.println("Current date:" + localDate);
+        LocalTime localTime = LocalTime.now();
+        System.out.println("Current time:" + localTime);
+        System.out.println("Please seat at Table " + reservation.getTable().getId() + "\n");
         System.out.println("Please choose a job title for the staffs that serve you\n");
         System.out.println("[1]GENERAL_MANAGER, [2]ASSISTANT_MANAGER, [3]SERVER, [4]CASHIER");
-        int id= in.nextInt();
-        Staff staff= selectStaff(id);
-        System.out.printf("Staff "+ staff.getName()+ " is serving you\n\n");
+        int id = in.nextInt();
+        Staff staff = selectStaff(id);
+        System.out.print("Staff " + staff.getName() + " is serving you\n\n");
         System.out.println("Add order success\n");
-        int max= 0;
-        if(orderManager.getOrders().size()!= 0){
-            for(Order order: orderManager.getOrders()){
-                if(order.getId()> max){
-                    max= order.getId();
+        int max = 0;
+        if (orderManager.getOrders().size() != 0) {
+            for (Order order : orderManager.getOrders()) {
+                if (order.getId() > max) {
+                    max = order.getId();
                 }
             }
         }
-        Order order= new Order(max+1, staff, reservation.getTable(), localDate, localTime, reservation.getPax());
+        Order order = new Order(max + 1, staff, reservation.getTable(), localDate, localTime, reservation.getPax());
         orderManager.addOrder(order);
     }
 
@@ -186,32 +186,31 @@ public class OrderUI {
     public void createOrder() throws IOException {
         System.out.println("Please enter the following details for order");
         LocalDate localDate = LocalDate.now();
-        System.out.println("Current date:"+ localDate.toString());
-        LocalTime localTime= LocalTime.now();
-        System.out.println("Current time:"+ localTime.toString());
+        System.out.println("Current date:" + localDate);
+        LocalTime localTime = LocalTime.now();
+        System.out.println("Current time:" + localTime.toString());
         System.out.println("Enter the number of people to seat");
-        int pax= in.nextInt();
-        Table table= selectTable(pax);
-        if(table== null){
+        int pax = in.nextInt();
+        Table table = selectTable(pax);
+        if (table == null) {
             System.out.println("No table available");
-        }
-        else{
-            System.out.println("Please seat at Table "+ table.getId()+ "\n");
+        } else {
+            System.out.println("Please seat at Table " + table.getId() + "\n");
             System.out.println("Please choose a job title for the staffs that serve you\n");
             System.out.println("[1]GENERAL_MANAGER, [2]ASSISTANT_MANAGER, [3]SERVER, [4]CASHIER");
-            int id= in.nextInt();
-            Staff staff= selectStaff(id);
-            System.out.printf("Staff "+ staff.getName()+ " is serving you\n\n");
-            int max= 0;
-            if(orderManager.getOrders().size()!= 0){
-                for(Order order: orderManager.getOrders()){
-                    if(order.getId()> max){
-                        max= order.getId();
+            int id = in.nextInt();
+            Staff staff = selectStaff(id);
+            System.out.print("Staff " + staff.getName() + " is serving you\n\n");
+            int max = 0;
+            if (orderManager.getOrders().size() != 0) {
+                for (Order order : orderManager.getOrders()) {
+                    if (order.getId() > max) {
+                        max = order.getId();
                     }
                 }
             }
-            Order order= new Order(max+1, staff, table, localDate, localTime, pax);
-            System.out.println("You order id is "+ (max+1) + ". Add order success\n");
+            Order order = new Order(max + 1, staff, table, localDate, localTime, pax);
+            System.out.println("You order id is " + (max + 1) + ". Add order success\n");
             orderManager.addOrder(order);
         }
     }
@@ -223,32 +222,31 @@ public class OrderUI {
      */
     public void addItemToOrder() throws IOException {
         System.out.println("Please enter the id of the order that you want to modify\n");
-        int id= in.nextInt();
-        Order order= null;
-        for(Order o: orderManager.getOrders()){
-            if(o.getId()== id){
-                order= o;
+        int id = in.nextInt();
+        Order order = null;
+        for (Order o : orderManager.getOrders()) {
+            if (o.getId() == id) {
+                order = o;
             }
         }
-        if (order== null){
+        if (order == null) {
             System.out.println("Order not found");
-        }
-        else{
+        } else {
             System.out.println("Here's all the menu item in this order");
             order.printMenuItemInOrder();
             System.out.println("Please enter the id of the menu item that you want to add, enter 0 to quit\n");
-            List<MenuItem> menuItems= menuManager.getMenuItemList();
+            List<MenuItem> menuItems = menuManager.getMenuItemList();
             int itemId;
-            do{
-                itemId= in.nextInt();
+            do {
+                itemId = in.nextInt();
                 order.addItem(itemId);
-            } while (itemId!= 0);
+            } while (itemId != 0);
         }
     }
 
-    public void deleteOrder(){
+    public void deleteOrder() {
         System.out.println("Please enter the id of the order that you want to delete\n");
-        int id= in.nextInt();
+        int id = in.nextInt();
         orderManager.removeOrder(id);
     }
 
@@ -258,23 +256,23 @@ public class OrderUI {
      * @throws IOException
      */
     public void printSale() throws IOException {
-        double sum= 0;
-        double[] sale= new double[menuManager.menuSize()];
-        if(orderManager.getInvoices().size()!= 0){
-            for(Order order: orderManager.getInvoices()){
+        double sum = 0;
+        double[] sale = new double[menuManager.menuSize()];
+        if (orderManager.getInvoices().size() != 0) {
+            for (Order order : orderManager.getInvoices()) {
                 if (order.getLocalDate().isEqual(LocalDate.now())) {
                     MenuItem[] menuItems = order.getMenuItems();
-                    for (int i = 0; i < menuItems.length; i++) {
-                        sale[menuItems[i].getId() - 1] += 1;
+                    for (MenuItem menuItem : menuItems) {
+                        sale[menuItem.getId() - 1] += 1;
                     }
                     sum += order.getSum();
                 }
             }
         }
-        System.out.println("The sale for this current period is "+ sum);
-        for(MenuItem menuItem: menuManager.getMenuItemList()){
-            if(sale[menuItem.getId()-1]!= 0){
-                System.out.println("The individual sales item of id "+ menuItem.getId()+ " is "+ (int)sale[menuItem.getId()-1]);
+        System.out.println("The sale for this current period is " + sum);
+        for (MenuItem menuItem : menuManager.getMenuItemList()) {
+            if (sale[menuItem.getId() - 1] != 0) {
+                System.out.println("The individual sales item of id " + menuItem.getId() + " is " + (int) sale[menuItem.getId() - 1]);
             }
         }
     }
@@ -284,9 +282,10 @@ public class OrderUI {
      *
      * @param type
      * @return
+     *
      * @throws IOException
      */
-    public Staff selectStaff(int type) throws IOException {
+    public Staff selectStaff(int type) {
         Staff.jobTitle jobTitle;
         switch (type) {
             case 1:
@@ -314,8 +313,7 @@ public class OrderUI {
             }
         }
         int finalId = (int) (Math.random() * qualifyStaff.size());
-        Staff staff = qualifyStaff.get(finalId);
-        return staff;
+        return qualifyStaff.get(finalId);
     }
 
     /**
@@ -324,8 +322,7 @@ public class OrderUI {
      * @param pax
      * @return
      */
-    public Table selectTable(int pax){
-        Table table= tableManager.occupyTableForOrder(pax);
-        return table;
+    public Table selectTable(int pax) {
+        return tableManager.occupyTableForOrder(pax);
     }
 }

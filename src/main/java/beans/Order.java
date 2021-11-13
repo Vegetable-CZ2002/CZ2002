@@ -14,17 +14,17 @@ import java.util.List;
  * Represents the order that customer gives, will be created in two cases: when customer directly walks in
  * or when customer check in to a reservation
  *
- *  @author Ruan Donglin
+ * @author Ruan Donglin
  */
-public class Order{
+public class Order {
     private MenuManager menuManager;
     private int pax;
-	private MenuItem[] menuItems;
-	private Staff staffAssigned;
-	private Table table;
-	private LocalTime localTime;
+    private MenuItem[] menuItems;
+    private Staff staffAssigned;
+    private Table table;
+    private LocalTime localTime;
     private final LocalDate localDate;
-	private boolean invoiced;
+    private boolean invoiced;
     private int id;
     private double sum;
     private double tax;
@@ -32,16 +32,16 @@ public class Order{
     private double discount = 0;
 
     public Order(int id, Staff staffAssigned, Table table, LocalDate localDate, LocalTime localTime, int pax) throws IOException {
-        this.pax= pax;
+        this.pax = pax;
         this.staffAssigned = staffAssigned;
-        this.localTime= localTime;
-        this.localDate= localDate;
-        this.id= id;
-        this.table= table;
-        this.menuItems= new MenuItem[0];
-        this.invoiced= false;
-        this.sum= 0;
-        this.tax= 0;
+        this.localTime = localTime;
+        this.localDate = localDate;
+        this.id = id;
+        this.table = table;
+        this.menuItems = new MenuItem[0];
+        this.invoiced = false;
+        this.sum = 0;
+        this.tax = 0;
         this.menuManager = new MenuManager();
     }
 
@@ -70,7 +70,7 @@ public class Order{
         this.localTime = localTime;
     }
 
-    public LocalDate getLocalDate(){
+    public LocalDate getLocalDate() {
         return localDate;
     }
 
@@ -82,19 +82,19 @@ public class Order{
         this.tax = tax;
     }
 
-    public double getServiceFee(){
+    public double getServiceFee() {
         return serviceFee;
     }
 
-    public void setServiceFee(double serviceFee){
+    public void setServiceFee(double serviceFee) {
         this.serviceFee = serviceFee;
     }
 
-    public double getDiscount(){
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount){
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 
@@ -121,35 +121,35 @@ public class Order{
     }
 
     public void addItem(int id) throws IOException {
-        boolean addSuccessful= false;
-        List<MenuItem> menuItemList= menuManager.readMenuItem();
-        for(MenuItem m: menuItemList){
-            if(m.getId()== id){
-                menuItems= Arrays.copyOf(menuItems, menuItems.length+1);
-                menuItems[menuItems.length-1]= m;
-                sum= getSum()+ m.getPrice();
-                addSuccessful= true;
+        boolean addSuccessful = false;
+        List<MenuItem> menuItemList = menuManager.readMenuItem();
+        for (MenuItem m : menuItemList) {
+            if (m.getId() == id) {
+                menuItems = Arrays.copyOf(menuItems, menuItems.length + 1);
+                menuItems[menuItems.length - 1] = m;
+                sum = getSum() + m.getPrice();
+                addSuccessful = true;
                 System.out.println("Add item success");
                 break;
             }
         }
-        if(!addSuccessful && id != 0){
+        if (!addSuccessful && id != 0) {
             System.out.println("Add item failure");
         }
     }
 
-    public void removeItem(int id){
-        boolean removeSuccessful= false;
-        for(MenuItem m: menuItems){
-            if(m.getId()== id){
-                menuItems= Arrays.copyOf(menuItems, menuItems.length-1);
-                sum= getSum()- m.getPrice();
-                removeSuccessful= true;
+    public void removeItem(int id) {
+        boolean removeSuccessful = false;
+        for (MenuItem m : menuItems) {
+            if (m.getId() == id) {
+                menuItems = Arrays.copyOf(menuItems, menuItems.length - 1);
+                sum = getSum() - m.getPrice();
+                removeSuccessful = true;
                 System.out.println("Remove item success");
                 break;
             }
         }
-        if(!removeSuccessful && id != 0){
+        if (!removeSuccessful && id != 0) {
             System.out.println("Remove item failure");
         }
     }
@@ -180,12 +180,11 @@ public class Order{
     }
 
 
-    public void printMenuItemInOrder(){
-        if(menuItems.length== 0){
+    public void printMenuItemInOrder() {
+        if (menuItems.length == 0) {
             System.out.println("No item in this order yet");
-        }
-        else{
-            for(MenuItem menuItem: menuItems){
+        } else {
+            for (MenuItem menuItem : menuItems) {
                 System.out.println(menuItem.formatter());
             }
         }
@@ -200,52 +199,51 @@ public class Order{
         this.pax = pax;
     }
 
-    public void printInvoice(){
+    public void printInvoice() {
         printTitles();
         printHeaders();
-        for(MenuItem menuItem: menuItems){
+        for (MenuItem menuItem : menuItems) {
             printRows(String.valueOf(menuItem.getId()), menuItem.getName(), menuItem.getPrice());
         }
         printResult();
     }
 
-    public void printTitles(){
+    public void printTitles() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
         Formatter fmt = new Formatter();
         Formatter fmt2 = new Formatter();
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_TIME;
         System.out.print("_______________________________________________");
-        System.out.printf("\n\t\t\tInvoice\n");
-        fmt.format("%8s %20s %5s %10s", "Server: ", staffAssigned.getName(), "Date: ",  localDate);
+        System.out.print("\n\t\t\tInvoice\n");
+        fmt.format("%8s %20s %5s %10s", "Server: ", staffAssigned.getName(), "Date: ", localDate);
         System.out.println(fmt);
-        fmt2.format("%8s %20s %5s %10s", "Table: ", table.getId(), "Time: ",  localTime.format(dtf));
+        fmt2.format("%8s %20s %5s %10s", "Table: ", table.getId(), "Time: ", localTime.format(dtf));
         System.out.print(fmt2);
     }
 
 
-    public void printHeaders(){
-        System.out.printf("\n-----------------------------------------------");
-        System.out.printf("\n| ID  |\t\t\t\tDESC\t\t\t|\tAMT\t|");
-        System.out.printf("\n-----------------------------------------------");
+    public void printHeaders() {
+        System.out.print("\n-----------------------------------------------");
+        System.out.print("\n| ID  |\t\t\t\tDESC\t\t\t|\tAMT\t|");
+        System.out.print("\n-----------------------------------------------");
     }
 
 
     public static void printRows(String id, String desc, double fee) {
         System.out.printf("\n| %3s | %-28.28s| %.2f\t|", id, desc, fee);
-        System.out.printf("\n-----------------------------------------------");
+        System.out.print("\n-----------------------------------------------");
     }
 
     public void printResult() {
-        System.out.printf("\n|\t   Sub Total\t\t\t\t\t%.2f\t|",sum);
-        System.out.printf("\n-----------------------------------------------");
-        System.out.printf("\n|\t   Membership Discount(5%%)\t\t-%.2f\t|",discount);
-        System.out.printf("\n|\t   Service Fee(10%%)\t\t\t\t%.2f\t|",serviceFee);
+        System.out.printf("\n|\t   Sub Total\t\t\t\t\t%.2f\t|", sum);
+        System.out.print("\n-----------------------------------------------");
+        System.out.printf("\n|\t   Membership Discount(5%%)\t\t-%.2f\t|", discount);
+        System.out.printf("\n|\t   Service Fee(10%%)\t\t\t\t%.2f\t|", serviceFee);
         System.out.printf("\n|\t   Tax(7%%)\t\t\t\t\t\t%.2f\t|", tax);
-        System.out.printf("\n-----------------------------------------------");
+        System.out.print("\n-----------------------------------------------");
         System.out.printf("\n|\t   Total\t\t\t\t\t\t%.2f\t|", sum - discount + serviceFee + tax);
-        System.out.printf("\n-----------------------------------------------");
-        System.out.printf("\n\t\t\t\tTHANK YOU!");
-        System.out.printf("\n\n-----------------------------------------------");
+        System.out.print("\n-----------------------------------------------");
+        System.out.print("\n\t\t\t\tTHANK YOU!");
+        System.out.print("\n\n-----------------------------------------------");
         System.out.println();
         System.out.println();
         System.out.println();

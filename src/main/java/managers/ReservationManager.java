@@ -1,7 +1,6 @@
 package managers;
 
 import adapters.MenuItemAdapter;
-import beans.Order;
 import beans.Reservation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,13 +22,13 @@ import java.util.List;
 /**
  * The manager class that controls the Reservation class
  *
- *  @author Ruan Donglin
+ * @author Ruan Donglin
  */
 public class ReservationManager {
     private List<Reservation> reservations;
 
     public ReservationManager() throws IOException {
-        reservations= readReservation();
+        reservations = readReservation();
     }
 
     public List<Reservation> getReservations() {
@@ -44,17 +43,17 @@ public class ReservationManager {
      * Read all existing reservations from the json file.
      *
      * @return the list of existing reservations in a list of Reservation object
+     *
      * @throws IOException
      */
-    public List<Reservation> readReservation() throws IOException{
+    public List<Reservation> readReservation() throws IOException {
         Gson gson = new Gson();
         Path file = Path.of("src/main/resources/data/reservation.json");
         String jsonString = Files.readString(file);
         Reservation[] reservationArray = gson.fromJson(jsonString, Reservation[].class);
-        if( reservationArray== null){
+        if (reservationArray == null) {
             reservations = new ArrayList<>();
-        }
-        else{
+        } else {
             reservations = new ArrayList<>(Arrays.asList(reservationArray));
         }
         return reservations;
@@ -66,7 +65,7 @@ public class ReservationManager {
      * @param reservation the reservation that needs to be added
      * @throws IOException
      */
-    public void addReservation(Reservation reservation) throws IOException {
+    public void addReservation(Reservation reservation) {
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
@@ -89,11 +88,11 @@ public class ReservationManager {
      * @throws IOException
      */
     public void removeReservation(int id) throws IOException {
-        boolean removeReservation= false;
-        for(Reservation reservation: reservations){
+        boolean removeReservation = false;
+        for (Reservation reservation : reservations) {
             {
-                if(reservation.getId()== id){
-                    removeReservation= true;
+                if (reservation.getId() == id) {
+                    removeReservation = true;
                     System.out.println("Remove reservation booking success");
                     reservation.getTable().setOccupied(false);
                     deleteReservation(reservation);
@@ -101,7 +100,7 @@ public class ReservationManager {
                 }
             }
         }
-        if(!removeReservation){
+        if (!removeReservation) {
             System.out.println("Remove reservation booking failure");
         }
     }
@@ -111,7 +110,7 @@ public class ReservationManager {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
         reservations.remove(reservation);
-        Reservation[] reservations1= new Reservation[reservations.size()];
+        Reservation[] reservations1 = new Reservation[reservations.size()];
         reservations.toArray(reservations1);
         Path file = Path.of("src/main/resources/data/reservation.json");
         Files.delete(file);
@@ -128,28 +127,26 @@ public class ReservationManager {
     public void reservationCheckIn(int id) throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(Reservation.class, new MenuItemAdapter());
-        boolean removeReservation= false;
-        for(Reservation reservation: reservations){
+        boolean removeReservation = false;
+        for (Reservation reservation : reservations) {
             {
-                if(reservation.getId()== id){
-                    if(reservation.getLocalDate().isAfter(LocalDate.now())){
+                if (reservation.getId() == id) {
+                    if (reservation.getLocalDate().isAfter(LocalDate.now())) {
                         System.out.println("Not the date for checking reservation yet");
-                    }
-                    else if (reservation.getLocalTime().isAfter(LocalTime.of(12,00,00)) &&  LocalTime.now().isBefore(LocalTime.of(12,00,00))){
+                    } else if (reservation.getLocalTime().isAfter(LocalTime.of(12, 0, 0)) && LocalTime.now().isBefore(LocalTime.of(12, 0, 0))) {
                         System.out.println("Please come after 12 o'clock");
-                    }
-                    else{
-                        removeReservation= true;
+                    } else {
+                        removeReservation = true;
                         System.out.println("Check reservation booking success");
                         deleteReservation(reservation);
-                        OrderUI orderUI= new OrderUI();
+                        OrderUI orderUI = new OrderUI();
                         orderUI.createOrderAfterReservation(reservation);
                     }
                     break;
                 }
             }
         }
-        if(!removeReservation){
+        if (!removeReservation) {
             System.out.println("Check reservation booking failure");
         }
     }
@@ -160,24 +157,24 @@ public class ReservationManager {
      * @throws IOException
      */
     public void clearExpiredReservations() throws IOException {
-        Iterator<Reservation> reservationIterator= reservations.iterator();
-        while(reservationIterator.hasNext()){
-            Reservation r= reservationIterator.next();
+        Iterator<Reservation> reservationIterator = reservations.iterator();
+        while (reservationIterator.hasNext()) {
+            Reservation r = reservationIterator.next();
             {
-                if(LocalDate.now().isAfter(r.getLocalDate()) ){
+                if (LocalDate.now().isAfter(r.getLocalDate())) {
                     reservationIterator.remove();
                     deleteReservation(r);
-                    System.out.println("Reservation "+ r.getId()+ " expires");
+                    System.out.println("Reservation " + r.getId() + " expires");
                 }
-                if(LocalDate.now().isEqual(r.getLocalDate())&&LocalTime.now().isAfter(r.getLocalTime().plusMinutes(30))){
+                if (LocalDate.now().isEqual(r.getLocalDate()) && LocalTime.now().isAfter(r.getLocalTime().plusMinutes(30))) {
                     reservationIterator.remove();
                     r.getTable().setOccupied(false);
                     deleteReservation(r);
-                    System.out.println("Reservation "+ r.getId()+ " expires");
+                    System.out.println("Reservation " + r.getId() + " expires");
                 }
             }
         }
-	}
+    }
 
 
 }

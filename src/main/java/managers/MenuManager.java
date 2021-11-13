@@ -19,50 +19,48 @@ import java.util.List;
 /**
  * The manager class that controls the MenuItem class
  *
- *  @author Zhou Yuxuan
+ * @author Zhou Yuxuan
  */
-public class MenuManager{
+public class MenuManager {
 
     private List<MenuItem> menuItemList;
 
     public MenuManager() throws IOException {
-        menuItemList= readMenuItem();
+        menuItemList = readMenuItem();
     }
 
 
-
-    public List<MenuItem> readMenuItem() throws IOException{
+    public List<MenuItem> readMenuItem() throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.create();
         Path file = Path.of("src/main/resources/data/menu.json");
         String jsonString = Files.readString(file);
         MenuItem[] foodArray = gson.fromJson(jsonString, MenuItem[].class);
-        if(foodArray == null){
+        if (foodArray == null) {
             menuItemList = new ArrayList<>();
-        }
-        else{
+        } else {
             menuItemList = new ArrayList<>(Arrays.asList(foodArray));
         }
         return menuItemList;
     }
 
-    public void addMenuItem(MenuItem m) throws IOException{
+    public void addMenuItem(MenuItem m) throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         try {
             int i = 0;
-            for(; i < menuItemList.size(); i++){
-                if(m.getType().ordinal() < menuItemList.get(i).getType().ordinal()){
+            for (; i < menuItemList.size(); i++) {
+                if (m.getType().ordinal() < menuItemList.get(i).getType().ordinal()) {
                     menuItemList.add(i, m);
                     break;
                 }
             }
-            if(i == menuItemList.size()){
+            if (i == menuItemList.size()) {
                 menuItemList.add(m);
             }
-            for(; i < menuItemList.size(); i++){
+            for (; i < menuItemList.size(); i++) {
                 menuItemList.get(i).setId(i + 1);
             }
             MenuItem[] menuItems = new MenuItem[menuItemList.size()];
@@ -81,9 +79,9 @@ public class MenuManager{
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         try {
-            if(id - 1 < menuItemList.size()){
+            if (id - 1 < menuItemList.size()) {
                 menuItemList.remove(id - 1);
-                for(int i = id - 1; i < menuItemList.size(); i++){
+                for (int i = id - 1; i < menuItemList.size(); i++) {
                     menuItemList.get(i).setId(i + 1);
                 }
                 MenuItem[] menuItems = new MenuItem[menuItemList.size()];
@@ -97,16 +95,16 @@ public class MenuManager{
         }
     }
 
-    public void updateMenuItem(MenuItem m) throws IOException{
+    public void updateMenuItem(MenuItem m) throws IOException {
         deleteMenuItem(m.getId());
         addMenuItem(m);
     }
 
-    public void printMenu() throws IOException {
+    public void printMenu() {
         Formatter fmt = new Formatter();
         fmt.format("%2s %28s %8s %10s   %15s", "id", "name", "price", "type", "description");
         System.out.println(fmt);
-        for(MenuItem item: menuItemList){
+        for (MenuItem item : menuItemList) {
             System.out.println(item.formatter());
         }
     }
@@ -118,9 +116,5 @@ public class MenuManager{
 
     public List<MenuItem> getMenuItemList() {
         return menuItemList;
-    }
-
-    public void setMenuItemList(List<MenuItem> menuItemList) {
-        this.menuItemList = menuItemList;
     }
 }

@@ -22,10 +22,10 @@ import java.util.List;
  * @author Ruan Donglin
  */
 public class TableManager {
-    private ReservationManager reservationManager;
+    private final ReservationManager reservationManager;
     private List<Table> tables;
 
-    public TableManager() throws IOException{
+    public TableManager() throws IOException {
         this.reservationManager = new ReservationManager();
         this.tables = readTable();
     }
@@ -69,7 +69,6 @@ public class TableManager {
      * Check all available table to find one that allow the defined number of pax to seat
      *
      * @param pax the number of pax for the order
-     * @throws IOException
      */
     public Table occupyTableForOrder(int pax) {
         for (Table t : tables) {
@@ -85,14 +84,12 @@ public class TableManager {
 
     /**
      * Check all reservation to find the reservation that happens in the current session to set the table as occupied.
-     *
-     * @throws IOException
      */
-    public void setTableReserved() throws IOException {
+    public void setTableReserved() {
         List<Reservation> reservations = reservationManager.getReservations();
-        if (LocalTime.now().isBefore(LocalTime.of(12, 00, 00))) {
+        if (LocalTime.now().isBefore(LocalTime.of(12, 0, 0))) {
             for (Reservation r : reservations) {
-                if (r.getLocalDate().isEqual(LocalDate.now()) && r.getLocalTime().isBefore(LocalTime.of(12, 00, 00))) {
+                if (r.getLocalDate().isEqual(LocalDate.now()) && r.getLocalTime().isBefore(LocalTime.of(12, 0, 0))) {
                     r.getTable().setOccupied(true);
                 }
             }
@@ -108,9 +105,5 @@ public class TableManager {
 
     public List<Table> getTables() {
         return tables;
-    }
-
-    public void setTables(List<Table> tables) {
-        this.tables = tables;
     }
 }

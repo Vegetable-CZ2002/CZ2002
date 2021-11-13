@@ -8,9 +8,9 @@ import java.util.Objects;
 /**
  * Represents the reservation the customer books
  *
- *  @author Ruan Donglin
+ * @author Ruan Donglin
  */
-public class Reservation{
+public class Reservation {
     private LocalDate localDate;
     private LocalTime localTime;
     private int pax;
@@ -20,13 +20,13 @@ public class Reservation{
     private Table table;
 
     public Reservation(int id, LocalDate localDate, LocalTime localTime, int pax, String name, String contact, Table table) {
-        this.id= id;
+        this.id = id;
         this.pax = pax;
         this.name = name;
         this.contact = contact;
-        this.table= table;
-        this.localDate= localDate;
-        this.localTime= localTime;
+        this.table = table;
+        this.localDate = localDate;
+        this.localTime = localTime;
     }
 
     public void setId(int id) {
@@ -84,7 +84,7 @@ public class Reservation{
                 '}';
     }
 
-    public Formatter formatter(){
+    public Formatter formatter() {
         Formatter fmt = new Formatter();
         return fmt.format("%2s  %10s  %5s  %8s  %3s %12s %15s", id, localDate, localTime, table.getId(), pax, name, contact);
     }
