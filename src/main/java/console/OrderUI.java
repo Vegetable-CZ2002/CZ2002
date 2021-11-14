@@ -18,7 +18,7 @@ import java.util.Scanner;
  *
  * @author Ruan Donglin
  */
-public class OrderUI {
+public class OrderUI extends BaseUI {
     private final TableManager tableManager;
     private final StaffManager staffManager;
     private final OrderManager orderManager;
@@ -32,6 +32,28 @@ public class OrderUI {
     }
 
     private static final Scanner in = MainUI.in;
+
+    /**
+     * Print all/ a specific order detail
+     * The specific order is located according to its order id the user provides
+     */
+    void print() throws IOException {
+        System.out.println("Do you want to view all the orders in history? Please enter [Y/n]");
+        in.nextLine();
+        String value = in.nextLine();
+        if (value.equals("Y")) {
+            System.out.println("Here's all the orders in history\n");
+            orderManager.printOrder();
+        } else if (value.equals("n")) {
+            System.out.println("Please enter the id of the order that you want to view\n");
+            int id = in.nextInt();
+            for (Order order : orderManager.getOrders()) {
+                if (order.getId() == id) {
+                    System.out.println(order);
+                }
+            }
+        }
+    }
 
     public void mainUI() throws IOException {
         int num;
@@ -48,7 +70,7 @@ public class OrderUI {
             num = in.nextInt();
             switch (num) {
                 case 1:
-                    printOrder();
+                    print();
                     break;
                 case 2:
                     createOrder();
@@ -76,28 +98,6 @@ public class OrderUI {
         } while (num != 0);
     }
 
-    /**
-     * Print all/ a specific order detail
-     * The specific order is located according to its order id the user provides
-     */
-    public void printOrder() {
-        System.out.println("Do you want to view all the orders in history? Please enter [Y/n]");
-        in.nextLine();
-        String value = in.nextLine();
-        if (value.equals("Y")) {
-            System.out.println("Here's all the orders in history\n");
-            orderManager.printOrder();
-        } else if (value.equals("n")) {
-            System.out.println("Please enter the id of the order that you want to view\n");
-            int id = in.nextInt();
-            for (Order order : orderManager.getOrders()) {
-                if (order.getId() == id) {
-                    System.out.println(order);
-                }
-            }
-        }
-
-    }
 
     /**
      * Invoice an order according to its order id the user provides

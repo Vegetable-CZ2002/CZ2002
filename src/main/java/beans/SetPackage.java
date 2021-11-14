@@ -26,19 +26,6 @@ public class SetPackage extends MenuItem {
         this.foodList = foodList;
     }
 
-    @Override
-    public String toString() {
-        return "SetPackage{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", foodList=" + foodList +
-                '}';
-    }
-
-    @Override
     public Formatter formatter() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");

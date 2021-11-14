@@ -1,7 +1,6 @@
 package beans;
 
 import java.util.Formatter;
-import java.util.Objects;
 
 /**
  * Represents general menuItem
@@ -68,35 +67,10 @@ public abstract class MenuItem {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof MenuItem)) return false;
-        MenuItem menuItem = (MenuItem) o;
-        return id == menuItem.id;
-    }
+//    @Override
+//    abstract public String toString();
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-
-        return "MenuItem{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                '}';
-    }
-
-    public Formatter formatter(){
-        Formatter fmt = new Formatter();
-        return fmt.format("%2s %28s %8s %10s   %15s", id, name, price, type, description);
-    }
+    abstract public Formatter formatter();
 
 }
 

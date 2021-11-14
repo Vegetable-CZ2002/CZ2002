@@ -16,7 +16,7 @@ import java.util.Scanner;
  *
  * @author Ruan Donglin
  */
-public class TableUI {
+public class TableUI extends BaseUI {
     private final TableManager tableManager;
     private final ReservationManager reservationManager;
     private static final Scanner in = MainUI.in;
@@ -27,6 +27,10 @@ public class TableUI {
     }
 
 
+    void print() {
+
+    }
+
     /**
      * Check the defined date and time's table availability
      * Check all the reservations in the reservation.json file to find all table occupied at the defined time for reservation
@@ -34,7 +38,7 @@ public class TableUI {
      *
      * @throws IOException Signals that an I/O exception occurs in the reservationManager related to json operation
      */
-    public void checkTableAvailability() throws IOException {
+    void mainUI() throws IOException {
         System.out.println("Please enter the date to check availability in the format of YYYY-MM-DD:(eg. 2021-11-12)");
         in.nextLine();
         String date = in.nextLine();
@@ -86,6 +90,4 @@ public class TableUI {
             }
         }
     }
-
-
 }

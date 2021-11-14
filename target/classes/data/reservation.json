@@ -24,28 +24,6 @@
   {
     "localDate": {
       "year": 2021,
-      "month": 11,
-      "day": 14
-    },
-    "localTime": {
-      "hour": 11,
-      "minute": 35,
-      "second": 0,
-      "nano": 0
-    },
-    "pax": 6,
-    "name": "Mao Yiyun",
-    "contact": "88888888",
-    "id": 2,
-    "table": {
-      "numOfSeats": 6,
-      "isOccupied": false,
-      "id": 15
-    }
-  },
-  {
-    "localDate": {
-      "year": 2021,
       "month": 12,
       "day": 25
     },

@@ -65,7 +65,7 @@ public class MainUI {
                     break;
                 case 5:
                     TableUI tableUI = new TableUI();
-                    tableUI.checkTableAvailability();
+                    tableUI.mainUI();
                     break;
                 default:
             }

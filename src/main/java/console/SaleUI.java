@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author Ruan Donglin
  */
-public class SaleUI {
+public class SaleUI extends BaseUI {
     private static final Scanner in = MainUI.in;
     private final OrderManager orderManager;
     private final MenuManager menuManager;
@@ -24,12 +24,34 @@ public class SaleUI {
         this.menuManager = new MenuManager();
     }
 
-    public void mainUI() throws IOException{
+    void print() throws IOException {
+
+    }
+
+    public void mainUI() throws IOException {
         System.out.println("Please enter the date to check for sale in the format of YYYY-MM-DD:(eg. 2021-11-12)");
         in.nextLine();
         String date = in.nextLine();
         LocalDate localDate = LocalDate.parse(date);
-        printSale(localDate);
+        double sum = 0;
+        double[] sale = new double[menuManager.menuSize()];
+        if (orderManager.getInvoices().size() != 0) {
+            for (Order order : orderManager.getInvoices()) {
+                if (order.getLocalDate().isEqual(localDate)) {
+                    MenuItem[] menuItems = order.getMenuItems();
+                    for (MenuItem menuItem : menuItems) {
+                        sale[menuItem.getId() - 1] += 1;
+                    }
+                    sum += order.getSum();
+                }
+            }
+        }
+        System.out.println("The sale for this current period is " + sum);
+        for (MenuItem menuItem : menuManager.getMenuItemList()) {
+            if (sale[menuItem.getId() - 1] != 0) {
+                System.out.println("The individual sales item of id " + menuItem.getId() + " is " + (int) sale[menuItem.getId() - 1]);
+            }
+        }
     }
 
     /**

@@ -17,7 +17,7 @@ import java.util.Scanner;
  *
  * @author Ruan Donglin
  */
-public class ReservationUI {
+public class ReservationUI extends BaseUI {
     private final TableManager tableManager;
     private final ReservationManager reservationManager;
 
@@ -28,6 +28,27 @@ public class ReservationUI {
 
     //private static Scanner in= new Scanner(System.in);
     private static final Scanner in = MainUI.in;
+
+    /**
+     * View all existing reservations
+     * It calls the getReservations method in the reservationManager class
+     *
+     * @throws IOException Signals that an I/O exception occurs in the reservationManager related to json operation
+     */
+    void print() throws IOException {
+        reservationManager.clearExpiredReservations();
+        if (reservationManager.getReservations().size() == 0) {
+            System.out.println("No reservation yet");
+        } else {
+            System.out.println("Here's all the reservations in history");
+            Formatter fmt = new Formatter();
+            fmt.format("%2s  %10s  %5s  %8s  %3s %12s %15s", "id", "Date", "Time", "tableId", "pax", "name", "contact");
+            System.out.println(fmt);
+            for (Reservation reservation : reservationManager.getReservations()) {
+                System.out.println(reservation.formatter());
+            }
+        }
+    }
 
     public void mainUI() throws IOException {
         int num;
@@ -50,7 +71,7 @@ public class ReservationUI {
                     removeReservation();
                     break;
                 case 4:
-                    viewReservation();
+                    print();
                     break;
                 default:
             }
@@ -166,27 +187,5 @@ public class ReservationUI {
         System.out.println("Please enter the reservation id you received when booking");
         int id = in.nextInt();
         reservationManager.removeReservation(id);
-    }
-
-    /**
-     * View all existing reservations
-     * It calls the getReservations method in the reservationManager class
-     *
-     * @throws IOException Signals that an I/O exception occurs in the reservationManager related to json operation
-     */
-    public void viewReservation() throws IOException {
-        reservationManager.clearExpiredReservations();
-        if (reservationManager.getReservations().size() == 0) {
-            System.out.println("No reservation yet");
-        } else {
-            System.out.println("Here's all the reservations in history");
-            Formatter fmt = new Formatter();
-            fmt.format("%2s  %10s  %5s  %8s  %3s %12s %15s", "id", "Date", "Time", "tableId", "pax", "name", "contact");
-            System.out.println(fmt);
-            for (Reservation reservation : reservationManager.getReservations()) {
-                System.out.println(reservation.formatter());
-            }
-        }
-
     }
 }

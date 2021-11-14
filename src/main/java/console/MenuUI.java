@@ -17,7 +17,7 @@ import java.util.Scanner;
  * @author Ruan Donglin
  * @author Zhou Yuxuan
  */
-public class MenuUI {
+public class MenuUI extends BaseUI {
 
     private final MenuManager menuManager;
 
@@ -27,12 +27,6 @@ public class MenuUI {
 
     //private static Scanner in = new Scanner(System.in);
     private static final Scanner in = MainUI.in;
-
-    public void printMenu() throws IOException {
-        System.out.println("Here's all the menu items on the menu");
-        menuManager.printMenu();
-    }
-
 
     /**
      * Create an Ala Carte item by initializing a new menu item and add it into the menu by asking the user to provide all needed information about the new ala carte item.
@@ -105,7 +99,7 @@ public class MenuUI {
     public void createSetPackage() throws IOException {
         List<MenuItem> menuItems = menuManager.getMenuItemList();
         List<Food> foodList = new ArrayList<>();
-        printMenu();
+        print();
         System.out.println("Please enter information for the new set package\n");
         System.out.println("Please enter the id of the ala carte items in the new set package, enter 0 to quit");
         int itemId;
@@ -309,7 +303,12 @@ public class MenuUI {
         }
     }
 
-    public void mainUI() throws IOException {
+    void print() {
+        System.out.println("Here's all the menu items on the menu");
+        menuManager.printMenu();
+    }
+
+    void mainUI() throws IOException {
         int num;
         do {
             System.out.println("Welcome to the menu section! What action do you wish to take?");
@@ -323,7 +322,7 @@ public class MenuUI {
             num = in.nextInt();
             switch (num) {
                 case 1:
-                    printMenu();
+                    print();
                     break;
                 case 2:
                     createAlaCarteItem();
@@ -346,5 +345,6 @@ public class MenuUI {
             }
         } while (num != 0);
     }
+
 
 }
