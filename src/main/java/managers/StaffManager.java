@@ -22,7 +22,12 @@ public class StaffManager extends BaseManager {
     private List<Staff> staffs;
 
     public StaffManager() throws IOException {
-        staffs = readStaff();
+        staffs = read();
+    }
+
+
+    public List<Staff> getStaffs() {
+        return staffs;
     }
 
     /**
@@ -32,7 +37,7 @@ public class StaffManager extends BaseManager {
      *
      * @throws IOException Signals that an I/O exception occurs related to the json operation
      */
-    public List<Staff> readStaff() throws IOException {
+    public List read() throws IOException {
         Gson gson = new Gson();
         Path file = Path.of("src/main/resources/data/staff.json");
         String jsonString = Files.readString(file);
@@ -43,15 +48,6 @@ public class StaffManager extends BaseManager {
             staffs = new ArrayList<>(Arrays.asList(staffArray));
         }
         return staffs;
-    }
-
-    public List<Staff> getStaffs() {
-        return staffs;
-    }
-
-    @Override
-    public List read() throws IOException {
-        return null;
     }
 
     /**
@@ -75,13 +71,17 @@ public class StaffManager extends BaseManager {
         }
     }
 
-    @Override
+
     public void delete(int id) throws IOException {
 
     }
 
-    @Override
+
     public int getSize() {
-        return 0;
+        return staffs.size();
     }
+
+    public void print() {
+    }
+
 }

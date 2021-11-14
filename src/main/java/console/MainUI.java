@@ -18,16 +18,6 @@ public class MainUI {
     private static ReservationManager reservationManager;
     public static Scanner in = new Scanner(System.in);
 
-//    public static Scanner in;
-//    static File text = new File("src/main/resources/file/order.txt");
-//
-//    static {
-//        try {
-//            in = new Scanner(text);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
     public MainUI() throws FileNotFoundException {
     }
 

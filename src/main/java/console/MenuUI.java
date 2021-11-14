@@ -17,7 +17,7 @@ import java.util.Scanner;
  * @author Ruan Donglin
  * @author Zhou Yuxuan
  */
-public class MenuUI extends BaseUI {
+public class MenuUI {
 
     private final MenuManager menuManager;
 
@@ -298,7 +298,7 @@ public class MenuUI extends BaseUI {
 
     void print() {
         System.out.println("Here's all the menu items on the menu");
-        menuManager.printMenu();
+        menuManager.print();
     }
 
     void mainUI() throws IOException {

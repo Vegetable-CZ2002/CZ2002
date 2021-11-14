@@ -16,7 +16,7 @@ import java.util.Scanner;
  *
  * @author Ruan Donglin
  */
-public class TableUI extends BaseUI {
+public class TableUI {
     private final TableManager tableManager;
     private final ReservationManager reservationManager;
     private static final Scanner in = MainUI.in;
@@ -27,9 +27,6 @@ public class TableUI extends BaseUI {
     }
 
 
-    void print() {
-
-    }
 
     /**
      * Check the defined date and time's table availability
@@ -50,7 +47,7 @@ public class TableUI extends BaseUI {
         if (localDate.isBefore(LocalDate.now()) || (localDate.isEqual(LocalDate.now()) && localTime.isBefore(LocalTime.now()))) {
             System.out.println("Cannot check availability on a time that has passed");
         } else {
-            List<Table> tableList = tableManager.readTable();
+            List<Table> tableList = tableManager.read();
             if (localTime.isBefore(LocalTime.of(15, 0, 0))) {
                 for (Reservation r : reservationManager.getReservations()) {
                     if (r.getLocalDate().isEqual(localDate) && r.getLocalTime().isBefore(LocalTime.of(15, 0, 0))) {
@@ -69,7 +66,7 @@ public class TableUI extends BaseUI {
                     }
                 }
             } else {
-                List<Table> tableList2 = tableManager.readTable();
+                List<Table> tableList2 = tableManager.read();
                 for (Reservation r : reservationManager.getReservations()) {
                     if (r.getLocalDate().isEqual(localDate)) {
                         for (Table table : tableList2) {

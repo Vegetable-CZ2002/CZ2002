@@ -13,10 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -37,25 +34,6 @@ public class ReservationManager extends BaseManager {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
-    }
-
-
-
-    /**
-     * Remove a reservation from the reservation.json file
-     *
-     * @param reservation the reservation that needs to be deleted
-     * @throws IOException Signals that an I/O exception occurs related to the json operation
-     */
-    public void deleteReservation(Reservation reservation) throws IOException {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.setPrettyPrinting().create();
-        reservations.remove(reservation);
-        Reservation[] reservations1 = new Reservation[reservations.size()];
-        reservations.toArray(reservations1);
-        Path file = Path.of("src/main/resources/data/reservation.json");
-        Files.delete(file);
-        Files.writeString(file, gson.toJson(reservations1), StandardOpenOption.CREATE_NEW);
     }
 
 
@@ -80,7 +58,7 @@ public class ReservationManager extends BaseManager {
                     } else {
                         removeReservation = true;
                         System.out.println("Check reservation booking success");
-                        deleteReservation(reservation);
+                        delete((int) reservation.getId());
                         OrderUI orderUI = new OrderUI();
                         orderUI.createOrderAfterReservation(reservation);
                     }
@@ -105,13 +83,13 @@ public class ReservationManager extends BaseManager {
             {
                 if (LocalDate.now().isAfter(r.getLocalDate())) {
                     reservationIterator.remove();
-                    deleteReservation(r);
+                    delete((int) r.getId());
                     System.out.println("Reservation " + r.getId() + " expires");
                 }
                 if (LocalDate.now().isEqual(r.getLocalDate()) && LocalTime.now().isAfter(r.getLocalTime().plusMinutes(30))) {
                     reservationIterator.remove();
                     r.getTable().setOccupied(false);
-                    deleteReservation(r);
+                    delete((int) r.getId());
                     System.out.println("Reservation " + r.getId() + " expires");
                 }
             }
@@ -194,6 +172,20 @@ public class ReservationManager extends BaseManager {
     }
 
     public int getSize() {
-        return 0;
+        return reservations.size();
+    }
+
+    public void print() {
+        if (getReservations().size() == 0) {
+            System.out.println("No reservation yet");
+        } else {
+            System.out.println("Here's all the reservations in history");
+            Formatter fmt = new Formatter();
+            fmt.format("%2s  %10s  %5s  %8s  %3s %12s %15s", "id", "Date", "Time", "tableId", "pax", "name", "contact");
+            System.out.println(fmt);
+            for (Reservation reservation : getReservations()) {
+                System.out.println(reservation.formatter());
+            }
+        }
     }
 }

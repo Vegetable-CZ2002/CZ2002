@@ -41,26 +41,6 @@ public class MenuManager extends BaseManager {
         add(m);
     }
 
-
-    public void printMenu() {
-        Formatter fmt = new Formatter();
-        fmt.format("%2s %28s %8s %10s   %15s", "id", "name", "price", "type", "description");
-        System.out.println(fmt);
-        for (MenuItem item : menuItemList) {
-            System.out.println(item.formatter());
-        }
-    }
-
-    /**
-     * @return the size of the existing menu
-     *
-     * @throws IOException Signals that an I/O exception occurs in the readString operation
-     */
-    public int menuSize() throws IOException {
-        List<MenuItem> menuItems = read();
-        return menuItems.size();
-    }
-
     public List<MenuItem> getMenuItemList() {
         return menuItemList;
     }
@@ -72,7 +52,6 @@ public class MenuManager extends BaseManager {
      *
      * @throws IOException Signals that an I/O exception occurs in the readString operation
      */
-    @Override
     public List<MenuItem> read() throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
@@ -93,7 +72,6 @@ public class MenuManager extends BaseManager {
      * Delete a menuItem from the menu.json file
      * Locate the menuItem according to its menuItem id
      */
-    @Override
     public void delete(int id) {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
@@ -115,9 +93,14 @@ public class MenuManager extends BaseManager {
         }
     }
 
-    @Override
-    public int getSize() {
-        return 0;
+    /**
+     * @return the size of the existing menu
+     *
+     * @throws IOException Signals that an I/O exception occurs in the readString operation
+     */
+    public int getSize() throws IOException {
+        List<MenuItem> menuItems = read();
+        return menuItems.size();
     }
 
 
@@ -153,6 +136,15 @@ public class MenuManager extends BaseManager {
             Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.CREATE_NEW);
         } catch (JsonIOException | IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void print() {
+        Formatter fmt = new Formatter();
+        fmt.format("%2s %28s %8s %10s   %15s", "id", "name", "price", "type", "description");
+        System.out.println(fmt);
+        for (MenuItem item : menuItemList) {
+            System.out.println(item.formatter());
         }
     }
 }

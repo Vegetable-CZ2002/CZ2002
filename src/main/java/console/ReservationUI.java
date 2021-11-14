@@ -8,7 +8,6 @@ import managers.TableManager;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,7 +16,7 @@ import java.util.Scanner;
  *
  * @author Ruan Donglin
  */
-public class ReservationUI extends BaseUI {
+public class ReservationUI {
     private final TableManager tableManager;
     private final ReservationManager reservationManager;
 
@@ -37,17 +36,7 @@ public class ReservationUI extends BaseUI {
      */
     void print() throws IOException {
         reservationManager.clearExpiredReservations();
-        if (reservationManager.getReservations().size() == 0) {
-            System.out.println("No reservation yet");
-        } else {
-            System.out.println("Here's all the reservations in history");
-            Formatter fmt = new Formatter();
-            fmt.format("%2s  %10s  %5s  %8s  %3s %12s %15s", "id", "Date", "Time", "tableId", "pax", "name", "contact");
-            System.out.println(fmt);
-            for (Reservation reservation : reservationManager.getReservations()) {
-                System.out.println(reservation.formatter());
-            }
-        }
+        reservationManager.print();
     }
 
     public void mainUI() throws IOException {
@@ -126,7 +115,7 @@ public class ReservationUI extends BaseUI {
                         t.setOccupied(true);
                         isBookingSuccess = true;
                         Reservation reservation = new Reservation(max + 1, localDate, localTime, pax, name, contact, t);
-                        reservationManager.addReservation(reservation);
+                        reservationManager.add(reservation);
                         reservation.setTable(t);
                         reservationManager.getReservations().add(reservation);
                         break;
@@ -147,7 +136,7 @@ public class ReservationUI extends BaseUI {
                         System.out.println("Your reservation id is: " + (max + 1));
                         isBookingSuccess = true;
                         Reservation reservation = new Reservation(max + 1, localDate, localTime, pax, name, contact, t);
-                        reservationManager.addReservation(reservation);
+                        reservationManager.add(reservation);
                         reservation.setTable(t);
                         break;
                     }
@@ -186,6 +175,6 @@ public class ReservationUI extends BaseUI {
         reservationManager.clearExpiredReservations();
         System.out.println("Please enter the reservation id you received when booking");
         int id = in.nextInt();
-        reservationManager.removeReservation(id);
+        reservationManager.delete(id);
     }
 }

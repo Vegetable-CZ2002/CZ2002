@@ -89,24 +89,24 @@
   },
   {
     "localDate": {
-      "year": 2022,
-      "month": 1,
-      "day": 1
+      "year": 2021,
+      "month": 11,
+      "day": 25
     },
     "localTime": {
-      "hour": 16,
+      "hour": 19,
       "minute": 0,
       "second": 0,
       "nano": 0
     },
-    "pax": 6,
-    "name": "rdl",
-    "contact": "3456",
+    "pax": 4,
+    "name": "1",
+    "contact": "1",
     "id": 7,
     "table": {
-      "numOfSeats": 6,
+      "numOfSeats": 4,
       "isOccupied": false,
-      "id": 15
+      "id": 5
     }
   }
 ]

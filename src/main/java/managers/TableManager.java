@@ -27,48 +27,9 @@ public class TableManager extends BaseManager {
 
     public TableManager() throws IOException {
         this.reservationManager = new ReservationManager();
-        this.tables = readTable();
+        this.tables = read();
     }
 
-
-    /**
-     * Read all tables from the table.json file
-     *
-     * @return all the tables in the restaurant that is in the format of list of Table object
-     *
-     * @throws IOException Signals that an I/O exception occurs related to the json operation
-     */
-    public List<Table> readTable() throws IOException {
-        Gson gson = new Gson();
-        Path file = Path.of("src/main/resources/data/table.json");
-        String jsonString = Files.readString(file);
-        Table[] tableArray = gson.fromJson(jsonString, Table[].class);
-        if (tableArray == null) {
-            tables = new ArrayList<>();
-        } else {
-            tables = new ArrayList<>(Arrays.asList(tableArray));
-        }
-        return tables;
-    }
-
-    /**
-     * Add a table and write it to the table.json file
-     *
-     * @param t the table object that needs to be added
-     */
-    public void addTable(Table t) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.setPrettyPrinting().create();
-        try {
-            tables.add(t);
-            Table[] tableArray = new Table[tables.size()];
-            tables.toArray(tableArray);
-            Path file = Path.of("src/main/resources/data/table.json");
-            Files.writeString(file, gson.toJson(tableArray), StandardOpenOption.WRITE);
-        } catch (JsonIOException | IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Check all available table to find one that allow the defined number of pax to seat
@@ -112,12 +73,31 @@ public class TableManager extends BaseManager {
         return tables;
     }
 
-    @Override
+    /**
+     * Read all tables from the table.json file
+     *
+     * @return all the tables in the restaurant that is in the format of list of Table object
+     *
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
+     */
     public List read() throws IOException {
-        return null;
+        Gson gson = new Gson();
+        Path file = Path.of("src/main/resources/data/table.json");
+        String jsonString = Files.readString(file);
+        Table[] tableArray = gson.fromJson(jsonString, Table[].class);
+        if (tableArray == null) {
+            tables = new ArrayList<>();
+        } else {
+            tables = new ArrayList<>(Arrays.asList(tableArray));
+        }
+        return tables;
     }
 
-    @Override
+    /**
+     * Add a table and write it to the table.json file
+     *
+     * @param o the table object that needs to be added
+     */
     public void add(Object o) {
         Table t = (Table) o;
         GsonBuilder builder = new GsonBuilder();
@@ -140,6 +120,11 @@ public class TableManager extends BaseManager {
 
     @Override
     public int getSize() {
-        return 0;
+        return tables.size();
+    }
+
+    @Override
+    public void print() {
+
     }
 }

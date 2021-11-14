@@ -18,7 +18,7 @@ import java.util.Scanner;
  *
  * @author Ruan Donglin
  */
-public class OrderUI extends BaseUI {
+public class OrderUI {
     private final TableManager tableManager;
     private final StaffManager staffManager;
     private final OrderManager orderManager;
@@ -43,7 +43,7 @@ public class OrderUI extends BaseUI {
         String value = in.nextLine();
         if (value.equals("Y")) {
             System.out.println("Here's all the orders in history\n");
-            orderManager.printOrder();
+            orderManager.print();
         } else if (value.equals("n")) {
             System.out.println("Please enter the id of the order that you want to view\n");
             int id = in.nextInt();
@@ -242,7 +242,7 @@ public class OrderUI extends BaseUI {
         } else {
             System.out.println("Here's all the menu item in this order");
             order.printMenuItemInOrder();
-            menuManager.printMenu();
+            menuManager.print();
             System.out.println("Please enter the id of the menu item that you want to add, enter 0 to quit\n");
             List<MenuItem> menuItems = menuManager.getMenuItemList();
             int itemId;

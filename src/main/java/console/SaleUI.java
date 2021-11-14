@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author Ruan Donglin
  */
-public class SaleUI extends BaseUI {
+public class SaleUI {
     private static final Scanner in = MainUI.in;
     private final OrderManager orderManager;
     private final MenuManager menuManager;
@@ -24,9 +24,6 @@ public class SaleUI extends BaseUI {
         this.menuManager = new MenuManager();
     }
 
-    void print() throws IOException {
-
-    }
 
     public void mainUI() throws IOException {
         System.out.println("Please enter the date to check for sale in the format of YYYY-MM-DD:(eg. 2021-11-12)");
@@ -34,7 +31,7 @@ public class SaleUI extends BaseUI {
         String date = in.nextLine();
         LocalDate localDate = LocalDate.parse(date);
         double sum = 0;
-        double[] sale = new double[menuManager.menuSize()];
+        double[] sale = new double[menuManager.getSize()];
         if (orderManager.getInvoices().size() != 0) {
             for (Order order : orderManager.getInvoices()) {
                 if (order.getLocalDate().isEqual(localDate)) {
@@ -61,7 +58,7 @@ public class SaleUI extends BaseUI {
      */
     public void printSale(LocalDate localDate) throws IOException {
         double sum = 0;
-        double[] sale = new double[menuManager.menuSize()];
+        double[] sale = new double[menuManager.getSize()];
         if (orderManager.getInvoices().size() != 0) {
             for (Order order : orderManager.getInvoices()) {
                 if (order.getLocalDate().isEqual(localDate)) {

@@ -96,18 +96,6 @@ public class OrderManager extends BaseManager {
         }
     }
 
-    /**
-     * Pri t all the existing order item.
-     */
-    public void printOrder() {
-        if (orders.size() == 0) {
-            System.out.println("No order in history yet");
-        } else {
-            for (Order item : orders) {
-                System.out.print(item.toString() + "\n");
-            }
-        }
-    }
 
     /**
      * Read all existing invoices from the json file.
@@ -157,6 +145,16 @@ public class OrderManager extends BaseManager {
     }
 
     public int getSize() {
-        return 0;
+        return orders.size();
+    }
+
+    public void print() {
+        if (orders.size() == 0) {
+            System.out.println("No order in history yet");
+        } else {
+            for (Order item : orders) {
+                System.out.print(item.toString() + "\n");
+            }
+        }
     }
 }

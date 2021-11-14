@@ -11,7 +11,8 @@ public abstract class BaseManager<T> {
 
     public abstract <T> void delete(int id) throws IOException;
 
-    public abstract <T> int getSize();
+    public abstract <T> int getSize() throws IOException;
 
+    public abstract <T> void print();
 
 }
