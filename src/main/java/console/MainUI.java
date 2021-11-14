@@ -18,9 +18,6 @@ public class MainUI {
     private static ReservationManager reservationManager;
     public static Scanner in = new Scanner(System.in);
 
-    public MainUI() throws FileNotFoundException {
-    }
-
     public static void main(String[] args) throws IOException {
         reservationManager = new ReservationManager();
         tableManager = new TableManager();
