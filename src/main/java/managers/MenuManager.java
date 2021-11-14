@@ -21,12 +21,48 @@ import java.util.List;
  *
  * @author Zhou Yuxuan
  */
-public class MenuManager {
+public class MenuManager extends BaseManager {
 
     private List<MenuItem> menuItemList;
 
     public MenuManager() throws IOException {
-        menuItemList = readMenuItem();
+        menuItemList = read();
+    }
+
+
+    /**
+     * Update a menuItem by delete the old menuItem and add the new one
+     *
+     * @param m the menuItem that need to be updated
+     * @throws IOException Signals that an I/O exception occurs in the readString/ writeString operation
+     */
+    public void updateMenuItem(MenuItem m) throws IOException {
+        delete(m.getId());
+        add(m);
+    }
+
+
+    public void printMenu() {
+        Formatter fmt = new Formatter();
+        fmt.format("%2s %28s %8s %10s   %15s", "id", "name", "price", "type", "description");
+        System.out.println(fmt);
+        for (MenuItem item : menuItemList) {
+            System.out.println(item.formatter());
+        }
+    }
+
+    /**
+     * @return the size of the existing menu
+     *
+     * @throws IOException Signals that an I/O exception occurs in the readString operation
+     */
+    public int menuSize() throws IOException {
+        List<MenuItem> menuItems = read();
+        return menuItems.size();
+    }
+
+    public List<MenuItem> getMenuItemList() {
+        return menuItemList;
     }
 
     /**
@@ -36,7 +72,8 @@ public class MenuManager {
      *
      * @throws IOException Signals that an I/O exception occurs in the readString operation
      */
-    public List<MenuItem> readMenuItem() throws IOException {
+    @Override
+    public List<MenuItem> read() throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.create();
@@ -53,12 +90,45 @@ public class MenuManager {
 
 
     /**
+     * Delete a menuItem from the menu.json file
+     * Locate the menuItem according to its menuItem id
+     */
+    @Override
+    public void delete(int id) {
+        GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
+        Gson gson = builder.setPrettyPrinting().create();
+        try {
+            if (id - 1 < menuItemList.size()) {
+                menuItemList.remove(id - 1);
+                for (int i = id - 1; i < menuItemList.size(); i++) {
+                    menuItemList.get(i).setId(i + 1);
+                }
+                MenuItem[] menuItems = new MenuItem[menuItemList.size()];
+                menuItemList.toArray(menuItems);
+                Path file = Path.of("src/main/resources/data/menu.json");
+                Files.delete(file);
+                Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.CREATE_NEW);
+            }
+        } catch (JsonIOException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public int getSize() {
+        return 0;
+    }
+
+
+    /**
      * Add a menuItem into the menu.json file
      *
-     * @param m the menuItem that needs to be added
+     * @param o the menuItem that needs to be added
      * @throws IOException Signals that an I/O exception occurs in the writeString operation
      */
-    public void addMenuItem(MenuItem m) throws IOException {
+    public void add(Object o) {
+        MenuItem m = (MenuItem) o;
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
@@ -84,65 +154,5 @@ public class MenuManager {
         } catch (JsonIOException | IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Delete a menuItem from the menu.json file
-     * Locate the menuItem according to its menuItem id
-     */
-    public void deleteMenuItem(int id) {
-        GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
-        Gson gson = builder.setPrettyPrinting().create();
-        try {
-            if (id - 1 < menuItemList.size()) {
-                menuItemList.remove(id - 1);
-                for (int i = id - 1; i < menuItemList.size(); i++) {
-                    menuItemList.get(i).setId(i + 1);
-                }
-                MenuItem[] menuItems = new MenuItem[menuItemList.size()];
-                menuItemList.toArray(menuItems);
-                Path file = Path.of("src/main/resources/data/menu.json");
-                Files.delete(file);
-                Files.writeString(file, gson.toJson(menuItems), StandardOpenOption.CREATE_NEW);
-            }
-        } catch (JsonIOException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Update a menuItem by delete the old menuItem and add the new one
-     *
-     * @param m the menuItem that need to be updated
-     * @throws IOException Signals that an I/O exception occurs in the readString/ writeString operation
-     */
-    public void updateMenuItem(MenuItem m) throws IOException {
-        deleteMenuItem(m.getId());
-        addMenuItem(m);
-    }
-
-
-    public void printMenu() {
-        Formatter fmt = new Formatter();
-        fmt.format("%2s %28s %8s %10s   %15s", "id", "name", "price", "type", "description");
-        System.out.println(fmt);
-        for (MenuItem item : menuItemList) {
-            System.out.println(item.formatter());
-        }
-    }
-
-    /**
-     * @return the size of the existing menu
-     *
-     * @throws IOException Signals that an I/O exception occurs in the readString operation
-     */
-    public int menuSize() throws IOException {
-        List<MenuItem> menuItems = readMenuItem();
-        return menuItems.size();
-    }
-
-    public List<MenuItem> getMenuItemList() {
-        return menuItemList;
     }
 }

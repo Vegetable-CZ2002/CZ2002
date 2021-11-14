@@ -22,12 +22,12 @@ import java.util.List;
  *
  * @author Ruan Donglin
  */
-public class OrderManager {
+public class OrderManager extends BaseManager {
     private List<Order> invoices;
     private final List<Order> orders;
 
     public OrderManager() throws IOException {
-        invoices = readInvoice();
+        invoices = read();
         orders = new ArrayList<>();
     }
 
@@ -84,7 +84,7 @@ public class OrderManager {
                 order.setServiceFee(order.getSum() * 0.1);
                 order.setTax((order.getSum() - order.getDiscount() + order.getServiceFee()) * 0.07);
                 orders.remove(order);
-                addInvoice(order);
+                add(order);
                 System.out.println("Order successfully invoiced");
                 order.printInvoice();
                 order.setSum(order.getSum() + order.getServiceFee() - order.getDiscount());
@@ -109,7 +109,6 @@ public class OrderManager {
         }
     }
 
-
     /**
      * Read all existing invoices from the json file.
      *
@@ -117,7 +116,7 @@ public class OrderManager {
      *
      * @throws IOException Signals that an I/O exception occurs related to the json operation
      */
-    public List<Order> readInvoice() throws IOException {
+    public List<Order> read() throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
@@ -137,12 +136,13 @@ public class OrderManager {
      *
      * @param i the invoice that needs to be added
      */
-    public void addInvoice(Order i) {
+    public void add(Object i) {
+        Order o = (Order) i;
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
         Gson gson = builder.setPrettyPrinting().create();
         try {
-            invoices.add(i);
+            invoices.add(o);
             Order[] staffArray = new Order[invoices.size()];
             invoices.toArray(staffArray);
             Path file = Path.of("src/main/resources/data/invoice.json");
@@ -152,4 +152,11 @@ public class OrderManager {
         }
     }
 
+    public void delete(int id) {
+
+    }
+
+    public int getSize() {
+        return 0;
+    }
 }

@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author Ruan Donglin
  */
-public class TableManager {
+public class TableManager extends BaseManager {
     private final ReservationManager reservationManager;
     private List<Table> tables;
 
@@ -110,5 +110,36 @@ public class TableManager {
 
     public List<Table> getTables() {
         return tables;
+    }
+
+    @Override
+    public List read() throws IOException {
+        return null;
+    }
+
+    @Override
+    public void add(Object o) {
+        Table t = (Table) o;
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.setPrettyPrinting().create();
+        try {
+            tables.add(t);
+            Table[] tableArray = new Table[tables.size()];
+            tables.toArray(tableArray);
+            Path file = Path.of("src/main/resources/data/table.json");
+            Files.writeString(file, gson.toJson(tableArray), StandardOpenOption.WRITE);
+        } catch (JsonIOException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void delete(int id) throws IOException {
+
+    }
+
+    @Override
+    public int getSize() {
+        return 0;
     }
 }

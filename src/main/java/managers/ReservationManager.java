@@ -24,11 +24,11 @@ import java.util.List;
  *
  * @author Ruan Donglin
  */
-public class ReservationManager {
+public class ReservationManager extends BaseManager {
     private List<Reservation> reservations;
 
     public ReservationManager() throws IOException {
-        reservations = readReservation();
+        reservations = read();
     }
 
     public List<Reservation> getReservations() {
@@ -39,71 +39,6 @@ public class ReservationManager {
         this.reservations = reservations;
     }
 
-    /**
-     * Read all existing reservations from the reservation.json file
-     *
-     * @return the list of existing reservations in a list of Reservation object
-     *
-     * @throws IOException Signals that an I/O exception occurs related to the json operation
-     */
-    public List<Reservation> readReservation() throws IOException {
-        Gson gson = new Gson();
-        Path file = Path.of("src/main/resources/data/reservation.json");
-        String jsonString = Files.readString(file);
-        Reservation[] reservationArray = gson.fromJson(jsonString, Reservation[].class);
-        if (reservationArray == null) {
-            reservations = new ArrayList<>();
-        } else {
-            reservations = new ArrayList<>(Arrays.asList(reservationArray));
-        }
-        return reservations;
-    }
-
-    /**
-     * Add a reservation to the reservation list, write it into the json file
-     *
-     * @param reservation the reservation that needs to be added
-     * @throws IOException Signals that an I/O exception occurs related to the json operation
-     */
-    public void addReservation(Reservation reservation) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.setPrettyPrinting().create();
-        try {
-            reservations.add(reservation);
-            Reservation[] reservationArray = new Reservation[reservations.size()];
-            reservations.toArray(reservationArray);
-            Path file = Path.of("src/main/resources/data/reservation.json");
-            Files.writeString(file, gson.toJson(reservationArray), StandardOpenOption.WRITE);
-        } catch (JsonIOException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    /**
-     * Remove the defined reservation from the reservation list
-     * Call the deletedReservation method to remove it from the reservation.json file
-     *
-     * @param id the id of the reservation that needs to be deleted
-     * @throws IOException Signals that an I/O exception occurs related to the json operation
-     */
-    public void removeReservation(int id) throws IOException {
-        boolean removeReservation = false;
-        for (Reservation reservation : reservations) {
-            {
-                if (reservation.getId() == id) {
-                    removeReservation = true;
-                    System.out.println("Remove reservation booking success");
-                    reservation.getTable().setOccupied(false);
-                    deleteReservation(reservation);
-                    break;
-                }
-            }
-        }
-        if (!removeReservation) {
-            System.out.println("Remove reservation booking failure");
-        }
-    }
 
 
     /**
@@ -183,5 +118,82 @@ public class ReservationManager {
         }
     }
 
+    /**
+     * Read all existing reservations from the reservation.json file
+     *
+     * @return the list of existing reservations in a list of Reservation object
+     *
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
+     */
+    public List read() throws IOException {
+        Gson gson = new Gson();
+        Path file = Path.of("src/main/resources/data/reservation.json");
+        String jsonString = Files.readString(file);
+        Reservation[] reservationArray = gson.fromJson(jsonString, Reservation[].class);
+        if (reservationArray == null) {
+            reservations = new ArrayList<>();
+        } else {
+            reservations = new ArrayList<>(Arrays.asList(reservationArray));
+        }
+        return reservations;
+    }
 
+
+    /**
+     * Add a reservation to the reservation list, write it into the json file
+     *
+     * @param o the reservation that needs to be added
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
+     */
+    public void add(Object o) {
+        Reservation reservation = (Reservation) o;
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.setPrettyPrinting().create();
+        try {
+            reservations.add(reservation);
+            Reservation[] reservationArray = new Reservation[reservations.size()];
+            reservations.toArray(reservationArray);
+            Path file = Path.of("src/main/resources/data/reservation.json");
+            Files.writeString(file, gson.toJson(reservationArray), StandardOpenOption.WRITE);
+        } catch (JsonIOException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Remove the defined reservation from the reservation list
+     * Call the deletedReservation method to remove it from the reservation.json file
+     *
+     * @param id the id of the reservation that needs to be deleted
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
+     */
+    public void delete(int id) throws IOException {
+        boolean removeReservation = false;
+        for (Reservation reservation : reservations) {
+            {
+                if (reservation.getId() == id) {
+                    removeReservation = true;
+                    System.out.println("Remove reservation booking success");
+                    reservation.getTable().setOccupied(false);
+                    GsonBuilder builder = new GsonBuilder();
+                    Gson gson = builder.setPrettyPrinting().create();
+                    reservations.remove(reservation);
+                    Reservation[] reservations1 = new Reservation[reservations.size()];
+                    reservations.toArray(reservations1);
+                    Path file = Path.of("src/main/resources/data/reservation.json");
+                    Files.delete(file);
+                    Files.writeString(file, gson.toJson(reservations1), StandardOpenOption.CREATE_NEW);
+                    break;
+                }
+            }
+        }
+        if (!removeReservation) {
+            System.out.println("Remove reservation booking failure");
+        }
+
+    }
+
+    public int getSize() {
+        return 0;
+    }
 }

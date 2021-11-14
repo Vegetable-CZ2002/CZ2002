@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author Ruan Donglin
  */
-public class StaffManager {
+public class StaffManager extends BaseManager {
     private List<Staff> staffs;
 
     public StaffManager() throws IOException {
@@ -45,13 +45,23 @@ public class StaffManager {
         return staffs;
     }
 
+    public List<Staff> getStaffs() {
+        return staffs;
+    }
+
+    @Override
+    public List read() throws IOException {
+        return null;
+    }
 
     /**
      * Add a staff to the staff.json file
      *
-     * @param s the staff object that needs to be added
+     * @param o the staff object that needs to be added
      */
-    public void addStaff(Staff s) {
+    @Override
+    public void add(Object o) {
+        Staff s = (Staff) o;
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
         try {
@@ -65,8 +75,13 @@ public class StaffManager {
         }
     }
 
+    @Override
+    public void delete(int id) throws IOException {
 
-    public List<Staff> getStaffs() {
-        return staffs;
+    }
+
+    @Override
+    public int getSize() {
+        return 0;
     }
 }

@@ -85,11 +85,8 @@ public class MenuUI extends BaseUI {
             i++;
         }
         MenuItem menuItem = new Food(i, name, type, description, price);
-        try {
-            menuManager.addMenuItem(menuItem);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        menuManager.add(menuItem);
+
     }
 
     /**
@@ -131,11 +128,7 @@ public class MenuUI extends BaseUI {
         }
 
         MenuItem menuItem = new SetPackage(i, name, description, price, foodList);
-        try {
-            menuManager.addMenuItem(menuItem);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        menuManager.add(menuItem);
     }
 
     /**
@@ -147,7 +140,7 @@ public class MenuUI extends BaseUI {
         int itemId;
         itemId = in.nextInt();
         if (itemId != 0) {
-            menuManager.deleteMenuItem(itemId);
+            menuManager.delete(itemId);
         }
     }
 
