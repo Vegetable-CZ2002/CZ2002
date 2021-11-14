@@ -286,5 +286,38 @@
       "description": "Special deal for prawn pasta lovers.",
       "price": 17.0
     }
+  },
+  {
+    "MenuItem": "beans.SetPackage",
+    "INSTANCE": {
+      "foodList": [
+        {
+          "id": 5,
+          "name": "GRILLED SALMON",
+          "type": "MEAT",
+          "description": "Grilled salmon served with sauteed vegetables and lemon butter sauce.",
+          "price": 24.0
+        },
+        {
+          "id": 18,
+          "name": "MANGO ICED TEA",
+          "type": "DRINK",
+          "description": "Iced tea shaken with mango puree and sugar syrup, served chilled.",
+          "price": 4.0
+        },
+        {
+          "id": 15,
+          "name": "APPLE CRUMBLE",
+          "type": "DESSERT",
+          "description": "Chopped apples baked with crumb topping, served with vanilla ice cream.",
+          "price": 6.0
+        }
+      ],
+      "id": 25,
+      "name": "WIZARD MEAL",
+      "type": "PACKAGE",
+      "description": " a classical wizard feast",
+      "price": 26.0
+    }
   }
 ]
