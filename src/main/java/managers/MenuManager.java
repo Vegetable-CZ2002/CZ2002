@@ -110,14 +110,15 @@ public class MenuManager extends BaseManager {
      * @param o the menuItem that needs to be added
      * @throws IOException Signals that an I/O exception occurs in the writeString operation
      */
+    @Override
     public void add(Object o) {
-        MenuItem m = (MenuItem) o;
-        GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
-        Gson gson = builder.setPrettyPrinting().create();
-        try {
-            int i = 0;
-            for (; i < menuItemList.size(); i++) {
+                MenuItem m = (MenuItem) o;
+                GsonBuilder builder = new GsonBuilder();
+                builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
+                Gson gson = builder.setPrettyPrinting().create();
+                try {
+                    int i = 0;
+                    for (; i < menuItemList.size(); i++) {
                 if (m.getType().ordinal() < menuItemList.get(i).getType().ordinal()) {
                     menuItemList.add(i, m);
                     break;
