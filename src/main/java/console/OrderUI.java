@@ -19,16 +19,10 @@ import java.util.Scanner;
  * @author Ruan Donglin
  */
 public class OrderUI {
-    private final TableManager tableManager;
-    private final StaffManager staffManager;
     private final OrderManager orderManager;
-    private final MenuManager menuManager;
 
     public OrderUI() throws IOException {
-        this.tableManager = new TableManager();
-        this.staffManager = new StaffManager();
         this.orderManager = new OrderManager();
-        this.menuManager = new MenuManager();
     }
 
     private static final Scanner in = MainUI.in;
@@ -242,9 +236,9 @@ public class OrderUI {
         } else {
             System.out.println("Here's all the menu item in this order");
             order.printMenuItemInOrder();
-            menuManager.print();
+            orderManager.printMenu();
             System.out.println("Please enter the id of the menu item that you want to add, enter 0 to quit\n");
-            List<MenuItem> menuItems = menuManager.getMenuItemList();
+            List<MenuItem> menuItems = orderManager.getMenuItemList();
             int itemId;
             do {
                 itemId = in.nextInt();
@@ -286,7 +280,7 @@ public class OrderUI {
                 break;
         }
         System.out.println(jobTitle);
-        List<Staff> staffList = staffManager.getStaffs();
+        List<Staff> staffList = orderManager.getStaffs();
         List<Staff> qualifyStaff = new ArrayList<>();
         for (Staff staff : staffList) {
             if (staff.getJob() == jobTitle) {
@@ -302,7 +296,7 @@ public class OrderUI {
      * It checks the state of isOccupied of each table
      */
     public void checkCurrentAvailability() {
-        for (Table table : tableManager.getTables()) {
+        for (Table table : orderManager.getTables()) {
             if (!table.isOccupied()) {
                 System.out.println("Table " + table.getId() + " is available");
             }
@@ -316,6 +310,6 @@ public class OrderUI {
      * @return the selected table object
      */
     public Table selectTable(int pax) {
-        return tableManager.occupyTableForOrder(pax);
+        return orderManager.occupyTableForOrder(pax);
     }
 }

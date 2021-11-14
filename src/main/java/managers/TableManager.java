@@ -22,11 +22,9 @@ import java.util.List;
  * @author Ruan Donglin
  */
 public class TableManager extends BaseManager {
-    private final ReservationManager reservationManager;
     private List<Table> tables;
 
     public TableManager() throws IOException {
-        this.reservationManager = new ReservationManager();
         this.tables = read();
     }
 
@@ -45,27 +43,6 @@ public class TableManager extends BaseManager {
         }
         System.out.println("No available table for seating");
         return null;
-    }
-
-
-    /**
-     * Check all reservation to find the reservation that happens in the current session to set the table as occupied.
-     */
-    public void setTableReserved() {
-        List<Reservation> reservations = reservationManager.getReservations();
-        if (LocalTime.now().isBefore(LocalTime.of(12, 0, 0))) {
-            for (Reservation r : reservations) {
-                if (r.getLocalDate().isEqual(LocalDate.now()) && r.getLocalTime().isBefore(LocalTime.of(12, 0, 0))) {
-                    r.getTable().setOccupied(true);
-                }
-            }
-        } else {
-            for (Reservation r : reservations) {
-                if (r.getLocalDate().isEqual(LocalDate.now())) {
-                    r.getTable().setOccupied(true);
-                }
-            }
-        }
     }
 
 
@@ -127,4 +104,5 @@ public class TableManager extends BaseManager {
     public void print() {
 
     }
+
 }

@@ -108,5 +108,27 @@
       "isOccupied": false,
       "id": 5
     }
+  },
+  {
+    "localDate": {
+      "year": 2021,
+      "month": 11,
+      "day": 14
+    },
+    "localTime": {
+      "hour": 17,
+      "minute": 45,
+      "second": 0,
+      "nano": 0
+    },
+    "pax": 5,
+    "name": "Ruan Donglin",
+    "contact": "1",
+    "id": 8,
+    "table": {
+      "numOfSeats": 6,
+      "isOccupied": true,
+      "id": 15
+    }
   }
 ]

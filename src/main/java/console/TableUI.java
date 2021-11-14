@@ -17,13 +17,13 @@ import java.util.Scanner;
  * @author Ruan Donglin
  */
 public class TableUI {
-    private final TableManager tableManager;
     private final ReservationManager reservationManager;
+    private final TableManager tableManager;
     private static final Scanner in = MainUI.in;
 
     public TableUI() throws IOException {
-        this.tableManager = new TableManager();
         this.reservationManager = new ReservationManager();
+        this.tableManager = new TableManager();
     }
 
 

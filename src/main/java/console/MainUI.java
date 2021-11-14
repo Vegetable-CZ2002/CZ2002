@@ -13,14 +13,11 @@ import java.util.Scanner;
  * @author Ruan Donglin
  */
 public class MainUI {
-
-    private static TableManager tableManager;
     private static ReservationManager reservationManager;
     public static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
         reservationManager = new ReservationManager();
-        tableManager = new TableManager();
         int num;
         do {
             System.out.println("Welcome to the restaurant! What action do you wish to do now? ");
@@ -30,7 +27,7 @@ public class MainUI {
             System.out.println("[3] Reservation UI");
             System.out.println("[4] Print sale revenue report");
             System.out.println("[5] Check table availability");
-            tableManager.setTableReserved();
+            reservationManager.setTableReserved();
             reservationManager.clearExpiredReservations();
             num = in.nextInt();
             switch (num) {

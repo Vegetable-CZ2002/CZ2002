@@ -2,6 +2,7 @@ package managers;
 
 import adapters.MenuItemAdapter;
 import beans.Reservation;
+import beans.Table;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -22,9 +23,11 @@ import java.util.*;
  * @author Ruan Donglin
  */
 public class ReservationManager extends BaseManager {
+    private final TableManager tableManager;
     private List<Reservation> reservations;
 
     public ReservationManager() throws IOException {
+        tableManager= new TableManager();
         reservations = read();
     }
 
@@ -188,4 +191,29 @@ public class ReservationManager extends BaseManager {
             }
         }
     }
+
+    /**
+     * Check all reservation to find the reservation that happens in the current session to set the table as occupied.
+     */
+    public void setTableReserved() {
+        List<Reservation> reservations = getReservations();
+        if (LocalTime.now().isBefore(LocalTime.of(12, 0, 0))) {
+            for (Reservation r : reservations) {
+                if (r.getLocalDate().isEqual(LocalDate.now()) && r.getLocalTime().isBefore(LocalTime.of(12, 0, 0))) {
+                    r.getTable().setOccupied(true);
+                }
+            }
+        } else {
+            for (Reservation r : reservations) {
+                if (r.getLocalDate().isEqual(LocalDate.now())) {
+                    r.getTable().setOccupied(true);
+                }
+            }
+        }
+    }
+
+    public List<Table> getTables(){
+        return tableManager.getTables();
+    }
+
 }

@@ -18,7 +18,6 @@ import java.util.Scanner;
  * @author Zhou Yuxuan
  */
 public class MenuUI {
-
     private final MenuManager menuManager;
 
     public MenuUI() throws IOException {

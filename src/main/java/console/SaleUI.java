@@ -17,11 +17,9 @@ import java.util.Scanner;
 public class SaleUI {
     private static final Scanner in = MainUI.in;
     private final OrderManager orderManager;
-    private final MenuManager menuManager;
 
     public SaleUI() throws IOException {
         this.orderManager = new OrderManager();
-        this.menuManager = new MenuManager();
     }
 
 
@@ -31,7 +29,7 @@ public class SaleUI {
         String date = in.nextLine();
         LocalDate localDate = LocalDate.parse(date);
         double sum = 0;
-        double[] sale = new double[menuManager.getSize()];
+        double[] sale = new double[orderManager.getMenuSize()];
         if (orderManager.getInvoices().size() != 0) {
             for (Order order : orderManager.getInvoices()) {
                 if (order.getLocalDate().isEqual(localDate)) {
@@ -44,7 +42,7 @@ public class SaleUI {
             }
         }
         System.out.println("The sale for this current period is " + sum);
-        for (MenuItem menuItem : menuManager.getMenuItemList()) {
+        for (MenuItem menuItem : orderManager.getMenuItemList()) {
             if (sale[menuItem.getId() - 1] != 0) {
                 System.out.println("The individual sales item of id " + menuItem.getId() + " is " + (int) sale[menuItem.getId() - 1]);
             }
@@ -58,7 +56,7 @@ public class SaleUI {
      */
     public void printSale(LocalDate localDate) throws IOException {
         double sum = 0;
-        double[] sale = new double[menuManager.getSize()];
+        double[] sale = new double[orderManager.getMenuSize()];
         if (orderManager.getInvoices().size() != 0) {
             for (Order order : orderManager.getInvoices()) {
                 if (order.getLocalDate().isEqual(localDate)) {
@@ -71,7 +69,7 @@ public class SaleUI {
             }
         }
         System.out.println("The sale for this current period is " + sum);
-        for (MenuItem menuItem : menuManager.getMenuItemList()) {
+        for (MenuItem menuItem : orderManager.getMenuItemList()) {
             if (sale[menuItem.getId() - 1] != 0) {
                 System.out.println("The individual sales item of id " + menuItem.getId() + " is " + (int) sale[menuItem.getId() - 1]);
             }

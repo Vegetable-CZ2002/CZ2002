@@ -17,11 +17,9 @@ import java.util.Scanner;
  * @author Ruan Donglin
  */
 public class ReservationUI {
-    private final TableManager tableManager;
     private final ReservationManager reservationManager;
 
     public ReservationUI() throws IOException {
-        this.tableManager = new TableManager();
         this.reservationManager = new ReservationManager();
     }
 
@@ -107,7 +105,7 @@ public class ReservationUI {
             }
             boolean isBookingSuccess = false;
             if (localDate.isEqual(LocalDate.now())) {
-                for (Table t : tableManager.getTables()) {
+                for (Table t : reservationManager.getTables()) {
                     if (!t.isOccupied() && t.getNumOfSeats() >= pax) {
                         System.out.println("Reservation booking success");
                         System.out.println("Table " + t.getId() + " is reserved");
@@ -123,7 +121,7 @@ public class ReservationUI {
                 }
             } else {
                 List<Reservation> reservations = reservationManager.getReservations();
-                List<Table> tables = tableManager.getTables();
+                List<Table> tables = reservationManager.getTables();
                 for (Reservation r : reservations) {
                     if (r.getLocalDate().isEqual(localDate)) {
                         tables.remove(r.getTable());

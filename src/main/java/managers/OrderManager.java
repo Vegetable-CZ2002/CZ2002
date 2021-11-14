@@ -3,6 +3,8 @@ package managers;
 import adapters.MenuItemAdapter;
 import beans.MenuItem;
 import beans.Order;
+import beans.Staff;
+import beans.Table;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -23,11 +25,17 @@ import java.util.List;
  * @author Ruan Donglin
  */
 public class OrderManager extends BaseManager {
+    private final StaffManager staffManager;
+    private final MenuManager menuManager;
+    private final TableManager tableManager;
     private List<Order> invoices;
     private final List<Order> orders;
 
     public OrderManager() throws IOException {
         invoices = read();
+        staffManager = new StaffManager();
+        menuManager= new MenuManager();
+        tableManager = new TableManager();
         orders = new ArrayList<>();
     }
 
@@ -156,5 +164,34 @@ public class OrderManager extends BaseManager {
                 System.out.print(item.toString() + "\n");
             }
         }
+    }
+
+    public int getMenuSize() throws IOException {
+        return menuManager.getSize();
+    }
+
+    public List<MenuItem> getMenuItemList(){
+        return menuManager.getMenuItemList();
+    }
+
+    public List<Table> getTables(){
+        return tableManager.getTables();
+    }
+
+    public List<Staff> getStaffs(){
+        return staffManager.getStaffs();
+    }
+
+    /**
+     * Check all available table to find one that allow the defined number of pax to seat
+     *
+     * @param pax the number of pax for the order
+     */
+    public Table occupyTableForOrder(int pax){
+        return tableManager.occupyTableForOrder(pax);
+    }
+
+    public void printMenu(){
+        menuManager.print();
     }
 }
