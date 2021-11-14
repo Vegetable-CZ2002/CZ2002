@@ -29,7 +29,6 @@ public class MenuManager extends BaseManager {
         menuItemList = read();
     }
 
-
     /**
      * Update a menuItem by delete the old menuItem and add the new one
      *
