@@ -59,9 +59,11 @@ public class ReservationUI {
 
 
     /**
-     * create a reservation if allowed
+     * Create a reservation if allowed with all the needed information of the new reservation
+     * Fail if no table is available for that reservation time
+     * Return a reservation id for the customer to enter when they check in/ delete
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs in the reservationManager related to json operation
      */
     public void createReservation() throws IOException {
         reservationManager.clearExpiredReservations();
@@ -138,8 +140,11 @@ public class ReservationUI {
 
     /**
      * Check in to a reservation if allowed. If yes, go to order immediately
+     * Clear all expired reservations before checking
+     * The reservation is located according to its reservation id
+     * It calls the reservationCheckIn method in the reservationManager class to remove the reservation from the reservation.json file
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs in the reservationManager related to json operation
      */
     public void checkReservation() throws IOException {
         reservationManager.clearExpiredReservations();
@@ -148,6 +153,14 @@ public class ReservationUI {
         reservationManager.reservationCheckIn(id);
     }
 
+    /**
+     * Delete a reservation if allowed.
+     * Clear all expired reservations before checking
+     * The reservation is located according to its reservation id
+     * It calls the removeReservation method in the reservationManager class to remove the reservation from the reservation.json file
+     *
+     * @throws IOException
+     */
     public void removeReservation() throws IOException {
         reservationManager.clearExpiredReservations();
         System.out.println("Please enter the reservation id you received when booking");
@@ -157,8 +170,9 @@ public class ReservationUI {
 
     /**
      * View all existing reservations
+     * It calls the getReservations method in the reservationManager class
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs in the reservationManager related to json operation
      */
     public void viewReservation() throws IOException {
         reservationManager.clearExpiredReservations();

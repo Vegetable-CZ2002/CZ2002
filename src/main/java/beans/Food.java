@@ -2,7 +2,7 @@ package beans;
 
 
 /**
- * Represents one of the types of menuitem, the ala carte item
+ * Represents one of the types of menuItem, the ala carte item
  *
  * @author Zhou Yuxuan
  */

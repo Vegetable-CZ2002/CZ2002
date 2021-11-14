@@ -3,7 +3,6 @@ package beans;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Formatter;
-import java.util.Objects;
 
 /**
  * Represents the reservation the customer books

@@ -1,11 +1,12 @@
 package beans;
 
-import java.util.*;
+import java.util.Formatter;
+import java.util.Objects;
 
 /**
- * Represents general menuitem
+ * Represents general menuItem
  *
- *  @author Zhou Yuxuan
+ * @author Zhou Yuxuan
  */
 public abstract class MenuItem {
 

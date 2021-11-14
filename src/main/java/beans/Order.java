@@ -123,7 +123,12 @@ public class Order {
         this.invoiced = invoiced;
     }
 
-    public void addItem(int id) throws IOException {
+    /**
+     * Add menuItem into the order
+     *
+     * @param id the id of the menuItem that needs to be added
+     */
+    public void addItem(int id) {
         boolean addSuccessful = false;
         List<MenuItem> menuItemList = menuManager.getMenuItemList();
         for (MenuItem m : menuItemList) {
@@ -141,6 +146,11 @@ public class Order {
         }
     }
 
+    /**
+     * Remove an menuItem from the order if exists
+     *
+     * @param id the id of the menuItem that needs to be deleted
+     */
     public void removeItem(int id) {
         boolean removeSuccessful = false;
         for (MenuItem m : menuItems) {
@@ -183,6 +193,9 @@ public class Order {
     }
 
 
+    /**
+     * Print all the existing menuItem in the order
+     */
     public void printMenuItemInOrder() {
         if (menuItems.length == 0) {
             System.out.println("No item in this order yet");
@@ -202,6 +215,9 @@ public class Order {
         this.pax = pax;
     }
 
+    /**
+     * Print the formatted invoice for the order
+     */
     public void printInvoice() {
         printTitles();
         printHeaders();

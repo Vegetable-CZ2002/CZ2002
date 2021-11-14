@@ -33,6 +33,11 @@ public class MenuUI {
         menuManager.printMenu();
     }
 
+
+    /**
+     * Create an Ala Carte item by initializing a new menu item and add it into the menu by asking the user to provide all needed information about the new ala carte item.
+     * The method calls the addMenuItem method in menuManager to write the menu item into the menu.json file.
+     */
     public void createAlaCarteItem() {
         System.out.println("Please enter the following details for the new menu item\n");
         in.nextLine();
@@ -93,6 +98,10 @@ public class MenuUI {
         }
     }
 
+    /**
+     * Create a Set Package item by initializing a new menu item and add it into the menu by asking the user to provide all needed information about the new set package item.
+     * The method calls the addMenuItem method in menuManager to write the menu item into the menu.json file.
+     */
     public void createSetPackage() throws IOException {
         List<MenuItem> menuItems = menuManager.getMenuItemList();
         List<Food> foodList = new ArrayList<>();
@@ -135,6 +144,10 @@ public class MenuUI {
         }
     }
 
+    /**
+     * Delete a menu item by asking the user to provide the menu item id.
+     * The method calls the deleteMenuItem method in menuManager to delete the menu item from the menu.json file.
+     */
     public void deleteMenuItem() {
         System.out.println("Please enter the id of the menu item to delete, enter 0 to quit");
         int itemId;
@@ -144,7 +157,11 @@ public class MenuUI {
         }
     }
 
-
+    /**
+     * Update Ala Carte item by initializing a new menu item and add it into the menu by asking the user to provide all needed information about the new set package item.
+     * The method provides the old information about the ala carte item corresponding to its id.
+     * The method calls the updateMenuItem method in menuManager to rewrite the menu item into the menu.json file.
+     */
     public void updateAlaCarteItem() {
         MenuItem oldMenuItem = null;
         System.out.println("Please enter information for the updated menu item\n");
@@ -226,6 +243,11 @@ public class MenuUI {
         }
     }
 
+    /**
+     * Update Set Package item by initializing a new menu item and add it into the menu by asking the user to provide all needed information about the new set package item.
+     * The method provides the old information about the set package item corresponding to its id.
+     * The method calls the updateMenuItem method in menuManager to rewrite the menu item into the menu.json file.
+     */
     public void updateSetPackage() {
         MenuItem oldMenuItem = null;
         List<MenuItem> menuItems = menuManager.getMenuItemList();

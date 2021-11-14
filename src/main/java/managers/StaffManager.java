@@ -26,11 +26,11 @@ public class StaffManager {
     }
 
     /**
-     * Read all staff from the json file
+     * Read all staff from the staff.json file
      *
-     * @return all the staff in the restaurant that is in the format of list of Staff object
+     * @return a list of staff in the restaurant that is in the format of list of Staff object
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
      */
     public List<Staff> readStaff() throws IOException {
         Gson gson = new Gson();
@@ -46,6 +46,11 @@ public class StaffManager {
     }
 
 
+    /**
+     * Add a staff to the staff.json file
+     *
+     * @param s the staff object that needs to be added
+     */
     public void addStaff(Staff s) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();

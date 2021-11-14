@@ -29,8 +29,10 @@ public class TableUI {
 
     /**
      * Check the defined date and time's table availability
+     * Check all the reservations in the reservation.json file to find all table occupied at the defined time for reservation
+     * Print all tables that are not occupied for reservation
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs in the reservationManager related to json operation
      */
     public void checkTableAvailability() throws IOException {
         System.out.println("Please enter the date to check availability in the format of YYYY-MM-DD:(eg. 2021-11-12)");

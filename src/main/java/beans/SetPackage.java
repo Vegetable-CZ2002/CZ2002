@@ -4,7 +4,7 @@ import java.util.Formatter;
 import java.util.List;
 
 /**
- * Represents one of the types of menuitem, the set package item
+ * Represents one of the types of menuItem, the set package item
  *
  * @author Zhou Yuxuan
  */

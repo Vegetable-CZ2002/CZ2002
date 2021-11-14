@@ -77,7 +77,8 @@ public class OrderUI {
     }
 
     /**
-     * print all/ a specific order detail
+     * Print all/ a specific order detail
+     * The specific order is located according to its order id the user provides
      */
     public void printOrder() {
         System.out.println("Do you want to view all the orders in history? Please enter [Y/n]");
@@ -99,11 +100,10 @@ public class OrderUI {
     }
 
     /**
-     * invoice an order
-     *
-     * @throws IOException
+     * Invoice an order according to its order id the user provides
+     * The method calls the orderInvoiced in the orderManager class to write the invoice into the invoice.json file
      */
-    public void invoiceOrder() throws IOException {
+    public void invoiceOrder() {
         LocalDate localDate = LocalDate.now();
         System.out.println("Current date:" + localDate);
         LocalTime localTime = LocalTime.now();
@@ -126,9 +126,9 @@ public class OrderUI {
     }
 
     /**
-     * delete a defined menuItem from the order
-     *
-     * @throws IOException
+     * Delete a menuItem from the order
+     * The menuItem is located according to its menuItem id the user provides
+     * The order is located according to its order id the user provides
      */
     public void deleteItemFromOrder() {
         System.out.println("Please enter the id of the order that you want to modify\n");
@@ -156,7 +156,7 @@ public class OrderUI {
      * Create an order after the customer checks in.
      *
      * @param reservation
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs in the menuManager in the new initialized order
      */
     public void createOrderAfterReservation(Reservation reservation) throws IOException {
         LocalDate localDate = LocalDate.now();
@@ -184,8 +184,10 @@ public class OrderUI {
 
     /**
      * Create a new order after the customer walks in
+     * Ask user to provide all needed information about the order
+     * Fail if no available table can be found at the current time
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs in the menuManager in the new initialized order
      */
     public void createOrder() throws IOException {
         System.out.println("Please enter the following details for order");
@@ -220,9 +222,11 @@ public class OrderUI {
     }
 
     /**
-     * Add a defined item to the order
+     * Add a menuItem to an order
+     * The menuItem is located according to the menuItem id the user provides
+     * The order is located according to the order id the user provides
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs in the menuManager in the selected order
      */
     public void addItemToOrder() throws IOException {
         System.out.println("Please enter the id of the order that you want to modify\n");
@@ -256,12 +260,11 @@ public class OrderUI {
     }
 
     /**
-     * Select a random staff to serve an order
+     * Select a random staff to serve an order according to the job type
      *
-     * @param type
-     * @return
+     * @param type the specific job type the customer asks for
+     * @return the selected staff object
      *
-     * @throws IOException
      */
     public Staff selectStaff(int type) {
         Staff.jobTitle jobTitle;
@@ -294,9 +297,13 @@ public class OrderUI {
         return qualifyStaff.get(finalId);
     }
 
-    public void checkCurrentAvailability(){
-        for(Table table: tableManager.getTables()){
-            if(!table.isOccupied()){
+    /**
+     * Check the current availability of all the tables
+     * It checks the state of isOccupied of each table
+     */
+    public void checkCurrentAvailability() {
+        for (Table table : tableManager.getTables()) {
+            if (!table.isOccupied()) {
                 System.out.println("Table " + table.getId() + " is available");
             }
         }
@@ -305,8 +312,8 @@ public class OrderUI {
     /**
      * Select a qualified table for an order
      *
-     * @param pax
-     * @return
+     * @param pax the number of people of an order
+     * @return the selected table object
      */
     public Table selectTable(int pax) {
         return tableManager.occupyTableForOrder(pax);

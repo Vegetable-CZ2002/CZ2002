@@ -1,8 +1,6 @@
 package beans;
 
 
-import java.util.Objects;
-
 /**
  * Represents the staff in the restaurant
  *

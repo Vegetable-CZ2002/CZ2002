@@ -43,6 +43,11 @@ public class OrderManager {
         orders.add(order);
     }
 
+    /**
+     * Remove an order from the order list according to its order id
+     *
+     * @param id the order id of the order that needs to be removed
+     */
     public void removeOrder(int id) {
         boolean removeSuccessful = false;
         for (Order o : orders) {
@@ -58,11 +63,11 @@ public class OrderManager {
     }
 
     /**
-     * Invoice a order, that is to delete it from the order list, add it and write it to the invoice list.
+     * Invoice an order, that is to delete it from the order list, add it and write it to the invoice list.
      *
-     * @param id       the id of the order that needs to be incoiced
-     * @param isMember whether the customer of this order is a memeber or not
-     * @throws IOException
+     * @param id       the id of the order that needs to be invoiced
+     * @param isMember whether the customer of this order is a member or not
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
      */
     public void orderInvoiced(int id, boolean isMember) {
         boolean orderInvoiced = false;
@@ -73,7 +78,6 @@ public class OrderManager {
                 }
                 order.setLocalTime(LocalTime.now());
                 order.setLocalDate(LocalDate.now());
-
                 orderInvoiced = true;
                 order.setInvoiced(true);
                 order.getTable().setOccupied(false);
@@ -92,6 +96,9 @@ public class OrderManager {
         }
     }
 
+    /**
+     * Pri t all the existing order item.
+     */
     public void printOrder() {
         if (orders.size() == 0) {
             System.out.println("No order in history yet");
@@ -108,7 +115,7 @@ public class OrderManager {
      *
      * @return the list of existing invoices in a list of Order object
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
      */
     public List<Order> readInvoice() throws IOException {
         GsonBuilder builder = new GsonBuilder();

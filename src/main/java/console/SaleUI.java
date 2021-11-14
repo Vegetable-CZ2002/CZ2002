@@ -4,13 +4,16 @@ import beans.MenuItem;
 import beans.Order;
 import managers.MenuManager;
 import managers.OrderManager;
-import managers.StaffManager;
-import managers.TableManager;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * User interface class for the instructions regarding sale
+ *
+ * @author Ruan Donglin
+ */
 public class SaleUI {
     private static final Scanner in = MainUI.in;
     private final OrderManager orderManager;
@@ -30,9 +33,9 @@ public class SaleUI {
     }
 
     /**
-     * print the sale in this period with details of total sale and each item sale
+     * Print the sale in a day that the user provides with details of total sale and each item sale
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs in the menuManager related to json operation
      */
     public void printSale(LocalDate localDate) throws IOException {
         double sum = 0;

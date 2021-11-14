@@ -29,7 +29,13 @@ public class MenuManager {
         menuItemList = readMenuItem();
     }
 
-
+    /**
+     * Read all menu items from the menu.json file
+     *
+     * @return a list of all existing menuItems
+     *
+     * @throws IOException Signals that an I/O exception occurs in the readString operation
+     */
     public List<MenuItem> readMenuItem() throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
@@ -45,6 +51,13 @@ public class MenuManager {
         return menuItemList;
     }
 
+
+    /**
+     * Add a menuItem into the menu.json file
+     *
+     * @param m the menuItem that needs to be added
+     * @throws IOException Signals that an I/O exception occurs in the writeString operation
+     */
     public void addMenuItem(MenuItem m) throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
@@ -60,7 +73,7 @@ public class MenuManager {
             if (i == menuItemList.size()) {
                 menuItemList.add(m);
             }
-            for (--i ; i < menuItemList.size(); i++) {
+            for (--i; i < menuItemList.size(); i++) {
                 menuItemList.get(i).setId(i + 1);
             }
             MenuItem[] menuItems = new MenuItem[menuItemList.size()];
@@ -73,7 +86,10 @@ public class MenuManager {
         }
     }
 
-
+    /**
+     * Delete a menuItem from the menu.json file
+     * Locate the menuItem according to its menuItem id
+     */
     public void deleteMenuItem(int id) {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(MenuItem.class, new MenuItemAdapter());
@@ -95,10 +111,17 @@ public class MenuManager {
         }
     }
 
+    /**
+     * Update a menuItem by delete the old menuItem and add the new one
+     *
+     * @param m the menuItem that need to be updated
+     * @throws IOException Signals that an I/O exception occurs in the readString/ writeString operation
+     */
     public void updateMenuItem(MenuItem m) throws IOException {
         deleteMenuItem(m.getId());
         addMenuItem(m);
     }
+
 
     public void printMenu() {
         Formatter fmt = new Formatter();
@@ -109,6 +132,11 @@ public class MenuManager {
         }
     }
 
+    /**
+     * @return the size of the existing menu
+     *
+     * @throws IOException Signals that an I/O exception occurs in the readString operation
+     */
     public int menuSize() throws IOException {
         List<MenuItem> menuItems = readMenuItem();
         return menuItems.size();

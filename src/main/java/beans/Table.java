@@ -1,9 +1,5 @@
 package beans;
 
-
-import java.util.Objects;
-
-
 /**
  * Represents the table in the restaurant
  *

@@ -40,11 +40,11 @@ public class ReservationManager {
     }
 
     /**
-     * Read all existing reservations from the json file.
+     * Read all existing reservations from the reservation.json file
      *
      * @return the list of existing reservations in a list of Reservation object
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
      */
     public List<Reservation> readReservation() throws IOException {
         Gson gson = new Gson();
@@ -63,10 +63,9 @@ public class ReservationManager {
      * Add a reservation to the reservation list, write it into the json file
      *
      * @param reservation the reservation that needs to be added
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
      */
     public void addReservation(Reservation reservation) {
-
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
         try {
@@ -82,10 +81,11 @@ public class ReservationManager {
 
 
     /**
-     * Remove the defined reservation from the reservation list, delete it from the json file
+     * Remove the defined reservation from the reservation list
+     * Call the deletedReservation method to remove it from the reservation.json file
      *
      * @param id the id of the reservation that needs to be deleted
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
      */
     public void removeReservation(int id) throws IOException {
         boolean removeReservation = false;
@@ -106,6 +106,12 @@ public class ReservationManager {
     }
 
 
+    /**
+     * Remove a reservation from the reservation.json file
+     *
+     * @param reservation the reservation that needs to be deleted
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
+     */
     public void deleteReservation(Reservation reservation) throws IOException {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
@@ -120,9 +126,10 @@ public class ReservationManager {
 
     /**
      * Check in to a reservation if allowed
+     * The reservation is located according to its reservation id
      *
      * @param id the id of the reservation that the customer wants to check in
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
      */
     public void reservationCheckIn(int id) throws IOException {
         GsonBuilder builder = new GsonBuilder();
@@ -152,9 +159,9 @@ public class ReservationManager {
     }
 
     /**
-     * clear all existing reservations that passed the booking time
+     * Clear all existing reservations that passed the booking time for 20 minutes
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception related to the json operation
      */
     public void clearExpiredReservations() throws IOException {
         Iterator<Reservation> reservationIterator = reservations.iterator();

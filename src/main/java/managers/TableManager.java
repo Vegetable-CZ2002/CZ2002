@@ -32,11 +32,11 @@ public class TableManager {
 
 
     /**
-     * Read all tables from the json file
+     * Read all tables from the table.json file
      *
      * @return all the tables in the restaurant that is in the format of list of Table object
      *
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception occurs related to the json operation
      */
     public List<Table> readTable() throws IOException {
         Gson gson = new Gson();
@@ -51,6 +51,11 @@ public class TableManager {
         return tables;
     }
 
+    /**
+     * Add a table and write it to the table.json file
+     *
+     * @param t the table object that needs to be added
+     */
     public void addTable(Table t) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.setPrettyPrinting().create();
